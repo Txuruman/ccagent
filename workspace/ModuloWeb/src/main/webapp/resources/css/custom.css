@@ -1,0 +1,115 @@
+
+
+.spacer_t1 {
+	height: 5px;
+}
+
+.spacer_t2 {
+	height: 10px;
+}
+
+.spacer_t3 {
+	height: 20px;
+}
+
+.custom-area {
+	resize: none;
+}
+
+.customtriple {
+	margin-left: 7%;
+}
+
+.cabecillas {
+	background-color: #BBC9EF;
+}
+
+.form-control {
+	padding: 2px 6px !important;
+	height: 28px;
+}
+
+.bordel {
+	border: 1px solid rgb(51, 122, 183);
+	padding-bottom: 6px;
+	border-radius: 7px;
+}
+
+.bordel-gray {
+    border: 1px solid lightgray;
+    padding-bottom: 6px;
+    border-radius: 7px;
+}
+
+.panel-result {
+	padding: 3px;
+}
+
+.panel-result-padre {
+	margin-bottom: 0;
+}
+
+/* LABEL REQUIRED */
+label.required {
+    font-weight: bold;
+	color: #04229a !important;
+}
+
+/*	OVERWRITE TITULOS H2*/
+
+h2{
+	/*color: #4756ff !important; color securitas direct*/
+	color: #163f8b !important; /* color plantilla nuestra*/
+	font-style: italic;
+}
+/* OVERWRITE INPUTS */
+.input-custom-global{
+	height: 22px !important;
+	font-size: 12px;
+	font-family: tahoma;
+
+}
+/* OVERWRITE INPUTS LABEL*/
+.labelcent {
+	top: 50%;
+	position: relative;
+	padding-top: 0px !important;
+	font-size: 14px !important;
+	font-style: italic;
+	/*color: #04229a !important; color securitas direct*/
+	color: #163f8b !important; /*color plantilla nuestra*/
+	padding-left: 5px;
+	padding-right: 5px;
+}
+/** OVERWRITE PRIMARY BUTTONS (BLUE BUTTONS) */
+.btn-primary {
+	background-color: #163f8b !important;
+	border-color: #16429a;
+}
+
+.list-group-item-message{
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left:2%;
+    padding-right: 2%;
+    margin-top:1px;
+    margin-left:1px;
+    margin-bottom: 1px;
+    margin-right: 1px;
+    /* Eliminar el width para hacer los mensajes inline*/
+    width: 98%;
+    /* Alineamiento del texto del mensaje */
+    text-align: left;
+    font-size: 14px;
+}
+
+.alert{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left:20px;
+    padding-right:25px;
+    margin-top:3px;
+    margin-left:1px;
+    margin-bottom: 1px;
+    margin-right: 1px;
+}
