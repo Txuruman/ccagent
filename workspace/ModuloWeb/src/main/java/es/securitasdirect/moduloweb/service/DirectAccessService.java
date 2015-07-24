@@ -1,11 +1,9 @@
 package es.securitasdirect.moduloweb.service;
 
+import es.securitasdirect.moduloweb.model.DirectAccess;
+import es.securitasdirect.moduloweb.model.DummyGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.wso2.ws.dataservice.DataServiceFault;
-import org.wso2.ws.dataservice.RowErrorAA;
-import org.wso2.ws.dataservice.SPAIOTAREAS2PortType;
-import org.wso2.ws.dataservice.SPAVISOSOPERACIONESPortType;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
@@ -23,6 +21,10 @@ public class DirectAccessService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DirectAccessService.class);
 
+
+    public List<DirectAccess> getDirectAccess() {
+        return DummyGenerator.getDirectAcess();
+    }
 
 
 
