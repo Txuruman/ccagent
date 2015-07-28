@@ -1,4 +1,4 @@
-app.controller('marcoController', function ($scope, $http, CommonService) {
+app.controller('mainFrameController', function ($scope, $http, CommonService) {
 	
     
 	$scope.searchTareaFromServer = function () {

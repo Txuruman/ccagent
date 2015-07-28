@@ -8,36 +8,49 @@
 <head>
 <title><spring:message code="titulo.BuscarTarea" /></title>
 <app:commonImports />
-<script
-	src="${pageContext.request.contextPath}/resources/app/marco-ctrl.js"></script>
+
+<!-- CONTROLADORES ANGULARJS -->
+<script	src="${pageContext.request.contextPath}/resources/app/mainFrame-ctrl.js"></script>
+<script	src="${pageContext.request.contextPath}/resources/app/infoInstal-ctrl.js"></script>
+<script	src="${pageContext.request.contextPath}/resources/app/invoicing-ctrl.js"></script>
+
 </head>
-<body ng-controller="marcoController">
-		<div class="row">
-			<!-- ACCESOS DIRECTOS -->
-			<div class="col-md-1 col-sm-1 col-xs-1 btn-group-vertical vertical-text-group"
-				role="group" aria-label="">
-				<button type="button" class="vertical-text btn btn-default"
-					ng-repeat="index in directAccess" title="{{index.description}}">
-					<a href="{{index.url}}">{{index.name}}</a>
-				</button>
-			</div>
-			<!-- FIN ACCESOS DIRECTOS -->
+<body ng-controller="mainFrameController">
+	<div class="row">
+		<!-- ACCESOS DIRECTOS -->
+		<div
+			class="col-md-1 col-sm-1 col-xs-1 btn-group-vertical vertical-text-group"
+			role="group" aria-label="">
+			<button type="button" class="vertical-text btn btn-default"
+				ng-repeat="index in directAccess" title="{{index.description}}">
+				<a href="{{index.url}}">{{index.name}}</a>
+			</button>
+<%-- 			<app:inputButtonNG button_type="default" ng_click="" cells="4" value="marco.boton.a" /> --%>
 			
-			<!-- PANEL DE PESTAÑAS -->
-			<div class="col-md-11 col-sm-11 col-xs-11" >
-				<tabset justified="false">
-					<tab heading="INFO INST.">
-						<%@include file="InfoInstal.jsp" %>
-					</tab>
-					<tab heading="FACTURACIÓN">Short Labeled Justified content
-					</tab> 
-					<tab heading="AVERÍAS">Long Labeled Justified content</tab>
-					<tab heading="AUTOMATISMOS">Long Labeled Justified content</tab> 
-				</tabset>
-			</div>
-			<!-- FIN PANEL DE PESTAÑAS -->
 		</div>
-<!-- 	</div> -->
+		<!-- FIN ACCESOS DIRECTOS -->
+
+		<!-- PANEL DE PESTAÑAS -->
+		<div class="col-md-11 col-sm-11 col-xs-11">
+			<tabset justified="false"> 
+				<tab heading="INFO INST.">
+					<%@include file="infoInstal/infoInstal.jsp"%>
+				</tab> 
+			
+				<tab heading="FACTURACIÓN">
+					<%@include file="invoicing/invoicing.jsp"%>
+				</tab> 
+				<tab heading="AVERÍAS">
+					 Labeled Justified content
+				</tab>
+				<tab heading="AUTOMATISMOS">
+					Long Labeled Justified content
+				</tab>
+			</tabset>
+		</div>
+		<!-- FIN PANEL DE PESTAÑAS -->
+	</div>
+	<!-- 	</div> -->
 
 
 

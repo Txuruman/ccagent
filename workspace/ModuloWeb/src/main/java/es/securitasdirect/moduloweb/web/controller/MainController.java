@@ -42,7 +42,7 @@ public class MainController extends BaseController {
     @RequestMapping("marco.html")
     public ModelAndView handleRequest(HttpServletRequest hsr, HttpServletResponse hsr1) throws Exception {
         ///Redirect to buscartarea.html
-        ModelAndView mv = new ModelAndView("marco");
+        ModelAndView mv = new ModelAndView("mainFrame");
         return mv;
     }
 
