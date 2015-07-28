@@ -1,6 +1,7 @@
 app.controller('marcoController', function ($scope, $http, CommonService) {
-
-    $scope.searchTareaFromServer = function () {
+	
+    
+	$scope.searchTareaFromServer = function () {
         console.log('search Tareas ' + $scope.searchText +  ' ' + $scope.searchOption);
         $http({
                 method: 'GET',
@@ -17,4 +18,23 @@ app.controller('marcoController', function ($scope, $http, CommonService) {
                 CommonService.processBaseResponse(data,status,headers,config);
             });
     };
+    
+    $scope.getDirectAccess=function(){
+    	console.log('Get Direct Access');
+        $http({
+                method: 'GET',
+                url: 'listdirectaccess'
+            })
+            .success(function (data, status, headers, config) {
+                $scope.directAccess = data.directAcess;
+                CommonService.processBaseResponse(data,status,headers,config);
+            })
+            .error(function (data, status, headers, config) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+                CommonService.processBaseResponse(data,status,headers,config);
+            });
+    }
+    
+    $scope.getDirectAccess();
 });

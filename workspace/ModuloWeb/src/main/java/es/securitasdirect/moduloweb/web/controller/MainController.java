@@ -55,7 +55,7 @@ public class MainController extends BaseController {
     }
 
 
-    @RequestMapping(value = "/listdirectaccess", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @RequestMapping(value = "listdirectaccess", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public
     @ResponseBody
     ListDirectAccessResponse getListDirectAccess() {
