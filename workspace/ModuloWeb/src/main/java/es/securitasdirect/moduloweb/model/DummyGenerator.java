@@ -4,6 +4,7 @@ import org.wso2.ws.dataservice.*;
 import org.wso2.ws.dataservice.Installation;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -36,5 +37,31 @@ public class DummyGenerator {
         InstallationData installation = new InstallationData();
         //TODO Inicializar con basura
         return installation;
+    }
+
+    public static List<Audit> getAudit() {
+        List<Audit> result = new ArrayList<Audit>();
+        Audit a1 = new Audit();
+        a1.setDate(new Date());
+        a1.setAction(Audit.ACCTION.READ);
+        a1.setApp("INST");
+        a1.setResult(Audit.RESULT.OK);
+        a1.setUser("user");
+        a1.setId("callId??");
+        a1.setDetail("text detail");
+        result.add(a1);
+
+        Audit a2 = new Audit();
+        a2.setDate(new Date());
+        a2.setAction(Audit.ACCTION.READ);
+        a2.setApp("FACTU");
+        a2.setResult(Audit.RESULT.ERROR);
+        a2.setUser("user");
+        a2.setId("callId??");
+        a2.setDetail("text detail");
+        result.add(a1);
+
+        return result;
+
     }
 }
