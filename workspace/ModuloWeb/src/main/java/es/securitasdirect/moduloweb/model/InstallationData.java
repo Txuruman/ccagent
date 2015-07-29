@@ -1,5 +1,7 @@
 package es.securitasdirect.moduloweb.model;
 
+import java.util.List;
+
 /**
  * Info of the Installation
  */
@@ -54,6 +56,9 @@ public class InstallationData {
 
     /** Palabra clave de Coacción */
     private String coercionPassword;
+
+    /** Lista de los planes de acción de la instalación */
+    private List<ActionPlan> actionplans;
 
     public String getPanel() {
         return panel;
@@ -199,6 +204,13 @@ public class InstallationData {
         this.coercionPassword = coercionPassword;
     }
 
+    public List<ActionPlan> getActionplans() {
+        return actionplans;
+    }
+
+    public void setActionplans(List<ActionPlan> actionplans) {
+        this.actionplans = actionplans;
+    }
 
     @Override
     public String toString() {
@@ -221,6 +233,7 @@ public class InstallationData {
         sb.append(", customerPassword='").append(customerPassword).append('\'');
         sb.append(", securitasPassword='").append(securitasPassword).append('\'');
         sb.append(", coercionPassword='").append(coercionPassword).append('\'');
+        sb.append(", actionplans=").append(actionplans);
         sb.append('}');
         return sb.toString();
     }
