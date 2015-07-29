@@ -5,6 +5,11 @@ package es.securitasdirect.moduloweb.model;
  */
 public class Phone {
 
+    public interface TYPE {
+        public static final String MOVIL="movil";
+        public static final String FIJO="fijo";
+    }
+
     /** Tipo de telefono, movil, fijo... */
     private String type;
 

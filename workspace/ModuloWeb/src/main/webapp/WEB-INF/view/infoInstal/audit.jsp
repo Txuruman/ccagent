@@ -15,45 +15,13 @@
                 <th><spring:message code="audit.result"/></th>
                 <th><spring:message code="audit.detail"/></th>
             </tr>
-
-            <tr  >
-                <th>a</th>
-                <th>a</th>
-                <th>a</th>
-                <th>a</th>
-                <th>a</th>
-            </tr>            <tr  >
-            <th>a</th>
-            <th>a</th>
-            <th>a</th>
-            <th>a</th>
-            <th>a</th>
-        </tr>            <tr  >
-            <th>a</th>
-            <th>a</th>
-            <th>a</th>
-            <th>a</th>
-            <th>a</th>
-        </tr>            <tr  >
-            <th>a</th>
-            <th>a</th>
-            <th>a</th>
-            <th>a</th>
-            <th>a</th>
-        </tr>            <tr  >
-            <th>a</th>
-            <th>a</th>
-            <th>a</th>
-            <th>a</th>
-            <th>a</th>
-        </tr>            <tr  >
-            <th>a</th>
-            <th>a</th>
-            <th>a</th>
-            <th>a</th>
-            <th>a</th>
-        </tr>
-        </tr>
+            <tr ng-repeat="a in audit | orderBy : 'date'">
+                <td>{{ a.date | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+                <td>{{ a.user }}</td>
+                <td>{{ a.id }}</td>
+                <td>{{ a.result }}</td>
+                <td>{{ a.detail }}</td>
+            </tr>
         </table>
     </div>
 </div>

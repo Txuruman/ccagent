@@ -3,6 +3,7 @@ package es.securitasdirect.moduloweb.model;
 import org.wso2.ws.dataservice.*;
 import org.wso2.ws.dataservice.Installation;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,7 +36,7 @@ public class DummyGenerator {
 
     public static InstallationData getInstallation(Integer installationNumber) {
         InstallationData installation = new InstallationData();
-        //TODO Inicializar con basura
+        //INSTALACION
         installation.setAddress("dirección....");
         installation.setAka("AKA...");
         installation.setCamera(false);
@@ -54,7 +55,34 @@ public class DummyGenerator {
         installation.setSecuritasPassword("123456");
         installation.setSubtype("Subtipo");
         installation.setVersion("versión");
+
+        installation.setActionplans(getActionPlan());
+
         return installation;
+    }
+
+
+    public static List<ActionPlan> getActionPlan() {
+        List<ActionPlan> result = new ArrayList<ActionPlan>();
+        ActionPlan a1 = new ActionPlan();
+        a1.setContactName("Fernando Perez");
+        a1.setPhone1(new Phone(Phone.TYPE.FIJO, "9133344455"));
+        a1.setPhone2(new Phone(Phone.TYPE.MOVIL, "696252525"));
+        a1.setPhone3(new Phone(Phone.TYPE.FIJO, "9133344455"));
+        a1.setSecuence(0);
+        a1.setType("tipo1");
+        result.add(a1);
+
+
+        ActionPlan a2 = new ActionPlan();
+        a2.setContactName("Carlos Garcia");
+        a2.setPhone1(new Phone(Phone.TYPE.FIJO, "9133344455"));
+        a2.setPhone2(new Phone(Phone.TYPE.MOVIL, "696252525"));
+        a2.setPhone3(new Phone(Phone.TYPE.FIJO, "9133344455"));
+        a2.setSecuence(1);
+        a2.setType("tipo2");
+        result.add(a2);
+        return result;
     }
 
     public static List<Audit> getAudit() {

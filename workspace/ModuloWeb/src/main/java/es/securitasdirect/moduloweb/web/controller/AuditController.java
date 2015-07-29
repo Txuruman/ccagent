@@ -1,11 +1,8 @@
 package es.securitasdirect.moduloweb.web.controller;
 
 import es.securitasdirect.moduloweb.model.Audit;
-import es.securitasdirect.moduloweb.model.InstallationData;
 import es.securitasdirect.moduloweb.service.AuditService;
-import es.securitasdirect.moduloweb.service.InstallationService;
 import es.securitasdirect.moduloweb.web.dto.response.AuditResponse;
-import es.securitasdirect.moduloweb.web.dto.response.InstallationResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -35,10 +32,10 @@ public class AuditController extends BaseController {
     @RequestMapping(value = "getaudit", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public
     @ResponseBody
-    AuditResponse getAudit() {//TODO PARAMETROS INSTALACION; USUARIUO;
+    AuditResponse getAudit(@RequestParam(value = "installationId", required = true) Integer installationId) {//TODO PARAMETROS INSTALACION; USUARIUO;otros
         AuditResponse response = new AuditResponse();
         List<Audit> audits = auditService.getAudit(null,null,null); //TODO PARAMETROS
-        response.setAuditory(audits);
+        response.setAudit(audits);
 
         //Solo mensaje en error
         if (audits == null) {
