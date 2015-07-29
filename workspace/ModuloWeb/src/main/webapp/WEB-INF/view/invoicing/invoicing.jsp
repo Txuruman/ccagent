@@ -7,46 +7,46 @@
 <div ng-controller="invoicingController">
 	<!-- ALERTAS -->
 	<div class="row" style="background-color:ForestGreen; min-height:70px">
-		ALERTAS
+		<%@include file="alerts.jsp"%>
 	</div>
 	<!-- FIN ALERTAS -->
 	
 	<!-- ACTIVACIÓN -->
 	<div class="row" style="background-color:Fuchsia; min-height:70px">
-		ACTIVACIÓN
+		<%@include file="activation.jsp"%>
 	</div>
 	<!-- FIN ACTIVACIÓN -->
 	
 	<div class="row">
 		<!-- INFO CYCLE FEEDS -->
 		<div class="col-md-6 col-sm-6 col-xs-6" style="background-color:Gold; min-height:130px">
-			INFO CYCLE FEEDS (SBN)
+			<%@include file="infoCycleFeeds.jsp"%>
 		</div>
 		<!-- INFO ONE TIME -->
 		<div class="col-md-6 col-sm-6 col-xs-6" style="background-color:GreenYellow; min-height:130px">
-			INFO ONE TIME (SBN)
+			<%@include file="infoOneTime.jsp"%>
 		</div>
 	</div>
 	
 	<div class="row">
 		<!-- FACTURAS -->
 		<div class="col-md-6 col-sm-6 col-xs-6" style="background-color:Indigo; min-height:130px">
-			FACTURAS
+			<%@include file="invoices.jsp"%>
 		</div>
 		
 		<!-- DETALLE FACTURAS -->
 		<div class="col-md-6 col-sm-6 col-xs-6" style="background-color:LemonChiffon; min-height:130px">
-			DETALLE FACTURAS
+			<%@include file="invoicesDetail.jsp"%>
 		</div>
 	</div>
 	
 	<!-- EVOLUCIÓN CUOTA -->
 	<div class="row" style="background-color:Khaki; min-height:70px">
-		EVOLUCIÓN CUOTA (SBN)
+		<%@include file="cuoteEvolution.jsp"%>
 	</div>
 	
 	<!-- AUDITORÍA -->
 	<div class="row" style="background-color:IndianRed; min-height:90px">
-		AUDITORÍA
+		<%@include file="audit.jsp"%>
 	</div>
 </div>
