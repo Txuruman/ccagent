@@ -12,4 +12,22 @@
 <!-- 			class="btn btn-primary">MOSTRAR</a> -->
 <!-- 	</div> -->
 <!-- </div> -->
-
+<div class="form-inline">
+		<div class="col-md-3 col-sm-3 col-xs-3">
+			<label>Cliente </label>
+			<input class="form-control" type="text">
+		</div>
+		<div class="col-md-3 col-sm-3 col-xs-3">
+			<label>Securitas </label>
+			<input class="form-control" type="text">
+		</div>
+		<div class="col-md-3 col-sm-3 col-xs-3">
+			<label>Coacción </label>
+			<input class="form-control" type="text">
+		</div>
+		<div class="btn-group margin-top20 inline col-md-3 col-sm-3 col-xs-3">
+			<button type="button" class="btn btn-warning btn-sm">Modificar</button>
+			<button type="button" class="btn btn-info btn-sm">Guardar</button>
+		</div>
+</div>
+	
