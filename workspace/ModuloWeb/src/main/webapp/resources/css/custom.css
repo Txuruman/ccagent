@@ -188,6 +188,12 @@ div[justified="false"] ul li.active a{
 .margin-top20{
 	margin-top:20px;	
 }
+.margin-bottom10{
+	margin-bottom:10px;
+}
+.margin-bottom5{
+	margin-bottom:5px !important;
+}
 .sinPadding{
 	padding:0 !important;
 }

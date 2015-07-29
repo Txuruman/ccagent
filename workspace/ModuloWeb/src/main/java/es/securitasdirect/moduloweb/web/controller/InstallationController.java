@@ -35,7 +35,7 @@ public class InstallationController extends BaseController {
     protected InstallationService installationService;
 
 
-    @RequestMapping(value = "getinstallation", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @RequestMapping(value = "getInstallation", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public
     @ResponseBody
     InstallationResponse getInstallation(@RequestParam(value = "installationId", required = true) Integer installationId) {

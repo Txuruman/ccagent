@@ -4,14 +4,42 @@
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
-<div class="row emerge"
-	style="background-color: CornflowerBlue; min-height: 150px">
-	<div id="cuadroBusqueda">
-		<input class="form-control" type="text" ng-model="Busqueda"
-			name="Busqueda" value="" placeholder=""> <label
-			class="radio-inline"><input type="radio" ng-model="OptSearch"
-			name="OptSearch">eMail</label> <label class="radio-inline"><input
-			type="radio" ng-model="OptSearch" name="OptSearch">Teléfono</label> <a
-			href="#" class="btn btn-primary">Buscar...</a>
+<!-- <div class="row emerge" -->
+<!-- 	style="background-color: CornflowerBlue; min-height: 150px"> -->
+<!-- 	<div id="cuadroBusqueda"> -->
+<!-- 		<input class="form-control" type="text" ng-model="Busqueda" -->
+<!-- 			name="Busqueda" value="" placeholder=""> <label -->
+<!-- 			class="radio-inline"><input type="radio" ng-model="OptSearch" -->
+<!-- 			name="OptSearch">eMail</label> <label class="radio-inline"><input -->
+<!-- 			type="radio" ng-model="OptSearch" name="OptSearch">Teléfono</label> <a -->
+<!-- 			href="#" class="btn btn-primary">Buscar...</a> -->
+<!-- 	</div> -->
+<!-- </div> -->
+
+<div class="col-md-10 col-sm-10 col-xs-10">
+	<div class="row margin-bottom10">
+		<div class="col-md-2 col-sm-2 col-xs-2">
+			<label>Instalación </label>
+		</div>
+		<div class="col-md-4 col-sm-4 col-xs-4">
+			<input class="form-control" type="text">
+		</div>
+		<div class="col-md-2 col-sm-2 col-xs-2">
+			<label>Teléfono </label>
+		</div>
+		<div class="col-md-4 col-sm-4 col-xs-4">
+			<input class="form-control" type="text">
+		</div>
 	</div>
+	<div class="row">
+		<div class="col-md-2 col-sm-2 col-xs-2">
+			<label>Email </label>
+		</div>
+		<div class="col-md-8 col-sm-8 col-xs-8">
+			<input class="form-control" type="email">
+		</div>
+	</div>
+</div>
+<div class="col-md-2 col-sm-2 col-xs-2">
+	<input type="button" class="btn btn-info" value="Buscar...">
 </div>
