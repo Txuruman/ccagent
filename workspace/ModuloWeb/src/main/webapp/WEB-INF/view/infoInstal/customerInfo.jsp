@@ -8,6 +8,8 @@
 	<div class="row">
 		<div class="col-md-3 col-sm-3 col-xs-4">
 			<div class="form-group">
+<%-- 				<app:inputTextNG id="PanelModel" label="visortarea.personacontacto" --%>
+<%--                              value="{{installation.panel}}" cells="12" readonly="true"/> --%>
 				<label>Modelo panel</label> <input class="form-control"
 					ng-model="c.PanelModel" type="text" name="PanelModel" value=""
 					readonly="true">
@@ -100,11 +102,9 @@
 				<label>Idioma</label> <input class="form-control" type="text"
 					ng-model="c.Lang" name="Lang" value="">
 			</div>
-			<div class="btn-group btn-group-justified margin-top20">
-				<a href="#" class="btn btn-primary">MODIFICAR</a> <a href="#"
-					class="btn btn-primary">GUARDAR</a>
-				<!-- 											<input class="btn btn-primary" type="button" name="" value="MODIFICAR"> -->
-				<!-- 											<input class="btn btn-primary" type="submit" name="" value="GUARDAR"> -->
+			<div class="btn-group margin-top20 inline col-md-12 col-sm-12 col-xs-4">
+				<button type="button" class="btn btn-warning btn-sm">Modificar</button>
+				<button type="button" class="btn btn-info btn-sm">Guardar</button>
 			</div>
 		</div>
 	</div>

@@ -36,6 +36,24 @@ public class DummyGenerator {
     public static InstallationData getInstallation(Integer installationNumber) {
         InstallationData installation = new InstallationData();
         //TODO Inicializar con basura
+        installation.setAddress("dirección....");
+        installation.setAka("AKA...");
+        installation.setCamera(false);
+        installation.setCcc("CCC...");
+        installation.setCity("Guadalajara");
+        installation.setCoercionPassword("1234");
+        installation.setCustomerName("Cliente de prueba");
+        installation.setCustomerPassword("12345");
+        installation.setEmailBilling("correo1@prueba.es");
+        installation.setEmailMonitoring("correo2@prueba.es");
+        installation.setEmailUpdage("correo3@prueba.es");
+        installation.setInstallationNumber(installationNumber);
+        installation.setMonitoringStatus("Estado");
+        installation.setPanel("Panel");
+        installation.setPanelPhone("688888888");
+        installation.setSecuritasPassword("123456");
+        installation.setSubtype("Subtipo");
+        installation.setVersion("versión");
         return installation;
     }
 

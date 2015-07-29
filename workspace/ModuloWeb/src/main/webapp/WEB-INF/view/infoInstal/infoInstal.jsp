@@ -5,37 +5,37 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
 <div ng-controller="InfoInstalacionController">
-	<div class="row">
-	<!-- INFORMACIÓN DEL CLIENTE -->
-		<div class="col-md-10 col-sm-11 col-xs-11" style="background-color: yellow">
-			<%@include file="customerInfo.jsp"%>
+	<!-- BÚSQUEDA -->
+	<div class="panel panel-default panel-body margin-bottom5">
+		<div class="row">
+			<%@include file="search.jsp"%>
 		</div>
-		<!-- FIN INFORMACIÓN DEL CLIENTE -->
-		
-		<!-- PANEL LATERAL -->
-		<div class="col-md-2 col-sm-1 col-xs-1">
-			
-			<!-- PALABRA CLAVE -->
-				<%@include file="keyWord.jsp"%>
-			<!-- FIN PALABRA CLAVE -->
-			
-			<!-- BÚSQUEDA -->
-				<%@include file="search.jsp"%>
-			<!-- FIN BÚSQUEDA -->
-		</div>
-		<!-- FIN PANEL LATERAL -->
 	</div>
 	
+	<!-- INFORMACIÓN DEL CLIENTE -->
+	<div class="panel panel-default panel-body margin-bottom5">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<%@include file="customerInfo.jsp"%>
+			</div>
+		</div>
+	</div>
+	<!-- FIN INFORMACIÓN DEL CLIENTE -->
+	
 	<!-- PLAN DE ACCIÓN -->
-	<div class="row" style="background-color: DarkMagenta; min-height: 300px">
-		<%@include file="plan.jsp"%>
+	<div class="panel panel-default panel-body margin-bottom5">
+		<div class="row">
+			<%@include file="plan.jsp"%>
+		</div>
 	</div>
 	<!-- FIN PLAN DE ACCIÓN -->
 	
 	<!-- AUDITORIA -->
-	<div class="row" style="background-color: DarkSeaGreen; min-height: 100px">
-		<%@include file="audit.jsp"%>
-	
+	<div class="panel panel-default panel-body margin-bottom5">
+		<div class="row">
+			<%@include file="audit.jsp"%>
+		
+		</div>
 	</div>
 	<!-- FIN AUDITORIA -->
 </div>
