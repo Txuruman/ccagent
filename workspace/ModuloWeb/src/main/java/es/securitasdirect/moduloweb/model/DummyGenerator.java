@@ -1,5 +1,8 @@
 package es.securitasdirect.moduloweb.model;
 
+import org.wso2.ws.dataservice.*;
+import org.wso2.ws.dataservice.Installation;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,5 +30,11 @@ public class DummyGenerator {
         l.add(da2);
 
         return l;
+    }
+
+    public static InstallationData getInstallation(Integer installationNumber) {
+        InstallationData installation = new InstallationData();
+        //TODO Inicializar con basura
+        return installation;
     }
 }
