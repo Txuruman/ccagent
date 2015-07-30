@@ -26,7 +26,7 @@
                 <td>15-01-14</td>
                 <td>detalle factura</td>
                 <td>
-                    <button type="button" class="btn btn-default btn-sm" >
+                    <button type="button" class="btn btn-default btn-sm" ng-click="openInvoiceDetailModal()">
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                     </button>
                 </td>
@@ -48,3 +48,4 @@
         </table>
     </div>
 </div>
+<app:invoiceDetailModalContent/>
