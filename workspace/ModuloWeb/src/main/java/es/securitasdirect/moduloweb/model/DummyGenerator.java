@@ -16,21 +16,33 @@ public class DummyGenerator {
     public static List<DirectAccess> getDirectAcess() {
         List<DirectAccess> l = new ArrayList<DirectAccess>();
 
-        DirectAccess da1 = new DirectAccess();
-        da1.setName("aaaaa");
-        da1.setDescription("descr");
-        da1.setUrl("http://www.google.es");
-        da1.setPosition(0);
-        l.add(da1);
+        DirectAccess da4 = new DirectAccess();
+        da4.setName("TOA");
+        da4.setDescription("TOA");
+        da4.setUrl("http://www.google.es");
+        da4.setPosition(0);
+        l.add(da4);
 
-
+        DirectAccess da3 = new DirectAccess();
+        da3.setName("INTRANET");
+        da3.setDescription("INTRANET");
+        da3.setUrl("http://www.google.es");
+        da3.setPosition(1);
+        l.add(da3);
+        
         DirectAccess da2 = new DirectAccess();
-        da2.setName("bbbbb");
-        da2.setDescription("descr");
+        da2.setName("RECALL/REVIEW");
+        da2.setDescription("RECALL/REVIEW");
         da2.setUrl("http://www.google.es");
-        da2.setPosition(1);
+        da2.setPosition(2);
         l.add(da2);
-
+        
+        DirectAccess da1 = new DirectAccess();
+        da1.setName("PROTON");
+        da1.setDescription("PROTON");
+        da1.setUrl("http://www.google.es");
+        da1.setPosition(3);
+        l.add(da1);
         return l;
     }
 

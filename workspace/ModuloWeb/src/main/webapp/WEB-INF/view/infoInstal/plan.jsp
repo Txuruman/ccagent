@@ -9,13 +9,13 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
         <table class="table table-bordered">
             <tr class="cabecillas">
-                <th><spring:message code="actionplan.secuence"/></th>
-                <th><spring:message code="actionplan.type"/></th>
-                <th><spring:message code="actionplan.contactName"/></th>
-                <th><spring:message code="actionplan.phone1"/></th>
-                <th><spring:message code="actionplan.phone2"/></th>
-                <th><spring:message code="actionplan.phone3"/></th>
-                <th><spring:message code="operations"/></th>
+                <th class="text-center"><spring:message code="actionplan.secuence"/></th>
+                <th class="text-center"><spring:message code="actionplan.type"/></th>
+                <th class="text-center"><spring:message code="actionplan.contactName"/></th>
+                <th class="text-center"><spring:message code="actionplan.phone1"/></th>
+                <th class="text-center"><spring:message code="actionplan.phone2"/></th>
+                <th class="text-center"><spring:message code="actionplan.phone3"/></th>
+                <th class="text-center"><spring:message code="operations"/></th>
             </tr>
 
             <tr ng-repeat="p in installation.actionplans | orderBy : 'secuence'">
@@ -26,7 +26,7 @@
                 <td>{{ p.phone2.type }} {{ p.phone2.number }}</td>
                 <td>{{ p.phone3.type }} {{ p.phone3.number }}</td>
                 <td>
-                    <button type="button" class="btn btn-default" >
+                    <button type="button" class="btn btn-default btn-sm" >
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                     </button>
                 </td>

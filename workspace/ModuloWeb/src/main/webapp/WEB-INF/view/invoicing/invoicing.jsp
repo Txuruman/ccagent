@@ -4,49 +4,76 @@
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
-<div ng-controller="invoicingController">
-	<!-- ALERTAS -->
-	<div class="row" style="background-color:ForestGreen; min-height:70px">
-		<%@include file="alerts.jsp"%>
+<div ng-controller="invoicingController" id="invoicing" class="font12">
+	<!-- INFORMACIÓN DE LA FACTURA -->
+	<div class="panel panel-default panel-body margin-bottom5">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<%@include file="infoInvoice.jsp"%>
+			</div>
+		</div>
 	</div>
-	<!-- FIN ALERTAS -->
+	<!-- FIN INFORMACIÓN DE LA FACTURA -->
 	
 	<!-- ACTIVACIÓN -->
-	<div class="row" style="background-color:Fuchsia; min-height:70px">
-		<%@include file="activation.jsp"%>
+	<div class="panel panel-default panel-body margin-bottom5 paddingTop3 paddingBottom3">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12 activationInvoice">
+				<%@include file="activation.jsp"%>
+			</div>
+		</div>
 	</div>
 	<!-- FIN ACTIVACIÓN -->
-	
-	<div class="row">
-		<!-- INFO CYCLE FEEDS -->
-		<div class="col-md-6 col-sm-6 col-xs-6" style="background-color:Gold; min-height:130px">
-			<%@include file="infoCycleFeeds.jsp"%>
+
+	<!-- INFO CYCLE FEEDS -->
+	<div class="panel panel-default panel-body margin-bottom5 sinPaddingBottom">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<%@include file="infoCycleFeeds.jsp"%>
+			</div>
 		</div>
-		<!-- INFO ONE TIME -->
-		<div class="col-md-6 col-sm-6 col-xs-6" style="background-color:GreenYellow; min-height:130px">
-			<%@include file="infoOneTime.jsp"%>
+	</div>
+
+	<!-- INFO ONE TIME -->
+	<div class="panel panel-default panel-body margin-bottom5 sinPaddingBottom">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<%@include file="infoOneTime.jsp"%>
+			</div>
+		</div>
+	</div>
+
+	<!-- FACTURAS -->
+	<div class="panel panel-default panel-body margin-bottom5 sinPaddingBottom">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<%@include file="invoices.jsp"%>
+			</div>
 		</div>
 	</div>
 	
-	<div class="row">
-		<!-- FACTURAS -->
-		<div class="col-md-6 col-sm-6 col-xs-6" style="background-color:Indigo; min-height:130px">
-			<%@include file="invoices.jsp"%>
-		</div>
-		
-		<!-- DETALLE FACTURAS -->
-		<div class="col-md-6 col-sm-6 col-xs-6" style="background-color:LemonChiffon; min-height:130px">
-			<%@include file="invoicesDetail.jsp"%>
-		</div>
-	</div>
+	<!-- DETALLE FACTURAS -->
+<!-- 	<div class="panel panel-default panel-body margin-bottom5"> -->
+<!-- 		<div class="row"> -->
+<%-- 			<%@include file="invoicesDetail.jsp"%> --%>
+<!-- 		</div> -->
+<!-- 	</div> -->
 	
 	<!-- EVOLUCIÓN CUOTA -->
-	<div class="row" style="background-color:Khaki; min-height:70px">
-		<%@include file="cuoteEvolution.jsp"%>
+	<div class="panel panel-default panel-body margin-bottom5">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<%@include file="cuoteEvolution.jsp"%>
+			</div>
+		</div>
 	</div>
 	
 	<!-- AUDITORÍA -->
-	<div class="row" style="background-color:IndianRed; min-height:90px">
-		<%@include file="audit.jsp"%>
+	<div class="panel panel-default panel-body margin-bottom5 sinPaddingBottom">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<%@include file="audit.jsp"%>
+			</div>
+		</div>
 	</div>
 </div>

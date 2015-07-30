@@ -4,4 +4,13 @@
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
-ACTIVACIÓN
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 contenedorCheck">
+	 <div class="checkbox enlinea disabled">
+	     <label class="font14"><input type="checkbox" value=""  disabled>Activar envío factura</label>
+	</div>
+	<div class="btn-group enlinea">
+		<button type="button" class="btn btn-default">
+			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+		</button>
+	</div>
+</div>

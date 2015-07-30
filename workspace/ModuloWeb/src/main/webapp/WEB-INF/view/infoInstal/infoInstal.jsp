@@ -4,7 +4,7 @@
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
-<div ng-controller="InfoInstalacionController">
+<div ng-controller="InfoInstalacionController" id="InfoInstalacion" class="font12">
 	<!-- BÚSQUEDA -->
 	<div class="panel panel-default panel-body margin-bottom5">
 		<div class="row">
@@ -34,7 +34,7 @@
 	<!-- FIN PALABRA CLAVE -->
 	
 	<!-- PLAN DE ACCIÓN -->
-	<div class="panel panel-default panel-body margin-bottom5">
+	<div class="panel panel-default panel-body margin-bottom5 sinPaddingBottom">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<%@include file="plan.jsp"%>
@@ -44,7 +44,7 @@
 	<!-- FIN PLAN DE ACCIÓN -->
 	
 	<!-- AUDITORIA -->
-	<div class="panel panel-default panel-body margin-bottom5">
+	<div class="panel panel-default panel-body margin-bottom5 sinPaddingBottom">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<%@include file="audit.jsp"%>

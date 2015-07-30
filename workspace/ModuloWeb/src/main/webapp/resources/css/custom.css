@@ -119,16 +119,15 @@ h2{
 
 .vertical-text-group {
 	padding-right: 0px;
-    padding-top: 200px;
+    padding-top: 125px;
     padding-left: 38px;
-    background-color: blue;
     width: 50px;
  }
 .vertical-text{
 	transform: rotate(270deg);
     transform-origin: left bottom 0;
-    margin-bottom: 1800%;
-    width:1900% !important;
+    margin-bottom: 1100%;
+    width:1300% !important;
     max-width: none !important;
     left:100%;
 }
@@ -141,9 +140,9 @@ h2{
 	margin-bottom:0px !important;
 }
 
-div[justified="false"] ul li.active a{
-	background-color:#eee !important;
-}
+/* div[justified="false"] ul li.active a{ */
+/* 	background-color:#eee !important; */
+/* } */
 
 
 /***PARTES ESCONDIDAS***/
@@ -184,6 +183,23 @@ div[justified="false"] ul li.active a{
 		display:none;
 	}
 }
+
+/************INFO INSTALACIÓN*******************/
+#InfoInstalacion td{
+	padding:2px !important;
+	vertical-align: middle;
+}
+/************INVOICING*******************/
+#invoicing td{
+	padding:2px !important;
+	vertical-align: middle;
+}
+
+.activationInvoice .contenedorCheck div:first-child{
+	margin-right:20px;
+}
+
+
 /**************GENÉRICAS****************/
 .margin-top20{
 	margin-top:20px;	
@@ -194,6 +210,24 @@ div[justified="false"] ul li.active a{
 .margin-bottom5{
 	margin-bottom:5px !important;
 }
+.paddingTop3{
+	padding-top:3px !important;
+}
+.paddingBottom3{
+	padding-bottom:3px !important;
+}
 .sinPadding{
 	padding:0 !important;
+}
+.sinPaddingBottom{
+	padding-bottom:0 !important;
+}
+.font12{
+	font-size:12px !important;
+}
+.font14{
+	font-size:14px !important;
+}
+.enlinea{
+	display:inline-block !important;
 }
