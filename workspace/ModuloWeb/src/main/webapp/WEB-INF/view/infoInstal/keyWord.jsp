@@ -12,4 +12,26 @@
 <!-- 			class="btn btn-primary">MOSTRAR</a> -->
 <!-- 	</div> -->
 <!-- </div> -->
-
+<div class="form-inline">
+		<div style="display:inline-block; width:29%;"> <!-- class="col-md-3 col-sm-3 col-xs-3" -->
+			<label><spring:message code="infoinstal.customerPassword"/></label>
+			<input class="form-control input-sm" type="text">
+		</div>
+		<div style="display:inline-block; width:29%;">
+			<label><spring:message code="infoinstal.securitasPassword"/> </label>
+			<input class="form-control input-sm" type="text">
+		</div>
+		<div style="display:inline-block;width:29%;">
+			<label><spring:message code="infoinstal.coercionPassword"/> </label>
+			<input class="form-control input-sm" type="text">
+		</div>
+		<div style="display:inline-block;width:10%;" >
+			<button type="button" class="btn btn-default  btn-sm">
+			    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+            </button>
+			<button type="button" class="btn btn-default  btn-sm" >
+          		<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    		</button>
+		</div>
+</div>
+	

@@ -16,6 +16,7 @@ public class DummyGenerator {
     public static List<DirectAccess> getDirectAcess() {
         List<DirectAccess> l = new ArrayList<DirectAccess>();
 
+
         DirectAccess da;
 
         da= new DirectAccess();

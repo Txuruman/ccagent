@@ -22,13 +22,13 @@
 			<label>Instalación </label>
 		</div>
 		<div class="col-md-4 col-sm-4 col-xs-4">
-			<input class="form-control" type="text">
+			<input class="form-control input-sm" type="text">
 		</div>
 		<div class="col-md-2 col-sm-2 col-xs-2">
 			<label>Teléfono </label>
 		</div>
 		<div class="col-md-4 col-sm-4 col-xs-4">
-			<input class="form-control" type="text">
+			<input class="form-control input-sm" type="text">
 		</div>
 	</div>
 	<div class="row">
@@ -36,10 +36,12 @@
 			<label>Email </label>
 		</div>
 		<div class="col-md-8 col-sm-8 col-xs-8">
-			<input class="form-control" type="email">
+			<input class="form-control input-sm" type="email">
 		</div>
 	</div>
 </div>
 <div class="col-md-2 col-sm-2 col-xs-2">
-	<input type="button" class="btn btn-info" value="Buscar...">
+	<button type="button" class="btn btn-default" >
+          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+    </button>
 </div>
