@@ -21,6 +21,11 @@ public class AdminService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AdminService.class);
 
+    public interface TABS {
+        /* Nombres a utilizar en la JSP mainFrame.jsp */
+        public static final String INSTALLATION="INST";
+        public static final String INVOICING="INV";
+    }
 
     /**
      * Get the field config for a specific app
@@ -33,5 +38,14 @@ public class AdminService {
     }
 
 
-
+    /**
+     * Query the active Tab for the keys combination
+     * @param key1
+     * @param key2
+     * @param key3
+     * @return
+     */
+    public String getActiveTabFromKeys(String key1, String key2, String key3) {
+        return TABS.INSTALLATION;
+    }
 }

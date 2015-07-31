@@ -34,11 +34,11 @@
 		<div class="col-md-11 col-sm-11 col-xs-11">
 
 			<tabset justified="false"> 
-				<tab heading="INFO INST." active="${tabInstallActive}">
+				<tab heading="INFO INST." active="${activeTab eq 'INST'}">
 					<%@include file="infoInstal/infoInstal.jsp"%>
 				</tab> 
 			
-				<tab heading="FACTURACIÓN" active="${tabInvoicingActive}">
+				<tab heading="FACTURACIÓN" active="${activeTab eq 'INV'}">
 					<%@include file="invoicing/invoicing.jsp"%>
 				</tab> 
 				<tab heading="AVERÍAS">
