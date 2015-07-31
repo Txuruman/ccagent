@@ -4,23 +4,30 @@
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<h3 class="tituloSeccion">Visor de Cambios</h3>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<hr class="tituloSeccion" />
+	</div>
+</div>
+
 <!-- Tabla de Auditoria -->
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
         <table class="table table-bordered">
             <tr class="cabecillas">
                 <th class="text-center"><spring:message code="audit.date"/></th>
-                <th class="text-center"><spring:message code="audit.user"/></th>
-                <th class="text-center"><spring:message code="audit.id"/></th>
+               	<th class="text-center"><spring:message code="audit.detail"/></th>
                 <th class="text-center"><spring:message code="audit.result"/></th>
-                <th class="text-center"><spring:message code="audit.detail"/></th>
             </tr>
             <tr ng-repeat="a in audit | orderBy : 'date'">
                 <td>{{ a.date | date:'yyyy-MM-dd HH:mm:ss' }}</td>
-                <td>{{ a.user }}</td>
-                <td>{{ a.id }}</td>
+        		<td>{{ a.detail }}</td>
                 <td>{{ a.result }}</td>
-                <td>{{ a.detail }}</td>
             </tr>
         </table>
     </div>

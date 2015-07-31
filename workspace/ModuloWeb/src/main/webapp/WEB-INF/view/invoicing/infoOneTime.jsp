@@ -8,26 +8,27 @@
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
         <table class="table table-bordered">
-        	<caption>INFO ONE TIME (SBN)</caption>
             <tr class="cabecillas">
-                <th class="text-center">Campo 1</th>
-                <th class="text-center">Campo 2</th>
-                <th class="text-center">Campo 3</th>
-                <th class="text-center">Campo 4</th>
+                <th class="text-center">Factura</th>
+                <th class="text-center">Concepto</th>
+                <th class="text-center">Periodo</th>
+                <th class="text-center">Cantidad sin IVA</th>
+                <th class="text-center">Impuestos</th>
             </tr>
-
             <tr>
-                <td>Valor 1</td>
-                <td>Valor 2</td>
-                <td>Valor 3</td>
-                <td>Valor 4</td>
+                <td>45525</td>
+                <td>Factura</td>
+                <td>46 días</td>
+                <td>325</td>
+                <td>78</td>
             </tr>
             
             <tr>
-                <td>Valor 5</td>
-                <td>Valor 6</td>
-                <td>Valor 7</td>
-                <td>Valor 8</td>
+                <td>763782</td>
+                <td>Factura</td>
+                <td>4 días</td>
+                <td>215</td>
+                <td>45</td>
             </tr>
         </table>
     </div>

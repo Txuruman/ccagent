@@ -12,6 +12,16 @@
 <!-- 			class="btn btn-primary">MOSTRAR</a> -->
 <!-- 	</div> -->
 <!-- </div> -->
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<h3 class="tituloSeccion">Palabra clave</h3>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<hr class="tituloSeccion" />
+	</div>
+</div>
 <div class="form-inline">
 		<div style="display:inline-block; width:29%;"> <!-- class="col-md-3 col-sm-3 col-xs-3" -->
 			<label><spring:message code="infoinstal.customerPassword"/></label>
@@ -30,7 +40,7 @@
 			    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
             </button>
 			<button type="button" class="btn btn-default  btn-sm" >
-          		<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+          		<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
     		</button>
 		</div>
 </div>

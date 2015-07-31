@@ -3,6 +3,8 @@
  */
 app.controller('invoicingController', function ($scope, $http, $log, CommonService, $modal) {
 	
+	
+	
 	//qUERY AUDIT
 	$scope.getAudit=function(installationId){
 		$log.debug("Query audit for ", installationId);
@@ -24,7 +26,26 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 			});
 	};
 	
-	$scope.getAudit(111111);
+	//Método para obtener los datos de la factura
+	$scope.getInvoice=function(invoiceId){
+		$log.debug("Query audit for ", invoiceId);
+		$http(
+				{
+					method: 'GET',
+					url: 'invoice/getInvoice',
+					params: {invoiceId: invoiceId}
+				}
+			).success(function (data, status, headers, config) {
+					$scope.invoiceInfo = data.invoiceInfo;
+					CommonService.processBaseResponse(data,status,headers,config);
+					$log.debug("Audit queried ", data.audit);
+				})
+				.error(function (data, status, headers, config) {
+					// called asynchronously if an error occurs
+					// or server returns response with an error status.
+					CommonService.processBaseResponse(data,status,headers,config);
+				});
+	}
 	
 	//Método de gestión del modal de detalle facturas
 	$scope.openInvoiceDetailModal = function (size, item) {
@@ -47,6 +68,9 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 			$log.info('Modal dismissed at: ' + new Date());
 		});
 	};
+	
+	//Inicialización;
+	$scope.getAudit(111111);
 	
 });
 

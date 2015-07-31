@@ -25,7 +25,7 @@ public class InstallationData {
 
     private String emailBilling;
 
-    private String emailUpdage;
+    private String emailUpdate;
 
     /** Indica que la instalación tiene una cámara con alarma. */
     private Boolean camera;
@@ -116,12 +116,12 @@ public class InstallationData {
         this.emailBilling = emailBilling;
     }
 
-    public String getEmailUpdage() {
-        return emailUpdage;
+    public String getEmailUpdate() {
+        return emailUpdate;
     }
 
-    public void setEmailUpdage(String emailUpdage) {
-        this.emailUpdage = emailUpdage;
+    public void setEmailUpdate(String emailUpdate) {
+        this.emailUpdate = emailUpdate;
     }
 
     public Boolean getCamera() {
@@ -222,7 +222,7 @@ public class InstallationData {
         sb.append(", customerName='").append(customerName).append('\'');
         sb.append(", emailMonitoring='").append(emailMonitoring).append('\'');
         sb.append(", emailBilling='").append(emailBilling).append('\'');
-        sb.append(", emailUpdage='").append(emailUpdage).append('\'');
+        sb.append(", emailUpdate='").append(emailUpdate).append('\'');
         sb.append(", camera=").append(camera);
         sb.append(", aka='").append(aka).append('\'');
         sb.append(", address='").append(address).append('\'');
