@@ -31,10 +31,10 @@ public class AdminController extends BaseController {
     protected AdminService adminService;
 
 
-    @RequestMapping(value = "getaudit", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @RequestMapping(value = "getFieldConfig", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public
     @ResponseBody
-    SimpleResponse getAudit(@RequestParam(value = "app", required = true) String app) {
+    SimpleResponse getFieldConfig(@RequestParam(value = "app", required = true) String app) {
         SimpleResponse response = new SimpleResponse();
         response.setData(adminService.getFieldConfig(app));
         //TODO Respuesta?

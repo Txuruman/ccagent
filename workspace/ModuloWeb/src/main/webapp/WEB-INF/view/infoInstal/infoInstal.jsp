@@ -52,4 +52,11 @@
 		</div>
 	</div>
 	<!-- FIN AUDITORIA -->
+
+
+
+	<!-- DEBUG -->
+	<div class="debug">
+		FIELD CONFIG: {{fieldConfig}}<br/>
+	</div>
 </div>

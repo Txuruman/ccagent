@@ -32,12 +32,13 @@
 
 		<!-- PANEL DE PESTAÑAS -->
 		<div class="col-md-11 col-sm-11 col-xs-11">
+
 			<tabset justified="false"> 
-				<tab heading="INFO INST.">
+				<tab heading="INFO INST." active="${tabInstallActive}">
 					<%@include file="infoInstal/infoInstal.jsp"%>
 				</tab> 
 			
-				<tab heading="FACTURACIÓN">
+				<tab heading="FACTURACIÓN" active="${tabInvoicingActive}">
 					<%@include file="invoicing/invoicing.jsp"%>
 				</tab> 
 				<tab heading="AVERÍAS">

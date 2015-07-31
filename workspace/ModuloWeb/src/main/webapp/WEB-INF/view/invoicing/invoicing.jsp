@@ -78,4 +78,11 @@
 			</div>
 		</div>
 	</div>
+
+
+
+	<!-- DEBUG -->
+	<div class="debug">
+		FIELD CONFIG: {{fieldConfig}}<br/>
+	</div>
 </div>

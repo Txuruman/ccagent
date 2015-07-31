@@ -2,10 +2,25 @@
  * Controlador de la pestaña Facturación
  */
 app.controller('invoicingController', function ($scope, $http, $log, CommonService, $modal) {
+
+	//Query FieldConfig
+	$scope.getFieldConfig=function(){
+		$http(
+			{
+				method: 'GET',
+				url: 'admin/getFieldConfig',
+				params: {app: "FACT"}
+			}
+		).success(function (data, status, headers, config) {
+				$scope.fieldConfig = data.data;
+				CommonService.processBaseResponse(data,status,headers,config);
+			})
+			.error(function (data, status, headers, config) {
+				CommonService.processBaseResponse(data,status,headers,config);
+			});
+	};
 	
-	
-	
-	//qUERY AUDIT
+	//QUERY AUDIT
 	$scope.getAudit=function(installationId){
 		$log.debug("Query audit for ", installationId);
 		$http(
@@ -20,8 +35,6 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 				$log.debug("Audit queried ", data.audit);
 			})
 			.error(function (data, status, headers, config) {
-				// called asynchronously if an error occurs
-				// or server returns response with an error status.
 				CommonService.processBaseResponse(data,status,headers,config);
 			});
 	};
@@ -41,11 +54,9 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 					$log.debug("Audit queried ", data.audit);
 				})
 				.error(function (data, status, headers, config) {
-					// called asynchronously if an error occurs
-					// or server returns response with an error status.
 					CommonService.processBaseResponse(data,status,headers,config);
 				});
-	}
+	};
 	
 	//Método de gestión del modal de detalle facturas
 	$scope.openInvoiceDetailModal = function (size, item) {
@@ -71,6 +82,7 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 	
 	//Inicialización;
 	$scope.getAudit(111111);
+	$scope.getFieldConfig();
 	
 });
 

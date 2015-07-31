@@ -43,6 +43,8 @@ public class MainController extends BaseController {
     public ModelAndView handleRequest(HttpServletRequest hsr, HttpServletResponse hsr1) throws Exception {
         ///Redirect to buscartarea.html
         ModelAndView mv = new ModelAndView("mainFrame");
+        mv.addObject("tabInstallActive",true);
+        mv.addObject("tabInvoicingActive",false);
         return mv;
     }
 
