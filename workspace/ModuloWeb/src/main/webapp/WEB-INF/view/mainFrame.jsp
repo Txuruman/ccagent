@@ -6,7 +6,7 @@
 
 <html data-ng-app="myApp">
 <head>
-<title><spring:message code="titulo.BuscarTarea" /></title>
+<title><spring:message code="titulo.BuscarTarea" /></title><!--  TODO Cambiar titulo principals -->
 <app:commonImports />
 
 <!-- CONTROLADORES ANGULARJS -->
@@ -25,7 +25,7 @@
 				ng-repeat="index in directAccess" title="{{index.description}}">
 				<a href="{{index.url}}">{{index.name}}</a>
 			</button>
-<%-- 			<app:inputButtonNG button_type="default" ng_click="" cells="4" value="marco.boton.a" /> --%>
+ 			
 			
 		</div>
 		<!-- FIN ACCESOS DIRECTOS -->
