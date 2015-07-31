@@ -1,7 +1,6 @@
 package es.securitasdirect.moduloweb.model;
 
-import org.wso2.ws.dataservice.*;
-import org.wso2.ws.dataservice.Installation;
+
 
 import javax.swing.*;
 import java.util.ArrayList;
