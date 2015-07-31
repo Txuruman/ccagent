@@ -31,12 +31,12 @@
 			<div class="form-group">
 				<label><spring:message code="infoinstal.customerName"/></label><input class="form-control input-sm"
 					readonly="true" type="text" ng-model="customerName" name="customerName"
-					value="">
+					value="Francisco Herrero">
 			</div>
 			<div class="form-group">
 				<label><spring:message code="infoinstal.installationNumber"/></label><input class="form-control input-sm"
 					readonly="true" type="text" ng-model="installationNumber"
-					name="installationNumber" value="">
+					name="installationNumber" value="971120">
 			</div>
 			<div class="form-group optional">
 				<label><spring:message code="infoinstal.camera"/></label> <input class="form-control input-sm"
@@ -47,11 +47,11 @@
 			<div class="form-group">
 				<label><spring:message code="infoinstal.emailBilling"/></label><input class="form-control input-sm"
 					readonly="true" type="email" ng-model="emailBilling"
-					name="emailBilling" value="">
+					name="emailBilling" value="frherrero@email.com">
 			</div>
 			<div class="form-group">
 				<label><spring:message code="infoinstal.panel"/></label> <input class="form-control input-sm"
-					ng-model="panel" type="text" name="panel" value=""
+					ng-model="panel" type="text" name="panel" value="SDVFAST"
 					readonly="true">
 			</div>
 		</div>
@@ -59,24 +59,24 @@
 			<div class="form-group">
 				<label><spring:message code="infoinstal.emailMonitoring"/></label> <input class="form-control input-sm"
 					readonly="true" type="email" ng-model="emailMonitoring" name="emailMonitoring"
-					value="">
+					value="frherrero@email.com">
 			</div>
 			<div class="form-group">
 				<label><spring:message code="infoinstal.version"/></label> <input class="form-control input-sm"
 					readonly="true" type="text" ng-model="version"
-					name="version" value="">
+					name="version" value="FAST A.06">
 			</div>
 		</div>
 		<div class="col-md-3 col-sm-3 col-xs-4">
 			<div class="form-group">
 				<label><spring:message code="infoinstal.emailUpdate"/></label><input class="form-control input-sm"
 					readonly="true" type="email" ng-model="emailUpdate"
-					name="emailUpdate" value="">
+					name="emailUpdate" value="01/10/2015 12:35">
 			</div>
 			<div class="form-group">
 				<label><spring:message code="infoinstal.panelPhone"/></label><input class="form-control input-sm"
 					readonly="true" ng-model="panelPhone" type="text"
-					name="panelPhone" value="">
+					name="panelPhone" value="916392717">
 			</div>
 		</div>
 <!-- 			<div class="form-group optional"> -->

@@ -9,7 +9,7 @@
 
 <html>
 <head>
-    <title><spring:message code="titulo.error"/></title>
+    <title>Error</title>
 
     <link rel="stylesheet" type="text/css"
           href="${pageContext.request.contextPath}/resources/css/bootstrap.css"/>
@@ -24,7 +24,7 @@
     <!-- Titulo-->
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-            <h2><spring:message code="titulo.error"/></h2>
+            <h2>Error</h2>
         </div>
     </div>
 
