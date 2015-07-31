@@ -8,12 +8,12 @@
 <%@ attribute name="cells" required="false" description="Number of cells used from the 12 available" %>
 <%@ attribute name="required" required="false" description="If the field is required true/false" %>
 <%@ attribute name="readonly" required="false" description="If the field is readonly true/false" %>
-<%@ attribute name="maxlength" required="false" description="The maximum number of characters allowed in the input element" %>
+<%@ attribute name="maxlength" required="false" description="The maximum number of characters allowed in the <input> element" %>
 
 
 <div class="col-lg-${cells} col-md-${cells} col-sm-${cells} col-xs-${cells}">
     <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label labelcent ${required=='true'? 'label.required' : ''}">
-        <c:if test="${label!=null && !label.isEmpty()}">
+        <c:if test="${not empty label}">
             <spring:message code='${label}'/> ${required=='true'? '*' : ''}:
         </c:if>
     </label>
