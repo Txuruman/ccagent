@@ -113,8 +113,18 @@ h2{
     margin-bottom: 1px;
     margin-right: 1px;
 }
-
-
+/*******PARA TODAS**********/
+h3.tituloSeccion{
+	padding: 0;
+    margin: 0;
+    font-size: 15px;
+    font-weight: bold;
+    font-style: italic;
+}
+hr.tituloSeccion{
+	margin-top:7px;
+	margin-bottom:9px;
+}
 /** VERTICAL TEXT */
 
 .vertical-text-group {

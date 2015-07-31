@@ -14,17 +14,29 @@
 		</div>
 	</div>
 	<!-- FIN INFORMACIÓN DE LA FACTURA -->
+
 	
-	<!-- ACTIVACIÓN -->
-	<div class="panel panel-default panel-body margin-bottom5 paddingTop3 paddingBottom3">
-		<div class="row">
-			<div class="col-md-12 col-sm-12 col-xs-12 activationInvoice">
-				<%@include file="activation.jsp"%>
+		<!-- EVOLUCIÓN CUOTA -->
+		<div class="panel panel-default panel-body margin-bottom5 col-md-8 col-sm-8 col-xs-8">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<%@include file="cuoteEvolution.jsp"%>
+				</div>
 			</div>
 		</div>
-	</div>
-	<!-- FIN ACTIVACIÓN -->
 
+		<!-- ACTIVACIÓN -->
+		<div
+			class="panel panel-default panel-body margin-bottom5 paddingTop3 paddingBottom3 col-md-4 col-sm-4 col-xs-4">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12 activationInvoice">
+					<%@include file="activation.jsp"%>
+				</div>
+			</div>
+		</div>
+		<!-- FIN ACTIVACIÓN -->
+	
+	
 	<!-- INFO CYCLE FEEDS -->
 	<div class="panel panel-default panel-body margin-bottom5 sinPaddingBottom">
 		<div class="row">
@@ -34,14 +46,14 @@
 		</div>
 	</div>
 
-	<!-- INFO ONE TIME -->
-	<div class="panel panel-default panel-body margin-bottom5 sinPaddingBottom">
-		<div class="row">
-			<div class="col-md-12 col-sm-12 col-xs-12">
-				<%@include file="infoOneTime.jsp"%>
-			</div>
-		</div>
-	</div>
+<!-- 	<!-- INFO ONE TIME -->
+<!-- 	<div class="panel panel-default panel-body margin-bottom5 sinPaddingBottom"> -->
+<!-- 		<div class="row"> -->
+<!-- 			<div class="col-md-12 col-sm-12 col-xs-12"> -->
+<%-- 				<%@include file="infoOneTime.jsp"%> --%>
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 
 	<!-- FACTURAS -->
 	<div class="panel panel-default panel-body margin-bottom5 sinPaddingBottom">
@@ -59,14 +71,7 @@
 <!-- 		</div> -->
 <!-- 	</div> -->
 	
-	<!-- EVOLUCIÓN CUOTA -->
-	<div class="panel panel-default panel-body margin-bottom5">
-		<div class="row">
-			<div class="col-md-12 col-sm-12 col-xs-12">
-				<%@include file="cuoteEvolution.jsp"%>
-			</div>
-		</div>
-	</div>
+	
 	
 	<!-- AUDITORÍA -->
 	<div class="panel panel-default panel-body margin-bottom5 sinPaddingBottom">

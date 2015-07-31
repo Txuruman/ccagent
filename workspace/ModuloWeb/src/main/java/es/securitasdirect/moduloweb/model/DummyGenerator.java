@@ -40,14 +40,7 @@ public class DummyGenerator {
         da.setUrl("http://www.google.es");
         da.setPosition(1);
         l.add(da);
-
-        da= new DirectAccess();
-        da.setName("Intranet ATC");
-        da.setDescription("descr");
-        da.setUrl("http://www.google.es");
-        da.setPosition(1);
-        l.add(da);
-
+ 
 
         da= new DirectAccess();
         da.setName("Printing External");
@@ -55,15 +48,7 @@ public class DummyGenerator {
         da.setUrl("http://www.google.es");
         da.setPosition(1);
         l.add(da);
-
-
-        da= new DirectAccess();
-        da.setName("Printing External");
-        da.setDescription("descr");
-        da.setUrl("http://www.google.es");
-        da.setPosition(1);
-        l.add(da);
-
+ 
 
         da= new DirectAccess();
         da.setName("Infopoint Recall");
@@ -96,7 +81,7 @@ public class DummyGenerator {
         installation.setCustomerPassword("12345");
         installation.setEmailBilling("correo1@prueba.es");
         installation.setEmailMonitoring("correo2@prueba.es");
-        installation.setEmailUpdage("correo3@prueba.es");
+        installation.setEmailUpdate("correo3@prueba.es");
         installation.setInstallationNumber(installationNumber);
         installation.setMonitoringStatus("Estado");
         installation.setPanel("Panel");
@@ -158,5 +143,15 @@ public class DummyGenerator {
 
         return result;
 
+    }
+    
+    public static InvoiceInfo getInvoice(Integer invoiceId) {
+        InvoiceInfo invoice = new InvoiceInfo();
+        //INVOICE
+        invoice.setDebtAmount(1236689.96);
+        invoice.setFinancialEntity("Entidad 1");
+        invoice.setInvoiceSend(true);
+        invoice.setPayMode("Letra 30 días");
+        return invoice;
     }
 }

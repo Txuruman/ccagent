@@ -16,6 +16,15 @@
 <!-- 	</div> -->
 <!-- </div> -->
 
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<h3 class="tituloSeccion">Búsqueda Instalación</h3>
+		</div>
+
+
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<hr class="tituloSeccion"/>
+		</div>
+
 <div class="col-md-10 col-sm-10 col-xs-10">
 	<div class="row margin-bottom10">
 		<div class="col-md-2 col-sm-2 col-xs-2">

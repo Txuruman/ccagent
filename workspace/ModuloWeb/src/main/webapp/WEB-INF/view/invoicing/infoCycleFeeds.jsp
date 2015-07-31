@@ -8,26 +8,31 @@
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
         <table class="table table-bordered">
-        	<caption>INFO CICLE FEEDS (SBN)</caption>
             <tr class="cabecillas">
-                <th class="text-center">Campo 1</th>
-                <th class="text-center">Campo 2</th>
-                <th class="text-center">Campo 3</th>
-                <th class="text-center">Campo 4</th>
+                <th class="text-center"><spring:message code="invoices.cycleFee.FromDate" /></th>
+                <th class="text-center"><spring:message code="invoices.cycleFee.ToDate" /></th>
+                <th class="text-center"><spring:message code="invoices.cycleFee.Fee" /></th>
+                <th class="text-center"><spring:message code="invoices.cycleFee.RevTp" /></th>
+                <th class="text-center"><spring:message code="invoices.cycleFee.Description" /></th>
+                <th class="text-center"><spring:message code="invoices.cycleFee.Count" /></th>
             </tr>
 
             <tr>
-                <td>Valor 1</td>
-                <td>Valor 2</td>
-                <td>Valor 3</td>
-                <td>Valor 4</td>
+                <td>22-01-15</td>
+                <td>22-02-15</td>
+                <td>3%</td>
+                <td>Pte SD</td>
+                <td>Concepto</td>
+                <td>27</td>
             </tr>
             
             <tr>
-                <td>Valor 5</td>
-                <td>Valor 6</td>
-                <td>Valor 7</td>
-                <td>Valor 8</td>
+                <td>14-01-15</td>
+                <td>15-02-15</td>
+                <td>6%</td>
+                <td>Pte SD</td>
+                <td>Concepto</td>
+                <td>4</td>
             </tr>
         </table>
     </div>

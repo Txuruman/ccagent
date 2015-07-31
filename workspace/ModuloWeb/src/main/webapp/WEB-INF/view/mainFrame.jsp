@@ -43,9 +43,9 @@
 				<tab heading="AVERÍAS">
 					 Labeled Justified content
 				</tab>
-				<tab heading="AUTOMATISMOS">
-					Long Labeled Justified content
-				</tab>
+<!-- 				<tab heading="AUTOMATISMOS"> -->
+<!-- 					Long Labeled Justified content -->
+<!-- 				</tab> -->
 			</tabset>
 		</div>
 		<!-- FIN PANEL DE PESTAÑAS -->

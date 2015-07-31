@@ -4,16 +4,22 @@
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
-<!-- Tabla de Alertas -->
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<h3 class="tituloSeccion">Alertas</h3>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<hr class="tituloSeccion" />
+	</div>
+</div>
+
+
 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3">
 	<label><spring:message code="infoinvoicing.defaulter" /></label> <input
 		class="form-control input-sm" ng-model="defaulter" type="text"
 		name="defaulter" value="" readonly="true">
-</div>
-<div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3">
-	<label><spring:message code="infoinvoicing.sendactive" /></label> <input
-		class="form-control input-sm" ng-model="sendactive" type="text"
-		name="sendactive" value="" readonly="true">
 </div>
 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3">
 	<label><spring:message code="infoinvoicing.entity" /></label> <input
@@ -25,5 +31,12 @@
 		class="form-control input-sm" ng-model="paytype" type="text"
 		name="paytype" value="" readonly="true">
 </div>
+<div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3">
+	<label><spring:message code="infoinvoicing.discount" /></label> <input
+		class="form-control input-sm" ng-model="sendactive" type="text"
+		name="sendactive" value="" readonly="true">
+</div>
+
+
 
 

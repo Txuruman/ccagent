@@ -6,7 +6,7 @@
 
 <div class="form-inline">
 		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-			<label><spring:message code="cuoteevol.month"/></label>
+			<label><spring:message code="cuoteevol.lastyear"/> </label>
 			<input class="form-control input-sm" type="text" readonly>
 		</div>
 		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -14,9 +14,11 @@
 			<input class="form-control input-sm" type="text" readonly>
 		</div>
 		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-			<label><spring:message code="cuoteevol.lastyear"/> </label>
+			<label><spring:message code="cuoteevol.month"/></label>
 			<input class="form-control input-sm" type="text" readonly>
 		</div>
+		
+		
 <!-- 		<div style="display:inline-block;width:10%;" > -->
 <!-- 			<button type="button" class="btn btn-default  btn-sm"> -->
 <!-- 			    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> -->
