@@ -30,7 +30,7 @@
 		<div class="col-md-3 col-sm-3 col-xs-4">
 			<div class="form-group">
 				<label><spring:message code="infoinstal.customerName"/></label><input class="form-control input-sm"
-					readonly="true" type="text" ng-model="customerName" name="customerName"
+					 type="text" ng-model="customerName" name="customerName"
 					value="Francisco Herrero">
 			</div>
 			<div class="form-group">
@@ -70,7 +70,7 @@
 		<div class="col-md-3 col-sm-3 col-xs-4">
 			<div class="form-group">
 				<label><spring:message code="infoinstal.emailUpdate"/></label><input class="form-control input-sm"
-					readonly="true" type="email" ng-model="emailUpdate"
+					readonly="true" type="text" ng-model="emailUpdate"
 					name="emailUpdate" value="01/10/2015 12:35">
 			</div>
 			<div class="form-group">
