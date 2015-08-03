@@ -19,22 +19,22 @@
 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3">
 	<label><spring:message code="infoinvoicing.defaulter" /></label> <input
 		class="form-control input-sm" ng-model="defaulter" type="text"
-		name="defaulter" value="" readonly="true">
+		name="defaulter" value="" readonly="true" placeholder="120€">
 </div>
 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3">
 	<label><spring:message code="infoinvoicing.entity" /></label> <input
 		class="form-control input-sm" ng-model="entity" type="text"
-		name="entity" value="" readonly="true">
+		name="entity" value="" readonly="true" placeholder="Finconsun">
 </div>
 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3">
 	<label><spring:message code="infoinvoicing.paytype" /></label> <input
 		class="form-control input-sm" ng-model="paytype" type="text"
-		name="paytype" value="" readonly="true">
+		name="paytype" value="" readonly="true" placeholder="Caixa">
 </div>
 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-3">
 	<label><spring:message code="infoinvoicing.discount" /></label> <input
 		class="form-control input-sm" ng-model="sendactive" type="text"
-		name="sendactive" value="" readonly="true">
+		name="sendactive" value="" readonly="true" placeholder="01/01/2015-01/01/2016">
 </div>
 
 

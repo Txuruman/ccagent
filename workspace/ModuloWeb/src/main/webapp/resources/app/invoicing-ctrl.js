@@ -49,7 +49,31 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 	
 	//Método de gestión del modal de detalle facturas
 	$scope.openInvoiceDetailModal = function (size, item) {
-		$scope.item="Hola mundo";
+		$scope.item={
+				Amount:'997€',
+				creationdate:'26-05-15',
+				InvoiceNumber: 79824792,
+				details:[{
+				description: 'Descripción 1',
+				period:'26-05-15',
+				Amount:'271€',
+				tax:21},
+				{
+				description: 'Descripción 2',
+				period:'27-05-15',
+				Amount:'26€',
+				tax:21},
+				{
+				description: 'Descripción 3',
+				period:'28-05-15',
+				Amount:'652€',
+				tax:21},
+				{
+				description: 'Descripción 4',
+				period:'29-05-15',
+				Amount:'48€',
+				tax:21}]
+		};
 		var modalInstance = $modal.open({
 			animation: $scope.animationsEnabled,
 			templateUrl: 'invoiceDetailModalContent.html',
@@ -71,7 +95,6 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 	
 	//Inicialización;
 	$scope.getAudit(111111);
-	
 });
 
 //Controlador para gestionar el modal de detalle facturas

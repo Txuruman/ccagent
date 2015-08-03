@@ -4,30 +4,27 @@
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<h3 class="tituloSeccion">Evolución de Cuotas</h3>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<hr class="tituloSeccion" />
+	</div>
+</div>
 <div class="form-inline">
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 		<label><spring:message code="cuoteevol.lastyear" /> </label> <input
-			class="form-control input-sm" type="text" readonly>
+			class="form-control input-sm" type="text" readonly="true" placeholder="70">
 	</div>
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 		<label><spring:message code="cuoteevol.currentyear" /> </label> <input
-			class="form-control input-sm" type="text" readonly>
+			class="form-control input-sm" type="text" readonly="true" placeholder="90">
 	</div>
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 		<label><spring:message code="cuoteevol.month" /></label> <input
-			class="form-control input-sm" type="text" readonly>
+			class="form-control input-sm" type="text" readonly="true" placeholder="95">
 	</div>
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 contenedorCheck">
-		<div class="checkbox enlinea disabled margin-right10">
-			<label class="font14"><input type="checkbox" value=""
-				disabled class="margin-right10">Activar envío factura</label>
-		</div>
-		<div class="btn-group enlinea">
-			<button type="button" class="btn btn-default">
-				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-			</button>
-		</div>
-	</div>
-
-
 </div>

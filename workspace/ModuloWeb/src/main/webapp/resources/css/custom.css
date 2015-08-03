@@ -209,7 +209,12 @@ hr.tituloSeccion{
 	margin-right:20px;
 }
 
-
+.filaCuotas{
+	height:115px;
+}
+.filaCuotas .activationInvoice{
+	padding-top:30px !important;
+}
 /**************GENÉRICAS****************/
 .margin-top20{
 	margin-top:20px;	

@@ -24,11 +24,12 @@
                	<th class="text-center"><spring:message code="audit.detail"/></th>
                 <th class="text-center"><spring:message code="audit.result"/></th>
             </tr>
-            <tr ng-repeat="a in audit | orderBy : 'date'">
-                <td>{{ a.date | date:'yyyy-MM-dd HH:mm:ss' }}</td>
-        		<td>{{ a.detail }}</td>
-                <td>{{ a.result }}</td>
-            </tr>
+            <!--             <tr ng-repeat="a in audit | orderBy : 'date'"> -->
+<!-- 			<tr> -->
+<!--                 <td>31/07/2015 12:00</td> -->
+<!--         		<td>OK</td> -->
+<!--                 <td>Actualizado teléfono contacto 1 plan 15#2 "615104012"</td> -->
+<!--             </tr> -->
         </table>
     </div>
 </div>

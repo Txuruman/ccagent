@@ -31,13 +31,40 @@
                 <th class="text-center"><spring:message code="operations"/></th>
             </tr>
 
-            <tr ng-repeat="p in installation.actionplans | orderBy : 'secuence'">
-                <td>{{ p.secuence }}</td>
-                <td>{{ p.type }}</td>
-                <td>{{ p.contactName }}</td>
-                <td>{{ p.phone1.type }} {{ p.phone1.number }}</td>
-                <td>{{ p.phone2.type }} {{ p.phone2.number }}</td>
-                <td>{{ p.phone3.type }} {{ p.phone3.number }}</td>
+<!--             <tr ng-repeat="p in installation.actionplans | orderBy : 'secuence'"> -->
+			<tr>
+                <td>0</td>
+                <td>1</td>
+                <td>JON RUIZ SAGARNA</td>
+                <td>656125689</td>
+                <td>-</td>
+                <td>-</td>
+                <td>
+                    <button type="button" class="btn btn-default btn-sm" >
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>0</td>
+                <td>2</td>
+                <td>ANA ARREGUI</td>
+                <td>656125689</td>
+                <td>-</td>
+                <td>-</td>
+                <td>
+                    <button type="button" class="btn btn-default btn-sm" >
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>0</td>
+                <td>3</td>
+                <td>GOTZON BARRONDO</td>
+                <td>635824569</td>
+                <td>-</td>
+                <td>-</td>
                 <td>
                     <button type="button" class="btn btn-default btn-sm" >
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

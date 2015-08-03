@@ -5,8 +5,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
 <div class="row">
-	<div class="col-md-12 col-sm-12 col-xs-12">
+	<div class="col-md-5 col-sm-5 col-xs-5">
 		<h3 class="tituloSeccion">Listado de Facturas</h3>
+	</div>
+	<div class="col-md-7 col-sm-7 col-xs-7">
+		<label class="radio-inline"><input type="radio" name="optradio"><spring:message code="invoices.search.cycle"/></label>
+		<label class="radio-inline"><input type="radio" name="optradio"><spring:message code="invoices.search.onetime"/></label>
+		<label class="radio-inline"><input type="radio" name="optradio"><spring:message code="invoices.search.all"/></label> 
 	</div>
 </div>
 <div class="row">
@@ -31,12 +36,12 @@
             </tr>
 
             <tr>
-                <td>FRA-001</td>
-                <td>4125</td>
-                <td>20.125</td>
-                <td>12-01-14</td>
-                <td>15-01-14</td>
-                <td>15-01-14</td>
+                <td>79824792</td>
+                <td>13FR00026697</td>
+                <td>-49.54</td>
+                <td>27/03/13</td>
+                <td>01/03/13</td>
+                <td>10/01/13</td>
                 <td>
                     <button type="button" class="btn btn-default btn-sm" ng-click="openInvoiceDetailModal()">
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -45,12 +50,25 @@
             </tr>
             
             <tr>
-                 <td>FRA-002</td>
-                <td>21336</td>
-                <td>8.782</td>
-                <td>22-01-14</td>
-                <td>25-01-14</td>
-                <td>25-01-14</td>
+                 <td>75421398</td>
+                <td>13FR00026696</td>
+                <td>-49.54</td>
+                <td>27/03/13</td>
+                <td>01/03/13</td>
+                <td>10/02/13</td>
+                <td>
+                    <button type="button" class="btn btn-default btn-sm" ng-click="openInvoiceDetailModal()">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                 <td>75652154</td>
+                <td>13FR00026652</td>
+                <td>-48.15</td>
+                <td>27/03/13</td>
+                <td>01/03/13</td>
+                <td>10/02/13</td>
                 <td>
                     <button type="button" class="btn btn-default btn-sm" ng-click="openInvoiceDetailModal()">
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>

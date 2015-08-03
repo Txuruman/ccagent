@@ -29,21 +29,29 @@
             </tr>
 
             <tr>
-                <td>22-01-15</td>
-                <td>22-02-15</td>
-                <td>3%</td>
-                <td>Pte SD</td>
-                <td>Concepto</td>
-                <td>27</td>
+                <td>19/01/09</td>
+                <td> </td>
+                <td>37.67</td>
+                <td>CCE1</td>
+                <td>INSTALACION KIT SD 2000 PRO</td>
+                <td>1</td>
             </tr>
             
             <tr>
-                <td>14-01-15</td>
-                <td>15-02-15</td>
-                <td>6%</td>
-                <td>Pte SD</td>
-                <td>Concepto</td>
-                <td>4</td>
+                <td>19/01/09</td>
+                <td> </td>
+                <td>3</td>
+                <td>CCE2</td>
+                <td>DETECTOR VOLUMETRICO VIA CABLE</td>
+                <td>3</td>
+            </tr>
+             <tr>
+                <td>19/01/09</td>
+                <td> </td>
+                <td>1</td>
+                <td>CCE3</td>
+                <td>MODULO COMUNICACION SD2000 PRO</td>
+                <td>1</td>
             </tr>
         </table>
     </div>
