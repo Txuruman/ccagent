@@ -153,4 +153,46 @@ public class DummyGenerator {
         invoice.setPayMode("Letra 30 días");
         return invoice;
     }
+
+
+
+
+    public static List<FieldConfig> getFieldConfig() {
+        List<FieldConfig> result = new ArrayList<FieldConfig>();
+        FieldConfig fc;
+
+        fc = new FieldConfig();
+        fc.setApp("INST"); //TODO Ya veremos como mejorar
+        fc.setIdentifier("panel"); //Utilicemos el nombre del atributo java como id
+        fc.setDescription("Panel de la instalacion");
+        fc.setEditable(true);
+        fc.setVisible(true);
+        result.add(fc);
+
+        fc = new FieldConfig();
+        fc.setApp("INST"); //TODO Ya veremos como mejorar
+        fc.setIdentifier("panelPhone"); //Utilicemos el nombre del atributo java como id
+        fc.setDescription("xxxxxxxxx");
+        fc.setEditable(true);
+        fc.setVisible(true);
+        result.add(fc);
+
+        fc = new FieldConfig();
+        fc.setApp("INST"); //TODO Ya veremos como mejorar
+        fc.setIdentifier("version"); //Utilicemos el nombre del atributo java como id
+        fc.setDescription("xxxxxxx");
+        fc.setEditable(true);
+        fc.setVisible(true);
+        result.add(fc);
+
+        fc = new FieldConfig();
+        fc.setApp("INST"); //TODO Ya veremos como mejorar
+        fc.setIdentifier("panel"); //Utilicemos el nombre del atributo java como id
+        fc.setDescription("xxxxxxxx");
+        fc.setEditable(true);
+        fc.setVisible(true);
+        result.add(fc);
+
+        return result;
+    }
 }

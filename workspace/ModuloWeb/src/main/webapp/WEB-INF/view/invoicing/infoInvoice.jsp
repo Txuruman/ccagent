@@ -4,6 +4,7 @@
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
+
 <div class="row">
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<h3 class="tituloSeccion">Alertas</h3>

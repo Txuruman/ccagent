@@ -1,6 +1,7 @@
 package es.securitasdirect.moduloweb.web.controller;
 
 import es.securitasdirect.moduloweb.model.DirectAccess;
+import es.securitasdirect.moduloweb.service.AdminService;
 import es.securitasdirect.moduloweb.service.DirectAccessService;
 import es.securitasdirect.moduloweb.web.dto.response.ListDirectAccessResponse;
 import org.slf4j.Logger;
@@ -25,11 +26,23 @@ import java.util.List;
 @RequestMapping("/")
 public class MainController extends BaseController {
 
+    /**
+     * Parámetros post que se reciven en la request al cargar el marco principal
+     */
+    public interface EXTERNAL_PARAMS {
+        String INSTALLATION = "inst_no";
+        String KEY1 = "key1";
+        String KEY2 = "key2";
+        String KEY3 = "key3";
+    }
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
 
     @Inject
     protected DirectAccessService directAccessService;
+
+    @Inject
+    protected AdminService adminService;
 
     /**
      * Redirige a la página principal de marco
@@ -43,6 +56,15 @@ public class MainController extends BaseController {
     public ModelAndView handleRequest(HttpServletRequest hsr, HttpServletResponse hsr1) throws Exception {
         ///Redirect to buscartarea.html
         ModelAndView mv = new ModelAndView("mainFrame");
+
+        String key1 = hsr.getParameter(EXTERNAL_PARAMS.KEY1);
+        String key2 = hsr.getParameter(EXTERNAL_PARAMS.KEY2);
+        String key3 = hsr.getParameter(EXTERNAL_PARAMS.KEY3);
+        String installation = hsr.getParameter(EXTERNAL_PARAMS.INSTALLATION);
+
+        mv.addObject("activeTab", adminService.getActiveTabFromKeys(key1, key2, key3));
+        mv.addObject("installation", installation);
+
         return mv;
     }
 

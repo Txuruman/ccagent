@@ -2,7 +2,27 @@
  * Controlador de la pestaña Información de instalación
  */
 app.controller('InfoInstalacionController', function ($scope, $http, $log, CommonService) {
-	
+
+
+	//Query FieldConfig
+	$scope.getFieldConfig=function(){
+		$http(
+			{
+				method: 'GET',
+				url: 'admin/getFieldConfig',
+				params: {app: "INST"}
+			}
+		).success(function (data, status, headers, config) {
+				$scope.fieldConfig = data.data;
+				CommonService.processBaseResponse(data,status,headers,config);
+			})
+			.error(function (data, status, headers, config) {
+				CommonService.processBaseResponse(data,status,headers,config);
+			});
+	};
+
+
+
 	$scope.getInstallation=function(installationId){
     	$log.debug("Query installation info ", installationId);
             $http(
@@ -45,4 +65,5 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 
 	$scope.getInstallation(111111);
 	$scope.getAudit(111111);
+	$scope.getFieldConfig();
 });
