@@ -7,7 +7,15 @@
 
 <div class="row">
 	<div class="col-md-12 col-sm-12 col-xs-12">
-		<h3 class="tituloSeccion">Plan de Acción</h3>
+		<h3 class="tituloSeccion enlinea margin-right10">Plan de Acción</h3>
+		<div class="btn-group inline enlinea">
+           		<button type="button" class="btn btn-default" title="Editar">
+			    	<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+           		</button>
+           		<button type="button" class="btn btn-default" title="Guardar cambios">
+			    	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+           		</button>
+			</div>
 	</div>
 </div>
 <div class="row">
@@ -19,10 +27,10 @@
 
 <!-- Tabla de Planes de Acción -->
 <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center tablaGrande">
         <table class="table table-bordered">
             <tr class="cabecillas">
-                <th class="text-center"><spring:message code="actionplan.secuence"/></th>
+<%--                 <th class="text-center"><spring:message code="actionplan.secuence"/></th> --%>
                 <th class="text-center"><spring:message code="actionplan.type"/></th>
                 <th class="text-center"><spring:message code="actionplan.contactName"/></th>
                 <th class="text-center"><spring:message code="actionplan.phone1"/></th>
@@ -31,43 +39,28 @@
                 <th class="text-center"><spring:message code="operations"/></th>
             </tr>
 
-<!--             <tr ng-repeat="p in installation.actionplans | orderBy : 'secuence'"> -->
-			<tr>
-                <td>0</td>
-                <td>1</td>
-                <td>JON RUIZ SAGARNA</td>
-                <td>656125689</td>
-                <td>-</td>
-                <td>-</td>
+ 			<tr ng-repeat="p in installation.actionplans | filter:{secuence:0} | orderBy : 'secuence' "> 
+                <td>{{p.type}}</td>
+                <td>{{p.contactName}}</td>
+                <td>{{"("+p.phone1.type+") - "+p.phone1.number}}</td>
+                <td>{{"("+p.phone2.type+") - "+p.phone2.number}}</td>
+                <td>{{"("+p.phone3.type+") - "+p.phone3.number}}</td>
                 <td>
-                    <button type="button" class="btn btn-default btn-sm" >
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    <button type="button" class="btn btn-default btn-sm" title="Borrar">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </button>
                 </td>
             </tr>
-            <tr>
-                <td>0</td>
-                <td>2</td>
-                <td>ANA ARREGUI</td>
-                <td>656125689</td>
-                <td>-</td>
-                <td>-</td>
+            
+            <tr ng-repeat="p in installation.actionplans | filter:{secuence:0} | orderBy : 'secuence' "> 
+                <td>{{p.type}}</td>
+                <td>{{p.contactName}}</td>
+                <td>{{"("+p.phone1.type+") - "+p.phone1.number}}</td>
+                <td>{{"("+p.phone2.type+") - "+p.phone2.number}}</td>
+                <td>{{"("+p.phone3.type+") - "+p.phone3.number}}</td>
                 <td>
-                    <button type="button" class="btn btn-default btn-sm" >
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>0</td>
-                <td>3</td>
-                <td>GOTZON BARRONDO</td>
-                <td>635824569</td>
-                <td>-</td>
-                <td>-</td>
-                <td>
-                    <button type="button" class="btn btn-default btn-sm" >
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    <button type="button" class="btn btn-default btn-sm" title="Borrar">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     </button>
                 </td>
             </tr>

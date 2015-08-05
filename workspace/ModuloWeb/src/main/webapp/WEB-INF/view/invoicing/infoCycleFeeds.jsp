@@ -15,9 +15,9 @@
 	</div>
 </div>
 
-<!-- Tabla tonta...  -->
+
 <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center scrollTabla2">
         <table class="table table-bordered">
             <tr class="cabecillas">
                 <th class="text-center"><spring:message code="invoices.cycleFee.FromDate" /></th>
@@ -28,30 +28,13 @@
                 <th class="text-center"><spring:message code="invoices.cycleFee.Count" /></th>
             </tr>
 
-            <tr>
-                <td>19/01/09</td>
-                <td> </td>
-                <td>37.67</td>
-                <td>CCE1</td>
-                <td>INSTALACION KIT SD 2000 PRO</td>
-                <td>1</td>
-            </tr>
-            
-            <tr>
-                <td>19/01/09</td>
-                <td> </td>
-                <td>3</td>
-                <td>CCE2</td>
-                <td>DETECTOR VOLUMETRICO VIA CABLE</td>
-                <td>3</td>
-            </tr>
-             <tr>
-                <td>19/01/09</td>
-                <td> </td>
-                <td>1</td>
-                <td>CCE3</td>
-                <td>MODULO COMUNICACION SD2000 PRO</td>
-                <td>1</td>
+            <tr ng-repeat="item in cycleFeeds" ng-class="(item.Fee<0)?'filaDescuento':''"> <!-- Si el Fee es negativo ponemos en roj la fila -->
+                <td>{{item.FromDate | date:'dd/MM/yyyy'}}</td>
+                <td>{{item.ToDate | date:'dd/MM/yyyy'}}</td>
+                <td>{{item.Fee}}</td>
+                <td>{{item.RevTp}}</td>
+                <td>{{item.Description}}</td>
+                <td>{{item.Count}}</td>
             </tr>
         </table>
     </div>

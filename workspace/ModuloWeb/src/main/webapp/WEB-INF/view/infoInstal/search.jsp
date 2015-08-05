@@ -15,42 +15,60 @@
 <!-- 			href="#" class="btn btn-primary">Buscar...</a> -->
 <!-- 	</div> -->
 <!-- </div> -->
-
+<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<h3 class="tituloSeccion">Búsqueda Instalación</h3>
 		</div>
-
-
+</div>
+<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<hr class="tituloSeccion"/>
 		</div>
+</div>
 
-<div class="col-md-10 col-sm-10 col-xs-10">
-	<div class="row margin-bottom10">
-		<div class="col-md-2 col-sm-2 col-xs-2">
-			<label>Instalación </label>
-		</div>
-		<div class="col-md-4 col-sm-4 col-xs-4">
+<div class="form-inline">
+		<div class="enlinea width29"> <!-- class="col-md-3 col-sm-3 col-xs-3" -->
+			<label><spring:message code="installation.search.installationnumber"/></label>
 			<input class="form-control input-sm" type="text" value="971120">
 		</div>
-		<div class="col-md-2 col-sm-2 col-xs-2">
-			<label>Teléfono </label>
-		</div>
-		<div class="col-md-4 col-sm-4 col-xs-4">
+		<div class="enlinea width29">
+			<label><spring:message code="installation.search.phone"/> </label>
 			<input class="form-control input-sm" type="text">
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-2 col-sm-2 col-xs-2">
-			<label>Email </label>
+		<div class="enlinea width29">
+			<label><spring:message code="installation.search.email"/> </label>
+			<input class="form-control input-sm" type="text">
 		</div>
-		<div class="col-md-8 col-sm-8 col-xs-8">
-			<input class="form-control input-sm" type="email">
+		<div class="enlinea width10" >
+			<button type="button" class="btn btn-default" title="Buscar...">
+			    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
 		</div>
-	</div>
 </div>
-<div class="col-md-2 col-sm-2 col-xs-2">
-	<button type="button" class="btn btn-default" >
-          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-    </button>
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="height: 70px;margin-top: 10px;">
+        <table class="table table-bordered">
+            <tr class="cabecillas">
+<%--                 <th class="text-center"><spring:message code="actionplan.secuence"/></th> --%>
+                <th class="text-center">Campo 1</th>
+                <th class="text-center">Campo 2</th>
+                <th class="text-center">Campo 3</th>
+                <th class="text-center">Campo 4</th>
+            </tr>
+
+ 			<tr> 
+                <td>Dato1</td>
+                <td>Dato1</td>
+                <td>Dato1</td>
+                <td>Dato1</td>
+            </tr>
+            
+           <tr> 
+                <td>Dato2</td>
+                <td>Dato2</td>
+                <td>Dato2</td>
+                <td>Dato2</td>
+            </tr>
+        </table>
+    </div>
 </div>

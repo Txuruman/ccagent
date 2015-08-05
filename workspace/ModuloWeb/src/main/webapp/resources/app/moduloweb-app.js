@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ['ui.bootstrap']);
+var app = angular.module("myApp", ['ui.bootstrap']); //,'angularUtils.directives.dirPagination'
 
 
 

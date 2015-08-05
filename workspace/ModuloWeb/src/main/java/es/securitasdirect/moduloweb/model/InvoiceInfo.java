@@ -16,9 +16,13 @@ public class InvoiceInfo {
 
     /** Modo de pago. */
     public String payMode;
-
+    
+    /** Descuento */
+    public Boolean discount;
     //TODO DESCUENTOS
-
+    
+    /** Email de Facturación*/
+    private String emailBilling;
 
     public Boolean getInvoiceSend() {
         return invoiceSend;
@@ -51,4 +55,22 @@ public class InvoiceInfo {
     public void setPayMode(String payMode) {
         this.payMode = payMode;
     }
+
+	public Boolean getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(Boolean discount) {
+		this.discount = discount;
+	}
+
+	public String getEmailBilling() {
+		return emailBilling;
+	}
+
+	public void setEmailBilling(String emailBilling) {
+		this.emailBilling = emailBilling;
+	}
+    
+    
 }

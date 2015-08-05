@@ -125,7 +125,19 @@ hr.tituloSeccion{
 	margin-top:7px;
 	margin-bottom:9px;
 }
-/** VERTICAL TEXT */
+.scrollTabla{
+	height:150px;
+	overflow-y:scroll;
+}
+.scrollTabla2{
+	height:90px;
+	overflow-y:scroll;
+}
+.tablaGrande{
+	height:170px;
+	overflow-y:scroll
+}
+/******* VERTICAL TEXT ********/
 
 .vertical-text-group {
 	padding-right: 0px;
@@ -205,15 +217,16 @@ hr.tituloSeccion{
 	vertical-align: middle;
 }
 
-.activationInvoice .contenedorCheck div:first-child{
-	margin-right:20px;
-}
-
 .filaCuotas{
 	height:115px;
 }
-.filaCuotas .activationInvoice{
-	padding-top:30px !important;
+.filaDescuento{
+	color:white;
+	background-color:red;
+}
+.separaRadios{
+	padding-left:30px !important;
+	border-left:solid 1px rgb(217,217,217) !important;
 }
 /**************GENÉRICAS****************/
 .margin-top20{
@@ -237,6 +250,9 @@ hr.tituloSeccion{
 .sinPadding{
 	padding:0 !important;
 }
+.sinPaddingTop{
+	padding-top:0 !important;
+}
 .sinPaddingBottom{
 	padding-bottom:0 !important;
 }
@@ -245,6 +261,12 @@ hr.tituloSeccion{
 }
 .font14{
 	font-size:14px !important;
+}
+.width10{
+	width:10% !important;
+}
+.width29{
+	width:29% !important;
 }
 .enlinea{
 	display:inline-block !important;

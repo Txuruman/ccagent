@@ -63,7 +63,7 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 			});
 	};
 
-	$scope.getInstallation(111111);
+	$scope.getInstallation(971120);
 	$scope.getAudit(111111);
 	$scope.getFieldConfig();
 });

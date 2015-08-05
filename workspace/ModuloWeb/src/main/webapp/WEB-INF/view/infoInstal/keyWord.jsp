@@ -23,23 +23,23 @@
 	</div>
 </div>
 <div class="form-inline">
-		<div style="display:inline-block; width:29%;"> <!-- class="col-md-3 col-sm-3 col-xs-3" -->
+		<div class="enlinea width29"> <!-- class="col-md-3 col-sm-3 col-xs-3" -->
 			<label><spring:message code="infoinstal.customerPassword"/></label>
 			<input class="form-control input-sm" type="text" readonly="true">
 		</div>
-		<div style="display:inline-block; width:29%;">
+		<div class="enlinea width29">
 			<label><spring:message code="infoinstal.securitasPassword"/> </label>
 			<input class="form-control input-sm" type="text" readonly="true">
 		</div>
-		<div style="display:inline-block;width:29%;">
+		<div class="enlinea width29">
 			<label><spring:message code="infoinstal.coercionPassword"/> </label>
 			<input class="form-control input-sm" type="text" readonly="true">
 		</div>
-		<div style="display:inline-block;width:10%;" >
-			<button type="button" class="btn btn-default  btn-sm">
+		<div class="enlinea width10" >
+			<button type="button" class="btn btn-default  btn-sm" title="Editar claves">
 			    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
             </button>
-			<button type="button" class="btn btn-default  btn-sm" >
+			<button type="button" class="btn btn-default  btn-sm" title="Mostrar claves">
           		<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
     		</button>
 		</div>

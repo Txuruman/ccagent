@@ -23,12 +23,12 @@ public class InstallationData {
 
     private String emailMonitoring;
 
-    private String emailBilling;
+//    private String emailBilling; //Lo cambiamos a InvoiceInfo
 
     private String emailUpdate;
 
-    /** Indica que la instalación tiene una cámara con alarma. */
-    private Boolean camera;
+    /** Indica la marca de la c´mara que la instalación tiene */
+    private String camera;
 
     /** Identificación cliente empresa */
     private String aka;
@@ -108,13 +108,13 @@ public class InstallationData {
         this.emailMonitoring = emailMonitoring;
     }
 
-    public String getEmailBilling() {
-        return emailBilling;
-    }
-
-    public void setEmailBilling(String emailBilling) {
-        this.emailBilling = emailBilling;
-    }
+//    public String getEmailBilling() {
+//        return emailBilling;
+//    }
+//
+//    public void setEmailBilling(String emailBilling) {
+//        this.emailBilling = emailBilling;
+//    }
 
     public String getEmailUpdate() {
         return emailUpdate;
@@ -124,11 +124,11 @@ public class InstallationData {
         this.emailUpdate = emailUpdate;
     }
 
-    public Boolean getCamera() {
+    public String getCamera() {
         return camera;
     }
 
-    public void setCamera(Boolean camera) {
+    public void setCamera(String camera) {
         this.camera = camera;
     }
 
@@ -221,7 +221,7 @@ public class InstallationData {
         sb.append(", panelPhone='").append(panelPhone).append('\'');
         sb.append(", customerName='").append(customerName).append('\'');
         sb.append(", emailMonitoring='").append(emailMonitoring).append('\'');
-        sb.append(", emailBilling='").append(emailBilling).append('\'');
+       // sb.append(", emailBilling='").append(emailBilling).append('\'');
         sb.append(", emailUpdate='").append(emailUpdate).append('\'');
         sb.append(", camera=").append(camera);
         sb.append(", aka='").append(aka).append('\'');

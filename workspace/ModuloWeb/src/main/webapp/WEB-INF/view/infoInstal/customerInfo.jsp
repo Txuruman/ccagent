@@ -6,20 +6,21 @@
 
 <form action="" method="get" accept-charset="utf-8">
 	<div class="row">
-		<div class="col-md-9 col-sm-9 col-xs-9">
-			<h3 class="tituloSeccion"><spring:message code="infoinstal.title"/></h3>
-		</div>
-		<div class="btn-group inline col-md-3 col-sm-3 col-xs-3">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<h3 class="tituloSeccion enlinea margin-right10"><spring:message code="infoinstal.title"/></h3>
+			<div class="btn-group inline enlinea">
 <!-- 				<button type="button" class="btn btn-default"> -->
 <!-- 			    	<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> -->
 <!--            		</button> -->
-           		<button type="button" class="btn btn-default">
+           		<button type="button" class="btn btn-default" title="Guardar cambios">
 			    	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
            		</button>
-           		<button type="button" class="btn btn-default">
+           		<button type="button" class="btn btn-default" title="Cancelar">
 			    	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
            		</button>
 			</div>
+		</div>
+		
 	</div>
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
@@ -30,53 +31,53 @@
 		<div class="col-md-3 col-sm-3 col-xs-4">
 			<div class="form-group">
 				<label><spring:message code="infoinstal.customerName"/></label><input class="form-control input-sm"
-					readonly="true" type="text" ng-model="customerName" name="customerName"
-					placeholder="Francisco Herrero">
-			</div>
-			<div class="form-group">
-				<label><spring:message code="infoinstal.installationNumber"/></label><input class="form-control input-sm"
-					readonly="true" type="text" ng-model="installationNumber"
-					name="installationNumber" placeholder="971120">
-			</div>
-			<div class="form-group">
-				<label><spring:message code="infoinstal.camera"/></label> <input class="form-control input-sm"
-					ng-model="camera" type="text" name="camera" placeholder="Si" readonly="true">
+					readonly="true" type="text" ng-model="installation.customerName" name="customerName">
 			</div>
 		</div>
 		<div class="col-md-3 col-sm-3 col-xs-4">
 			<div class="form-group">
-				<label><spring:message code="infoinstal.emailBilling"/></label><input class="form-control input-sm"
-					readonly="true" type="email" ng-model="emailBilling"
-					name="emailBilling" placeholder="frherrero@email.com">
+				<label><spring:message code="infoinstal.installationNumber"/></label><input class="form-control input-sm"
+					readonly="true" type="text" ng-model="installation.installationNumber"
+					name="installationNumber">
 			</div>
+		</div>
+		<div class="col-md-3 col-sm-3 col-xs-4">
+			<div class="form-group">
+				<label><spring:message code="infoinstal.camera"/></label> <input class="form-control input-sm"
+					ng-model="installation.camera" type="text" name="camera" readonly="true">
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-3 col-xs-4">
 			<div class="form-group">
 				<label><spring:message code="infoinstal.panel"/></label> <input class="form-control input-sm"
-					ng-model="panel" type="text" name="panel" placeholder="SDVFAST"
-					readonly="true">
+					ng-model="installation.panel" type="text" name="panel" readonly="true">
 			</div>
 		</div>
 		<div class="col-md-3 col-sm-3 col-xs-4">
 			<div class="form-group">
 				<label><spring:message code="infoinstal.emailMonitoring"/></label> <input class="form-control input-sm"
-					readonly="true" type="email" ng-model="emailMonitoring" name="emailMonitoring"
-					placeholder="frherrero@email.com">
+					readonly="true" type="email" ng-model="installation.emailMonitoring" name="emailMonitoring">
 			</div>
+		</div>
+		<div class="col-md-3 col-sm-3 col-xs-4">
 			<div class="form-group">
 				<label><spring:message code="infoinstal.version"/></label> <input class="form-control input-sm"
-					readonly="true" type="text" ng-model="version"
-					name="version" placeholder="FAST A.06">
+					readonly="true" type="text" ng-model="installation.version"
+					name="version">
 			</div>
 		</div>
 		<div class="col-md-3 col-sm-3 col-xs-4">
 			<div class="form-group">
 				<label><spring:message code="infoinstal.emailUpdate"/></label><input class="form-control input-sm"
-					readonly="true" type="text" ng-model="emailUpdate"
-					name="emailUpdate" placeholder="01/10/2015 12:35">
+					readonly="true" type="text" ng-model="installation.emailUpdate"
+					name="emailUpdate">
 			</div>
+		</div>
+		<div class="col-md-3 col-sm-3 col-xs-4">
 			<div class="form-group">
 				<label><spring:message code="infoinstal.panelPhone"/></label><input class="form-control input-sm"
-					readonly="true" ng-model="panelPhone" type="text"
-					name="panelPhone" placeholder="916392717">
+					readonly="true" ng-model="installation.panelPhone" type="text"
+					name="panelPhone">
 			</div>
 		</div>
 <!-- 			<div class="form-group optional"> -->

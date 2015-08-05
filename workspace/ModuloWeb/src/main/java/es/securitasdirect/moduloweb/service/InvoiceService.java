@@ -1,6 +1,8 @@
 package es.securitasdirect.moduloweb.service;
 
+import es.securitasdirect.moduloweb.model.CycleFeeds;
 import es.securitasdirect.moduloweb.model.DummyGenerator;
+import es.securitasdirect.moduloweb.model.InvoiceData;
 import es.securitasdirect.moduloweb.model.InvoiceInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,5 +24,10 @@ public class InvoiceService {
     public InvoiceInfo getInvoice(Integer invoiceId) {
         return DummyGenerator.getInvoice(invoiceId);
     }
-
+    public List<CycleFeeds> getCycleFeeds(Integer installationId) {
+        return DummyGenerator.getCycleFeeds(installationId);
+    }
+    public List<InvoiceData>getListInvoices(Integer installationNumber){
+    	return DummyGenerator.getListInvoices(installationNumber);
+    }
 }

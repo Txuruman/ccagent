@@ -29,7 +29,7 @@
 		<div class="col-md-4 col-sm-4 col-xs-4">
 			<!-- ACTIVACIÓN -->
 			<div
-				class="panel panel-default panel-body margin-bottom5 paddingTop3 paddingBottom3 filaCuotas">
+				class="panel panel-default panel-body margin-bottom5 paddingBottom3 sinPaddingTop filaCuotas">
 				<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12 activationInvoice">
 						<%@include file="activation.jsp"%>
@@ -92,7 +92,7 @@
 
 
 	<!-- DEBUG -->
-	<div class="debug">
+	<div class="debug" ng-hide="true">
 		FIELD CONFIG: {{fieldConfig}}<br/>
 	</div>
 </div>

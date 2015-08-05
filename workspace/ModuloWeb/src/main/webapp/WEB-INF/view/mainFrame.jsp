@@ -15,7 +15,7 @@
 <script	src="${pageContext.request.contextPath}/resources/app/invoicing-ctrl.js"></script>
 
 </head>
-<body ng-controller="mainFrameController">
+<body ng-controller="mainFrameController" class="paddingTop3">
 	<div class="row">
 		<!-- ACCESOS DIRECTOS -->
 		<div

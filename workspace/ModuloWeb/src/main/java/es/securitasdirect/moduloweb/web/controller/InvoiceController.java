@@ -1,5 +1,7 @@
 package es.securitasdirect.moduloweb.web.controller;
 
+import es.securitasdirect.moduloweb.model.CycleFeeds;
+import es.securitasdirect.moduloweb.model.InvoiceData;
 import es.securitasdirect.moduloweb.model.InvoiceInfo;
 import es.securitasdirect.moduloweb.service.InvoiceService;
 import es.securitasdirect.moduloweb.web.dto.response.InvoiceResponse;
@@ -35,11 +37,15 @@ public class InvoiceController extends BaseController {
     @RequestMapping(value = "getInvoice", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public
     @ResponseBody
-    InvoiceResponse getInstallation(@RequestParam(value = "invoiceId", required = true) Integer invoiceId) {
+    InvoiceResponse getInvoice(@RequestParam(value = "installationNumber", required = true) Integer installationNumber) {
        InvoiceResponse response = new InvoiceResponse();
-        InvoiceInfo invoice = invoiceService.getInvoice(invoiceId);
+        InvoiceInfo invoice = invoiceService.getInvoice(installationNumber);
+        List<CycleFeeds> cyclefeeds= invoiceService.getCycleFeeds(11111);
+        List<InvoiceData> invoiceList=invoiceService.getListInvoices(installationNumber);
         response.setInvoiceInfo(invoice);
-
+        response.setCycleFeeds(cyclefeeds);
+        response.setInvoiceList(invoiceList);
+        
         if (invoice != null) {
             response.success(messageUtil.getProperty("installationData.success"));
         } else {

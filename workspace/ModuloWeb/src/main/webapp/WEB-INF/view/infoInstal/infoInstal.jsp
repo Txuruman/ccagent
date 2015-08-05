@@ -8,7 +8,9 @@
 	<!-- BÚSQUEDA -->
 	<div class="panel panel-default panel-body margin-bottom5">
 		<div class="row">
-			<%@include file="search.jsp"%>
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<%@include file="search.jsp"%>
+			</div>
 		</div>
 	</div>
 	<!-- FIN BÚSQUEDA -->
@@ -56,7 +58,7 @@
 
 
 	<!-- DEBUG -->
-	<div class="debug">
+	<div class="debug" ng-hide="true">
 		FIELD CONFIG: {{fieldConfig}}<br/>
 	</div>
 </div>
