@@ -4,7 +4,7 @@
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
-<html data-ng-app="myApp">
+<html >
 <head>
 <title><spring:message code="titulo.BuscarTarea" /></title><!--  TODO Cambiar titulo principals -->
 <app:commonImports />
@@ -15,7 +15,7 @@
 <script	src="${pageContext.request.contextPath}/resources/app/invoicing-ctrl.js"></script>
 
 </head>
-<body ng-controller="mainFrameController" class="paddingTop3">
+<body id="ng-app" ng-app="myApp" ng-controller="mainFrameController" class="paddingTop3">
 	<div class="row">
 		<!-- ACCESOS DIRECTOS -->
 		<div
@@ -32,22 +32,21 @@
 
 		<!-- PANEL DE PESTAÑAS -->
 		<div class="col-md-11 col-sm-11 col-xs-11">
-
-			<tabset justified="false"> 
-				<tab heading="INFO INST." active="${activeTab eq 'INST'}">
+			<ul tabset justified="false"> 
+				<li tab heading="INFO INST." active="${activeTab eq 'INST'}">
 					<%@include file="infoInstal/infoInstal.jsp"%>
-				</tab> 
+				</li> 
 			
-				<tab heading="FACTURACIÓN" active="${activeTab eq 'INV'}">
+				<li tab heading="FACTURACIÓN" active="${activeTab eq 'INV'}">
 					<%@include file="invoicing/invoicing.jsp"%>
-				</tab> 
-				<tab heading="AVERÍAS">
-					 Labeled Justified content
-				</tab>
+				</li> 
+				<li tab heading="AVERÍAS">
+<!-- 					<iframe src="http://sd_dev.elecnor-deimos.com:7001/sdaverias/" width="100%" height="600px" ></iframe> -->
+				</li>
 <!-- 				<tab heading="AUTOMATISMOS"> -->
 <!-- 					Long Labeled Justified content -->
 <!-- 				</tab> -->
-			</tabset>
+			</ul>
 		</div>
 		<!-- FIN PANEL DE PESTAÑAS -->
 	</div>

@@ -3,11 +3,18 @@ var app = angular.module("myApp", ['ui.bootstrap']); //,'angularUtils.directives
 
 
 // Configure the $httpProvider by adding our date transformer
-app.config(["$httpProvider", function ($httpProvider) {
+app.config(["$httpProvider","$sceDelegateProvider", function ($httpProvider,$sceDelegateProvider) {
     $httpProvider.defaults.transformResponse.push(function(responseData){
         convertDateStringsToDates(responseData);
         return responseData;
     });
+    /*Lista de web permitidas para el ng-include*/
+//    $sceDelegateProvider.resourceUrlWhitelist([
+//        // Allow same origin resource loads.
+//        'http://localhost:8080/**',
+//        // Allow loading from outer templates domain.
+//        'http://sd_dev.elecnor-deimos.com:7001/**'
+//     ]); 
 }]);
 
 //Transformacion de Cadenas a Fecha(Javascript)

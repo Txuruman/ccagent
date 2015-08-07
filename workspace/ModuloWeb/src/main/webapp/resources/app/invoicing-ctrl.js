@@ -136,7 +136,14 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 		$log.info($scope.bigCurrentPage);
 	}
 	$scope.paginar=function(filtro){ //falta desarrollar el filtro de fechas
-		var lista=filterFilter($scope.invoiceList, {'invoiceType':filtro});
+		var lista;
+		if(filtro!="all"){ //Necesario por el IE8, si ponemos el filtro vacio casca
+			lista=filterFilter($scope.invoiceList, {'invoiceType':filtro});
+		}
+		else{
+			lista=$scope.invoiceList;
+			
+		}
 		$scope.bigTotalItems=lista.length;
 		$scope.bigCurrentPage=1;
 		$scope.itemsPage=12;
@@ -151,6 +158,7 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 			}
 		}
 		$scope.paginaActual=$scope.paginas[0];
+//		alert($scope.paginas[0]);
 	}
 	
 	//Inicialización;

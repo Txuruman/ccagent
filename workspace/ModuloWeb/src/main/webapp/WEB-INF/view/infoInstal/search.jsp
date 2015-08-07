@@ -29,7 +29,7 @@
 <div class="form-inline">
 		<div class="enlinea width29"> <!-- class="col-md-3 col-sm-3 col-xs-3" -->
 			<label><spring:message code="installation.search.installationnumber"/></label>
-			<input class="form-control input-sm" type="text" value="971120">
+			<input class="form-control input-sm" type="text" value="">
 		</div>
 		<div class="enlinea width29">
 			<label><spring:message code="installation.search.phone"/> </label>
@@ -37,7 +37,7 @@
 		</div>
 		<div class="enlinea width29">
 			<label><spring:message code="installation.search.email"/> </label>
-			<input class="form-control input-sm" type="text">
+			<input class="form-control input-sm" type="text" value="frherrero@email.com">
 		</div>
 		<div class="enlinea width10" >
 			<button type="button" class="btn btn-default" title="Buscar...">
@@ -50,24 +50,23 @@
         <table class="table table-bordered">
             <tr class="cabecillas">
 <%--                 <th class="text-center"><spring:message code="actionplan.secuence"/></th> --%>
-                <th class="text-center">Campo 1</th>
-                <th class="text-center">Campo 2</th>
-                <th class="text-center">Campo 3</th>
-                <th class="text-center">Campo 4</th>
+                <th class="text-center"><spring:message code="infoinstal.installationNumber"/></th>
+                <th class="text-center" title='<spring:message code="infoinstal.emailMonitoring"/>'>EM</th>
+                <th class="text-center" title='<spring:message code="infoinstal.emailBilling"/>'>EB</th>
+                <th class="text-center" tilte='<spring:message code="installation.search.emailservices"/>'>ES</th>
+                <th class="text-center" tilte='<spring:message code="actionplan.phone"/>'>TP</th>
+                <th class="text-center" tilte='<spring:message code="installation.search.servicesphone"/>'>TS</th>
+                <th class="text-center" title='<spring:message code="infoinstal.address"/>'><spring:message code="infoinstal.address"/></th>
             </tr>
 
  			<tr> 
-                <td>Dato1</td>
-                <td>Dato1</td>
-                <td>Dato1</td>
-                <td>Dato1</td>
-            </tr>
-            
-           <tr> 
-                <td>Dato2</td>
-                <td>Dato2</td>
-                <td>Dato2</td>
-                <td>Dato2</td>
+                <td>{{installation.installationNumber}}</td>
+                <td style="color:white;background-color: green;">S</td>
+                <td>N</td>
+                <td>N</td>
+                <td>N</td>
+                <td>N</td>
+                <td>{{installation.address+", "+installation.city}}</td>
             </tr>
         </table>
     </div>

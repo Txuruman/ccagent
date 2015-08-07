@@ -35,6 +35,6 @@ app.controller('mainFrameController', function ($scope, $http, CommonService) {
                 CommonService.processBaseResponse(data,status,headers,config);
             });
     }
-    
+    $scope.AveriasTemplate="http://sd_dev.elecnor-deimos.com:7001/sdaverias/";
     $scope.getDirectAccess();
 });

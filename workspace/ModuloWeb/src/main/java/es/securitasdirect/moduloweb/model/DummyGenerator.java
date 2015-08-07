@@ -81,7 +81,7 @@ public class DummyGenerator {
     public static InstallationData getInstallation(Integer installationNumber) {
         InstallationData installation = new InstallationData();
         //INSTALACION
-        installation.setAddress("dirección....");
+        installation.setAddress("Gran Vía 12");
         installation.setAka("AKA...");
         installation.setCamera("Samsumg");
         installation.setCcc("CCC...");
