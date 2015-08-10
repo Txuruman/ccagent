@@ -387,27 +387,22 @@ public class DummyGenerator {
     	
     	result.add(invoice);
     	result.add(invoice2);
-    	result.add(invoice3);
+    	result.add(invoice5);
     	result.add(invoice4);
     	result.add(invoice5);
     	result.add(invoice6);
     	result.add(invoice);
     	result.add(invoice2);
-    	result.add(invoice3);
-    	result.add(invoice4);
-    	result.add(invoice5);
-    	result.add(invoice6);
+    	result.add(invoice2);
     	result.add(invoice);
     	result.add(invoice2);
     	result.add(invoice3);
     	result.add(invoice4);
     	result.add(invoice5);
-    	result.add(invoice6);
-    	result.add(invoice);
     	result.add(invoice2);
     	result.add(invoice3);
     	result.add(invoice4);
-    	result.add(invoice5);
+    	result.add(invoice);
     	result.add(invoice6);
     	return result;
     }

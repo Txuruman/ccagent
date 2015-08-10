@@ -137,7 +137,7 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 	}
 	$scope.paginar=function(filtro){ //falta desarrollar el filtro de fechas
 		var lista;
-		if(filtro!="all"){ //Necesario por el IE8, si ponemos el filtro vacio casca
+		if(filtro!=undefined){ //Necesario por el IE8, si ponemos el filtro vacio casca
 			lista=filterFilter($scope.invoiceList, {'invoiceType':filtro});
 		}
 		else{
@@ -153,7 +153,7 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 		for (var i = 0; i<numPags; i++) {
 			$scope.paginas[i]=new Array($scope.itemsPage);
 			var hasta=j+$scope.itemsPage;
-			for (j; j < hasta; j++) {
+			for (j; j < hasta && j< $scope.bigTotalItems; j++) {
 				$scope.paginas[i][j]=lista[j];
 			}
 		}
