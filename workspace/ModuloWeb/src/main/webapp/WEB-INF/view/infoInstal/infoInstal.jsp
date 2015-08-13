@@ -6,7 +6,7 @@
 
 <div ng-controller="InfoInstalacionController" id="InfoInstalacion" class="font12">
 	<!-- BÚSQUEDA -->
-	<div class="panel panel-default panel-body margin-bottom5">
+	<div class="panel panel-default panel-body margin-bottom5 primerCuadro sinPaddingBottom">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<%@include file="search.jsp"%>

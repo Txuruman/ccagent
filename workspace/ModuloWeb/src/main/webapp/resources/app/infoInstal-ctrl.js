@@ -24,7 +24,7 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 
 
 	$scope.getInstallation=function(installationId){
-    	$log.debug("Query installation info ", installationId);
+    	//$log.debug("Query installation info ", installationId);
             $http(
             		{
                         method: 'GET',
@@ -34,7 +34,7 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
             ).success(function (data, status, headers, config) {
                 $scope.installation = data.installation;
                 CommonService.processBaseResponse(data,status,headers,config);
-                $log.debug("Installation queried ", data.installation);
+                //$log.debug("Installation queried ", data.installation);
             })
             .error(function (data, status, headers, config) {
                 // called asynchronously if an error occurs
@@ -44,7 +44,7 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
     };
 
 	$scope.getAudit=function(installationId){
-		$log.debug("Query audit for ", installationId);
+		//$log.debug("Query audit for ", installationId);
 		$http(
 			{
 				method: 'GET',
@@ -54,7 +54,7 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 		).success(function (data, status, headers, config) {
 				$scope.audit = data.audit;
 				CommonService.processBaseResponse(data,status,headers,config);
-				$log.debug("Audit queried ", data.audit);
+				//$log.debug("Audit queried ", data.audit);
 			})
 			.error(function (data, status, headers, config) {
 				// called asynchronously if an error occurs

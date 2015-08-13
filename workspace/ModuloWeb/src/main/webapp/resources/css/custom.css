@@ -1,4 +1,10 @@
-
+html{
+	width:98%;
+}
+html, body{
+	max-width:1600px;
+	min-width:787px;
+}
 
 .spacer_t1 {
 	height: 5px;
@@ -25,8 +31,8 @@
 }
 
 .form-control {
-	padding: 2px 6px !important;
-	height: 28px;
+	padding: 0 6px !important;
+	height: 23px;
 }
 
 .bordel {
@@ -113,7 +119,42 @@ h2{
     margin-bottom: 1px;
     margin-right: 1px;
 }
+/********/
+.borderTabla{
+	border:1px solid #ddd;
+}
+.borderTablaRight{
+	border-right:1px solid #ddd;
+}
+.borderTablaBottom{
+	border-bottom:1px solid #ddd;
+	border-left:1px solid #ddd;
+}
+
 /*******PARA TODAS**********/
+.paddingLastCell{
+	padding-right:34px;
+} 
+.tablaConBoton div{
+	height: 24.5px;
+}
+.panel-body {
+    padding: 10px !important;
+}
+.primerCuadro{
+	border-top:0 !important;
+	border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+label{
+	margin-bottom:0 !important;
+}
+li.active a{
+	font-style: italic !important;
+    color: rgb(42,100,150) !important;
+    font-weight: bold !important;
+    font-size: 14px !important;
+}
 h3.tituloSeccion{
 	padding: 0;
     margin: 0;
@@ -126,22 +167,31 @@ hr.tituloSeccion{
 	margin-bottom:9px;
 }
 .scrollTabla{
-	height:150px;
-	overflow-y:scroll;
+	display: block;
+    width: 100%;
+    height: 70px;
+    overflow-y: scroll;
 }
 .scrollTabla2{
-	height:90px;
+	height:135px;
 	overflow-y:scroll;
 }
 .tablaGrande{
 	height:170px;
 	overflow-y:scroll
 }
+.tablaBorder div{
+	border:1px solid grey;
+}
+/*Para las modales (IE8)*/
+div[type="text/ng-template"]{
+    display: none;
+}
 /******* VERTICAL TEXT ********/
 
 .vertical-text-group {
 	padding-right: 0px;
-    padding-top: 125px;
+    padding-top: 97px;
     padding-left: 38px;
     width: 50px;
  }
@@ -150,8 +200,9 @@ hr.tituloSeccion{
 	-moz-transform: rotate(270deg);
 	-o-transform:rotate(270deg);
     transform-origin: left bottom 0;
-    margin-bottom: 1100%;
-    width:1300% !important;
+    font-weight: bold;
+    margin-bottom: 850%;
+    width: 1100% !important;
     max-width: none !important;
     left:100%;
     border-radius:4px !important;
@@ -215,14 +266,21 @@ hr.tituloSeccion{
 	padding:2px !important;
 	vertical-align: middle;
 }
+#InfoInstalacion th{
+	padding:3px !important;
+	vertical-align: middle;
+}
 /************INVOICING*******************/
-#invoicing td{
+#invoicing td, #invoicing th {
 	padding:2px !important;
 	vertical-align: middle;
 }
-
+#invoicing th {
+	padding:3px !important;
+	vertical-align: middle;
+}
 .filaCuotas{
-	height:115px;
+	height:100px;
 }
 .filaDescuento{
 	color:white;
@@ -234,6 +292,7 @@ hr.tituloSeccion{
 }
 .pagination{
 	margin-top:0 !important;
+	margin-bottom: 5px !important;
 }
 /**************GENÉRICAS****************/
 .margin-top20{
@@ -256,6 +315,9 @@ hr.tituloSeccion{
 }
 .sinPadding{
 	padding:0 !important;
+}
+.sinPaddingLeft{
+	padding-left:0 !important;
 }
 .sinPaddingTop{
 	padding-top:0 !important;

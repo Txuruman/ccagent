@@ -26,7 +26,7 @@
 <!-- Tabla de Facturas -->
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-        <table class="table table-bordered">
+        <table class="table table-bordered margin-bottom10">
             <tr class="cabecillas">
                 <th class="text-center"><spring:message code="invoices.InvoiceNumber"/></th>
                 <th class="text-center"><spring:message code="invoices.ExtInvoiceNo"/></th>
@@ -39,39 +39,21 @@
             </tr>
             
 
-<!--             <tr ng-repeat="item in paginaActual | filter:{invoiceType:tipoFra}"> -->
-<!--                 <td>{{item.invoiceNumber}}</td> -->
-<!--                 <td>{{item.extInvoiceNo}}</td> -->
-<!--                 <td>{{item.amount}}</td> -->
-<!--                 <td>{{item.systemDate | date:'dd/MM/yyyy'}}</td> -->
-<!--                 <td>{{item.transactionDate | date:'dd/MM/yyyy'}}</td> -->
-<!--                 <td>{{item.dueDate | date:'dd/MM/yyyy'}}</td> -->
-<!--                 <td> -->
-<!--                     <button type="button" class="btn btn-default btn-sm" ng-click="openInvoiceDetailModal(item.invoiceNumber)" title="Ver detalle"> -->
-<!--                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
-<!--                     </button> -->
-<!--                 </td> -->
-<!--             </tr> -->
+            <tr ng-repeat="item in paginaActual | filter:{invoiceType:tipoFra}">
+                <td>{{item.invoiceNumber}}</td>
+                <td>{{item.extInvoiceNo}}</td>
+                <td>{{item.amount}}</td>
+                <td>{{item.systemDate | date:'dd/MM/yyyy'}}</td>
+                <td>{{item.transactionDate | date:'dd/MM/yyyy'}}</td>
+                <td>{{item.dueDate | date:'dd/MM/yyyy'}}</td>
+                <td>
+                    <button type="button" class="btn btn-default btn-sm" ng-click="openInvoiceDetailModal(item.invoiceNumber)" title="Ver detalle">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                </td>
+            </tr>
         </table>
         <div pagination total-items="bigTotalItems" ng-model="bigCurrentPage" items-per-page="itemsPage" class="pagination-sm" boundary-links="true" ng-change="pageChange()"></div>
     </div>
 </div>
 <app:invoiceDetailModalContent/>
-
-<!-- <tr dir-paginate="item in invoiceList | filter:{invoiceType:tipoFra} | limitTo:2 | itemsPerPage: 2">  -->
-<!--                 <td>{{item.invoiceNumber}}</td> -->
-<!--                 <td>{{item.extInvoiceNo}}</td> -->
-<!--                 <td>{{item.amount}}</td> -->
-<!--                 <td>{{item.systemDate | date:'dd/MM/yyyy'}}</td> -->
-<!--                 <td>{{item.transactionDate | date:'dd/MM/yyyy'}}</td> -->
-<!--                 <td>{{item.dueDate | date:'dd/MM/yyyy'}}</td> -->
-<!--                 <td> -->
-<!--                     <button type="button" class="btn btn-default btn-sm" ng-click="openInvoiceDetailModal(item.invoiceNumber)"> -->
-<!--                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
-<!--                     </button> -->
-<!--                 </td> -->
-<!--             </tr> -->
-<!--             </table> -->
-
-
-<!-- <dir-pagination-controls max-size="3" direction-links="true" boundary-links="true"></dir-pagination-controls> -->

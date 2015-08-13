@@ -17,7 +17,7 @@
 
 <!-- Tabla de Auditoria -->
 <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center scrollTabla2">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
         <table class="table table-bordered">
             <tr class="cabecillas">
                 <th class="text-center"><spring:message code="audit.date"/></th>

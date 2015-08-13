@@ -27,43 +27,69 @@
 
 <!-- Tabla de Planes de Acción -->
 <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center tablaGrande">
-        <table class="table table-bordered">
-            <tr class="cabecillas">
-<%--                 <th class="text-center"><spring:message code="actionplan.secuence"/></th> --%>
-                <th class="text-center"><spring:message code="actionplan.type"/></th>
-                <th class="text-center"><spring:message code="actionplan.contactName"/></th>
-                <th class="text-center"><spring:message code="actionplan.phone1"/></th>
-                <th class="text-center"><spring:message code="actionplan.phone2"/></th>
-                <th class="text-center"><spring:message code="actionplan.phone3"/></th>
-                <th class="text-center"><spring:message code="operations"/></th>
-            </tr>
-
- 			<tr ng-repeat="p in installation.actionplans | filter:{secuence:0} | orderBy : 'secuence' "> 
-                <td>{{p.type}}</td>
-                <td>{{p.contactName}}</td>
-                <td>{{"("+p.phone1.type+") - "+p.phone1.number}}</td>
-                <td>{{"("+p.phone2.type+") - "+p.phone2.number}}</td>
-                <td>{{"("+p.phone3.type+") - "+p.phone3.number}}</td>
-                <td>
-                    <button type="button" class="btn btn-default btn-sm" title="Borrar">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    </button>
-                </td>
-            </tr>
-            
-            <tr ng-repeat="p in installation.actionplans | filter:{secuence:0} | orderBy : 'secuence' "> 
-                <td>{{p.type}}</td>
-                <td>{{p.contactName}}</td>
-                <td>{{"("+p.phone1.type+") - "+p.phone1.number}}</td>
-                <td>{{"("+p.phone2.type+") - "+p.phone2.number}}</td>
-                <td>{{"("+p.phone3.type+") - "+p.phone3.number}}</td>
-                <td>
-                    <button type="button" class="btn btn-default btn-sm" title="Borrar">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    </button>
-                </td>
-            </tr>
-        </table>
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+       <div class="contenedorTabla">
+	        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center cabecillas borderTablaBottom paddingLastCell">
+	                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight"><spring:message code="actionplan.type"/></div>
+	                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center borderTablaRight"><spring:message code="actionplan.contactName"/></div>
+	                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight"><spring:message code="actionplan.phone1"/></div>
+	                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight"><spring:message code="actionplan.phone2"/></div>
+	                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight"><spring:message code="actionplan.phone3"/></div>
+	                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center"><spring:message code="operations"/></div>
+			</div>
+			<div class="scrollTabla">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center borderTablaBottom tablaConBoton"  ng-repeat="p in installation.actionplans | filter:{secuence:0} | orderBy : 'secuence'">
+		            
+		                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight">{{p.type}}</div>
+		                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center borderTablaRight">{{p.contactName}}</div>
+		                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight">
+		                	<img ng-src="{{(p.phone1.type==='fijo' ? '${pageContext.request.contextPath}/resources/images/Phone-1-black-15.png' : '${pageContext.request.contextPath}/resources/images/Iphone-black-15.png')}}" 
+		                	title="{{(p.phone1.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}"/> {{ p.phone1.number}}
+		                </div>
+		                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight">
+			                <img ng-src="{{(p.phone2.type==='fijo' ? '${pageContext.request.contextPath}/resources/images/Phone-1-black-15.png' : '${pageContext.request.contextPath}/resources/images/Iphone-black-15.png')}}" 
+			                	title="{{(p.phone2.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}"/> {{ p.phone2.number}}
+			            </div>
+		                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight">
+		                	<img ng-src="{{(p.phone3.type==='fijo' ? '${pageContext.request.contextPath}/resources/images/Phone-1-black-15.png' : '${pageContext.request.contextPath}/resources/images/Iphone-black-15.png')}}" 
+		                	title="{{(p.phone3.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}"/> {{ p.phone3.number}}
+		                </div>
+		                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
+		                	<button type="button" class="btn btn-default btn-sm" title="Borrar">
+                        		<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    		</button>
+                    	</div>
+		           </div>
+	        </div>
+	    </div>
     </div>
+<!--     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center"> -->
+<!--         <table class="table table-bordered" fixed-header="true" table-height="100px"> -->
+<!--             <thead> -->
+<!--             <tr class="cabecillas"> -->
+<%-- <%--                 <th class="text-center"><spring:message code="actionplan.secuence"/></th> --%> 
+<%--                 <th class="text-center"><spring:message code="actionplan.type"/></th> --%>
+<%--                 <th class="text-center"><spring:message code="actionplan.contactName"/></th> --%>
+<%--                 <th class="text-center"><spring:message code="actionplan.phone1"/></th> --%>
+<%--                 <th class="text-center"><spring:message code="actionplan.phone2"/></th> --%>
+<%--                 <th class="text-center"><spring:message code="actionplan.phone3"/></th> --%>
+<%--                 <th class="text-center"><spring:message code="operations"/></th> --%>
+<!--             </tr> -->
+<!-- 			</thead> -->
+<!-- 			<tbody> -->
+<!--  			<tr ng-repeat="p in installation.actionplans | filter:{secuence:0} | orderBy : 'secuence' ">  -->
+<!--                 <td class="td1">{{p.type}}</td> -->
+<!--                 <td class="td2">{{p.contactName}}</td> -->
+<!--                 <td class="td3">{{"("+p.phone1.type+") - "+p.phone1.number}}</td> -->
+<!--                 <td class="td4">{{"("+p.phone2.type+") - "+p.phone2.number}}</td> -->
+<!--                 <td class="td5">{{"("+p.phone3.type+") - "+p.phone3.number}}</td> -->
+<!--                 <td class="td6"> -->
+<!--                     <button type="button" class="btn btn-default btn-sm" title="Borrar"> -->
+<!--                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> -->
+<!--                     </button> -->
+<!--                 </td> -->
+<!--             </tr> -->
+<!--             </tbody> -->
+<!--         </table> -->
+<!--     </div> -->
 </div>

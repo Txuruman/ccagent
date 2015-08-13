@@ -6,7 +6,7 @@
 
 <div ng-controller="invoicingController" id="invoicing" class="font12">
 	<!-- INFORMACIÓN DE LA FACTURA -->
-	<div class="panel panel-default panel-body margin-bottom5">
+	<div class="panel panel-default panel-body margin-bottom5 primerCuadro">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<%@include file="infoInvoice.jsp"%>
@@ -26,7 +26,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-4 col-sm-4 col-xs-4">
+		<div class="col-md-4 col-sm-4 col-xs-4 sinPaddingLeft">
 			<!-- ACTIVACIÓN -->
 			<div
 				class="panel panel-default panel-body margin-bottom5 paddingBottom3 sinPaddingTop filaCuotas">

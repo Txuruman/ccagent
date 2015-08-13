@@ -46,7 +46,7 @@
 		</div>
 </div>
 <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="height: 70px;margin-top: 10px;">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="height: 50px;margin-top: 5px;">
         <table class="table table-bordered">
             <tr class="cabecillas">
 <%--                 <th class="text-center"><spring:message code="actionplan.secuence"/></th> --%>

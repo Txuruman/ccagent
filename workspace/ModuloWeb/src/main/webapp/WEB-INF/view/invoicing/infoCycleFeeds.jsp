@@ -17,25 +17,28 @@
 
 
 <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center scrollTabla2">
-        <table class="table table-bordered">
-            <tr class="cabecillas">
-                <th class="text-center"><spring:message code="invoices.cycleFee.FromDate" /></th>
-                <th class="text-center"><spring:message code="invoices.cycleFee.ToDate" /></th>
-                <th class="text-center"><spring:message code="invoices.cycleFee.Fee" /></th>
-                <th class="text-center"><spring:message code="invoices.cycleFee.RevTp" /></th>
-                <th class="text-center"><spring:message code="invoices.cycleFee.Description" /></th>
-                <th class="text-center"><spring:message code="invoices.cycleFee.Count" /></th>
-            </tr>
-
-            <tr ng-repeat="item in cycleFeeds" ng-class="(item.Fee<0)?'filaDescuento':''"> <!-- Si el Fee es negativo ponemos en roj la fila -->
-                <td>{{item.FromDate | date:'dd/MM/yyyy'}}</td>
-                <td>{{item.ToDate | date:'dd/MM/yyyy'}}</td>
-                <td>{{item.Fee}}</td>
-                <td>{{item.RevTp}}</td>
-                <td>{{item.Description}}</td>
-                <td>{{item.Count}}</td>
-            </tr>
-        </table>
-    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+       <div class="contenedorTabla">
+	        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center cabecillas borderTablaBottom paddingLastCell">
+	                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight"><spring:message code="invoices.cycleFee.FromDate" /></div>
+	                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight"><spring:message code="invoices.cycleFee.ToDate" /></div>
+	                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight"><spring:message code="invoices.cycleFee.Fee" /></div>
+	                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight"><spring:message code="invoices.cycleFee.RevTp" /></div>
+	                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 text-center borderTablaRight"><spring:message code="invoices.cycleFee.Description" /></div>
+	                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center"><spring:message code="invoices.cycleFee.Count" /></div>
+			</div>
+			<div class="scrollTabla">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center borderTablaBottom"  ng-repeat="item in cycleFeeds" ng-class="(item.Fee<0)?'filaDescuento':''"> <!-- Si el Fee es negativo ponemos en rojo la fila -->
+		            
+		                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight">{{item.FromDate | date:'dd/MM/yyyy'}}</div>
+		                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight">{{item.ToDate | date:'dd/MM/yyyy'}}</div>
+		                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight">{{item.Fee}}</div>
+		                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight">{{item.RevTp}}</div>
+		                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 text-center borderTablaRight">{{item.Description}}</div>
+		                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center">{{item.Count}}</div>
+		            
+		           </div>
+	        </div>
+	    	</div>
+    	</div>
 </div>
