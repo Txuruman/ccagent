@@ -278,7 +278,12 @@ public class DummyGenerator {
     		ex.printStackTrace();
     	}
     	cycle5.setRevTp("CCE2");
+    	cyclefeeds.add(cycle3);
+    	cyclefeeds.add(cycle);
+    	cyclefeeds.add(cycle4);
+    	cyclefeeds.add(cycle2);
     	cyclefeeds.add(cycle5);
+    	cyclefeeds.add(cycle);
     	return cyclefeeds;
     }
     

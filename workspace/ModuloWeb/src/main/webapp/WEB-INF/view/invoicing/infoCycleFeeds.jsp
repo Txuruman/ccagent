@@ -27,7 +27,7 @@
 	                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 text-center borderTablaRight"><spring:message code="invoices.cycleFee.Description" /></div>
 	                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center"><spring:message code="invoices.cycleFee.Count" /></div>
 			</div>
-			<div class="scrollTabla">
+			<div class="scrollTabla2">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center borderTablaBottom"  ng-repeat="item in cycleFeeds" ng-class="(item.Fee<0)?'filaDescuento':''"> <!-- Si el Fee es negativo ponemos en rojo la fila -->
 		            
 		                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight">{{item.FromDate | date:'dd/MM/yyyy'}}</div>

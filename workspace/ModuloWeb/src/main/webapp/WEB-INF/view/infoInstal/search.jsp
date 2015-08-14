@@ -53,9 +53,9 @@
                 <th class="text-center"><spring:message code="infoinstal.installationNumber"/></th>
                 <th class="text-center" title='<spring:message code="infoinstal.emailMonitoring"/>'>EM</th>
                 <th class="text-center" title='<spring:message code="infoinstal.emailBilling"/>'>EB</th>
-                <th class="text-center" tilte='<spring:message code="installation.search.emailservices"/>'>ES</th>
-                <th class="text-center" tilte='<spring:message code="actionplan.phone"/>'>TP</th>
-                <th class="text-center" tilte='<spring:message code="installation.search.servicesphone"/>'>TS</th>
+                <th class="text-center" title='<spring:message code="installation.search.emailservices"/>'>ES</th>
+                <th class="text-center" title='<spring:message code="actionplan.phone"/>'>TP</th>
+                <th class="text-center" title='<spring:message code="installation.search.servicesphone"/>'>TS</th>
                 <th class="text-center" title='<spring:message code="infoinstal.address"/>'><spring:message code="infoinstal.address"/></th>
             </tr>
 

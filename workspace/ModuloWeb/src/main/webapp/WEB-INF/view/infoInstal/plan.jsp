@@ -30,35 +30,48 @@
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
        <div class="contenedorTabla">
 	        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center cabecillas borderTablaBottom paddingLastCell">
-	                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight"><spring:message code="actionplan.type"/></div>
-	                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center borderTablaRight"><spring:message code="actionplan.contactName"/></div>
-	                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight"><spring:message code="actionplan.phone1"/></div>
-	                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight"><spring:message code="actionplan.phone2"/></div>
-	                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight"><spring:message code="actionplan.phone3"/></div>
-	                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center"><spring:message code="operations"/></div>
+	                
+	                	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight"><spring:message code="actionplan.type"/></div>
+	                	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center borderTablaRight"><spring:message code="actionplan.contactName"/></div>
+	                
+	                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 text-center sinPadding">
+	                	<div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 text-center sinPadding">
+			                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center borderTablaRight"><spring:message code="actionplan.phone1"/></div>
+			                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center borderTablaRight"><spring:message code="actionplan.phone2"/></div>
+			                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center borderTablaRight"><spring:message code="actionplan.phone3"/></div>
+		            	</div>
+		            	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center"><spring:message code="operations"/></div>
+		            </div>
 			</div>
 			<div class="scrollTabla">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center borderTablaBottom tablaConBoton"  ng-repeat="p in installation.actionplans | filter:{secuence:0} | orderBy : 'secuence'">
 		            
-		                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight">{{p.type}}</div>
-		                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center borderTablaRight">{{p.contactName}}</div>
-		                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight">
-		                	<img ng-src="{{(p.phone1.type==='fijo' ? '${pageContext.request.contextPath}/resources/images/Phone-1-black-15.png' : '${pageContext.request.contextPath}/resources/images/Iphone-black-15.png')}}" 
-		                	title="{{(p.phone1.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}"/> {{ p.phone1.number}}
-		                </div>
-		                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight">
-			                <img ng-src="{{(p.phone2.type==='fijo' ? '${pageContext.request.contextPath}/resources/images/Phone-1-black-15.png' : '${pageContext.request.contextPath}/resources/images/Iphone-black-15.png')}}" 
-			                	title="{{(p.phone2.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}"/> {{ p.phone2.number}}
-			            </div>
-		                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight">
-		                	<img ng-src="{{(p.phone3.type==='fijo' ? '${pageContext.request.contextPath}/resources/images/Phone-1-black-15.png' : '${pageContext.request.contextPath}/resources/images/Iphone-black-15.png')}}" 
-		                	title="{{(p.phone3.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}"/> {{ p.phone3.number}}
-		                </div>
-		                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
-		                	<button type="button" class="btn btn-default btn-sm" title="Borrar">
-                        		<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    		</button>
-                    	</div>
+		                	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight">{{p.type}}</div>
+		                	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center borderTablaRight">{{p.contactName}}</div>
+		            
+		                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 text-center sinPadding">
+	                		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 text-center sinPadding">
+				                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center borderTablaRight">
+				                	<img ng-src="{{(p.phone1.type==='fijo' ? '${pageContext.request.contextPath}/resources/images/Phone-1-black-15.png' : '${pageContext.request.contextPath}/resources/images/Iphone-black-15.png')}}" 
+				                	title="{{(p.phone1.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}"/> {{ p.phone1.number}}
+				                </div>
+				                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center borderTablaRight">
+					                <img ng-src="{{(p.phone2.type==='fijo' ? '${pageContext.request.contextPath}/resources/images/Phone-1-black-15.png' : '${pageContext.request.contextPath}/resources/images/Iphone-black-15.png')}}" 
+					                	title="{{(p.phone2.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}"/> {{ p.phone2.number}}
+					            </div>
+				                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center borderTablaRight">
+				                	<img ng-src="{{(p.phone3.type==='fijo' ? '${pageContext.request.contextPath}/resources/images/Phone-1-black-15.png' : '${pageContext.request.contextPath}/resources/images/Iphone-black-15.png')}}" 
+				                	title="{{(p.phone3.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}"/> {{ p.phone3.number}}
+				                </div>
+				             </div>
+				             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center">
+					            <button type="button" class="btn btn-default btn-sm" title="Borrar">
+			                      	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+			                    </button>
+		                    </div>   
+			             </div>
+			             
+	                    
 		           </div>
 	        </div>
 	    </div>
