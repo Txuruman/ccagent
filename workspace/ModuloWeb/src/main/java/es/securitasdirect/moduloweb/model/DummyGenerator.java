@@ -294,7 +294,7 @@ public class DummyGenerator {
     	invoice.setExtInvoiceNo("13FR00026697");
     	invoice.setAmount(-49.54);
     	invoice.setIntallationNumber(installationNumber);
-    	invoice.setInvoiceType("One time");
+    	invoice.setInvoiceType(InvoiceData.TYPE.ONE);
     	
     	try{
     		invoice.setSystemDate(formatoDelTexto.parse("27/03/2013"));
@@ -310,7 +310,7 @@ public class DummyGenerator {
     	invoice2.setExtInvoiceNo("13FR00026696");
     	invoice2.setAmount(-49.54);
     	invoice2.setIntallationNumber(installationNumber);
-    	invoice2.setInvoiceType("One time");
+    	invoice2.setInvoiceType(InvoiceData.TYPE.ONE);
     	
     	try{
     		invoice2.setSystemDate(formatoDelTexto.parse("27/03/2013"));
@@ -326,7 +326,7 @@ public class DummyGenerator {
     	invoice3.setExtInvoiceNo("13FR00026652");
     	invoice3.setAmount(-48.15);
     	invoice3.setIntallationNumber(installationNumber);
-    	invoice3.setInvoiceType("Cycle");
+    	invoice3.setInvoiceType(InvoiceData.TYPE.CYCLE);
     	
     	try{
     		invoice3.setSystemDate(formatoDelTexto.parse("27/03/2013"));
@@ -342,7 +342,7 @@ public class DummyGenerator {
     	invoice4.setExtInvoiceNo("1302C0420864");
     	invoice4.setAmount(49.54);
     	invoice4.setIntallationNumber(installationNumber);
-    	invoice4.setInvoiceType("Cycle");
+    	invoice4.setInvoiceType(InvoiceData.TYPE.CYCLE);
     	
     	try{
     		invoice4.setSystemDate(formatoDelTexto.parse("22/01/2013"));
@@ -358,7 +358,7 @@ public class DummyGenerator {
     	invoice5.setExtInvoiceNo("1301C0420464");
     	invoice5.setAmount(49.54);
     	invoice5.setIntallationNumber(installationNumber);
-    	invoice5.setInvoiceType("Cycle");
+    	invoice5.setInvoiceType(InvoiceData.TYPE.CYCLE);
     	
     	try{
     		invoice5.setSystemDate(formatoDelTexto.parse("22/01/2013"));
@@ -374,7 +374,7 @@ public class DummyGenerator {
     	invoice6.setExtInvoiceNo("1212C6544844");
     	invoice6.setAmount(48.15);
     	invoice6.setIntallationNumber(installationNumber);
-    	invoice6.setInvoiceType("One time");
+    	invoice6.setInvoiceType(InvoiceData.TYPE.ONE);
     	
     	try{
     		invoice6.setSystemDate(formatoDelTexto.parse("19/12/2012"));
@@ -405,6 +405,18 @@ public class DummyGenerator {
     	result.add(invoice);
     	result.add(invoice6);
     	return result;
+    }
+    
+    /**
+     * Obtenemos el resumen de cuotas de la instalación
+     */
+    public static Cuote getCuotes(Integer installationNumber){
+    	Cuote cuota=new Cuote();
+    	cuota.setInstallationNumber(installationNumber);
+    	cuota.setEneroActual(33.2);
+    	cuota.setEneroPasado1(31.7);
+    	cuota.setMesActual(12.8);
+    	return cuota;
     }
     
     /**

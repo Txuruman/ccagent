@@ -4,7 +4,9 @@ import es.securitasdirect.moduloweb.model.InvoiceInfo;
 
 import java.util.List;
 
+import es.securitasdirect.moduloweb.model.Cuote;
 import es.securitasdirect.moduloweb.model.CycleFeeds;
+import es.securitasdirect.moduloweb.model.DummyGenerator;
 import es.securitasdirect.moduloweb.model.InvoiceData;
 import es.securitasdirect.moduloweb.web.dto.support.BaseResponse;
 
@@ -16,6 +18,7 @@ public class InvoiceResponse extends BaseResponse {
     private InvoiceInfo invoiceInfo;
     private List<CycleFeeds> cycleFeeds;
     private List<InvoiceData> invoiceList;
+    private Cuote cuote;
     
     public List<CycleFeeds> getCycleFeeds() {
 		return cycleFeeds;
@@ -40,5 +43,14 @@ public class InvoiceResponse extends BaseResponse {
 	public void setInvoiceList(List<InvoiceData> invoiceList) {
 		this.invoiceList = invoiceList;
 	}
+
+	public Cuote getCuote() {
+		return cuote;
+	}
+
+	public void setCuote(Cuote cuote) {
+		this.cuote = cuote;
+	}
     
+	
 }

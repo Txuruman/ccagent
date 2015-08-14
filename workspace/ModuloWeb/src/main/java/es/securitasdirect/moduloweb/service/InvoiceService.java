@@ -1,5 +1,6 @@
 package es.securitasdirect.moduloweb.service;
 
+import es.securitasdirect.moduloweb.model.Cuote;
 import es.securitasdirect.moduloweb.model.CycleFeeds;
 import es.securitasdirect.moduloweb.model.DummyGenerator;
 import es.securitasdirect.moduloweb.model.InvoiceData;
@@ -29,5 +30,8 @@ public class InvoiceService {
     }
     public List<InvoiceData>getListInvoices(Integer installationNumber){
     	return DummyGenerator.getListInvoices(installationNumber);
+    }
+    public Cuote getCuotes(Integer installationNumber){
+    	return DummyGenerator.getCuotes(installationNumber);
     }
 }

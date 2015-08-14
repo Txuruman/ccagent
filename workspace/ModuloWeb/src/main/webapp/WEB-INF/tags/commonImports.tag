@@ -9,14 +9,16 @@
        	<script src="${pageContext.request.contextPath}/resources/js/html5.js"></script>
        	<script src="${pageContext.request.contextPath}/resources/js/selectivizr.js"></script>
        <script src="${pageContext.request.contextPath}/resources/pie/PIE.js"></script> 
-       	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/IE8custom.css"/>
-        <style>
+       <style>
             .ng-hide {
                 display: none !important;
             }
         </style>
-         
-    <![endif]-->       	
+<![endif]--> 
+<!--[if IE]>
+       	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/IE8custom.css"/>
+ <![endif]-->         
+         	
 
 
 <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>

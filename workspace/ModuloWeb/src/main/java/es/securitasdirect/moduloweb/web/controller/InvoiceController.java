@@ -1,5 +1,6 @@
 package es.securitasdirect.moduloweb.web.controller;
 
+import es.securitasdirect.moduloweb.model.Cuote;
 import es.securitasdirect.moduloweb.model.CycleFeeds;
 import es.securitasdirect.moduloweb.model.InvoiceData;
 import es.securitasdirect.moduloweb.model.InvoiceInfo;
@@ -42,9 +43,11 @@ public class InvoiceController extends BaseController {
         InvoiceInfo invoice = invoiceService.getInvoice(installationNumber);
         List<CycleFeeds> cyclefeeds= invoiceService.getCycleFeeds(11111);
         List<InvoiceData> invoiceList=invoiceService.getListInvoices(installationNumber);
+        Cuote cuote=invoiceService.getCuotes(installationNumber);
         response.setInvoiceInfo(invoice);
         response.setCycleFeeds(cyclefeeds);
         response.setInvoiceList(invoiceList);
+        response.setCuote(cuote);
         
         if (invoice != null) {
             response.success(messageUtil.getProperty("installationData.success"));

@@ -8,6 +8,17 @@ import java.util.Date;
  *
  */
 public class InvoiceData {
+	
+	/**
+	 * Clase para asignar valores estáticos al tipo de factura
+	 * @author JAS
+	 *
+	 */
+	public interface TYPE {
+        public static final String ONE="One Time";
+        public static final String CYCLE="Cycle Feeds";
+    }
+	
 	/**
 	 * Nº de la factura
 	 */

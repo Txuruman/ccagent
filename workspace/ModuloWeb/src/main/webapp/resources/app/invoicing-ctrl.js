@@ -60,7 +60,8 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 					
 					//Datos de facturas cycleFeeds asociadas a la instalación
 					$scope.cycleFeeds= data.cycleFeeds;
-					
+					//Cuotas asociadas a la instalación
+					$scope.cuote=data.cuote;
 					//Listado de Facturas
 					$scope.invoiceList=data.invoiceList;
 					//Para la paginación;

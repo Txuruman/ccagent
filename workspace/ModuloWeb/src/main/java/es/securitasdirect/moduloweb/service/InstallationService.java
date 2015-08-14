@@ -1,5 +1,6 @@
 package es.securitasdirect.moduloweb.service;
 
+import es.securitasdirect.moduloweb.model.Cuote;
 import es.securitasdirect.moduloweb.model.DirectAccess;
 import es.securitasdirect.moduloweb.model.DummyGenerator;
 import es.securitasdirect.moduloweb.model.InstallationData;

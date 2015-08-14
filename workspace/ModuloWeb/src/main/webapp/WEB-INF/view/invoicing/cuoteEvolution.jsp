@@ -17,14 +17,14 @@
 <div class="form-inline">
 	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 		<label><spring:message code="cuoteevol.lastyear" /> </label> <input
-			class="form-control input-sm" type="text" readonly="true" placeholder="70">
+			class="form-control input-sm" type="text" readonly="true" ng-model="cuote.eneroPasado1">
 	</div>
 	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 		<label><spring:message code="cuoteevol.currentyear" /> </label> <input
-			class="form-control input-sm" type="text" readonly="true" placeholder="90">
+			class="form-control input-sm" type="text" readonly="true" ng-model="cuote.eneroActual">
 	</div>
 	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 		<label><spring:message code="cuoteevol.month" /></label> <input
-			class="form-control input-sm" type="text" readonly="true" placeholder="95">
+			class="form-control input-sm" type="text" readonly="true" ng-model="cuote.mesActual">
 	</div>
 </div>

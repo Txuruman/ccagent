@@ -12,6 +12,7 @@
 li[tab],.pagination a{
 	cursor:pointer;
 }
+
 .modal-content{
 	margin:20px auto !important;
 	width:50% !important;

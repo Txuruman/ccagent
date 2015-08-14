@@ -9,8 +9,8 @@
 		<h3 class="tituloSeccion">Listado de Facturas</h3>
 	</div>
 	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-		<label class="radio-inline"><input type="radio" name="tipoFra" ng-model="tipoFra" value="Cycle" ng-change="paginar(tipoFra)"><spring:message code="invoices.search.cycle"/></label>
-		<label class="radio-inline"><input type="radio" name="tipoFra" ng-model="tipoFra" value="One time" ng-change="paginar(tipoFra)"><spring:message code="invoices.search.onetime"/></label>
+		<label class="radio-inline"><input type="radio" name="tipoFra" ng-model="tipoFra" value="Cycle Feeds" ng-change="paginar(tipoFra)"><spring:message code="invoices.search.cycle"/></label>
+		<label class="radio-inline"><input type="radio" name="tipoFra" ng-model="tipoFra" value="One Time" ng-change="paginar(tipoFra)"><spring:message code="invoices.search.onetime"/></label>
 		<label class="radio-inline"><input type="radio" name="tipoFra" ng-model="tipoFra" value=" " ng-change="paginar(tipoFra)"><spring:message code="invoices.search.all"/></label> 
 		<label class="radio-inline separaRadios"><input type="radio" name="periodo"><spring:message code="invoices.search.month6"/></label>
 		<label class="radio-inline"><input type="radio" name="periodo"><spring:message code="invoices.search.month12"/></label>

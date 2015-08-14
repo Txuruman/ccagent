@@ -63,33 +63,4 @@
 	        </div>
 	    </div>
     </div>
-<!--     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center"> -->
-<!--         <table class="table table-bordered" fixed-header="true" table-height="100px"> -->
-<!--             <thead> -->
-<!--             <tr class="cabecillas"> -->
-<%-- <%--                 <th class="text-center"><spring:message code="actionplan.secuence"/></th> --%> 
-<%--                 <th class="text-center"><spring:message code="actionplan.type"/></th> --%>
-<%--                 <th class="text-center"><spring:message code="actionplan.contactName"/></th> --%>
-<%--                 <th class="text-center"><spring:message code="actionplan.phone1"/></th> --%>
-<%--                 <th class="text-center"><spring:message code="actionplan.phone2"/></th> --%>
-<%--                 <th class="text-center"><spring:message code="actionplan.phone3"/></th> --%>
-<%--                 <th class="text-center"><spring:message code="operations"/></th> --%>
-<!--             </tr> -->
-<!-- 			</thead> -->
-<!-- 			<tbody> -->
-<!--  			<tr ng-repeat="p in installation.actionplans | filter:{secuence:0} | orderBy : 'secuence' ">  -->
-<!--                 <td class="td1">{{p.type}}</td> -->
-<!--                 <td class="td2">{{p.contactName}}</td> -->
-<!--                 <td class="td3">{{"("+p.phone1.type+") - "+p.phone1.number}}</td> -->
-<!--                 <td class="td4">{{"("+p.phone2.type+") - "+p.phone2.number}}</td> -->
-<!--                 <td class="td5">{{"("+p.phone3.type+") - "+p.phone3.number}}</td> -->
-<!--                 <td class="td6"> -->
-<!--                     <button type="button" class="btn btn-default btn-sm" title="Borrar"> -->
-<!--                         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> -->
-<!--                     </button> -->
-<!--                 </td> -->
-<!--             </tr> -->
-<!--             </tbody> -->
-<!--         </table> -->
-<!--     </div> -->
 </div>
