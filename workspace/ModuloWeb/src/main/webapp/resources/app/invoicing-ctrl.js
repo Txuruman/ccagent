@@ -185,23 +185,3 @@ app.controller('InvoiceDetailModalInstanceCtrl', function ($scope, $modalInstanc
 		$modalInstance.dismiss('cancel');
 	};
 });
-
-/* Directiva para que funcionen las modales en IE8
- * En vez de utilizar script usamos div para el contenedor de las modales.
- * Esta directiva se encarga de hacer que funcione.
- * Ejemplo: WEB-INF/tags/invoiceDetailModalContent.tag
- */
-app.directive('cachedTemplate', ['$templateCache', function ($templateCache) {
-	  "use strict";
-	  return {
-	    restrict: 'A',
-	    terminal: true,
-	    compile: function (element, attr) {
-	      if (attr.type === 'text/ng-template') {
-	        var templateUrl = attr.cachedTemplate,
-	            text = element.html();
-	        $templateCache.put(templateUrl, text);
-	      }
-	    }
-	  };
-	}])

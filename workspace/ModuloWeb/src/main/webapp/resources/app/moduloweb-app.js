@@ -19,7 +19,25 @@ app.config(["$httpProvider","$sceDelegateProvider", function ($httpProvider,$sce
 }]);
 
 
-
+/* Directiva para que funcionen las modales en IE8
+ * En vez de utilizar script usamos div para el contenedor de las modales.
+ * Esta directiva se encarga de hacer que funcione.
+ * Ejemplo: WEB-INF/tags/invoiceDetailModalContent.tag
+ */
+app.directive('cachedTemplate', ['$templateCache', function ($templateCache) {
+	  "use strict";
+	  return {
+	    restrict: 'A',
+	    terminal: true,
+	    compile: function (element, attr) {
+	      if (attr.type === 'text/ng-template') {
+	        var templateUrl = attr.cachedTemplate,
+	            text = element.html();
+	        $templateCache.put(templateUrl, text);
+	      }
+	    }
+	  };
+	}])
 
 //Transformacion de Cadenas a Fecha(Javascript)
 //El formato de fecha configurado en el servidor es: 2011-11-29T15:52:18.867Z  y  2020-02-18
@@ -99,7 +117,11 @@ app.service('CommonService', function ($rootScope, $log) {
     this.processBaseResponse = function (data, status, headers, config) {
         //console.log("Procesando BaseResponse....");
         if (data && data.messages) {
-            for (var msg in data.messages) {
+        	/**
+        	 * Modificado para correcto funcionamiento en IE8
+        	 * Original: for (var msg in data.messages) {
+        	 */
+        	for (var msg=0; msg<data.messages.length; msg++){
                 $rootScope.vm.serverMessages.push(data.messages[msg]);
             }
         }
