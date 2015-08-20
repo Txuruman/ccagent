@@ -21,10 +21,15 @@
 				<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="row">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+							<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 								<label><spring:message code="infoinstal.ccc" /></label><input
 									class="form-control input-sm" readonly="true" type="text"
 									ng-model="invoiceInfo.ccc" name="ccc">
+							</div>
+							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 editarCCC">
+								<button type="button" class="btn btn-default  btn-sm" title="Editar CCC">
+			    					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+            					</button>
 							</div>
 						</div>
 					</div>

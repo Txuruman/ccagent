@@ -297,6 +297,11 @@ div[type="text/ng-template"]{
 	margin-top:0 !important;
 	margin-bottom: 5px !important;
 }
+.editarCCC{
+	padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 15px !important;
+}
 /**************GENÉRICAS****************/
 .margin-top20{
 	margin-top:20px;	
