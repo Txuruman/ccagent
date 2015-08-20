@@ -6,10 +6,29 @@
 
 <div ng-controller="invoicingController" id="invoicing" class="font12">
 	<!-- INFORMACIÓN DE LA FACTURA -->
-	<div class="panel panel-default panel-body margin-bottom5 primerCuadro">
-		<div class="row">
-			<div class="col-md-12 col-sm-12 col-xs-12">
-				<%@include file="infoInvoice.jsp"%>
+	<div class="row">
+		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+			<div class="panel panel-default panel-body margin-bottom5 primerCuadro filaCuotas">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<%@include file="infoInvoice.jsp"%>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 sinPaddingLeft">
+			<div class="panel panel-default panel-body margin-bottom5 primerCuadro filaCuotas paddingTop43">
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<label><spring:message code="infoinstal.ccc" /></label><input
+									class="form-control input-sm" readonly="true" type="text"
+									ng-model="invoiceInfo.ccc" name="ccc">
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

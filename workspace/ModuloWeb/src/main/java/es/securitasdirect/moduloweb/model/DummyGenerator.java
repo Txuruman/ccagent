@@ -84,7 +84,7 @@ public class DummyGenerator {
         installation.setAddress("Gran Vía 12");
         installation.setAka("AKA...");
         installation.setCamera("Samsumg");
-        installation.setCcc("CCC...");
+        //installation.setCcc("CCC...");
         installation.setCity("Guadalajara");
         installation.setCoercionPassword("1234");
         installation.setCustomerName("Francisco Herrero");

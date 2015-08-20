@@ -23,6 +23,9 @@ public class InvoiceInfo {
     
     /** Email de Facturación*/
     private String emailBilling;
+    
+    /** Cuenta corriente */
+    private String ccc;
 
     public Boolean getInvoiceSend() {
         return invoiceSend;
@@ -70,6 +73,14 @@ public class InvoiceInfo {
 
 	public void setEmailBilling(String emailBilling) {
 		this.emailBilling = emailBilling;
+	}
+
+	public String getCcc() {
+		return ccc;
+	}
+
+	public void setCcc(String ccc) {
+		this.ccc = ccc;
 	}
     
     

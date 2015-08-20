@@ -11,24 +11,6 @@
 
 <!-- CONTROLADORES ANGULARJS -->
 <script src="${pageContext.request.contextPath}/resources/app/moduloweb-app.js"></script>
-<script type="text/javascript">
-// $(document).ready(function(){
-// 	$.ajax({
-// 	    url: 'listdirectaccess',
-// 	    type: 'GET',
-// 	    dataType:"json",
-// 	    cache:false,
-// 	    success: function(data) {
-// 	    	alert(data.directAcess[0].description);
-// 	    },
-// 	    error: function(data) {
-	
-// 	      alert( "error");
-// 	    }
-//   	});
-// });
-
-</script>
 <script	src="${pageContext.request.contextPath}/resources/app/mainFrame-ctrl.js"></script>
 <script	src="${pageContext.request.contextPath}/resources/app/infoInstal-ctrl.js"></script>
 <script	src="${pageContext.request.contextPath}/resources/app/invoicing-ctrl.js"></script>

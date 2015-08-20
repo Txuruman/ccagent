@@ -45,8 +45,8 @@ public class InstallationData {
     /** Segmento */
     private String subtype;
 
-    /** Cuenta corriente */
-    private String ccc;
+//    /** Cuenta corriente */
+//    private String ccc;
 
     /** Palabra clave del Cliente */
     private String customerPassword;
@@ -172,13 +172,13 @@ public class InstallationData {
         this.subtype = subtype;
     }
 
-    public String getCcc() {
-        return ccc;
-    }
-
-    public void setCcc(String ccc) {
-        this.ccc = ccc;
-    }
+//    public String getCcc() {
+//        return ccc;
+//    }
+//
+//    public void setCcc(String ccc) {
+//        this.ccc = ccc;
+//    }
 
     public String getCustomerPassword() {
         return customerPassword;
@@ -229,7 +229,7 @@ public class InstallationData {
         sb.append(", city='").append(city).append('\'');
         sb.append(", monitoringStatus='").append(monitoringStatus).append('\'');
         sb.append(", subtype='").append(subtype).append('\'');
-        sb.append(", ccc='").append(ccc).append('\'');
+//        sb.append(", ccc='").append(ccc).append('\'');
         sb.append(", customerPassword='").append(customerPassword).append('\'');
         sb.append(", securitasPassword='").append(securitasPassword).append('\'');
         sb.append(", coercionPassword='").append(coercionPassword).append('\'');
