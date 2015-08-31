@@ -53,7 +53,7 @@
                 </td>
             </tr>
         </table>
-        <div pagination total-items="bigTotalItems" ng-model="bigCurrentPage" items-per-page="itemsPage" class="pagination-sm" boundary-links="true" ng-change="pageChange()"></div>
+        <div pagination total-items="bigTotalItems" ng-model="bigCurrentPage" items-per-page="itemsPage" class="pagination-sm" boundary-links="true" ng-change="pageChange()" previous-text="&lt;" next-text="&gt;" first-text="&lt;&lt;" last-text="&gt;&gt;"></div>
     </div>
 </div>
 <app:invoiceDetailModalContent/>

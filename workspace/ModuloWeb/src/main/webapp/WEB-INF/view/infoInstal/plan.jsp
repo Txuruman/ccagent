@@ -9,10 +9,10 @@
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<h3 class="tituloSeccion enlinea margin-right10">Plan de Acción</h3>
 		<div class="btn-group inline enlinea">
-           		<button type="button" class="btn btn-default" title="Editar">
+           		<button type="button" class="btn btn-default" title="<spring:message code="boton.edit"/>">
 			    	<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
            		</button>
-           		<button type="button" class="btn btn-default" title="Guardar cambios">
+           		<button type="button" class="btn btn-default" title="<spring:message code="boton.save"/>">
 			    	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
            		</button>
 			</div>

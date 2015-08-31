@@ -1,7 +1,7 @@
 /**
  * Controlador de la pestaña Información de instalación
  */
-app.controller('InfoInstalacionController', function ($scope, $http, $log, CommonService) {
+app.controller('InfoInstalacionController', function ($scope, $http, $log, CommonService, $timeout) {
 
 
 	//Query FieldConfig
@@ -62,8 +62,87 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 				CommonService.processBaseResponse(data,status,headers,config);
 			});
 	};
-
+	
+	/**
+	 * Gestion de las palabras clave
+	 */
+	//Mostar las palabras clave durante 5 segundos
+	$scope.keysShow=function(){
+		$scope.keys.customerPassword=angular.copy($scope.installation.customerPassword);
+		$scope.keys.securitasPassword=angular.copy($scope.installation.securitasPassword);
+		$scope.keys.coercionPassword=angular.copy($scope.installation.coercionPassword);
+		$scope.timeout1=$timeout(function(){ 
+			$scope.keys.customerPassword="";
+			$scope.keys.securitasPassword="";
+			$scope.keys.coercionPassword="";
+		}, 5000);
+	}
+	//Editando las palabras clave
+	$scope.keysEdit=function(){
+		$scope.keys.customerPassword=angular.copy($scope.installation.customerPassword);
+		$scope.keys.securitasPassword=angular.copy($scope.installation.securitasPassword);
+		$scope.keys.coercionPassword=angular.copy($scope.installation.coercionPassword);
+		$scope.NotEditableKeys=false;
+		$scope.EditingKeysButtons=true;
+		//Cancelar timeout de mostrar claves
+		$timeout.cancel($scope.timeout1);
+	}
+	//Cancelar editar claves
+	$scope.keysEditCancel=function(){
+		$scope.keys.customerPassword="";
+		$scope.keys.securitasPassword="";
+		$scope.keys.coercionPassword="";
+		$scope.NotEditableKeys=true;
+		$scope.EditingKeysButtons=false;
+	}
+	//Guardar cambios de las palabras claves en $scope.installation
+	$scope.keysSave=function(){
+		$scope.installation.customerPassword=angular.copy($scope.keys.customerPassword);
+		$scope.installation.securitasPassword=angular.copy($scope.keys.securitasPassword);
+		$scope.installation.coercionPassword=angular.copy($scope.keys.coercionPassword);
+		$scope.keys.customerPassword="";
+		$scope.keys.securitasPassword="";
+		$scope.keys.coercionPassword="";
+		$scope.NotEditableKeys=true;
+		$scope.EditingKeysButtons=false;
+	}
+	/** FIN Gestion palabras clave*/
+	
+	/**
+	 * Gestión Información Instalación
+	 */
+	$scope.installationInfoEdit=function(){
+		$scope.editingInstallationInfo=true;
+		$scope.temporal={
+				emailMonitoring:angular.copy($scope.installation.emailMonitoring),
+				emailServices:angular.copy($scope.installation.emailServices)
+		}
+	}
+	$scope.installationInfoEditCancel=function(){
+		$scope.editingInstallationInfo=false;
+		$scope.installation.emailMonitoring=$scope.temporal.emailMonitoring;
+		$scope.installation.emailServices=$scope.temporal.emailServices;
+		delete($scope.temporal);
+	}
+	$scope.installationInfoSave=function(){
+		$scope.editingInstallationInfo=false;
+		delete($scope.temporal);
+	}
+	/** FIN Gestion Información Instalación*/
+	
+	//Valores iniciales
 	$scope.getInstallation(971120);
 	$scope.getAudit(111111);
 	$scope.getFieldConfig();
+	$scope.keys={
+			customerPassword:"",
+			securitasPassword:"",
+			coercionPassword:""
+	}
+	//Las claves en readonly por defecto
+	$scope.NotEditableKeys=true;
+	//Los botones de editar claves ocultos por defecto
+	$scope.EditingKeysButtons=false;
+	//Botones de editar información de la instalación, true-->se muestra validar y cancelar y se oculta lapiz
+	$scope.editingInstallationInfo=false;
 });

@@ -5,15 +5,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
 <div class="row contenedorCheck">
-	<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 		 <div class="checkbox disabled">
-		     <label class="font14"><input type="checkbox" value=""  disabled ng-checked="invoiceInfo.invoiceSend">Activar envío factura</label>
+		     <label class="font14"><input type="checkbox" value="" ng-disabled="activationEdit" ng-model="invoiceInfo.invoiceSend"><spring:message code="invoicing.activation.checklabel"/></label>
 		</div>
 	</div>
-	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-		<div class="btn-group paddingTop3">
-			<button type="button" class="btn btn-default" title="Editar">
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+		<div class="paddingTop3">
+			<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.edit"/>" ng-click="activationEdit=false" ng-show="activationEdit">
 				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+			</button>
+			<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.save"/>" ng-click="" ng-hide="activationEdit">
+				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+			</button>
+			<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.cancel"/>" ng-click="activationEdit=true; invoiceInfo.invoiceSend=activationCheckValue; invoiceInfo.emailBilling=activationEmailBillingValue;" ng-hide="activationEdit">
+				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 			</button>
 		</div>
 	</div>
@@ -21,7 +27,7 @@
 <div class="row">
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		<label><spring:message code="infoinstal.emailBilling" /></label><input
-			class="form-control input-sm" readonly="true" type="email"
+			class="form-control input-sm" ng-readonly="activationEdit" type="email"
 			ng-model="invoiceInfo.emailBilling" name="emailBilling">
 	</div>
 </div>
