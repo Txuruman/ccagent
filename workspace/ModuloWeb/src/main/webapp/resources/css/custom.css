@@ -351,3 +351,8 @@ div[type="text/ng-template"]{
 .enlinea{
 	display:inline-block !important;
 }
+.error{
+	color:red;
+	display:block;
+	font-weight:bold;
+}

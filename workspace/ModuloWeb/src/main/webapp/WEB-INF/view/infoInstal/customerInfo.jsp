@@ -8,16 +8,16 @@
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<h3 class="tituloSeccion enlinea margin-right10"><spring:message code="infoinstal.title"/></h3>
-			<div class="inline enlinea" ng-hide="editingInstallationInfo">
-				<button type="button" class="btn btn-default  btn-sm" ng-click="installationInfoEdit()" title="<spring:message code="boton.edit"/>">
+			<div class="inline enlinea" >
+				<button type="button" class="btn btn-default  btn-sm" ng-click="installationInfoEdit()" title="<spring:message code="boton.edit"/>" ng-hide="editingInstallationInfo">
 				    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 	            </button>
             </div>
-			<div class="btn-group inline enlinea" ng-show="editingInstallationInfo">
-           		<button type="submit" class="btn btn-default btn-sm" title="<spring:message code="boton.save"/>" ng-click="InfoInstallForm.$valid ? installationInfoSave() : null">
+			<div class="btn-group inline enlinea" >
+           		<button type="submit" class="btn btn-default btn-sm" title="<spring:message code="boton.save"/>" ng-click="InfoInstallForm.$valid ? installationInfoSave() : null" ng-show="editingInstallationInfo">
 			    	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
            		</button>
-           		<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.cancel"/>" ng-click="installationInfoEditCancel()">
+           		<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.cancel"/>" ng-click="installationInfoEditCancel()" ng-show="editingInstallationInfo">
 			    	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
            		</button>
 			</div>
@@ -117,12 +117,16 @@
 				<label><spring:message code="infoinstal.emailMonitoring"/></label> <input class="form-control input-sm"
 					ng-readonly="!editingInstallationInfo" type="email" ng-model="installation.emailMonitoring" name="emailMonitoring" required="true">
 			</div>
+			<span class="error" ng-show="InfoInstallForm.emailMonitoring.$error.required"><spring:message code="error.required"/>  </span>
+           	<span class="error" ng-show="InfoInstallForm.emailMonitoring.$error.email"><spring:message code="error.email"/></span> 
 		</div>
 		<div class="col-md-3 col-sm-3 col-xs-4">
 			<div class="form-group">
 				<label><spring:message code="infoinstal.servicesemail"/></label><input class="form-control input-sm" ng-readonly="!editingInstallationInfo" type="email"
 				 ng-model="installation.emailServices" name="ServEmail" value="" required="true">
 			</div>
+			<span class="error" ng-show="InfoInstallForm.ServEmail.$error.required"><spring:message code="error.required"/>  </span>
+           	<span class="error" ng-show="InfoInstallForm.ServEmail.$error.email"><spring:message code="error.email"/></span> 
 		</div>
 	<!-- FIN, Campos que se mostrarán protegidos, pero que se podrán modificar, si el usuario pulsa el botón de edición correspondiente. -->
 	

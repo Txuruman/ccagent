@@ -27,20 +27,20 @@
 </div>
 
 <div class="form-inline">
-		<div class="enlinea width29"> <!-- class="col-md-3 col-sm-3 col-xs-3" -->
+		<div class="enlinea width29" id="IE8W201"> <!-- class="col-md-3 col-sm-3 col-xs-3" -->
 			<label><spring:message code="installation.search.installationnumber"/></label>
 			<input class="form-control input-sm" type="text" value="">
 		</div>
-		<div class="enlinea width29">
+		<div class="enlinea width29" id="IE8W201">
 			<label><spring:message code="installation.search.phone"/> </label>
 			<input class="form-control input-sm" type="text">
 		</div>
-		<div class="enlinea width29">
+		<div class="enlinea width29" id="IE8W201">
 			<label><spring:message code="installation.search.email"/> </label>
 			<input class="form-control input-sm" type="text" value="frherrero@email.com">
 		</div>
-		<div class="enlinea width10" >
-			<button type="button" class="btn btn-default" title="Buscar...">
+		<div class="enlinea width10" id="IE8W202">
+			<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.search"/>">
 			    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
             </button>
 		</div>

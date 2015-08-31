@@ -19,4 +19,11 @@ li[tab],.pagination a{
 }
 .paddingLastCell{
 	padding-right:32px !important;
-} 
+}
+#IE8W201{
+	width:25% !important;
+	margin-right:10px;
+}
+#IE8W202{
+	width:15% !important;
+}
