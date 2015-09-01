@@ -25,26 +25,33 @@
 			<hr class="tituloSeccion"/>
 		</div>
 </div>
-
-<div class="form-inline">
-		<div class="enlinea width29" id="IE8W201"> <!-- class="col-md-3 col-sm-3 col-xs-3" -->
-			<label><spring:message code="installation.search.installationnumber"/></label>
-			<input class="form-control input-sm" type="text" value="">
-		</div>
-		<div class="enlinea width29" id="IE8W201">
-			<label><spring:message code="installation.search.phone"/> </label>
-			<input class="form-control input-sm" type="text">
-		</div>
-		<div class="enlinea width29" id="IE8W201">
-			<label><spring:message code="installation.search.email"/> </label>
-			<input class="form-control input-sm" type="text" value="frherrero@email.com">
-		</div>
-		<div class="enlinea width10" id="IE8W202">
-			<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.search"/>">
-			    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-            </button>
-		</div>
-</div>
+<form method="post" name="searchForm">
+	<div class="form-inline">
+			<div class="enlinea width29" id="IE8W201"> <!-- class="col-md-3 col-sm-3 col-xs-3" -->
+				<label><spring:message code="installation.search.installationnumber"/></label>
+				<input class="form-control input-sm" type="text" value="" ng-model="searchBy.installationNumber" name="installationNumber">
+			</div>
+			<div class="enlinea width29" id="IE8W201">
+				<label><spring:message code="installation.search.phone"/> </label>
+				<input class="form-control input-sm" type="text" ng-model="searchBy.phone" pattern="[0-9]+" title="Sólo números" name="phone">
+				<!--[if IE 8]>
+					<span class="error errorAbsolute" ng-show="searchForm.phone.$error.pattern"><spring:message code="error.numeric"/></span>
+				<![endif]--> 
+			</div>
+			<div class="enlinea width29" id="IE8W201">
+				<label><spring:message code="installation.search.email"/> </label>
+				<input class="form-control input-sm" type="email" value="" ng-model="searchBy.email" name="email">
+				<!--[if IE 8]>
+					<span class="error errorAbsolute" ng-show="searchForm.email.$error.email"><spring:message code="error.email"/></span>
+				<![endif]-->	
+			</div>
+			<div class="enlinea width10" id="IE8W202">
+				<button type="submit" class="btn btn-default btn-sm" title="<spring:message code="boton.search"/>" ng-click="searchForm.$valid ? searchInstallation() : null">
+				    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+	            </button>
+			</div>
+	</div>
+</form>
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="height: 50px;margin-top: 5px;">
         <table class="table table-bordered">

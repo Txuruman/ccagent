@@ -62,6 +62,51 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 				CommonService.processBaseResponse(data,status,headers,config);
 			});
 	};
+	/**
+	 * Búsqueda de instalación
+	 */
+	$scope.searchInstallation=function(){
+		/**
+		 * Si la instalación está rellenada y no es la “instalación activa”, buscará esa instalación
+		 */
+		if ($scope.searchBy.installationNumber!=undefined && $scope.searchBy.installationNumber!="") {
+			if (($scope.installation!=undefined && $scope.installation.installationNumber!=$scope.searchBy.installationNumber)||($scope.installation==undefined || $scope.installation=="")) {
+				$scope.getInstallation($scope.searchBy.installationNumber);
+				return;
+			}else{
+				/**
+				 * si la instalación tiene la “instalación activa”:
+				 * - si el teléfono está relleno: búsqueda por teléfono
+				 * - si no lo está y está relleno el email: búsqueda por email
+				 */
+				if($scope.searchBy.phone!="" && $scope.searchBy.phone!=undefined){
+					$scope.getInstallationByPhone($scope.searchBy.phone);
+				}else if($scope.searchBy.email!="" && $scope.searchBy.email!=undefined){
+					$scope.getInstallationByEmail($scope.searchBy.email);
+				}
+			}
+			/**
+			 * si la instalación está vacia:
+			 * - si el teléfono está relleno: búsqueda por teléfono
+			 * - si no lo está y está relleno el email: búsqueda por email
+			 */
+		}else{
+			if($scope.searchBy.phone!="" && $scope.searchBy.phone!=undefined){
+				$scope.getInstallationByPhone($scope.searchBy.phone);
+			}else if($scope.searchBy.email!="" && $scope.searchBy.email!=undefined){
+				$scope.getInstallationByEmail($scope.searchBy.email);
+			}
+		}
+		/**
+		 * Si el teléfono está rellenado y la instalación está vacía o tiene la “instalación activa”, buscará por el teléfono
+		 */
+		if ($scope.searchBy.installationNumber!=undefined && $scope.searchBy.installationNumber!="") {
+			if (($scope.installation!=undefined && $scope.installation.installationNumber!=$scope.searchBy.installationNumber)||($scope.installation==undefined || $scope.installation=="")) {
+				$scope.getInstallation($scope.searchBy.installationNumber);
+				return;
+			}
+		}
+	}
 	
 	/**
 	 * Gestion de las palabras clave
@@ -138,6 +183,11 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 			customerPassword:"",
 			securitasPassword:"",
 			coercionPassword:""
+	}
+	$scope.searchBy={
+			installationNumber:"",
+			phone:"",
+			email:"frherrero@email.com"
 	}
 	//Las claves en readonly por defecto
 	$scope.NotEditableKeys=true;

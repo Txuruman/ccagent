@@ -350,6 +350,7 @@ div[type="text/ng-template"]{
 }
 .enlinea{
 	display:inline-block !important;
+	position:relative;
 }
 .error{
 	color:red;
