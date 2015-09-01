@@ -287,6 +287,10 @@ select.actionPlanTablePhone{
 input.actionPlanTablePhone{
 	width:70%;
 }
+.errorColor{
+	color:red;
+	font-weight:bold;
+}
 /************INVOICING*******************/
 #invoicing td, #invoicing th {
 	padding:2px !important;
@@ -328,6 +332,9 @@ input.actionPlanTablePhone{
 }
 .margin-bottom5{
 	margin-bottom:5px !important;
+}
+.margin-left5{
+	margin-left:5px !important;
 }
 .paddingTop3{
 	padding-top:3px !important;
