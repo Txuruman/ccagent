@@ -107,6 +107,7 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 			}
 		}
 	}
+	/**FIN Búsqueda de instalación */
 	
 	/**
 	 * Gestion de las palabras clave
@@ -175,7 +176,61 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 	}
 	/** FIN Gestion Información Instalación*/
 	
-	//Valores iniciales
+	/**
+	 * Edición de Planes de acción
+	 */
+	//Editar los planes, guardamos una copia del listado orignal
+	$scope.editActionPlans=function(){
+		$scope.editingActionPlans=true;
+		$scope.actionPlansOriginal=angular.copy($scope.installation.actionplans);
+	}
+	//Cancelar edición, volvemos a los valores originales
+	$scope.editActionPlansCancel=function(){
+		if ($scope.erasingActionPlans==true) {
+			$scope.installation.actionplans=angular.copy($scope.actionPlansOriginal);
+			$scope.erasingActionPlans=false;
+			$scope.actionPlansErased=[];
+		}else{
+			$scope.editingActionPlans=false;
+			$scope.installation.actionplans=angular.copy($scope.actionPlansOriginal);
+		}
+		delete($scope.actionPlansOriginal);
+	}
+	//Borrar planes, no se puede borrar mientras se está editando
+	$scope.eraseActionPlan=function($index, actionPlan){
+		$scope.erasingActionPlans=true;
+		//Guardamos una copia por si se cancela
+		if($scope.actionPlansErased.length==0){
+			$scope.actionPlansOriginal=angular.copy($scope.installation.actionplans);
+		}
+		$scope.actionPlansErased.push(actionPlan);
+		$scope.installation.actionplans.splice($index,1);
+	}
+	//Guardar planes editados, se mandan sólo los que tienen cambios
+	//Si hay elementos borrados, mandamos el array de elementos borrados
+	$scope.saveActionPlans=function(){
+		if ($scope.erasingActionPlans==true) {
+			$scope.erasingActionPlans=false;
+			//TODO: Borrar actions plans
+		}else{
+			$scope.editingActionPlans=false;
+			var modifiedPlans=[];
+			for (var i = 0; i < $scope.installation.actionplans.length; i++) {
+				if (!angular.equals($scope.actionPlansOriginal[i], $scope.installation.actionplans[i])) {
+					modifiedPlans.push($scope.installation.actionplans[i]);
+				}
+			}
+			if(modifiedPlans.length>0){
+				//TODO: modificar Actions Plans
+			}
+		}
+		
+	}
+	/** FIN Edición Planes de acción */
+	
+	/**
+	 * Valores iniciales
+	 */
 	$scope.getInstallation(971120);
 	$scope.getAudit(111111);
 	$scope.getFieldConfig();
@@ -195,4 +250,10 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 	$scope.EditingKeysButtons=false;
 	//Botones de editar información de la instalación, true-->se muestra validar y cancelar y se oculta lapiz
 	$scope.editingInstallationInfo=false;
+	//Editando la tabla de action plans, true --> tabla editable, se muestran los botones de guardar y cancelar
+	$scope.editingActionPlans=false;
+	//Borrando elementos de la lista de action plans, true --> se muestran los botones de guardar y cancelar
+	$scope.erasingActionPlans=false;
+	//Elementos borrados de la lista de Actions Plans antes de guardar
+	$scope.actionPlansErased=[];
 });

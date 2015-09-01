@@ -273,6 +273,20 @@ div[type="text/ng-template"]{
 	padding:3px !important;
 	vertical-align: middle;
 }
+.actionPlanTableText, .actionPlanTablePhone{
+	border: 0;
+    text-align: center;
+    padding-top:3px;
+}
+.actionPlanTableText{
+	width: 100%;
+}
+select.actionPlanTablePhone{
+	width:25%;
+}
+input.actionPlanTablePhone{
+	width:70%;
+}
 /************INVOICING*******************/
 #invoicing td, #invoicing th {
 	padding:2px !important;
