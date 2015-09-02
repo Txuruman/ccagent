@@ -1,5 +1,6 @@
 package es.securitasdirect.moduloweb.web.controller;
 
+import es.securitasdirect.moduloweb.exceptions.BusinessException;
 import es.securitasdirect.moduloweb.web.dto.support.BaseResponse;
 import es.securitasdirect.moduloweb.web.util.MessageUtil;
 import org.slf4j.Logger;
