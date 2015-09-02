@@ -1,11 +1,10 @@
 package es.securitasdirect.moduloweb.web.controller;
 
+import es.securitasdirect.moduloweb.exceptions.BusinessException;
 import es.securitasdirect.moduloweb.web.dto.support.BaseResponse;
 import es.securitasdirect.moduloweb.web.util.MessageUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import es.securitasdirect.moduloweb.web.dto.support.BaseRequest;
-import org.wso2.ws.dataservice.DataServiceFault;
 
 import javax.inject.Inject;
 import java.util.Date;
@@ -17,31 +16,31 @@ public abstract class BaseController {
     @Inject
     protected MessageUtil messageUtil;
 
+    /**
+     * Procesa una excepción y añade el texto de error como respuesta del mensaje
+     * @param exception
+     * @return
+     */
     protected BaseResponse processException(Exception exception) {
-        LOGGER.error("Error sent in BaseResponse {}" , exception.getMessage());
-        BaseResponse response = new BaseResponse();
-        response.danger(exception.getMessage()); //TODO MENSAGE GENERICO CON
-        return response;
+        return processException(new BaseResponse(), exception);
     }
 
-    protected BaseResponse processException(Exception exception, String funcMsg){
-        BaseResponse response = new BaseResponse();
-        if(funcMsg!=null && !funcMsg.isEmpty()){
-            response.danger(funcMsg);
+    /**
+     * Procesa una excepción y añade el texto de error como respuesta del mensaje a una respuesta ya existente
+     * @param exception
+     * @return
+     */
+    protected BaseResponse processException(BaseResponse response, Exception exception) {
+        if (exception instanceof BusinessException) {
+            //Excepción de negocio
+            LOGGER.error("Business error {}" , exception.getMessage(),exception);
+            response.danger(messageUtil.getProperty(((BusinessException) exception).getErrorCode().toString(),((BusinessException) exception).getErrorParams()));
+        } else {
+            //Excepción General
+            LOGGER.error("Server error {}" , exception.getMessage(),exception);
+            response.danger(messageUtil.getProperty("exception", exception.getMessage()));
         }
-        LOGGER.error(funcMsg);
-        if(exception instanceof DataServiceFault){
-            DataServiceFault dataServiceFault = (DataServiceFault) exception;
-            StringBuilder sb = new StringBuilder();
-            sb.append("Error in data service: ")
-                    .append("FaultInfo:").append(dataServiceFault.getFaultInfo())
-                    .append("Message:").append(dataServiceFault.getMessage());
-            response.danger(sb.toString());
-            sb.append("\n").append(dataServiceFault.toString());
-            LOGGER.error(sb.toString());
-        }else{
-            LOGGER.error("Error sent in BaseResponse {}\n{}" , exception.getMessage(),exception.toString());
-        }
+
         return response;
     }
 
