@@ -31,3 +31,4 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/custom.css"/>
 <%-- <script src="${pageContext.request.contextPath}/resources/js/respond.min.js"></script> --%>
 <!-- Angular JS Scripts -->
+
