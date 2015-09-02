@@ -51,6 +51,8 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 			).success(function (data, status, headers, config) {
 					//Datos de información de facturación de la instalación	
 					$scope.invoiceInfo = data.invoiceInfo;
+					$scope.activationCheckValue=$scope.invoiceInfo.invoiceSend; //valor inicial check lo guardamos para el cancelar
+					$scope.activationEmailBillingValue=$scope.invoiceInfo.emailBilling; //valor inicial emailBilling lo guardamos para el cancelar
 					$scope.invoiceInfo.debtAmount=$scope.invoiceInfo.debtAmount+" €";	
 					if ($scope.invoiceInfo.discount==true) {
 						$scope.invoiceInfo.discount="Si";
@@ -124,6 +126,22 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 		});
 	};
 	
+	/**
+	 * Gestión CCC
+	 */
+	$scope.cccEdit=function(){
+		$scope.cccEditing=true;
+		$scope.cccTemp=angular.copy($scope.invoiceInfo.ccc);
+	}
+	$scope.cccSave=function(){
+		$scope.cccEditing=false;
+		delete($scope.cccTemp);
+	}
+	$scope.cccCancel=function(){
+		$scope.cccEditing=false;
+		$scope.$scope.invoiceInfo.ccc=angular.copy($scope.cccTemp);
+		delete($scope.cccTemp);
+	}
 	
 	/**
 	 * Paginación
@@ -161,12 +179,16 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 		$scope.paginaActual=$scope.paginas[0];
 //		alert($scope.paginas[0]);
 	}
-	
+	/** FIN Paginación */
 	//Inicialización;
+	
 	$scope.getAudit(111111);
 	$scope.getInvoice(971120);
 	$scope.getFieldConfig();
 	$scope.tipoFra=""; //Inicializamos filtro de tipo de factura para que muestre todas por defectos
+	$scope.activationEdit=true; //No estamos editando la activación cuando es true
+	//Editar CCC
+	$scope.cccEditing=false;
 });
 
 //Controlador para gestionar el modal de detalle facturas

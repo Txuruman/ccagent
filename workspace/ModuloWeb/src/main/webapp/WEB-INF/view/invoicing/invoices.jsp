@@ -48,12 +48,12 @@
                 <td>{{item.dueDate | date:'dd/MM/yyyy'}}</td>
                 <td>
                     <button type="button" class="btn btn-default btn-sm" ng-click="openInvoiceDetailModal(item.invoiceNumber)" title="Ver detalle">
-                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-search colorSearch" aria-hidden="true"></span>
                     </button>
                 </td>
             </tr>
         </table>
-        <div pagination total-items="bigTotalItems" ng-model="bigCurrentPage" items-per-page="itemsPage" class="pagination-sm" boundary-links="true" ng-change="pageChange()"></div>
+        <div pagination total-items="bigTotalItems" ng-model="bigCurrentPage" items-per-page="itemsPage" class="pagination-sm" boundary-links="true" ng-change="pageChange()" previous-text="&lt;" next-text="&gt;" first-text="&lt;&lt;" last-text="&gt;&gt;"></div>
     </div>
 </div>
 <app:invoiceDetailModalContent/>

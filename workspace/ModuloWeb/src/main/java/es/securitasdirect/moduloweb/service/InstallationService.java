@@ -1,5 +1,6 @@
 package es.securitasdirect.moduloweb.service;
 
+import es.securitasdirect.moduloweb.exceptions.BusinessException;
 import es.securitasdirect.moduloweb.model.Cuote;
 import es.securitasdirect.moduloweb.model.DirectAccess;
 import es.securitasdirect.moduloweb.model.DummyGenerator;
@@ -28,7 +29,9 @@ public class InstallationService {
 
 
     public InstallationData getInstallation(Integer installationNumber) {
-        return DummyGenerator.getInstallation(installationNumber);
+    	throw new BusinessException(BusinessException.ErrorCode.ERROR_INSTALLATION_NOT_FOUND);
+//    	return DummyGenerator.getInstallation(installationNumber);
+    	
     }
 
 }

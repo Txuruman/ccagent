@@ -6,6 +6,8 @@ import es.securitasdirect.moduloweb.service.DirectAccessService;
 import es.securitasdirect.moduloweb.service.InstallationService;
 import es.securitasdirect.moduloweb.web.dto.response.InstallationResponse;
 import es.securitasdirect.moduloweb.web.dto.response.ListDirectAccessResponse;
+import es.securitasdirect.moduloweb.web.dto.support.BaseResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -38,17 +40,19 @@ public class InstallationController extends BaseController {
     @RequestMapping(value = "getInstallation", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public
     @ResponseBody
-    InstallationResponse getInstallation(@RequestParam(value = "installationId", required = true) Integer installationId) {
+    BaseResponse getInstallation(@RequestParam(value = "installationId", required = true) Integer installationId) {
         InstallationResponse response = new InstallationResponse();
-        InstallationData installation = installationService.getInstallation(installationId);
-        response.setInstallation(installation);
-
-        if (installation != null) {
-            response.success(messageUtil.getProperty("installationData.success"));
-        } else {
-            response.danger(messageUtil.getProperty("installationData.notFound"));
+        try{
+	        InstallationData installation = installationService.getInstallation(installationId);
+	        response.setInstallation(installation);
+      	         return response;
+        }catch(Exception exception){
+        	return processException(exception);
         }
-        return response;
+//       if (installation != null) {
+//            response.success(messageUtil.getProperty("installationData.success"));
+//        } else {
+//            response.danger(messageUtil.getProperty("installationData.notFound"));
+//        }
     }
-
 }

@@ -99,6 +99,8 @@ public class DummyGenerator {
         installation.setSecuritasPassword("123456");
         installation.setSubtype("Subtipo");
         installation.setVersion("FAST A.06");
+        installation.setLanguage("Español");
+        installation.setEmailServices("servicios@email.es");
 
         installation.setActionplans(getActionPlan());
 

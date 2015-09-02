@@ -8,14 +8,20 @@
 <div class="row">
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<h3 class="tituloSeccion enlinea margin-right10">Plan de Acción</h3>
+		<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.edit"/>" ng-hide="editingActionPlans || erasingActionPlans" ng-click="editActionPlans()">
+		   	<span class="glyphicon glyphicon-pencil colorEdit" aria-hidden="true"></span>
+        </button>
 		<div class="btn-group inline enlinea">
-           		<button type="button" class="btn btn-default" title="Editar">
-			    	<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-           		</button>
-           		<button type="button" class="btn btn-default" title="Guardar cambios">
-			    	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-           		</button>
-			</div>
+        	<button type="submit" class="btn btn-default btn-sm" title="<spring:message code="boton.save"/>" ng-show="editingActionPlans || erasingActionPlans" ng-click="actionPlanForm.$valid ? saveActionPlans() : null">
+		    	<span class="glyphicon glyphicon-ok colorSave" aria-hidden="true"></span>
+        	</button>
+        	<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.cancel"/>" ng-show="editingActionPlans || erasingActionPlans" ng-click="editActionPlansCancel()">
+		    	<span class="glyphicon glyphicon-remove colorCancel" aria-hidden="true"></span>
+        	</button>
+		</div>
+		<div class="enlinea">
+			<span class="error margin-left5" ng-show="actionPlanForm.$error.pattern"><spring:message code="error.numeric"/></span>
+		</div>
 	</div>
 </div>
 <div class="row">
@@ -44,35 +50,47 @@
 		            </div>
 			</div>
 			<div class="scrollTabla">
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center borderTablaBottom tablaConBoton"  ng-repeat="p in installation.actionplans | filter:{secuence:0} | orderBy : 'secuence'">
-		            
-		                	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight">{{p.type}}</div>
-		                	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center borderTablaRight">{{p.contactName}}</div>
-		            
-		                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 text-center sinPadding">
-	                		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 text-center sinPadding">
-				                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center borderTablaRight">
-				                	<img ng-src="{{(p.phone1.type==='fijo' ? '${pageContext.request.contextPath}/resources/images/Phone-1-black-15.png' : '${pageContext.request.contextPath}/resources/images/Iphone-black-15.png')}}" 
-				                	title="{{(p.phone1.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}"/> {{ p.phone1.number}}
-				                </div>
-				                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center borderTablaRight">
-					                <img ng-src="{{(p.phone2.type==='fijo' ? '${pageContext.request.contextPath}/resources/images/Phone-1-black-15.png' : '${pageContext.request.contextPath}/resources/images/Iphone-black-15.png')}}" 
-					                	title="{{(p.phone2.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}"/> {{ p.phone2.number}}
-					            </div>
-				                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center borderTablaRight">
-				                	<img ng-src="{{(p.phone3.type==='fijo' ? '${pageContext.request.contextPath}/resources/images/Phone-1-black-15.png' : '${pageContext.request.contextPath}/resources/images/Iphone-black-15.png')}}" 
-				                	title="{{(p.phone3.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}"/> {{ p.phone3.number}}
-				                </div>
+				<form method="post" name="actionPlanForm">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center borderTablaBottom tablaConBoton"  ng-repeat="p in installation.actionplans | filter:{secuence:0} | orderBy : 'secuence'">
+			            
+			                	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight"><input class="actionPlanTableText" type="text" name="{{'type'+$index}}" ng-model="p.type" ng-readonly="!editingActionPlans" pattern="[0-9]+" ng-class="actionPlanForm.{{'type'+$index}}.$error.pattern ? 'errorColor' : null"/></div>
+			                	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center borderTablaRight"><input class="actionPlanTableText" type="text" name="{{'contactName'+$index}}" ng-model="p.contactName" ng-readonly="!editingActionPlans"/></div>
+			            
+			                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 text-center sinPadding">
+		                		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 text-center sinPadding">
+					                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center borderTablaRight">
+					                	<span ng-class="p.phone1.type==='fijo' ? 'glyphicon glyphicon-phone-alt' : 'glyphicon glyphicon-phone'" aria-hidden="true" title="{{(p.phone1.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}" ng-hide="editingActionPlans"></span>
+					                	<select name="phone1Type" ng-show="editingActionPlans" ng-model="p.phone1.type" class="actionPlanTablePhone">
+											<option value="fijo" title="<spring:message code="actionplan.fijo"/>"><spring:message code="actionplan.fijo.first"/></option>
+											<option value="movil" title="<spring:message code="actionplan.movil"/>"><spring:message code="actionplan.movil.first"/></option>
+										</select>
+					                	<input class="actionPlanTablePhone" type="text" name="{{'phone1'+$index}}" ng-model="p.phone1.number" ng-readonly="!editingActionPlans" pattern="[0-9]+" ng-class="actionPlanForm.{{'phone1'+$index}}.$error.pattern ? 'errorColor' : null"/>
+					                </div>
+					                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center borderTablaRight">
+						                <span ng-class="p.phone2.type==='fijo' ? 'glyphicon glyphicon-phone-alt' : 'glyphicon glyphicon-phone'" aria-hidden="true" title="{{(p.phone2.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}" ng-hide="editingActionPlans"></span>
+						                <select name="phone2Type" ng-show="editingActionPlans" ng-model="p.phone2.type" class="actionPlanTablePhone">
+											<option value="fijo" title="<spring:message code="actionplan.fijo"/>"><spring:message code="actionplan.fijo.first"/></option>
+											<option value="movil" title="<spring:message code="actionplan.movil"/>"><spring:message code="actionplan.movil.first"/></option>
+										</select>
+						                <input class="actionPlanTablePhone" type="text" name="{{'phone2'+$index}}" ng-model="p.phone2.number" ng-readonly="!editingActionPlans" pattern="[0-9]+" ng-class="actionPlanForm.{{'phone2'+$index}}.$error.pattern ? 'errorColor' : null"/>
+						            </div>
+					                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center borderTablaRight">
+					                	<span ng-class="p.phone3.type==='fijo' ? 'glyphicon glyphicon-phone-alt' : 'glyphicon glyphicon-phone'" aria-hidden="true" title="{{(p.phone3.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}" ng-hide="editingActionPlans"></span>
+					                	<select name="phone3Type" ng-show="editingActionPlans" ng-model="p.phone3.type" class="actionPlanTablePhone">
+											<option value="fijo" title="<spring:message code="actionplan.fijo"/>"><spring:message code="actionplan.fijo.first"/></option>
+											<option value="movil" title="<spring:message code="actionplan.movil"/>"><spring:message code="actionplan.movil.first"/></option>
+										</select> 
+										<input class="actionPlanTablePhone" type="text" name="{{'phone3'+$index}}" ng-model="p.phone3.number" ng-readonly="!editingActionPlans" pattern="[0-9]+" ng-class="actionPlanForm.{{'phone3'+$index}}.$error.pattern ? 'errorColor' : null"/>
+					                </div>
+					             </div>
+					             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center">
+						            <button type="button" class="btn btn-default btn-sm" ng-hide="editingActionPlans" title="<spring:message code="boton.erase"/>" ng-disabled="editingActionPlans" ng-click="eraseActionPlan($index, p)">
+				                      	<span class="glyphicon glyphicon-trash colorErase" aria-hidden="true"></span>
+				                    </button>
+			                    </div>   
 				             </div>
-				             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center">
-					            <button type="button" class="btn btn-default btn-sm" title="Borrar">
-			                      	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-			                    </button>
-		                    </div>   
-			             </div>
-			             
-	                    
-		           </div>
+			           </div>
+		           </form>
 	        </div>
 	    </div>
     </div>

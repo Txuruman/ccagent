@@ -26,7 +26,10 @@ public class InstallationData {
 //    private String emailBilling; //Lo cambiamos a InvoiceInfo
 
     private String emailUpdate;
-
+    
+    /** Email de servicios*/
+    private String emailServices;
+    
     /** Indica la marca de la c´mara que la instalación tiene */
     private String camera;
 
@@ -44,7 +47,10 @@ public class InstallationData {
 
     /** Segmento */
     private String subtype;
-
+    
+    /** Idioma */
+    private String language;
+    
 //    /** Cuenta corriente */
 //    private String ccc;
 
@@ -123,8 +129,16 @@ public class InstallationData {
     public void setEmailUpdate(String emailUpdate) {
         this.emailUpdate = emailUpdate;
     }
+    
+    public String getEmailServices() {
+		return emailServices;
+	}
 
-    public String getCamera() {
+	public void setEmailServices(String emailServices) {
+		this.emailServices = emailServices;
+	}
+
+	public String getCamera() {
         return camera;
     }
 
@@ -171,7 +185,7 @@ public class InstallationData {
     public void setSubtype(String subtype) {
         this.subtype = subtype;
     }
-
+    
 //    public String getCcc() {
 //        return ccc;
 //    }
@@ -180,7 +194,15 @@ public class InstallationData {
 //        this.ccc = ccc;
 //    }
 
-    public String getCustomerPassword() {
+    public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public String getCustomerPassword() {
         return customerPassword;
     }
 
@@ -212,29 +234,14 @@ public class InstallationData {
         this.actionplans = actionplans;
     }
 
-    @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer("InstallationData{");
-        sb.append("panel='").append(panel).append('\'');
-        sb.append(", version='").append(version).append('\'');
-        sb.append(", installationNumber=").append(installationNumber);
-        sb.append(", panelPhone='").append(panelPhone).append('\'');
-        sb.append(", customerName='").append(customerName).append('\'');
-        sb.append(", emailMonitoring='").append(emailMonitoring).append('\'');
-       // sb.append(", emailBilling='").append(emailBilling).append('\'');
-        sb.append(", emailUpdate='").append(emailUpdate).append('\'');
-        sb.append(", camera=").append(camera);
-        sb.append(", aka='").append(aka).append('\'');
-        sb.append(", address='").append(address).append('\'');
-        sb.append(", city='").append(city).append('\'');
-        sb.append(", monitoringStatus='").append(monitoringStatus).append('\'');
-        sb.append(", subtype='").append(subtype).append('\'');
-//        sb.append(", ccc='").append(ccc).append('\'');
-        sb.append(", customerPassword='").append(customerPassword).append('\'');
-        sb.append(", securitasPassword='").append(securitasPassword).append('\'');
-        sb.append(", coercionPassword='").append(coercionPassword).append('\'');
-        sb.append(", actionplans=").append(actionplans);
-        sb.append('}');
-        return sb.toString();
-    }
+	@Override
+	public String toString() {
+		return "InstallationData [panel=" + panel + ", version=" + version + ", installationNumber="
+				+ installationNumber + ", panelPhone=" + panelPhone + ", customerName=" + customerName
+				+ ", emailMonitoring=" + emailMonitoring + ", emailUpdate=" + emailUpdate + ", emailServices="
+				+ emailServices + ", camera=" + camera + ", aka=" + aka + ", address=" + address + ", city=" + city
+				+ ", monitoringStatus=" + monitoringStatus + ", subtype=" + subtype + ", language=" + language
+				+ ", customerPassword=" + customerPassword + ", securitasPassword=" + securitasPassword
+				+ ", coercionPassword=" + coercionPassword + ", actionplans=" + actionplans + "]";
+	}
 }

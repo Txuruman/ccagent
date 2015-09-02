@@ -273,6 +273,24 @@ div[type="text/ng-template"]{
 	padding:3px !important;
 	vertical-align: middle;
 }
+.actionPlanTableText, .actionPlanTablePhone{
+	border: 0;
+    text-align: center;
+    padding-top:3px;
+}
+.actionPlanTableText{
+	width: 100%;
+}
+select.actionPlanTablePhone{
+	width:25%;
+}
+input.actionPlanTablePhone{
+	width:70%;
+}
+.errorColor{
+	color:red;
+	font-weight:bold;
+}
 /************INVOICING*******************/
 #invoicing td, #invoicing th {
 	padding:2px !important;
@@ -312,8 +330,14 @@ div[type="text/ng-template"]{
 .margin-bottom10{
 	margin-bottom:10px;
 }
+.margin-bottom8{
+	margin-bottom:8px;
+}
 .margin-bottom5{
 	margin-bottom:5px !important;
+}
+.margin-left5{
+	margin-left:5px !important;
 }
 .paddingTop3{
 	padding-top:3px !important;
@@ -350,4 +374,28 @@ div[type="text/ng-template"]{
 }
 .enlinea{
 	display:inline-block !important;
+	position:relative;
+}
+.error{
+	color:red;
+	display:block;
+	font-weight:bold;
+}
+.colorCancel{
+	color:darkred !important;
+}
+.colorEdit{
+	color:darkorange !important;
+}
+.colorSave{
+	color:#28a103 !important;
+}
+.colorShow{
+	color:darkblue !important;
+}
+.colorErase{
+	color:#f30627 !important;
+}
+.colorSearch{
+	color:cornflowerblue !important;
 }
