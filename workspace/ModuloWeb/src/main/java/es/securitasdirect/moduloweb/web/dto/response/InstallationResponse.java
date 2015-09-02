@@ -11,7 +11,9 @@ import java.util.List;
  */
 public class InstallationResponse extends BaseResponse {
     private InstallationData installation;
-
+    public InstallationResponse(){
+    	super();
+    }
     public InstallationData getInstallation() {
         return installation;
     }
