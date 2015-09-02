@@ -28,7 +28,7 @@
 							</div>
 							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 editarCCC">
 								<button type="button" class="btn btn-default  btn-sm" title="Editar CCC">
-			    					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+			    					<span class="glyphicon glyphicon-pencil colorEdit" aria-hidden="true"></span>
             					</button>
 							</div>
 						</div>

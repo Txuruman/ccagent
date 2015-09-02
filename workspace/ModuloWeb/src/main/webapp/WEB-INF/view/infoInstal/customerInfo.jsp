@@ -10,15 +10,15 @@
 			<h3 class="tituloSeccion enlinea margin-right10"><spring:message code="infoinstal.title"/></h3>
 			<div class="inline enlinea" >
 				<button type="button" class="btn btn-default  btn-sm" ng-click="installationInfoEdit()" title="<spring:message code="boton.edit"/>" ng-hide="editingInstallationInfo">
-				    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+				    <span class="glyphicon glyphicon-pencil colorEdit" aria-hidden="true"></span>
 	            </button>
             </div>
 			<div class="btn-group inline enlinea" >
            		<button type="submit" class="btn btn-default btn-sm" title="<spring:message code="boton.save"/>" ng-click="InfoInstallForm.$valid ? installationInfoSave() : null" ng-show="editingInstallationInfo">
-			    	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+			    	<span class="glyphicon glyphicon-ok colorSave" aria-hidden="true"></span>
            		</button>
            		<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.cancel"/>" ng-click="installationInfoEditCancel()" ng-show="editingInstallationInfo">
-			    	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+			    	<span class="glyphicon glyphicon-remove colorCancel" aria-hidden="true"></span>
            		</button>
 			</div>
 		</div>

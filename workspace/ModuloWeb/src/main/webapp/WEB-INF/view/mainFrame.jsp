@@ -43,6 +43,7 @@
 					<%@include file="invoicing/invoicing.jsp"%>
 				</li> 
 				<li tab heading="AVERÍAS">
+					<%@include file="pruebaCall.jsp"%>
 <!-- 					<iframe src="http://sd_dev.elecnor-deimos.com:7001/sdaverias/" width="100%" height="600px" ></iframe> -->
 				</li>
 <!-- 				<tab heading="AUTOMATISMOS"> -->

@@ -38,18 +38,18 @@
 		<div class="enlinea width10" id="IE8W202" >
 			<div class="btn-group">
 				<button type="button" class="btn btn-default  btn-sm" ng-click="keysShow()" ng-hide="EditingKeysButtons" title="<spring:message code="boton.show"/>">
-	          		<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+	          		<span class="glyphicon glyphicon-eye-open colorShow" aria-hidden="true"></span>
 	    		</button>
 				<button type="button" class="btn btn-default  btn-sm" ng-click="keysEdit()" ng-hide="EditingKeysButtons" title="<spring:message code="boton.edit"/>">
-				    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+				    <span class="glyphicon glyphicon-pencil colorEdit" aria-hidden="true"></span>
 	            </button>
 	    	</div>
 	    	<div class="btn-group">
 	    		<button type="button" class="btn btn-default  btn-sm" title="<spring:message code="boton.save"/>" ng-click="keysSave()" ng-show="EditingKeysButtons" >
-				    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+				    <span class="glyphicon glyphicon-ok colorSave" aria-hidden="true"></span>
 	            </button>
 				<button type="button" class="btn btn-default  btn-sm" title="<spring:message code="boton.cancel"/>"  ng-click="keysEditCancel()" ng-show="EditingKeysButtons">
-	          		<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+	          		<span class="glyphicon glyphicon-remove colorCancel" aria-hidden="true"></span>
 	    		</button>
 			</div>
 		</div>

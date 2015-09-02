@@ -13,13 +13,13 @@
 	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 		<div class="paddingTop3">
 			<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.edit"/>" ng-click="activationEdit=false" ng-show="activationEdit">
-				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+				<span class="glyphicon glyphicon-pencil colorEdit" aria-hidden="true"></span>
 			</button>
 			<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.save"/>" ng-click="" ng-hide="activationEdit">
-				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+				<span class="glyphicon glyphicon-ok colorSave" aria-hidden="true"></span>
 			</button>
 			<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.cancel"/>" ng-click="activationEdit=true; invoiceInfo.invoiceSend=activationCheckValue; invoiceInfo.emailBilling=activationEmailBillingValue;" ng-hide="activationEdit">
-				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+				<span class="glyphicon glyphicon-remove colorCancel" aria-hidden="true"></span>
 			</button>
 		</div>
 	</div>

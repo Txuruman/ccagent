@@ -9,14 +9,14 @@
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<h3 class="tituloSeccion enlinea margin-right10">Plan de Acción</h3>
 		<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.edit"/>" ng-hide="editingActionPlans || erasingActionPlans" ng-click="editActionPlans()">
-		   	<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+		   	<span class="glyphicon glyphicon-pencil colorEdit" aria-hidden="true"></span>
         </button>
 		<div class="btn-group inline enlinea">
         	<button type="submit" class="btn btn-default btn-sm" title="<spring:message code="boton.save"/>" ng-show="editingActionPlans || erasingActionPlans" ng-click="actionPlanForm.$valid ? saveActionPlans() : null">
-		    	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+		    	<span class="glyphicon glyphicon-ok colorSave" aria-hidden="true"></span>
         	</button>
         	<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.cancel"/>" ng-show="editingActionPlans || erasingActionPlans" ng-click="editActionPlansCancel()">
-		    	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+		    	<span class="glyphicon glyphicon-remove colorCancel" aria-hidden="true"></span>
         	</button>
 		</div>
 		<div class="enlinea">
@@ -84,7 +84,7 @@
 					                </div>
 					             </div>
 					             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center">
-						            <button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.erase"/>" ng-disabled="editingActionPlans" ng-click="eraseActionPlan($index, p)">
+						            <button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.erase"/>" ng-class="!editingActionPlans ? 'colorErase' : null" ng-disabled="editingActionPlans" ng-click="eraseActionPlan($index, p)">
 				                      	<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 				                    </button>
 			                    </div>   
