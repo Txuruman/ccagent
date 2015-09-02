@@ -47,7 +47,7 @@
 			</div>
 			<div class="enlinea width10" id="IE8W202">
 				<button type="submit" class="btn btn-default btn-sm" title="<spring:message code="boton.search"/>" ng-click="searchForm.$valid ? searchInstallation() : null">
-				    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				    <span class="glyphicon glyphicon-search colorSearch" aria-hidden="true"></span>
 	            </button>
 			</div>
 	</div>

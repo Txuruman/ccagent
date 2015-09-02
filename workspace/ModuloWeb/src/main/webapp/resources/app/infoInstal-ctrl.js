@@ -179,9 +179,10 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 	/**
 	 * Edición de Planes de acción
 	 */
-	//Editar los planes, guardamos una copia del listado orignal
+	//Editar los planes, guardamos una copia del listado original
 	$scope.editActionPlans=function(){
 		$scope.editingActionPlans=true;
+		//$(".erasing span").toggleClass("colorErase");
 		$scope.actionPlansOriginal=angular.copy($scope.installation.actionplans);
 	}
 	//Cancelar edición, volvemos a los valores originales
@@ -192,6 +193,7 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 			$scope.actionPlansErased=[];
 		}else{
 			$scope.editingActionPlans=false;
+			//$(".erasing span").toggleClass("colorErase");
 			$scope.installation.actionplans=angular.copy($scope.actionPlansOriginal);
 		}
 		delete($scope.actionPlansOriginal);
@@ -214,6 +216,7 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 			//TODO: Borrar actions plans
 		}else{
 			$scope.editingActionPlans=false;
+			//$(".erasing span").toggleClass("colorErase");
 			var modifiedPlans=[];
 			for (var i = 0; i < $scope.installation.actionplans.length; i++) {
 				if (!angular.equals($scope.actionPlansOriginal[i], $scope.installation.actionplans[i])) {

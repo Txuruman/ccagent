@@ -48,7 +48,7 @@
                 <td>{{item.dueDate | date:'dd/MM/yyyy'}}</td>
                 <td>
                     <button type="button" class="btn btn-default btn-sm" ng-click="openInvoiceDetailModal(item.invoiceNumber)" title="Ver detalle">
-                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-search colorSearch" aria-hidden="true"></span>
                     </button>
                 </td>
             </tr>

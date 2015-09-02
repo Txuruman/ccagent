@@ -84,8 +84,8 @@
 					                </div>
 					             </div>
 					             <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center">
-						            <button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.erase"/>" ng-class="!editingActionPlans ? 'colorErase' : null" ng-disabled="editingActionPlans" ng-click="eraseActionPlan($index, p)">
-				                      	<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+						            <button type="button" class="btn btn-default btn-sm" ng-hide="editingActionPlans" title="<spring:message code="boton.erase"/>" ng-disabled="editingActionPlans" ng-click="eraseActionPlan($index, p)">
+				                      	<span class="glyphicon glyphicon-trash colorErase" aria-hidden="true"></span>
 				                    </button>
 			                    </div>   
 				             </div>
