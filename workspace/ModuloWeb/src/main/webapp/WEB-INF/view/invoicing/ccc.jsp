@@ -22,12 +22,10 @@
 						aria-hidden="true"></span>
 				</button>
 			</div>
-			<!--[if IE 8]>
 			<div class="enlinea">
 				<span class="error margin-left5"
 					ng-show="cccForm.$error.pattern"><spring:message code="error.ccc" /></span>
-			</div>
-			<![endif]--> 
+			</div> 
 		</div>
 	</div>
 	<!-- <div class="row"> -->

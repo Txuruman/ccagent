@@ -5,12 +5,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
 <div class="row contenedorCheck">
-	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+	<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
 		 <div class="checkbox disabled">
 		     <label class="font14"><input type="checkbox" value="" ng-disabled="activationEdit" ng-model="invoiceInfo.invoiceSend"><spring:message code="invoicing.activation.checklabel"/></label>
 		</div>
 	</div>
-	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
 		<div class="paddingTop3">
 			<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.edit"/>" ng-click="activationEdit=false" ng-show="activationEdit">
 				<span class="glyphicon glyphicon-pencil colorEdit" aria-hidden="true"></span>

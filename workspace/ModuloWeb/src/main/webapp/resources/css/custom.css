@@ -1,5 +1,5 @@
 html{
-	width:98%;
+	width:100%;
 }
 html, body{
 	max-width:1600px;
@@ -133,6 +133,11 @@ h2{
 }
 
 /*******PARA TODAS**********/
+.pestanas{
+	width: 93%;
+    display: inline-block;
+    margin-left: 0.5%;
+}
 .messageAlerts{
     position: absolute !important;
     width: 35% !important;
@@ -345,6 +350,9 @@ input.actionPlanTablePhone{
 }
 .margin-left5{
 	margin-left:5px !important;
+}
+.sinMarginRight{
+	margin-right:0 !important;
 }
 .paddingTop3{
 	padding-top:3px !important;

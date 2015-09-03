@@ -6,7 +6,7 @@
 
 <html ng-app="myApp" >
 <head>
-<title><spring:message code="titulo.BuscarTarea" /></title><!--  TODO Cambiar titulo principals -->
+<title><spring:message code="titulo.ccagent" /></title><!--  TODO Cambiar titulo principals -->
 <app:commonImports />
 
 <!-- CONTROLADORES ANGULARJS -->
@@ -19,7 +19,7 @@
 </head>
 <body ng-controller="mainFrameController" class="paddingTop3">
  <app:messages/>
-	<div class="row">
+	<div class="row sinMarginRight">
 		<!-- ACCESOS DIRECTOS -->
 		<div
 			class="col-lg-1 col-md-1 col-sm-1 col-xs-1 btn-group-vertical vertical-text-group"
@@ -34,7 +34,7 @@
 		<!-- FIN ACCESOS DIRECTOS -->
 
 		<!-- PANEL DE PESTAÑAS -->
-		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+		<div class="pestanas">
 			<ul tabset justified="false"> 
 				<li tab heading="INFO INST." active="${activeTab eq 'INST'}">
 					<%@include file="infoInstal/infoInstal.jsp"%>
