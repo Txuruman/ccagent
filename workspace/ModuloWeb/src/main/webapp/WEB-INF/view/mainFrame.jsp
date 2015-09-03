@@ -18,6 +18,7 @@
 
 </head>
 <body ng-controller="mainFrameController" class="paddingTop3">
+ <app:messages/>
 	<div class="row">
 		<!-- ACCESOS DIRECTOS -->
 		<div

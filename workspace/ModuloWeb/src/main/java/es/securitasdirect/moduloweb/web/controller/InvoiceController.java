@@ -6,6 +6,8 @@ import es.securitasdirect.moduloweb.model.InvoiceData;
 import es.securitasdirect.moduloweb.model.InvoiceInfo;
 import es.securitasdirect.moduloweb.service.InvoiceService;
 import es.securitasdirect.moduloweb.web.dto.response.InvoiceResponse;
+import es.securitasdirect.moduloweb.web.dto.support.BaseResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -38,23 +40,29 @@ public class InvoiceController extends BaseController {
     @RequestMapping(value = "getInvoice", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public
     @ResponseBody
-    InvoiceResponse getInvoice(@RequestParam(value = "installationNumber", required = true) Integer installationNumber) {
-       InvoiceResponse response = new InvoiceResponse();
-        InvoiceInfo invoice = invoiceService.getInvoice(installationNumber);
-        List<CycleFeeds> cyclefeeds= invoiceService.getCycleFeeds(11111);
-        List<InvoiceData> invoiceList=invoiceService.getListInvoices(installationNumber);
-        Cuote cuote=invoiceService.getCuotes(installationNumber);
-        response.setInvoiceInfo(invoice);
-        response.setCycleFeeds(cyclefeeds);
-        response.setInvoiceList(invoiceList);
-        response.setCuote(cuote);
+    BaseResponse getInvoice(@RequestParam(value = "installationNumber", required = true) Integer installationNumber) {
+    	try{
+    		InvoiceResponse response = new InvoiceResponse();
+            InvoiceInfo invoice = invoiceService.getInvoice(installationNumber);
+            List<CycleFeeds> cyclefeeds= invoiceService.getCycleFeeds(11111);
+            List<InvoiceData> invoiceList=invoiceService.getListInvoices(installationNumber);
+            Cuote cuote=invoiceService.getCuotes(installationNumber);
+            response.setInvoiceInfo(invoice);
+            response.setCycleFeeds(cyclefeeds);
+            response.setInvoiceList(invoiceList);
+            response.setCuote(cuote);
+            return response;
+    	}catch(Exception exception){
+    		return processException(exception);
+    	}
+    	
+//        
+//        if (invoice != null) {
+//            response.success(messageUtil.getProperty("installationData.success"));
+//        } else {
+//            response.danger(messageUtil.getProperty("installationData.notFound"));
+//        }
         
-        if (invoice != null) {
-            response.success(messageUtil.getProperty("installationData.success"));
-        } else {
-            response.danger(messageUtil.getProperty("installationData.notFound"));
-        }
-        return response;
     }
 
 }

@@ -1,5 +1,6 @@
 package es.securitasdirect.moduloweb.service;
 
+import es.securitasdirect.moduloweb.exceptions.BusinessException;
 import es.securitasdirect.moduloweb.model.Audit;
 import es.securitasdirect.moduloweb.model.DirectAccess;
 import es.securitasdirect.moduloweb.model.DummyGenerator;
@@ -23,7 +24,12 @@ public class AuditService {
 
 
     public List<Audit> getAudit(Integer installationNumber,String appFilter, Date startDateFilter) {
-        return DummyGenerator.getAudit();
+    	List<Audit> list= DummyGenerator.getAudit();
+    	if (list.isEmpty()) {
+    		throw new BusinessException(BusinessException.ErrorCode.ERROR_AUDIT_NOT_FOUND);
+		}else{
+			return list;
+		}
     }
 
 

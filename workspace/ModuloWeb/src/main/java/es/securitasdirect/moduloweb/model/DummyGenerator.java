@@ -205,6 +205,7 @@ public class DummyGenerator {
         invoice.setPayMode("Caixa");
         invoice.setDiscount(true);
         invoice.setEmailBilling("frherrero@email.com");
+        invoice.setCcc("1234-5684-99-1203264125");
         return invoice;
     }
 

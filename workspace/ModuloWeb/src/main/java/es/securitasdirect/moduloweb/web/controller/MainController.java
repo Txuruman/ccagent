@@ -4,6 +4,8 @@ import es.securitasdirect.moduloweb.model.DirectAccess;
 import es.securitasdirect.moduloweb.service.AdminService;
 import es.securitasdirect.moduloweb.service.DirectAccessService;
 import es.securitasdirect.moduloweb.web.dto.response.ListDirectAccessResponse;
+import es.securitasdirect.moduloweb.web.dto.support.BaseResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -80,17 +82,15 @@ public class MainController extends BaseController {
     @RequestMapping(value = "listdirectaccess", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public
     @ResponseBody
-    ListDirectAccessResponse getListDirectAccess() {
-        ListDirectAccessResponse response = new ListDirectAccessResponse();
-        List<DirectAccess> list = directAccessService.getDirectAccess();
-        response.setDirectAcess(list);
-
-        if (list != null) {
-            response.success(messageUtil.getProperty("notificationTask.postpone.success"));
-        } else {
-            response.danger(messageUtil.getProperty("notificationTask.postpone.error"));
-        }
-        return response;
+    BaseResponse getListDirectAccess() {
+       try{
+	    	ListDirectAccessResponse response = new ListDirectAccessResponse();
+	        List<DirectAccess> list = directAccessService.getDirectAccess();
+	        response.setDirectAcess(list);
+	        return response;
+	    }catch(Exception exception){
+	    	return processException(exception);
+	    }  
     }
 
 }

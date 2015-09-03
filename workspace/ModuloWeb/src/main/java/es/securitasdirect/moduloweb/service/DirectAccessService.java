@@ -1,5 +1,6 @@
 package es.securitasdirect.moduloweb.service;
 
+import es.securitasdirect.moduloweb.exceptions.BusinessException;
 import es.securitasdirect.moduloweb.model.DirectAccess;
 import es.securitasdirect.moduloweb.model.DummyGenerator;
 import org.slf4j.Logger;
@@ -9,6 +10,7 @@ import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
+
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +25,12 @@ public class DirectAccessService {
 
 
     public List<DirectAccess> getDirectAccess() {
-        return DummyGenerator.getDirectAcess();
+    	List<DirectAccess> list= DummyGenerator.getDirectAcess();
+    	if (list.isEmpty()) {
+    		throw new BusinessException(BusinessException.ErrorCode.ERROR_DIRECT_ACCESS_NOT_FOUND);
+		}else{
+			return list;
+		}
     }
 
 

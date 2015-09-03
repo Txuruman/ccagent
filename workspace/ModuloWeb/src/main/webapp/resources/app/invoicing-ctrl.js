@@ -49,27 +49,34 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 					params: {installationNumber: installationNumber}
 				}
 			).success(function (data, status, headers, config) {
-					//Datos de información de facturación de la instalación	
-					$scope.invoiceInfo = data.invoiceInfo;
-					$scope.activationCheckValue=$scope.invoiceInfo.invoiceSend; //valor inicial check lo guardamos para el cancelar
-					$scope.activationEmailBillingValue=$scope.invoiceInfo.emailBilling; //valor inicial emailBilling lo guardamos para el cancelar
-					$scope.invoiceInfo.debtAmount=$scope.invoiceInfo.debtAmount+" €";	
-					if ($scope.invoiceInfo.discount==true) {
-						$scope.invoiceInfo.discount="Si";
-					}else{
-						$scope.invoiceInfo.discount="No";
-					}
-					
-					//Datos de facturas cycleFeeds asociadas a la instalación
-					$scope.cycleFeeds= data.cycleFeeds;
-					//Cuotas asociadas a la instalación
-					$scope.cuote=data.cuote;
-					//Listado de Facturas
-					$scope.invoiceList=data.invoiceList;
-					//Para la paginación;
-					$scope.paginar("");
-					
 					CommonService.processBaseResponse(data,status,headers,config);
+					//Datos de información de facturación de la instalación	
+					if (data.invoiceInfo!=undefined) {
+						$scope.invoiceInfo = data.invoiceInfo;
+						$scope.activationCheckValue=$scope.invoiceInfo.invoiceSend; //valor inicial check lo guardamos para el cancelar
+						$scope.activationEmailBillingValue=$scope.invoiceInfo.emailBilling; //valor inicial emailBilling lo guardamos para el cancelar
+						$scope.invoiceInfo.debtAmount=$scope.invoiceInfo.debtAmount+" €";	
+						if ($scope.invoiceInfo.discount==true) {
+							$scope.invoiceInfo.discount="Si";
+						}else{
+							$scope.invoiceInfo.discount="No";
+						}
+					}
+					//Datos de facturas cycleFeeds asociadas a la instalación
+					if (data.cycleFeeds!=undefined) {
+						$scope.cycleFeeds= data.cycleFeeds;
+					}
+					//Cuotas asociadas a la instalación
+					if (data.cuote!=undefined) {
+						$scope.cuote=data.cuote;
+					}
+					//Listado de Facturas
+					if (data.invoiceList!=undefined) {
+						$scope.invoiceList=data.invoiceList;
+						//Para la paginación;
+						$scope.paginar("");
+					}
+				
 					$log.debug("invoiceInfo queried ", data.invoiceInfo);
 					$log.debug("cycleFeeds queried ", data.cycleFeeds);
 					$log.debug("invoiceList queried ", data.invoiceList);
@@ -139,7 +146,7 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 	}
 	$scope.cccCancel=function(){
 		$scope.cccEditing=false;
-		$scope.$scope.invoiceInfo.ccc=angular.copy($scope.cccTemp);
+		$scope.invoiceInfo.ccc=angular.copy($scope.cccTemp);
 		delete($scope.cccTemp);
 	}
 	

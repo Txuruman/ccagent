@@ -1,25 +1,6 @@
 app.controller('mainFrameController', function ($timeout, $scope, $http, CommonService,$log) {
 	//$log.debug('Empezando...');
     //alert("Empezando");
-	$scope.searchTareaFromServer = function () {
-       // console.log('search Tareas ' + $scope.searchText +  ' ' + $scope.searchOption);
-        $http({
-                method: 'GET',
-                url: 'searchtarea/query',
-                params: {searchText: $scope.searchText, searchOption: $scope.searchOption}
-            })
-            .success(function (data, status, headers, config) {
-            	
-                $scope.taskList = data.taskList;
-                CommonService.processBaseResponse(data,status,headers,config);
-            })
-            .error(function (data, status, headers, config) {
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-            	
-                CommonService.processBaseResponse(data,status,headers,config);
-            });
-    };
     
     $scope.getDirectAccess=function(){
     	//console.log('Get Direct Access');
@@ -28,14 +9,12 @@ app.controller('mainFrameController', function ($timeout, $scope, $http, CommonS
     	
         $http({
         	method:'get',
-        	url:'listdirectaccess',
-        	cache:false,
-        	data:"",
-        	responseType:"json"
-        }).success(function(data){
+        	url:'listdirectaccess'
+        }).success(function(data,status,headers,config){
         	$scope.directAccess = data.directAcess;
         	CommonService.processBaseResponse(data,status,headers,config);
-        }).error(function(data){
+        	$log.debug(data);
+        }).error(function(data,status,headers,config){
         	CommonService.processBaseResponse(data,status,headers,config);
         });
 //            })

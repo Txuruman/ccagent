@@ -16,7 +16,13 @@ public class BusinessException extends RuntimeException {
     //Internacionalizar estos textos tal y como aparecen
 	public static enum ErrorCode {
 		ERROR_CREATE_SESSION_INFOPONT,
-		ERROR_INSTALLATION_NOT_FOUND
+		ERROR_INSTALLATION_NOT_FOUND,
+		ERROR_DIRECT_ACCESS_NOT_FOUND,
+		ERROR_AUDIT_NOT_FOUND,
+		ERROR_INVOICE_INFO_NOT_FOUND,
+		ERROR_CYCLE_FEEDS_NOT_FOUND,
+		ERROR_INVOICE_LIST_NOT_FOUND,
+		ERROR_CUOTES_NOT_FOUND
     };
 	
 	private ErrorCode errorCode = null;

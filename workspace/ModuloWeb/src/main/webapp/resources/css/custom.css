@@ -133,6 +133,13 @@ h2{
 }
 
 /*******PARA TODAS**********/
+.messageAlerts{
+    position: absolute !important;
+    width: 35% !important;
+/*     left: 0; */
+    top: 0 !important;
+    z-index: 10 !important;
+}
 .paddingLastCell{
 	padding-right:34px;
 } 
