@@ -38,7 +38,7 @@
 		<!-- host port where the application will be deployed -->
 		<application.host>localhost</application.host>
 		<application.port>8888</application.port>
-		<application.contextpath>/gestiontareas</application.contextpath>
+		<application.contextpath>/moduloweb</application.contextpath>
 		<log.level>DEBUG</log.level>
 		<slf4j.version>1.7.5</slf4j.version>
 		<logback.version>1.0.13</logback.version>
@@ -238,7 +238,7 @@
 				<configuration>
 					<server>TomcatServer</server>
 					<url>http://localhost:8080/manager/text</url>
-					<path>/gestiontareas</path>
+					<path>/moduloweb</path>
 				</configuration>
 			</plugin>
 

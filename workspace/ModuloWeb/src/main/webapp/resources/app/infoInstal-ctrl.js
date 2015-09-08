@@ -1,7 +1,7 @@
 /**
  * Controlador de la pestaña Información de instalación
  */
-app.controller('InfoInstalacionController', function ($scope, $http, $log, CommonService, $timeout) {
+app.controller('InfoInstalacionController', function ($scope, $http, $log, CommonService, $timeout, $filter,filterFilter) {
 
 
 	//Query FieldConfig
@@ -33,6 +33,8 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
                     }            
             ).success(function (data, status, headers, config) {
                 $scope.installation = data.installation;
+                $scope.installation.actionplans=filterFilter($scope.installation.actionplans, {'secuence':'0'});
+                $scope.installation.actionplans=$filter('orderBy')($scope.installation.actionplans,'type',false); 
                 CommonService.processBaseResponse(data,status,headers,config);
                 $log.debug("Installation queried ", data.installation);
             })

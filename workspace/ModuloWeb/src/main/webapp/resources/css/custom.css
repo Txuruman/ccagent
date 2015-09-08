@@ -133,6 +133,11 @@ h2{
 }
 
 /*******PARA TODAS**********/
+.iframes{
+	position:relative;
+	border:0;
+	width:100%;
+}
 .pestanas{
 	width: 93%;
     display: inline-block;
@@ -197,6 +202,9 @@ hr.tituloSeccion{
 }
 .tablaBorder div{
 	border:1px solid grey;
+}
+.form-control-auto-width{
+	width:auto !important;
 }
 /*Para las modales (IE8)*/
 div[type="text/ng-template"]{
@@ -317,7 +325,7 @@ input.actionPlanTablePhone{
 }
 .filaDescuento{
 	color:white;
-	background-color:red;
+	background-color:crimson;
 }
 .separaRadios{
 	padding-left:30px !important;
@@ -413,4 +421,10 @@ input.actionPlanTablePhone{
 }
 .colorSearch{
 	color:cornflowerblue !important;
+}
+.colorAdd{
+	color:#00c567;
+}
+.block{
+	display:block !important;
 }
