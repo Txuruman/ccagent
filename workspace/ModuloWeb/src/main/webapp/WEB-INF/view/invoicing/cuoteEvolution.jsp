@@ -24,7 +24,7 @@
 			class="form-control input-sm" type="text" readonly="true" ng-model="cuote.eneroActual">
 	</div>
 	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-		<label><spring:message code="cuoteevol.month" /></label> <input
+		<label class="block"><spring:message code="cuoteevol.month" /></label> <input
 			class="form-control input-sm" type="text" readonly="true" ng-model="cuote.mesActual">
 	</div>
 </div>
