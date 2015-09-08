@@ -7,7 +7,7 @@
 
 <div class="row">
 	<div class="col-md-12 col-sm-12 col-xs-12">
-		<h3 class="tituloSeccion enlinea margin-right10">Plan de Acción</h3>
+		<h3 class="tituloSeccion enlinea margin-right10"><spring:message code="actionplan.title"/></h3>
 		<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.edit"/>" ng-hide="editingActionPlans || erasingActionPlans" ng-click="editActionPlans()">
 		   	<span class="glyphicon glyphicon-pencil colorEdit" aria-hidden="true"></span>
         </button>
@@ -51,7 +51,7 @@
 			</div>
 			<div class="scrollTabla">
 				<form method="post" name="actionPlanForm">
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center borderTablaBottom tablaConBoton"  ng-repeat="p in installation.actionplans | filter:{secuence:0} | orderBy : 'secuence'">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center borderTablaBottom tablaConBoton"  ng-repeat="p in installation.actionplans">
 			            
 			                	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight"><input class="actionPlanTableText" type="text" name="{{'type'+$index}}" ng-model="p.type" ng-readonly="!editingActionPlans" pattern="[0-9]+" ng-class="actionPlanForm.{{'type'+$index}}.$error.pattern ? 'errorColor' : null"/></div>
 			                	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center borderTablaRight"><input class="actionPlanTableText" type="text" name="{{'contactName'+$index}}" ng-model="p.contactName" ng-readonly="!editingActionPlans"/></div>

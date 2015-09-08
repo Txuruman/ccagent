@@ -29,6 +29,12 @@ public class DummyGenerator {
         da.setDescription("descr");
         da.setUrl("http://www.google.es");
         da.setPosition(0);
+        List<DirectAccessParams> mapa1=new ArrayList<DirectAccessParams>();
+        mapa1.add(new DirectAccessParams("param1", "hola"));
+        mapa1.add(new DirectAccessParams("param2", "hola2"));
+        mapa1.add(new DirectAccessParams("param3", "hola3"));
+        mapa1.add(new DirectAccessParams("param4", "hola4"));
+        da.setParams(mapa1);
         l.add(da);
 
 
@@ -37,13 +43,22 @@ public class DummyGenerator {
         da.setDescription("descr");
         da.setUrl("http://www.google.es");
         da.setPosition(1);
+        List<DirectAccessParams> mapa2=new ArrayList<DirectAccessParams>();
+        mapa2.add(new DirectAccessParams("param1", "hola"));
+        mapa2.add(new DirectAccessParams("param3", "hola3"));
+        mapa2.add(new DirectAccessParams("param4", "hola4"));
+        da.setParams(mapa2);
         l.add(da);
 
         da= new DirectAccess();
         da.setName("Intranet ATC");
         da.setDescription("descr");
         da.setUrl("http://www.google.es");
-        da.setPosition(1);
+        da.setPosition(2);
+        List<DirectAccessParams> mapa3=new ArrayList<DirectAccessParams>();
+        mapa3.add(new DirectAccessParams("param2", "hola2"));
+        mapa3.add(new DirectAccessParams("param4", "hola4"));
+        da.setParams(mapa3);
         l.add(da);
  
 
@@ -51,7 +66,12 @@ public class DummyGenerator {
         da.setName("Printing External");
         da.setDescription("descr");
         da.setUrl("http://www.google.es");
-        da.setPosition(1);
+        da.setPosition(4);
+        List<DirectAccessParams> mapa4=new ArrayList<DirectAccessParams>();
+        mapa4.add(new DirectAccessParams("param1", "hola"));
+        mapa4.add(new DirectAccessParams("param2", "hola2"));
+        mapa4.add(new DirectAccessParams("param4", "hola4"));
+        da.setParams(mapa4);
         l.add(da);
  
 
@@ -59,14 +79,16 @@ public class DummyGenerator {
         da.setName("Infopoint Recall");
         da.setDescription("descr");
         da.setUrl("http://www.google.es");
-        da.setPosition(1);
+        da.setPosition(5);
+        da.setParams(mapa1);
         l.add(da);
 
         da= new DirectAccess();
         da.setName("Infopoint Cliente");
         da.setDescription("descr");
         da.setUrl("http://www.google.es");
-        da.setPosition(1);
+        da.setPosition(3);
+        da.setParams(mapa3);
         l.add(da);
 
 
