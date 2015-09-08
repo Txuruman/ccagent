@@ -1,10 +1,5 @@
 app.controller('notificationtask', function ($scope, $http, CommonService, $modal, $log) {
 
-    $scope.logTarea = function () {
-        $log.debug("Tarea: " + $scope.tarea);
-    };
-
-
     //Ventana Aplazar - Start
     //Abre la ventana, posibles tamaños '', 'sm', 'lg'
     $scope.openDelayModal = function (size) {
@@ -26,7 +21,7 @@ app.controller('notificationtask', function ($scope, $http, CommonService, $moda
             //Boton Ok del modal
             $scope.aplazar(delayInfo.delayDate, delayInfo.recallType);
         }, function (param) {
-          //Boton cancelar del Modal
+            //Boton cancelar del Modal
         });
     };
     //Ventana Aplazar - End
@@ -34,10 +29,6 @@ app.controller('notificationtask', function ($scope, $http, CommonService, $moda
 
     $scope.getTarea = function () {
         $log.debug('Loading NotificationTask');
-        $log.debug("Params: "
-            + " ccUserId: " + $scope.ccUserId
-            + " callingList: " + $scope.callingList
-            + " taskId: " + $scope.tareaId);
         $http({
             method: 'GET',
             url: 'notificationtask/gettask',
@@ -54,11 +45,11 @@ app.controller('notificationtask', function ($scope, $http, CommonService, $moda
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
             });
-        $log.debug("NotificationTask loaded...")
+        $log.debug("NotificationTask loaded...");
     };
 
 
-    $scope.init1 = function(){
+    $scope.init1 = function () {
         $log.debug("Charging page, combo lists");
         $http({
             method: 'GET',
@@ -122,20 +113,16 @@ app.controller('notificationtask', function ($scope, $http, CommonService, $moda
             });
     };
 
-    $scope.init = function(){
+    $scope.init = function () {
         CommonService.getNotificationTypeList();
         CommonService.getClosingList();
         CommonService.getTypeReasonList();
         CommonService.getClosingAditionalDataList();
-    }
+    };
 
     $scope.getInstallationAndTask = function () {
         $log.debug('Loading NotificationTask');
-        $log.debug("Params: "
-            + " installationId: " + $scope.installationId
-            + " ccUserId: " + $scope.ccUserId
-            + " callingList: " + $scope.callingList
-            + " taskId: " + $scope.tareaId);
+
         $http({
             method: 'GET',
             url: 'notificationtask/getInstallationAndTask',
@@ -151,8 +138,6 @@ app.controller('notificationtask', function ($scope, $http, CommonService, $moda
                 CommonService.processBaseResponse(data, status, headers, config);
                 $scope.tarea = data.tarea;
                 $scope.installationData = data.installationData;
-                //TODO OBTENER DATOS DE COMBOS - Desconocido origen
-
             })
 
 
@@ -185,10 +170,8 @@ app.controller('notificationtask', function ($scope, $http, CommonService, $moda
                 recallType: recallType,
                 delayDate: delayDate,
                 task: $scope.tarea
-
             };
 
-            $log.info("JSON DE LO QUE SE MANDA   " + JSON.stringify(postponeNotificationTaskRequest));
 
             $http({
                 method: 'PUT',
@@ -209,8 +192,7 @@ app.controller('notificationtask', function ($scope, $http, CommonService, $moda
     $scope.modificar = function () {
         $log.debug('Modificar Tarea, tarea: ' + $scope.tarea);
         var modifyNotificationTaskRequest = {
-            task: $scope.tarea,
-            prueba: 'Hola'
+            task: $scope.tarea
         };
         $log.debug('Modificar Tarea, request ' + JSON.stringify(modifyNotificationTaskRequest));
         $http({
@@ -228,13 +210,12 @@ app.controller('notificationtask', function ($scope, $http, CommonService, $moda
                 // or server returns response with an error status.
                 CommonService.processBaseResponse(data, status, headers, config);
             });
-    }
+    };
 
     $scope.atras = function () {
         $log.debug('Atras, tarea: ' + JSON.stringify($scope.tarea));
         var backNotificationTaskRequest = {
-            task: $scope.tarea,
-            prueba: 'Hola'
+            task: $scope.tarea
         };
         $log.debug('Atras, request: ' + JSON.stringify(backNotificationTaskRequest));
         $http({
@@ -252,13 +233,15 @@ app.controller('notificationtask', function ($scope, $http, CommonService, $moda
                 // or server returns response with an error status.
                 CommonService.processBaseResponse(data, status, headers, config);
             });
-    }
+    };
 
+    /**
+     * Abre la ventana de mantenimiento
+     */
     $scope.crearmantenimiento = function () {
         $log.debug('Crear mantenimiento, tarea: ' + JSON.stringify($scope.tarea));
         var createMaintenanceNotificationTaskRequest = {
-            task: $scope.tarea,
-            prueba: 'Hola'
+            task: $scope.tarea
         };
         $log.debug('Crear mantenimiento, request: ' + JSON.stringify(createMaintenanceNotificationTaskRequest));
         $http({
@@ -276,7 +259,7 @@ app.controller('notificationtask', function ($scope, $http, CommonService, $moda
                 // or server returns response with an error status.
                 CommonService.processBaseResponse(data, status, headers, config);
             });
-    }
+    };
 
     $scope.descartar = function () {
         $log.debug('Descartar ' + $scope.tarea);
@@ -300,7 +283,7 @@ app.controller('notificationtask', function ($scope, $http, CommonService, $moda
                 // or server returns response with an error status.
                 CommonService.processBaseResponse(data, status, headers, config);
             });
-    }
+    };
 
     $scope.finalizar = function () {
         $log.debug('Finalizar, tarea: ' + $scope.tarea);

@@ -56,7 +56,7 @@ function convertDateStringsToDates(input) {
         // TODO: Improve this regex to better match ISO 8601 date strings.
         if (typeof value === "string" && (match = value.match(regexIso8601))) {
             // Assume that Date.parse can parse ISO 8601 strings, or has been shimmed in older browsers to do so.
-            //console.log("Transformando fecha",value);
+            console.log("Transformando fecha",value);
             var milliseconds = Date.parse(match[0]);
             if (!isNaN(milliseconds)) {
                 input[key] = new Date(milliseconds);
@@ -83,12 +83,12 @@ app.controller('MessagesController', function ($scope, $rootScope) {
 //create a service which defines a method square to return square of a number.
 app.service('CommonService', function ($rootScope, $log) {
     this.square = function (a) {
-        //console.log("Multiplicando");
+        console.log("Multiplicando");
         return a * a;
     };
 
     this.suma = function (a) {
-        //console.log("Suma");
+        console.log("Suma");
         return a + a;
     };
 
@@ -115,7 +115,7 @@ app.service('CommonService', function ($rootScope, $log) {
 
     /** Funcion para processar las respuestas del servidor, eg: processBaseResponse(data,status,headers,config);  */
     this.processBaseResponse = function (data, status, headers, config) {
-        //console.log("Procesando BaseResponse....");
+        console.log("Procesando BaseResponse....");
         if (data && data.messages) {
         	/**
         	 * Modificado para correcto funcionamiento en IE8
@@ -210,7 +210,7 @@ app.service('CommonService', function ($rootScope, $log) {
 
 app.filter('stringToDate', function () {
     return function (input) {
-        //console.log("input" + input);
+        console.log("input" + input);
         if (!input)
             return null;
 
@@ -227,14 +227,14 @@ app.directive('jsonDate', function ($filter) {
 
             //format text going to user (model to view)
             ngModel.$formatters.push(function (value) {
-                //console.log("String To Date:" + value)
+                console.log("String To Date:" + value)
                 var date = $filter('stringToDate')(value);
                 return date.toString();
             });
 
             //format text from the user (view to model)
             ngModel.$parsers.push(function (value) {
-                //console.log("View to Model")
+                console.log("View to Model")
                 var date = new Date(value);
                 if (!isNaN(date.getTime())) {
                     return moment(date).format();
