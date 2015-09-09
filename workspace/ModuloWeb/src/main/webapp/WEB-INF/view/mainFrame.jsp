@@ -37,19 +37,19 @@
 		<!-- PANEL DE PESTAÑAS -->
 		<div class="pestanas">
 			<ul tabset justified="false"> 
-				<li tab heading="INFO INST." active="${activeTab eq 'INST'}">
+				<li tab heading="<spring:message code="titulo.tab.infoinstall"/>" active="${activeTab eq 'INST'}">
 					<%@include file="infoInstal/infoInstal.jsp"%>
 				</li> 
 			
-				<li tab heading="FACTURACIÓN" active="${activeTab eq 'INV'}">
+				<li tab heading="<spring:message code="titulo.tab.invoicing"/>" active="${activeTab eq 'INV'}">
 					<%@include file="invoicing/invoicing.jsp"%>
 				</li> 
-				<li tab heading="AVERÍAS">
+				<li tab heading="<spring:message code="titulo.tab.breakdown"/>">
 <%-- 					<%@include file="pruebaCall.jsp"%> --%>
 <!-- 					<iframe class="iframes" src="http://sd_dev.elecnor-deimos.com:7001/sdaverias/" height="600px" frameborder="0"></iframe> -->
-					<iframe class="iframes" src="http://www.marca.com/" height="600px" style="position:relative" frameborder="0"></iframe>
+<!-- 					<iframe class="iframes" src="http://www.marca.com/" height="600px" style="position:relative" frameborder="0"></iframe> -->
 				</li>
-				<li tab heading="ADMINISTRACIÓN">
+				<li tab heading="<spring:message code="titulo.tab.admin"/>">
 					<%@include file="admin/admin.jsp"%>
 				</li>
 <!-- 				<tab heading="AUTOMATISMOS"> -->

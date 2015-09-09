@@ -1,5 +1,5 @@
 app.controller('mainFrameController', function ($timeout, $scope, $http, CommonService,$log) {
-	//$log.debug('Empezando...');
+	////$log.debug('Empezando...');
     //alert("Empezando");
     
     $scope.getDirectAccess=function(){
@@ -13,7 +13,7 @@ app.controller('mainFrameController', function ($timeout, $scope, $http, CommonS
         }).success(function(data,status,headers,config){
         	$scope.directAccess = data.directAcess;
         	CommonService.processBaseResponse(data,status,headers,config);
-        	$log.debug(data);
+        	//$log.debug(data);
         }).error(function(data,status,headers,config){
         	CommonService.processBaseResponse(data,status,headers,config);
         });

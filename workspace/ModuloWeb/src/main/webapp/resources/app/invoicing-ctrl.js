@@ -22,7 +22,7 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 	
 	//QUERY AUDIT
 	$scope.getAudit=function(installationId){
-		$log.debug("Query audit for ", installationId);
+		//$log.debug("Query audit for ", installationId);
 		$http(
 			{
 				method: 'GET',
@@ -32,7 +32,7 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 		).success(function (data, status, headers, config) {
 				$scope.audit = data.audit;
 				CommonService.processBaseResponse(data,status,headers,config);
-				$log.debug("Audit queried ", data.audit);
+				//$log.debug("Audit queried ", data.audit);
 			})
 			.error(function (data, status, headers, config) {
 				CommonService.processBaseResponse(data,status,headers,config);
@@ -41,7 +41,7 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 	
 	//Método para obtener los datos de la factura
 	$scope.getInvoice=function(installationNumber){ //¿¿ installation ID ???
-		$log.debug("Query invoice for ", installationNumber);
+		//$log.debug("Query invoice for ", installationNumber);
 		$http(
 				{
 					method: 'GET',
@@ -77,9 +77,9 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 						$scope.paginar("");
 					}
 				
-					$log.debug("invoiceInfo queried ", data.invoiceInfo);
-					$log.debug("cycleFeeds queried ", data.cycleFeeds);
-					$log.debug("invoiceList queried ", data.invoiceList);
+					//$log.debug("invoiceInfo queried ", data.invoiceInfo);
+					//$log.debug("cycleFeeds queried ", data.cycleFeeds);
+					//$log.debug("invoiceList queried ", data.invoiceList);
 				})
 				.error(function (data, status, headers, config) {
 					CommonService.processBaseResponse(data,status,headers,config);
@@ -129,7 +129,7 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 		modalInstance.result.then(function (selectedItem) {
 			$scope.selected = selectedItem;
 		}, function () {
-			$log.info('Modal dismissed at: ' + new Date());
+			//$log.info('Modal dismissed at: ' + new Date());
 		});
 	};
 	
@@ -159,7 +159,7 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 	
 	$scope.pageChange=function(){
 		$scope.paginaActual=$scope.paginas[$scope.bigCurrentPage-1];
-		$log.info($scope.bigCurrentPage);
+		//$log.info($scope.bigCurrentPage);
 	}
 	$scope.paginar=function(filtro){ //falta desarrollar el filtro de fechas
 		var lista;
