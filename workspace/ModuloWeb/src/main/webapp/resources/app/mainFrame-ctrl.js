@@ -1,9 +1,7 @@
 app.controller('mainFrameController', function ($timeout, $scope, $http, CommonService,$log) {
-	////$log.debug('Empezando...');
     //alert("Empezando");
     
     $scope.getDirectAccess=function(){
-    	//console.log('Get Direct Access');
     	//ajax2();
     	
     	
