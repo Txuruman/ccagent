@@ -4,8 +4,6 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
     
     $scope.getDirectAccess=function(){
     	//console.log('Get Direct Access');
-    	//ajax2();
-    	
     	
         $http({
         	method:'get',
@@ -106,7 +104,6 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
 				//TODO: modificar Actions Plans
 			}
 		}
-		
 	}
     /** FIN Gestión Direct Access */
     
