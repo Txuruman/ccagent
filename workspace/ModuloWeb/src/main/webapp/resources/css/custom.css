@@ -505,6 +505,9 @@ input.actionPlanTablePhone{
 .colorAdd{
 	color:#00c567;
 }
+.colorPDF{
+	color:red;
+}
 .block{
 	display:block !important;
 }
