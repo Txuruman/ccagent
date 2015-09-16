@@ -22,18 +22,39 @@ import static org.hamcrest.core.IsNull.notNullValue;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 //Evitamos cargar el applicationContext-jms para que funcionen los test
-@ContextConfiguration(locations = {"classpath*:spring/applicationContext-bean.xml","classpath*:spring/applicationContext-ws.xml"})
+@ContextConfiguration(locations = {"classpath*:spring/applicationContext-bean.xml", "classpath*:spring/applicationContext-ws.xml"})
 public class AuditServiceTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AuditServiceTest.class);
 
 
-
     @Inject
     AuditService auditService;
 
+    @Inject
+    protected CCAGENTAUDPortType wsAudit;
 
 
+    @Test
+    public void testDirecto() throws DataServiceFault {
+        String date = "11-12-2015 8:29:33";
+        String actor = "JOSE";
+        Integer id = 1;
+        String app = "TAREA";
+        String event = "evento";
+        String result = "Ok";
+        String detail = "detalle";
+
+
+
+        wsAudit.insertAuditOperation(   date ,
+                actor ,
+                id ,
+                app ,
+                event ,
+                result,
+                detail);
+    }
 
     @Test
     public void insert() {
