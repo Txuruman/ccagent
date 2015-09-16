@@ -37,7 +37,7 @@ detail varchar(255),
 CONSTRAINT audit_PK PRIMARY KEY (id)
 );
 
--- CCAGENT_AUD
+-- CCAGENT_ADM
 DROP TABLE "dbo"."field_config";
 CREATE TABLE "dbo"."field_config"
 (
@@ -49,6 +49,29 @@ visible bit,
 editable bit,
 CONSTRAINT field_config_PK PRIMARY KEY (id)
 )
+
+-- CCAGENT_ADM
+DROP TABLE "dbo"."direct_access_params";
+CREATE TABLE "dbo"."direct_access_params"
+(
+id int IDENTITY (1, 1) NOT NULL,
+name varchar(255),
+value varchar(255),
+CONSTRAINT direct_access_params_PK PRIMARY KEY (id)
+)
+
+-- CCAGENT_ADM
+DROP TABLE "dbo"."combinations_keys";
+CREATE TABLE "dbo"."combinations_keys"
+(
+id int IDENTITY (1, 1) NOT NULL,
+key1 varchar(255),
+key2 varchar(255),
+key3 varchar(255),
+tab varchar(255),
+CONSTRAINT combinations_keys_PK PRIMARY KEY (id)
+)
+
 
 
 
