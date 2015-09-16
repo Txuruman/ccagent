@@ -136,13 +136,13 @@ app.service('CommonService', function ($rootScope, $log) {
 
 
     this.getNotificationTypeList = function() {
-        $log.debug("Charging page, combo lists");
+        //$log.debug("Charging page, combo lists");
         $http({
             method: 'GET',
             url: 'commons/getNotificationTypeList'
         })
             .success(function (data, status, headers, config) {
-                $log.debug('Loaded Notification Type List', data);
+                //$log.debug('Loaded Notification Type List', data);
                 $scope.tipoAvisoList = data.pairList;
                 processBaseResponse(data, status, headers, config);
             })
@@ -159,7 +159,7 @@ app.service('CommonService', function ($rootScope, $log) {
             url: 'commons/getClosingList'
         })
             .success(function (data, status, headers, config) {
-                $log.debug('Loaded Closing Type List', data);
+                //$log.debug('Loaded Closing Type List', data);
                 $scope.closingList = data.pairList;
                 processBaseResponse(data, status, headers, config);
             })
@@ -176,7 +176,7 @@ app.service('CommonService', function ($rootScope, $log) {
             url: 'commons/getTypeReasonList'
         })
             .success(function (data, status, headers, config) {
-                $log.debug('Loaded Type Reason List', data);
+                //$log.debug('Loaded Type Reason List', data);
                 $scope.motivoList = data.pairList;
                 processBaseResponse(data, status, headers, config);
             })
@@ -193,7 +193,7 @@ app.service('CommonService', function ($rootScope, $log) {
             url: 'commons/getClosingAditionalDataList'
         })
             .success(function (data, status, headers, config) {
-                $log.debug('Loaded Closing Aditional Data List', data);
+                //$log.debug('Loaded Closing Aditional Data List', data);
                 $scope.datosAdicionalesList = data.pairList;
                 processBaseResponse(data, status, headers, config);
             })

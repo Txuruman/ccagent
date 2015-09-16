@@ -47,9 +47,15 @@
                 <td>{{item.transactionDate | date:'dd/MM/yyyy'}}</td>
                 <td>{{item.dueDate | date:'dd/MM/yyyy'}}</td>
                 <td>
-                    <button type="button" class="btn btn-default btn-sm" ng-click="openInvoiceDetailModal(item.invoiceNumber)" title="Ver detalle">
+                <div class="btn-group inline">
+	        		<button type="button" class="btn btn-default btn-sm" ng-click="openInvoiceDetailModal(item.invoiceNumber)" title="Ver detalle">
                         <span class="glyphicon glyphicon-search colorSearch" aria-hidden="true"></span>
                     </button>
+	        		<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.file"/>">
+			    		<span class="glyphicon glyphicon-file colorPDF" aria-hidden="true"></span>
+	        		</button>
+			</div>
+                    
                 </td>
             </tr>
         </table>

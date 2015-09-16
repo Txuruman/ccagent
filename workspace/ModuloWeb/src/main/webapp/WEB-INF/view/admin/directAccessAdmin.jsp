@@ -25,7 +25,7 @@
 	        	</button>
 			</div>
 			<div class="enlinea">
-				<span class="error margin-left5" ng-show="adminDAForm.$error.pattern"><spring:message code="error.numeric"/></span>
+				<span class="error margin-left5" ng-show="adminDAForm.$error.required"><spring:message code="error.required"/></span>
 			</div>
 		</div>
 	</div>
@@ -34,129 +34,56 @@
 			<hr class="tituloSeccion" />
 		</div>
 	</div>
-	<style>
-	#tablaDA{
-		display:inline-block;
-		width:60%;
-	}
-	#tablaDA-params{
-		display:inline-block;
-		width:37%;
-		margin-left:1%;
-	}
-	#tablaDA-params th{
-		position:relative;
-	}
-	#tablaDA-params .absolutaSpan{
-		position:absolute;
-		left:2px;
-	}
-	#tablaDA table, #tablaDA thead, #tablaDA tbody, #tablaDA tr, #tablaDA-params table, #tablaDA-params thead, #tablaDA-params tbody, #tablaDA-params tr{
-		display:block;
-	}
-	#tablaDA table, #tablaDA-params table{
-		width:100%;
-	}
-	#tablaDA thead, #tablaDA tbody, #tablaDA tr, #tablaDA-params thead, #tablaDA-params tbody, #tablaDA-params tr{
-		width:100%;
-	}
-	#tablaDA td, #tablaDA th, #tablaDA-params td, #tablaDA-params th{
-		display:inline-block;
-		padding:1px;
-		vertical-align:middle;
-		text-align:center;
-	}
-	#tablaDA .tablaDA-td1{
-		width:5%;
-	}
-	#tablaDA .tablaDA-td2{
-		width:25%;
-	}
-	#tablaDA .tablaDA-td3{
-		width:27%;
-	}
-	#tablaDA .tablaDA-td4{
-		width:30%;
-	}
-	#tablaDA .tablaDA-td5{
-		width:8%;
-	}
-	
-	#tablaDA-params .tablaDA-td1{
-		width:48%;
-	}
-	#tablaDA-params .tablaDA-td2{
-		width:48%;
-	}
-	
-	
-	#tablaDA tbody tr:hover{
-		background-color:#d6ddf0;
-		cursor:pointer;
-	}
-	#tablaDA tbody tr, #tablaDA-params tbody tr{
-		border-bottom:1px solid #ddd;
-	}
-	#tablaDA input, #tablaDA-params input{
-		background-color:transparent;
-	}
-	
-	.desciptionDA{
-		display:inline-block;
-		width:20%;
-		margin-left:1%;
-		margin-right:1%;
-	}
-	.desciptionDA textarea{
-		height:70px;
-		resize: none;
-	}
-	
-	
-	
-	</style>
+
 	<div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div id="tablaDA">	
-				<table>
-					<thead>
-						<tr class="cabecillas">
-							<th class="tablaDA-td1">#</th>
-							<th class="tablaDA-td2">Nombre</th>
-							<th class="tablaDA-td3">URL</th>
-							<th class="tablaDA-td4">Descripcion</th>
-						</tr>
-					</thead>
-					<tbody class="scrollTabla borderTablaBottom">
-						<tr ng-repeat="da in directAccess" ng-click="changeCurrentParams(da.params)">
-							<td class="tablaDA-td1"><input type="text" class="actionPlanTableText" name="{{'position'+$index}}" ng-model="da.position" ng-readonly="!editingDA" ng-required="true"></td>
-							<td class="tablaDA-td2"><input type="text" class="actionPlanTableText" name="{{'name'+$index}}" ng-model="da.name" ng-readonly="!editingDA" ng-required="true"></td>
-							<td class="tablaDA-td3"><input type="text" class="actionPlanTableText" name="{{'url'+$index}}" ng-model="da.url" ng-readonly="!editingDA" ng-required="true"></td>
-							<td class="tablaDA-td4"><input type="text" class="actionPlanTableText" name="{{'description'+$index}}" ng-model="da.description" ng-readonly="!editingDA" ng-required="true"></td>
-							<td class="tablaDA-td5">
-								<button type="button" class="btn btn-default btn-sm" ng-hide="editingDA" title="<spring:message code="boton.erase"/>" ng-disabled="editingDA" ng-click="eraseDA($index, da)">
-			                      	<span class="glyphicon glyphicon-trash colorErase" aria-hidden="true"></span>
-			                    </button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+					<div class="thead">
+						<div class="cabecillas theadTR">
+							<div class="tablaDA-td1 theadTH">#</div>
+							<div class="tablaDA-td2 theadTH"><spring:message code="admin.DA.name"/></div>
+							<div class="tablaDA-td3 theadTH"><spring:message code="admin.DA.url"/></div>
+							<div class="tablaDA-td4 theadTH"><spring:message code="admin.DA.description"/></div>
+							<div class="tablaDA-td5 theadTH"></div>
+						</div>
+					</div>
+					<div class="scrollTabla borderTablaBottom">
+						<table class="tbody">
+							<tr ng-repeat="da in directAccess" ng-click="changeCurrentParams(da.params,$index)" ng-class="($index===currentDA_params.currentDA) ? 'currentDA' : null">
+								<td class="tablaDA-td1"><input type="text" class="actionPlanTableText" name="{{'position'+$index}}" ng-model="da.position" ng-readonly="!editingDA" ng-required="true"></td>
+								<td class="tablaDA-td2"><input type="text" class="actionPlanTableText" name="{{'name'+$index}}" ng-model="da.name" ng-readonly="!editingDA" ng-required="true"></td>
+								<td class="tablaDA-td3"><input type="text" class="actionPlanTableText" name="{{'url'+$index}}" ng-model="da.url" ng-readonly="!editingDA" ng-required="true"></td>
+								<td class="tablaDA-td4"><input type="text" class="actionPlanTableText" name="{{'description'+$index}}" ng-model="da.description" ng-readonly="!editingDA" ng-required="true"></td>
+								<td class="tablaDA-td5">
+									<button type="button" class="btn btn-default btn-sm" ng-hide="editingDA" title="<spring:message code="boton.erase"/>" ng-click="eraseDA($index, da)" ng-disabled="editingDA">
+				                      	<span class="glyphicon glyphicon-trash colorErase" aria-hidden="true"></span>
+				                    </button>
+								</td>
+							</tr>
+						</table>
+					</div>
 			</div>
 			<div id="tablaDA-params">	
-				<table>
-					<thead>
-						<tr class="cabecillas">
-							<th class="tablaDA-td1"><span class="glyphicon glyphicon-plus colorAdd absolutaSpan" title="<spring:message code="boton.add"/>" aria-hidden="true" ng-click="addParams();"></span>Nombre Parametro</th>
-							<th class="tablaDA-td2">Valor Parametro</th>
-						</tr>
-					</thead>
-					<tbody class="scrollTabla borderTablaBottom">
-						<tr ng-repeat="daP in currentDA_params">
-							<td class="tablaDA-td1"><input type="text" class="actionPlanTableText" ng-model="daP.name" ng-readonly="!editingDA"></td>
-							<td class="tablaDA-td2"><input type="text" class="actionPlanTableText" ng-model="daP.value" ng-readonly="!editingDA"></td>
-						</tr>
-					</tbody>
-				</table>
+					<div class="thead">
+						<div class="cabecillas theadTR">
+							<div class="tablaDA-td1 theadTH"><span class="glyphicon glyphicon-plus colorAdd absolutaSpan" title="<spring:message code="boton.add"/>" aria-hidden="true" ng-click="addParams();" ng-show="editingDA && currentDA_params.currentDA!=-1"></span><spring:message code="admin.DA.param"/></div>
+							<div class="tablaDA-td2 theadTH"><spring:message code="admin.DA.value"/></div>
+							<div class="tablaDA-td3 theadTH"></div>
+						</div>
+					</div>
+					<div class="scrollTabla borderTablaBottom">
+						<table class="tbody">
+							<tr ng-repeat="daP in currentDA_params.params">
+								<td class="tablaDA-td1"><input type="text" class="actionPlanTableText" name="{{'daPName'+$index}}" ng-model="daP.name" ng-readonly="!editingDA" ng-required="true"></td>
+								<td class="tablaDA-td2"><input type="text" class="actionPlanTableText" name="{{'daPValue'+$index}}" ng-model="daP.value" ng-readonly="!editingDA" ng-required="true"></td>
+								<td class="tablaDA-td3">
+									<button type="button" class="btn btn-default btn-sm" ng-show="editingDA" title="<spring:message code="boton.erase"/>" ng-click="eraseDA_param($index, daP)">
+				                      	<span class="glyphicon glyphicon-trash colorErase" aria-hidden="true"></span>
+				                    </button>
+								</td>
+							</tr>
+						</table>
+					</div>
 			</div>
 			
 		</div>
