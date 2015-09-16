@@ -10,6 +10,8 @@ import java.util.Map;
  */
 public class DirectAccess {
 
+    // clave autonumerica para la tabla
+    private Integer id;
     /** Etiqueta que se muestra en el módulo web como texto del acceso directo. */
     private String name;
     /** Texto que describe el acceso directo, se podrá utilizar como texto a mostrar al pasar el ratón por el enlace del acceso directo. */
@@ -20,7 +22,16 @@ public class DirectAccess {
     private int position=0;
     /** Lista de parametros para los accesos directos. */
     private List<DirectAccessParams> params;
-    
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }

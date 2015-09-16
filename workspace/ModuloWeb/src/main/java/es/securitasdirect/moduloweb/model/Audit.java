@@ -32,8 +32,9 @@ public class Audit {
 
     /**
      * CallID o ContactId
+     * clave autonumerica para la tabla
      */
-    private String id;
+    private Integer id;
 
     /**
      * Clave de la aplicación
@@ -74,11 +75,11 @@ public class Audit {
         this.user = user;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
