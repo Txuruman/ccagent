@@ -45,14 +45,10 @@ public class InstallationController extends BaseController {
         try{
 	        InstallationData installation = installationService.getInstallation(installationId);
 	        response.setInstallation(installation);
-      	         return response;
+      
+	         return response;
         }catch(Exception exception){
         	return processException(exception);
         }
-//       if (installation != null) {
-//            response.success(messageUtil.getProperty("installationData.success"));
-//        } else {
-//            response.danger(messageUtil.getProperty("installationData.notFound"));
-//        }
     }
 }
