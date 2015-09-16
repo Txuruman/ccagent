@@ -16,13 +16,15 @@ See here for more details: http://gordondickens.com/wordpress/2013/03/27/sawing-
     <appender name="file" class="ch.qos.logback.core.FileAppender">
         <file>/tmp/teamvision/moduloWeb.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- daily rollover -->
-            <fileNamePattern>moduloWeb.%d{yyyy-MM-dd}.log</fileNamePattern>
-            <!-- keep 3 days' worth of history -->
-            <maxHistory>3</maxHistory>
+            <!-- rollover daily -->
+            <fileNamePattern>moduloWeb-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches 20Mb -->
+                <maxFileSize>20MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
         <encoder>
-            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+            <pattern>%d [%p] %c %M - %m%n</pattern>
         </encoder>
     </appender>
 
