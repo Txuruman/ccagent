@@ -77,6 +77,7 @@ public class FieldConfig {
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("FieldConfig{");
+        sb.append("id='").append(id).append('\'');
         sb.append("app='").append(app).append('\'');
         sb.append(", identifier='").append(identifier).append('\'');
         sb.append(", description='").append(description).append('\'');
