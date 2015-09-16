@@ -195,7 +195,7 @@ public class DummyGenerator {
         a1.setApp("INST");
         a1.setResult(Audit.RESULT.OK);
         a1.setUser("user");
-        a1.setId("callId??");
+        a1.setId(1);
         a1.setDetail("text detail");
         result.add(a1);
 
@@ -205,7 +205,7 @@ public class DummyGenerator {
         a2.setApp("FACTU");
         a2.setResult(Audit.RESULT.ERROR);
         a2.setUser("user");
-        a2.setId("callId??");
+        a2.setId(2);
         a2.setDetail("text detail");
         result.add(a1);
 

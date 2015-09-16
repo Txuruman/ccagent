@@ -26,7 +26,7 @@ public class AuditService {
     private static final Logger LOGGER = LoggerFactory.getLogger(AuditService.class);
 
 	@Inject
-	protected CCAGENTAUDPortType ccagentaudPortType;
+	protected CCAGENTAUDPortType wsAudit;
 
 
 	//TODO BOrrar la clase
@@ -43,7 +43,7 @@ public class AuditService {
 	public void insert(org.wso2.ws.dataservice.Audit audit) {
 		//TODO LOG
 		try {
-			//ccagentaudPortType.insertAuditOperation(TODO METER TODOS LOS PARAMETROS);
+			//wsAudit.insertAuditOperation(TODO METER TODOS LOS PARAMETROS);
 		} catch (Exception e) {
 			LOGGER.error(e.getMessage(),e);
 			throw new FrameworkException(e);

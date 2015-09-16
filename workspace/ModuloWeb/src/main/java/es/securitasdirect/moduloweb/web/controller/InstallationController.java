@@ -2,7 +2,6 @@ package es.securitasdirect.moduloweb.web.controller;
 
 import es.securitasdirect.moduloweb.model.DirectAccess;
 import es.securitasdirect.moduloweb.model.InstallationData;
-import es.securitasdirect.moduloweb.service.DirectAccessService;
 import es.securitasdirect.moduloweb.service.InstallationService;
 import es.securitasdirect.moduloweb.web.dto.response.InstallationResponse;
 import es.securitasdirect.moduloweb.web.dto.response.ListDirectAccessResponse;
