@@ -62,6 +62,8 @@ public class InstallationController extends BaseController {
         SearchInstallationResponse response = new SearchInstallationResponse();
         try{
 	        response.setInstallationList(installationService.searchInstallations(request.getInstallationNumber(), request.getPhone(), request.getEmail(), request.getInstallationActive()));
+//	        response.setInstallationList(new ArrayList<InstallationData>());
+//	        response.getInstallationList().add(installationService.getInstallation("971120"));
 	        return response;
         }catch(Exception exception){
         	return processException(exception);
