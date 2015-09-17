@@ -2,7 +2,6 @@ package es.securitasdirect.moduloweb.web.controller;
 
 import es.securitasdirect.moduloweb.model.DirectAccess;
 import es.securitasdirect.moduloweb.model.InstallationData;
-import es.securitasdirect.moduloweb.service.DirectAccessService;
 import es.securitasdirect.moduloweb.service.InstallationService;
 import es.securitasdirect.moduloweb.web.dto.request.SearchInstallationRequest;
 import es.securitasdirect.moduloweb.web.dto.response.InstallationResponse;
@@ -54,11 +53,6 @@ public class InstallationController extends BaseController {
         }catch(Exception exception){
         	return processException(exception);
         }
-//       if (installation != null) {
-//            response.success(messageUtil.getProperty("installationData.success"));
-//        } else {
-//            response.danger(messageUtil.getProperty("installationData.notFound"));
-//        }
     }
     
     @RequestMapping(value = "/searchInstallation", method = {RequestMethod.PUT}, consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})

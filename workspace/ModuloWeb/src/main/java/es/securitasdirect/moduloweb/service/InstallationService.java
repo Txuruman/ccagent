@@ -27,15 +27,6 @@ public class InstallationService {
     private static final Logger LOGGER = LoggerFactory.getLogger(InstallationService.class);
 
 
-//    public List<DirectAccess> getDirectAccess() {
-//    	List<DirectAccess> list= new ArrayList<DirectAccess>();//DummyGenerator.getDirectAcess();
-//    	if (list.isEmpty()) {
-//    		throw new BusinessException(BusinessException.ErrorCode.ERROR_DIRECT_ACCESS_NOT_FOUND);
-//		}else{
-//			return list;
-//		}
-//    }
-
 
     public InstallationData getInstallation(String installationNumber) {
     	InstallationData installation = DummyGenerator.getInstallation(installationNumber);

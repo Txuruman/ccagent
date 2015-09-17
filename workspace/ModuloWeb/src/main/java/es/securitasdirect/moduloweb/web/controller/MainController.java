@@ -2,7 +2,6 @@ package es.securitasdirect.moduloweb.web.controller;
 
 import es.securitasdirect.moduloweb.model.DirectAccess;
 import es.securitasdirect.moduloweb.service.AdminService;
-import es.securitasdirect.moduloweb.service.DirectAccessService;
 import es.securitasdirect.moduloweb.web.dto.response.ListDirectAccessResponse;
 import es.securitasdirect.moduloweb.web.dto.support.BaseResponse;
 
@@ -41,10 +40,8 @@ public class MainController extends BaseController {
     private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
 
     @Inject
-    protected DirectAccessService directAccessService;
-
-    @Inject
     protected AdminService adminService;
+
 
     /**
      * Redirige a la página principal de marco
@@ -85,7 +82,7 @@ public class MainController extends BaseController {
     BaseResponse getListDirectAccess() {
        try{
 	    	ListDirectAccessResponse response = new ListDirectAccessResponse();
-	        List<DirectAccess> list = directAccessService.getDirectAccess();
+	        List<DirectAccess> list = adminService.getDirectAccess();
 	        response.setDirectAcess(list);
 	        return response;
 	    }catch(Exception exception){

@@ -1,0 +1,15 @@
+-- insercion autonumerica
+INSERT INTO "dbo"."TEST"
+(
+LAST_NAME,
+FIRST_NAME,
+ADDRESS,
+CITY
+)
+VALUES
+(
+'APELLIDO',
+'NOMBRE',
+'DIRECCION',
+'CIUDAD'
+)
