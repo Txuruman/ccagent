@@ -475,6 +475,10 @@ input.actionPlanTablePhone{
 #tablaDA input, #tablaDA-params input{
 	background-color:transparent;
 }
+
+.headScroll{
+	width:98.5%;
+}
 /*KEYS*/
 #tablaKeys{
 	display:inline-block;

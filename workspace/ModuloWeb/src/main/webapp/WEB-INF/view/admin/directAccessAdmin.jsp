@@ -38,8 +38,8 @@
 	<div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div id="tablaDA">	
-					<div class="thead">
-						<div class="cabecillas theadTR">
+					<div class="thead cabecillas">
+						<div class="theadTR headScroll">
 							<div class="tablaDA-td1 theadTH">#</div>
 							<div class="tablaDA-td2 theadTH"><spring:message code="admin.DA.name"/></div>
 							<div class="tablaDA-td3 theadTH"><spring:message code="admin.DA.url"/></div>
@@ -64,8 +64,8 @@
 					</div>
 			</div>
 			<div id="tablaDA-params">	
-					<div class="thead">
-						<div class="cabecillas theadTR">
+					<div class="thead cabecillas">
+						<div class="theadTR headScroll">
 							<div class="tablaDA-td1 theadTH"><span class="glyphicon glyphicon-plus colorAdd absolutaSpan" title="<spring:message code="boton.add"/>" aria-hidden="true" ng-click="addParams();" ng-show="editingDA && currentDA_params.currentDA!=-1"></span><spring:message code="admin.DA.param"/></div>
 							<div class="tablaDA-td2 theadTH"><spring:message code="admin.DA.value"/></div>
 							<div class="tablaDA-td3 theadTH"></div>

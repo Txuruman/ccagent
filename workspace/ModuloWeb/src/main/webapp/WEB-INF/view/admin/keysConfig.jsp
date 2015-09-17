@@ -38,8 +38,8 @@
 	<div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div id="tablaKeys">	
-					<div class="thead">
-						<div class="cabecillas theadTR">
+					<div class="thead cabecillas">
+						<div class="theadTR headScroll">
 							<div class="tablaDA-td1 theadTH"><spring:message code="admin.keys.tab"/></div>
 							<div class="tablaDA-td2 theadTH">K1</div>
 							<div class="tablaDA-td3 theadTH">K2</div>
