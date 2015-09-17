@@ -64,10 +64,10 @@
             <xs:element name="getDirectAccessResults" type="ns0:getDirectAccessResults"/>
             <xs:complexType name="getDirectAccessResults">
                 <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="getDirectAccessResult" type="ns0:getDirectAccessResult"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="DirectAccess" type="ns0:DirectAccess"/>
                 </xs:sequence>
             </xs:complexType>
-            <xs:complexType name="getDirectAccessResult">
+            <xs:complexType name="DirectAccess">
                 <xs:sequence>
                     <xs:element name="name" nillable="true" type="xs:string"/>
                     <xs:element name="url" nillable="true" type="xs:string"/>
