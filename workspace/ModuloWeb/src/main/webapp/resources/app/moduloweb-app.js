@@ -98,19 +98,78 @@ app.service('CommonService', function ($rootScope, $log) {
         //Variable global para mostrar mensajes
         serverMessages: [],
         appReady: true,
-        maxCaloriesPerDay: 2000,
         currentPage: 1,
         totalPages: 0,
-        originalMeals: [],
-        meals: [],
-        isSelectionEmpty: true,
         errorMessages: [],
         infoMessages: []
     };
-
-    //this.addAlert = function() {
-    //    $scope.alerts.push({msg: 'Another alert!'});
-    //};
+    
+    /**
+     * Gestión del log de javascript
+     * msg: mensaje a mostrar
+     * tipo: debug, info, error
+     * variable: variable a mostrar
+     * _IE: inicializada al principio, si abrimos con IE estará con valor true
+     */
+    this.logger=function(msg, tipo, variable){
+    	if (_IE===false) {
+    		if (variable!=undefined) {
+        		$log[tipo](msg, variable);
+    		}else{
+    			$log[tipo](msg);
+    		}
+		}
+    }
+    this.logDebug=function(msg,variable) {
+    	this.logger(msg,"debug",variable);
+    }
+    this.logInfo=function(msg,variable) {
+    	this.logger(msg,"info",variable);
+    }
+    this.logError=function(msg,variable) {
+    	this.logger(msg,"error",variable);
+    }
+    /**FIN Gestión Error*/
+    
+    /** Cierre de interacción
+     * 	Función externa CloseInteractionPushPreview
+     */
+    this.closeInteraction=function(data){
+    	//alert(data.success);
+//    	alert("map" + mapParams);
+//    	alert("conn" + mapParams.bp_auth_connid);
+//    	alert(JSON.strinify(data));
+    	if (data.success) {
+    		//alert("A continuación se cerrará la interacción");
+    		e = window.external.CloseInteractionPushPreview(mapParams.bp_interactionId);
+    		//alert("Interacción cerrada: "+JSON.strinify(e));
+		}
+    };
+    
+    /** Funcion para processar las respuestas del servidor, eg: processBaseResponse(data,status,headers,config);  */
+    /* quitado this. */
+    this.processBaseResponse = function (data, status, headers, config) {
+        //$log.debug("Procesando BaseResponse....");
+        if ((data!=undefined && data.messages!=undefined) || (data.data!=undefined && data.data.messages!=undefined)) {
+        	/**
+        	 * For modificado para correcto funcionamiento en IE8
+        	 * Original: for (var msg in data.messages) {
+        	 */
+        	var mensajes=(data.messages) ? data.messages : data.data.messages;
+        
+        	for (var i=0;i<mensajes.length; i++) {
+                $rootScope.vm.serverMessages.push(mensajes[i]);
+            }
+        }else if(status!=200 || (data.status!=undefined && data.status!=200)){
+        	 $rootScope.vm.serverMessages.push({level: "danger", value: "Error connecting with server. Please contact with your administrator."});
+        }
+      //Necesario para asignar las clases de la directiva alert (IE8)
+        $timeout(function(){
+        	$('div[type="success"]').addClass("alert-success alert-dismissable");
+        	$('div[type="warning"]').addClass("alert-warning alert-dismissable");
+        	$('div[type="danger"]').addClass("alert-danger alert-dismissable");
+        },0);
+    };
 
 
     /** Funcion para processar las respuestas del servidor, eg: processBaseResponse(data,status,headers,config);  */

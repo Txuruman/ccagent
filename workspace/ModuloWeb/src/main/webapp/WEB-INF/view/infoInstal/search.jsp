@@ -66,14 +66,14 @@
                 <th class="text-center" title='<spring:message code="infoinstal.address"/>'><spring:message code="infoinstal.address"/></th>
             </tr>
 
- 			<tr> 
-                <td>{{installation.installationNumber}}</td>
-                <td style="color:white;background-color: green;">S</td>
-                <td>N</td>
-                <td>N</td>
-                <td>N</td>
-                <td>N</td>
-                <td>{{installation.address+", "+installation.city}}</td>
+ 			<tr ng-repeat="i in searchedInstallations"> 
+                <td>{{i.installationNumber}}</td>
+                <td style="color:white;background-color: green;">{{i.emailMonitoring}}</td>
+                <td><!-- {{ i.emailBilling }} --></td>
+                <td>{{ i.emailServices }}</td>
+                <td><!-- telefono del plan --></td>
+                <td><!-- telefono de servicio --></td>
+                <td>{{i.address+", "+i.city}}</td>
             </tr>
         </table>
     </div>

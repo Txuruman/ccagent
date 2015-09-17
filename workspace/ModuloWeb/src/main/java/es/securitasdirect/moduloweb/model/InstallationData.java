@@ -13,7 +13,7 @@ public class InstallationData {
     private String version;
 
     /** Número del cliente. Esto es el número de instalación????  */
-    private Integer installationNumber;
+    private String installationNumber;
 
     /** Teléfono del Panel */
     private String panelPhone;
@@ -82,11 +82,11 @@ public class InstallationData {
         this.version = version;
     }
 
-    public Integer getInstallationNumber() {
+    public String getInstallationNumber() {
         return installationNumber;
     }
 
-    public void setInstallationNumber(Integer installationNumber) {
+    public void setInstallationNumber(String installationNumber) {
         this.installationNumber = installationNumber;
     }
 

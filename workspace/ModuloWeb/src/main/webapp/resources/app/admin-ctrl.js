@@ -1,7 +1,27 @@
 app.controller('adminController', function ($timeout, $scope, $http, CommonService,$log, $filter) {
 	////$log.debug('Empezando...');
     //alert("Empezando");
-    
+	$scope.keysTable=[{
+		tab:"info install",
+		key1:3,
+		key2:"*",
+		key3:8
+	},{
+		tab:"facturacion",
+		key1:4,
+		key2:7,
+		key3:3
+	},{
+		tab:"averias",
+		key1:"*",
+		key2:9,
+		key3:"*"
+	},{
+		tab:"administracion",
+		key1:9,
+		key2:8,
+		key3:6
+	}];
     $scope.getDirectAccess=function(){
     	//console.log('Get Direct Access');
     	

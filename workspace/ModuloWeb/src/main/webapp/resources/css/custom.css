@@ -5,7 +5,6 @@ html, body{
 	max-width:1600px;
 	min-width:787px;
 }
-
 .spacer_t1 {
 	height: 5px;
 }
@@ -362,6 +361,10 @@ input.actionPlanTablePhone{
 	padding: 1px;
 	cursor:pointer;
 }
+#tablaDA tbody, #tablaDA thead, #tablaDA-params tbody, #tablaDA-params thead{
+	display:block;
+	width:100%;
+}
 #tablaDA table, #tablaDA .thead, #tablaDA .tbody, #tablaDA tr, #tablaDA-params table, #tablaDA-params .thead, #tablaDA-params .tbody, #tablaDA-params tr{
 	display:block;
 }
@@ -418,8 +421,60 @@ input.actionPlanTablePhone{
 #tablaDA input, #tablaDA-params input{
 	background-color:transparent;
 }
-
-
+/*KEYS*/
+#tablaKeys{
+	display:inline-block;
+	width:100%;
+}
+#tablaKeys table, #tablaKeys .thead, #tablaKeys .tbody, #tablaKeys tr{
+	display:block;
+}
+#tablaKeys table{
+	width:100%;
+}
+#tablaKeys tbody, #tablaKeys thead{
+	display:block;
+	width:100%;
+}
+#tablaKeys .thead, #tablaKeys .tbody, #tablaKeys tr{
+	width:100%;
+}
+#tablaKeys td, #tablaKeys .theadTH{
+	display:inline-block;
+	padding:1px;
+	vertical-align:middle;
+	text-align:center;
+}
+#tablaKeys .tablaDA-td1{
+	width:40%;
+}
+#tablaKeys .tablaDA-td2{
+	width:19%;
+}
+#tablaKeys .tablaDA-td3{
+	width:19%;
+}
+#tablaKeys .tablaDA-td4{
+	width:19%;
+}
+#tablaKeys .tbody tr:hover{
+	background-color:#d6ddf0;
+}
+#tablaKeys .tbody td:hover{
+	cursor:pointer;	
+}
+#tablaKeys .tbody tr.currentDA{
+	background-color:#d6ddf0;
+}
+#tablaKeys .tbody tr{
+	border-bottom:1px solid #ddd;
+}
+#tablaKeys input{
+	background-color:transparent;
+}
+#tablaKeys .scrollBarTH{
+	width:3%;
+}
 /**************GENÉRICAS****************/
 .margin-top20{
 	margin-top:20px;	

@@ -45,6 +45,11 @@
 					<%@include file="invoicing/invoicing.jsp"%>
 				</li> 
 				<li tab heading="<spring:message code="titulo.tab.breakdown"/>">
+					
+						<a href="https://www.iscp.ie/sites/default/files/pdf-sample.pdf?keepThis=true&TB_iframe=true&height=300&width=500" title="add a caption to title attribute / or leave blank" class="thickbox">Example 2</a>
+						<pdf-viewer  delegate-handle="my-pdf-container"   url="https://www.iscp.ie/sites/default/files/pdf-sample.pdf"   scale="1"   show-toolbar="true"   headers="{ 'x-you-know-whats-awesome': 'EVERYTHING' }">
+					
+						</pdf-viewer>
 <%-- 					<%@include file="pruebaCall.jsp"%> --%>
 <!-- 					<iframe class="iframes" src="http://sd_dev.elecnor-deimos.com:7001/sdaverias/" height="600px" frameborder="0"></iframe> -->
 <!-- 					<iframe class="iframes" src="http://www.marca.com/" height="600px" style="position:relative" frameborder="0"></iframe> -->

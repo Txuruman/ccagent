@@ -23,6 +23,15 @@
 
 <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.3.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/bower_components/angular/angular-ie8.js"> </script> <!-- //ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js -->
+
+<!-- Intento de visualizador de pdf - No funcionan en IE8 -->
+<%-- <script src="${pageContext.request.contextPath}/resources/js/pdf.js"></script> --%>
+<%-- <script src="${pageContext.request.contextPath}/resources/js/angular-pdf-viewer.min.js"></script> --%>
+
+<%-- <script src="${pageContext.request.contextPath}/resources/js/thickbox.js"></script> --%>
+<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/thickbox.css" type="text/css" media="screen" /> --%>
+
+
 <script src="${pageContext.request.contextPath}/resources/js/ui-bootstrap-tpls-0.13.0.js"></script>
 <%-- <%-- <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script> <!--//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js --> --%> 
 
