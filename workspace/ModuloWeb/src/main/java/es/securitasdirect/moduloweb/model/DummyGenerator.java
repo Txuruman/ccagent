@@ -100,7 +100,7 @@ public class DummyGenerator {
      * @param installationNumber
      * @return
      */
-    public static InstallationData getInstallation(Integer installationNumber) {
+    public static InstallationData getInstallation(String installationNumber) {
         InstallationData installation = new InstallationData();
         //INSTALACION
         installation.setAddress("Gran Vía 12");

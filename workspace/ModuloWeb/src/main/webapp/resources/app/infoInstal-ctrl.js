@@ -64,46 +64,62 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 	 * Búsqueda de instalación
 	 */
 	$scope.searchInstallation=function(){
-		/**
-		 * Si la instalación está rellenada y no es la “instalación activa”, buscará esa instalación
-		 */
-		if ($scope.searchBy.installationNumber!=undefined && $scope.searchBy.installationNumber!="") {
-			if (($scope.installation!=undefined && $scope.installation.installationNumber!=$scope.searchBy.installationNumber)||($scope.installation==undefined || $scope.installation=="")) {
-				$scope.getInstallation($scope.searchBy.installationNumber);
-				return;
-			}else{
-				/**
-				 * si la instalación tiene la “instalación activa”:
-				 * - si el teléfono está relleno: búsqueda por teléfono
-				 * - si no lo está y está relleno el email: búsqueda por email
-				 */
-				if($scope.searchBy.phone!="" && $scope.searchBy.phone!=undefined){
-					$scope.getInstallationByPhone($scope.searchBy.phone);
-				}else if($scope.searchBy.email!="" && $scope.searchBy.email!=undefined){
-					$scope.getInstallationByEmail($scope.searchBy.email);
-				}
+		//Hacemos la búsqueda cuando por lo menos uno de los campos está relleno
+		if ($scope.searchBy.installationNumber!="" || $scope.searchBy.phone!="" || $scope.searchBy.email!="") {
+			var searchInstallationRequest={
+					installationNumber:$scope.searchBy.installationNumber,
+					phone:$scope.searchBy.phone,
+					email:$scope.searchBy.email,
+					installationActive:$scope.installation
 			}
-			/**
-			 * si la instalación está vacia:
-			 * - si el teléfono está relleno: búsqueda por teléfono
-			 * - si no lo está y está relleno el email: búsqueda por email
-			 */
-		}else{
-			if($scope.searchBy.phone!="" && $scope.searchBy.phone!=undefined){
-				$scope.getInstallationByPhone($scope.searchBy.phone);
-			}else if($scope.searchBy.email!="" && $scope.searchBy.email!=undefined){
-				$scope.getInstallationByEmail($scope.searchBy.email);
-			}
+			$http.put("installation/searchInstallation",searchInstallationRequest)
+			.success(function(data, status, headers, config){
+				CommonService.processBaseResponse(data,status,headers,config);
+				$scope.searchedInstallations=data.installationList;
+			}).error(function(data, status, headers, config){
+				CommonService.processBaseResponse(data,status,headers,config);
+			});
 		}
-		/**
-		 * Si el teléfono está rellenado y la instalación está vacía o tiene la “instalación activa”, buscará por el teléfono
-		 */
-		if ($scope.searchBy.installationNumber!=undefined && $scope.searchBy.installationNumber!="") {
-			if (($scope.installation!=undefined && $scope.installation.installationNumber!=$scope.searchBy.installationNumber)||($scope.installation==undefined || $scope.installation=="")) {
-				$scope.getInstallation($scope.searchBy.installationNumber);
-				return;
-			}
-		}
+//		/**
+//		 * Si la instalación está rellenada y no es la “instalación activa”, buscará esa instalación
+//		 */
+//		if ($scope.searchBy.installationNumber!=undefined && $scope.searchBy.installationNumber!="") {
+//			if (($scope.installation!=undefined && $scope.installation.installationNumber!=$scope.searchBy.installationNumber)||($scope.installation==undefined || $scope.installation=="")) {
+//				$scope.getInstallation($scope.searchBy.installationNumber);
+//				return;
+//			}else{
+//				/**
+//				 * si la instalación tiene la “instalación activa”:
+//				 * - si el teléfono está relleno: búsqueda por teléfono
+//				 * - si no lo está y está relleno el email: búsqueda por email
+//				 */
+//				if($scope.searchBy.phone!="" && $scope.searchBy.phone!=undefined){
+//					$scope.getInstallationByPhone($scope.searchBy.phone);
+//				}else if($scope.searchBy.email!="" && $scope.searchBy.email!=undefined){
+//					$scope.getInstallationByEmail($scope.searchBy.email);
+//				}
+//			}
+//			/**
+//			 * si la instalación está vacia:
+//			 * - si el teléfono está relleno: búsqueda por teléfono
+//			 * - si no lo está y está relleno el email: búsqueda por email
+//			 */
+//		}else{
+//			if($scope.searchBy.phone!="" && $scope.searchBy.phone!=undefined){
+//				$scope.getInstallationByPhone($scope.searchBy.phone);
+//			}else if($scope.searchBy.email!="" && $scope.searchBy.email!=undefined){
+//				$scope.getInstallationByEmail($scope.searchBy.email);
+//			}
+//		}
+//		/**
+//		 * Si el teléfono está rellenado y la instalación está vacía o tiene la “instalación activa”, buscará por el teléfono
+//		 */
+//		if ($scope.searchBy.installationNumber!=undefined && $scope.searchBy.installationNumber!="") {
+//			if (($scope.installation!=undefined && $scope.installation.installationNumber!=$scope.searchBy.installationNumber)||($scope.installation==undefined || $scope.installation=="")) {
+//				$scope.getInstallation($scope.searchBy.installationNumber);
+//				return;
+//			}
+//		}
 	}
 	/**FIN Búsqueda de instalación */
 	
@@ -232,7 +248,7 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 	/**
 	 * Valores iniciales
 	 */
-	$scope.getInstallation(971120);
+	$scope.getInstallation("971120");
 	$scope.getAudit(111111);
 	$scope.getFieldConfig();
 	$scope.keys={
@@ -240,10 +256,11 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 			securitasPassword:"",
 			coercionPassword:""
 	}
+	//Parametros de búsqueda a 0
 	$scope.searchBy={
 			installationNumber:"",
 			phone:"",
-			email:"frherrero@email.com"
+			email:""
 	}
 	//Las claves en readonly por defecto
 	$scope.NotEditableKeys=true;

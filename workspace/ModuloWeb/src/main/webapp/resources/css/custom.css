@@ -5,7 +5,6 @@ html, body{
 	max-width:1600px;
 	min-width:787px;
 }
-
 .spacer_t1 {
 	height: 5px;
 }
@@ -311,6 +310,60 @@ input.actionPlanTablePhone{
 	color:red;
 	font-weight:bold;
 }
+
+#tablaBuscar{
+	display:block;
+	width:100%;
+}
+#tablaBuscar tbody, #tablaBuscar thead{
+	display:block;
+	width:100%;
+}
+#tablaBuscar table, #tablaBuscar .thead, #tablaBuscar .tbody, #tablaBuscar tr{
+	display:block;
+}
+#tablaBuscar table{
+	width:100%;
+}
+#tablaBuscar .thead, #tablaBuscar .tbody, #tablaBuscar tr{
+	width:100%;
+}
+#tablaBuscar td, #tablaBuscar .theadTH{
+	display:inline-block;
+	padding:1px;
+	vertical-align:middle;
+	text-align:center;
+}
+#tablaBuscar .tabla-td1{
+	width:13%;
+}
+#tablaBuscar .tabla-td2{
+	width:13%;
+}
+#tablaBuscar .tabla-td3{
+	width:13%;
+}
+#tablaBuscar .tabla-td4{
+	width:13%;
+}
+#tablaBuscar .tabla-td5{
+	width:13%;
+}
+#tablaBuscar .tabla-td6{
+	width:13%;
+}
+#tablaBuscar .tabla-td7{
+	width:19%;
+}
+#tablaBuscar .scrollTabla{
+	display: block;
+    width: 100%;
+    height: 50px;
+    overflow-y: scroll;
+}
+#tablaBuscar .tablaVacia{
+	height: 15px !important;
+}
 /************INVOICING*******************/
 #invoicing td, #invoicing th {
 	padding:2px !important;
@@ -361,6 +414,10 @@ input.actionPlanTablePhone{
 	left:2px;
 	padding: 1px;
 	cursor:pointer;
+}
+#tablaDA tbody, #tablaDA thead, #tablaDA-params tbody, #tablaDA-params thead{
+	display:block;
+	width:100%;
 }
 #tablaDA table, #tablaDA .thead, #tablaDA .tbody, #tablaDA tr, #tablaDA-params table, #tablaDA-params .thead, #tablaDA-params .tbody, #tablaDA-params tr{
 	display:block;
@@ -419,7 +476,63 @@ input.actionPlanTablePhone{
 	background-color:transparent;
 }
 
-
+.headScroll{
+	width:98.5%;
+}
+/*KEYS*/
+#tablaKeys{
+	display:inline-block;
+	width:100%;
+}
+#tablaKeys table, #tablaKeys .thead, #tablaKeys .tbody, #tablaKeys tr{
+	display:block;
+}
+#tablaKeys table{
+	width:100%;
+}
+#tablaKeys tbody, #tablaKeys thead{
+	display:block;
+	width:100%;
+}
+#tablaKeys .thead, #tablaKeys .tbody, #tablaKeys tr{
+	width:100%;
+}
+#tablaKeys td, #tablaKeys .theadTH{
+	display:inline-block;
+	padding:1px;
+	vertical-align:middle;
+	text-align:center;
+}
+#tablaKeys .tablaDA-td1{
+	width:40%;
+}
+#tablaKeys .tablaDA-td2{
+	width:19%;
+}
+#tablaKeys .tablaDA-td3{
+	width:19%;
+}
+#tablaKeys .tablaDA-td4{
+	width:19%;
+}
+#tablaKeys .tbody tr:hover{
+	background-color:#d6ddf0;
+}
+#tablaKeys .tbody td:hover{
+	cursor:pointer;	
+}
+#tablaKeys .tbody tr.currentDA{
+	background-color:#d6ddf0;
+}
+#tablaKeys .tbody tr{
+	border-bottom:1px solid #ddd;
+}
+#tablaKeys input{
+	background-color:transparent;
+}
+#tablaKeys .scrollBarTH{
+	width:3%;
+}
 /**************GENÉRICAS****************/
 .margin-top20{
 	margin-top:20px;	

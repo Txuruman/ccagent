@@ -1,5 +1,5 @@
 app.controller('mainFrameController', function ($timeout, $scope, $http, CommonService,$log) {
-    
+	
     $scope.getDirectAccess=function(){
     	
         $http({
@@ -17,4 +17,5 @@ app.controller('mainFrameController', function ($timeout, $scope, $http, CommonS
     
     
     $scope.getDirectAccess();
+   
 });
