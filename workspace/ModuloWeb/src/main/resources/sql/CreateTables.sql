@@ -17,7 +17,7 @@ CREATE TABLE "dbo"."direct_access"
 (
 id int IDENTITY (1, 1) NOT NULL,
 name varchar(255),
-descripition varchar(255),
+description varchar(255),
 url varchar(255),
 position int,
 CONSTRAINT direct_access_PK PRIMARY KEY (id)
