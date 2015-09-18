@@ -70,7 +70,6 @@ public class AdminServiceTest {
 
 
         List<DirectAccess> list = adminService.getDirectAccess();
-
         LOGGER.debug("lista", list);
 
 
