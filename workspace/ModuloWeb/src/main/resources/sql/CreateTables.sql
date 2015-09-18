@@ -48,8 +48,10 @@ CREATE TABLE "dbo"."direct_access_params"
 id int IDENTITY (1, 1) NOT NULL,
 name varchar(255),
 value varchar(255),
+direct_access int,
 CONSTRAINT direct_access_params_PK PRIMARY KEY (id)
 )
+
 
 -- CCAGENT_ADM
 DROP TABLE "dbo"."combinations_keys";
