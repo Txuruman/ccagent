@@ -76,6 +76,9 @@ public class AdminService {
             List<GetDirectAccessResult> listGetDirectAccessResult = wsAdmin.getDirectAccess();
 
             for (GetDirectAccessResult getDirectAccessResult : listGetDirectAccessResult) {
+                // TODO LISTA DE PARAMETROS DE CADA ACCESO DIRECTO
+
+                LOGGER.debug("listGetDirectAccessResultParams", wsAdmin.getDirectAccessParams(Integer.parseInt(getDirectAccessResult.getId())) );
                 list.add(new DirectAccess(getDirectAccessResult));
             }
 
