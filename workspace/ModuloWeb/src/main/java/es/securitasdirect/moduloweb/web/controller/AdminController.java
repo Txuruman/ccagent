@@ -1,10 +1,13 @@
 package es.securitasdirect.moduloweb.web.controller;
 
 import es.securitasdirect.moduloweb.model.Audit;
-import es.securitasdirect.moduloweb.model.CombinationsKeys;import es.securitasdirect.moduloweb.service.AdminService;
+import es.securitasdirect.moduloweb.model.CombinationsKeys;
+import es.securitasdirect.moduloweb.model.FieldConfig;
+import es.securitasdirect.moduloweb.service.AdminService;
 import es.securitasdirect.moduloweb.web.dto.response.ListCombinationsKeysResponse;import es.securitasdirect.moduloweb.service.AuditService;
 import es.securitasdirect.moduloweb.web.dto.request.SearchInstallationRequest;
 import es.securitasdirect.moduloweb.web.dto.response.AuditResponse;
+import es.securitasdirect.moduloweb.web.dto.response.ListFieldConfigResponse;
 import es.securitasdirect.moduloweb.web.dto.response.SimpleResponse;
 import es.securitasdirect.moduloweb.web.dto.support.BaseResponse;
 import org.slf4j.Logger;
@@ -39,10 +42,10 @@ public class AdminController extends BaseController {
     @RequestMapping(value = "getFieldConfig", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public
     @ResponseBody
-    SimpleResponse getFieldConfig(@RequestParam(value = "app", required = true) String app) {
-        SimpleResponse response = new SimpleResponse();
-        response.setData(adminService.getFieldConfig(app));
-        //TODO Respuesta?
+    BaseResponse getFieldConfig(@RequestParam(value = "app", required = true) String app) {
+        ListFieldConfigResponse response = new ListFieldConfigResponse();
+        List<FieldConfig> list = adminService.getFieldConfig();
+        response.setFieldConfig(list);
         return response;
     }
     /*
