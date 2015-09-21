@@ -204,7 +204,7 @@ CREATE TABLE "dbo"."users"
   user_id varchar(255),
   name varchar(255),
   is_admin bit,
-  CONSTRAINT phone_PK PRIMARY KEY (id)
+  CONSTRAINT users_PK PRIMARY KEY (id)
 )
 
 
