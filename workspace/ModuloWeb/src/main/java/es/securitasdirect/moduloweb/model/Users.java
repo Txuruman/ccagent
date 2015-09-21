@@ -9,7 +9,9 @@ package es.securitasdirect.moduloweb.model;
  */
 public class Users {
 
-    // clave autonumerica para la tabla
+    /**
+     * clave autonumerica para la tabla
+     */
     private Integer id;
 	/**
 	 * Id del usuario
