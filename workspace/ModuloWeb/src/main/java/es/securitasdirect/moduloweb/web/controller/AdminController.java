@@ -78,7 +78,7 @@ public class AdminController extends BaseController {
     @RequestMapping(value = "listcombinationskeys", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public
     @ResponseBody
-    BaseResponse getListDirectAccess() {
+    BaseResponse getCombinationsKeys() {
         try{
             ListCombinationsKeysResponse response = new ListCombinationsKeysResponse();
             List<CombinationsKeys> list = adminService.getCombinationsKeys();
