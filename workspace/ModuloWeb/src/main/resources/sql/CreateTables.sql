@@ -196,6 +196,18 @@ CREATE TABLE "dbo"."phone"
 
 
 
+-- CCAGENT_ADM
+DROP TABLE "dbo"."users";
+CREATE TABLE "dbo"."users"
+(
+  id int IDENTITY (1, 1) NOT NULL,
+  user_id varchar(255),
+  name varchar(255),
+  isAdmin bit,
+  CONSTRAINT phone_PK PRIMARY KEY (id)
+)
+
+
 
 
 
