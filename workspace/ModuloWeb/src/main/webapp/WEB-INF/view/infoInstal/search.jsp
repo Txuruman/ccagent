@@ -91,9 +91,9 @@
 				<div class="cabecillas theadTR">
 					<div class="tabla-td1 theadTH"><spring:message code="infoinstal.installationNumber"/></div>
 					<div class="tabla-td7 theadTH" title='<spring:message code="infoinstal.address"/>'><spring:message code="infoinstal.address"/></div>
-					<div class="tabla-td2 theadTH" title='<spring:message code="infoinstal.emailMonitoring"/>'>EM</div>
-					<div class="tabla-td3 theadTH" title='<spring:message code="infoinstal.emailBilling"/>'>EB</div>
-					<div class="tabla-td4 theadTH" title='<spring:message code="installation.search.emailservices"/>'>ES</div>
+					<div class="tabla-td2 theadTH" title='<spring:message code="infoinstal.emailMonitoring"/>'><spring:message code="infoinstal.emailMonitoring"/></div>
+					<div class="tabla-td3 theadTH" title='<spring:message code="infoinstal.emailBilling"/>'><spring:message code="infoinstal.emailBilling"/></div>
+					<div class="tabla-td4 theadTH" title='<spring:message code="installation.search.emailservices"/>'><spring:message code="installation.search.emailservices"/></div>
 				</div>
 			</div>
       			<div class="scrollTabla borderTablaBottom" > <!--ng-class="(searchedInstallations==null || searchedInstallations==undefined) ? 'tablaVacia' : null"> -->
@@ -101,7 +101,7 @@
 			       		<tr ng-repeat="i in searchedInstallations"> 
 			                <td class="tabla-td1">{{i.installationNumber}}</td>
 			                <td class="tabla-td7">{{i.address+", "+i.city}}</td>
-			                <td class="tabla-td2" style="color:white;background-color: green;">{{i.emailMonitoring}}</td>
+			                <td class="tabla-td2 searchedTd">{{i.emailMonitoring}}</td>
 			                <td class="tabla-td3"> {{ i.emailBilling }} </td>
 			                <td class="tabla-td4">{{ i.emailServices }}</td>
 			            </tr>
@@ -123,8 +123,8 @@
 					<div class="tabla-td1 theadTH">Tel1</div>
 					<div class="tabla-td1 theadTH">Tel2</div>
 					<div class="tabla-td1 theadTH">Tel3</div>
-					<div class="tabla-td6 theadTH" title='<spring:message code="installation.search.servicesphone"/>'>TS</div>
-					<div class="tabla-td5 theadTH" title='<spring:message code="actionplan.phone"/>'>TP</div>
+					<div class="tabla-td6 theadTH" title='<spring:message code="installation.search.servicesphone"/>'><spring:message code="installation.search.servicesphone"/></div>
+					<div class="tabla-td5 theadTH" title='<spring:message code="actionplan.phone"/>'><spring:message code="actionplan.phone"/></div>
 					
 				</div>
 			</div>
@@ -135,7 +135,7 @@
 			                <td class="tabla-td7">{{i.address+", "+i.city}}</td>
 			                <td class="tabla-td5">{{ i.telefono1 }}</td>
 			                <td class="tabla-td6">{{ i.telefono2 }}</td>
-			                <td class="tabla-td6">{{ i.telefono3 }}</td>
+			                <td class="tabla-td6 searchedTd">{{ i.telefono3 }}</td>
 			                <td class="tabla-td6">{{ i.telefonoServicios }}</td>
 			                <td class="tabla-td6">{{ i.panelPhone }}</td>
 			            </tr>

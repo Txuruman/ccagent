@@ -46,6 +46,10 @@ html, body{
     padding-bottom: 6px;
     border-radius: 7px;
 }
+.searchedTd{
+	font-weight: bold;
+    background-color: khaki;
+}
 
 .panel-result {
 	padding: 3px;
