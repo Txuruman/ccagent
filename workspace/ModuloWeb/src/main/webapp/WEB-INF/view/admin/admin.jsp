@@ -15,7 +15,7 @@
 	</div>
 	<!-- FIN ADMINISTRACIÓN DE ACCESOS DIRECTOS -->
 	
-		<!-- ADMINISTRACIÓN DE KEYS -->
+	<!-- ADMINISTRACIÓN DE KEYS -->
 	<div class="panel panel-default panel-body margin-bottom5">
 			<div class="row">
 				<div class="col-md-12 col-sm-12 col-xs-12">
@@ -24,6 +24,16 @@
 		</div>
 	</div>
 	<!-- FIN ADMINISTRACIÓN DE KEYS -->
+	
+	<!-- ADMINISTRACIÓN DE CAMPOS -->
+	<div class="panel panel-default panel-body margin-bottom5">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<%@include file="fieldConfig.jsp"%>
+			</div>
+		</div>
+	</div>
+	<!-- FIN ADMINISTRACIÓN DE CAMPOS -->
 </div>
 
 	

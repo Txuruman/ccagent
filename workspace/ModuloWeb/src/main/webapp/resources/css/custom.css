@@ -538,7 +538,7 @@ input.actionPlanTablePhone{
 /*KEYS*/
 #tablaKeys{
 	display:inline-block;
-	width:100%;
+	width:22%;
 }
 #tablaKeys table, #tablaKeys .thead, #tablaKeys .tbody, #tablaKeys tr{
 	display:block;
@@ -560,16 +560,10 @@ input.actionPlanTablePhone{
 	text-align:center;
 }
 #tablaKeys .tablaDA-td1{
-	width:40%;
-}
-#tablaKeys .tablaDA-td2{
-	width:19%;
+	width:78%;
 }
 #tablaKeys .tablaDA-td3{
-	width:19%;
-}
-#tablaKeys .tablaDA-td4{
-	width:19%;
+	width:18%;
 }
 #tablaKeys .tbody tr:hover{
 	background-color:#d6ddf0;
@@ -589,6 +583,14 @@ input.actionPlanTablePhone{
 #tablaKeys .scrollBarTH{
 	width:3%;
 }
+.KeysConfigForm{
+	display:inline-block;
+	width:76%;
+	vertical-align:top;
+}
+
+
+
 /**************GENÉRICAS****************/
 .margin-top20{
 	margin-top:20px;	
