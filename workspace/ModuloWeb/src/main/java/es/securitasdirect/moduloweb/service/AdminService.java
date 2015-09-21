@@ -3,14 +3,15 @@ package es.securitasdirect.moduloweb.service;
 import es.securitasdirect.moduloweb.exceptions.BusinessException;
 import es.securitasdirect.moduloweb.exceptions.FrameworkException;
 import es.securitasdirect.moduloweb.model.*;
+import es.securitasdirect.moduloweb.model.CombinationsKeys;
+import es.securitasdirect.moduloweb.model.DirectAccess;
+import es.securitasdirect.moduloweb.model.DirectAccessParams;
+import es.securitasdirect.moduloweb.model.FieldConfig;
 import es.securitasdirect.moduloweb.model.TabKeys;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.wso2.ws.dataservice.CCAGENTADMPortType;
-import org.wso2.ws.dataservice.GetCombinationsKeysResult;
-import org.wso2.ws.dataservice.GetDirectAccessParamsResult;
-import org.wso2.ws.dataservice.GetDirectAccessResult;
+import org.wso2.ws.dataservice.*;
 
 
 import javax.inject.Inject;
@@ -134,5 +135,29 @@ public class AdminService {
 
         return listCombinationsKeys;
     }
+
+
+    public List<FieldConfig> getFieldConfig() {
+
+        List<FieldConfig> listFieldConfig = new ArrayList();
+
+        LOGGER.debug("Calling for Get the FieldConfig List");
+
+        try {
+            List<GetFieldConfigResult> listGetFieldConfigResult = wsAdmin.getFieldConfig();
+
+            for (GetFieldConfigResult getFieldConfigResult : listGetFieldConfigResult) {
+                FieldConfig FieldConfig = new FieldConfig(getFieldConfigResult);
+                listFieldConfig.add(FieldConfig);
+            }
+
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage(),e);
+            throw new FrameworkException(e);
+        }
+
+        return listFieldConfig;
+    }
+
 
 }
