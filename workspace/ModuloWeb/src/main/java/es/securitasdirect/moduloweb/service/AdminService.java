@@ -6,6 +6,7 @@ import es.securitasdirect.moduloweb.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.wso2.ws.dataservice.CCAGENTADMPortType;
+import org.wso2.ws.dataservice.GetCombinationsKeysResult;
 import org.wso2.ws.dataservice.GetDirectAccessParamsResult;
 import org.wso2.ws.dataservice.GetDirectAccessResult;
 
@@ -94,6 +95,34 @@ public class AdminService {
         }
 
         return listDirectAccess;
+    }
+
+    /**
+     * Get the CombinationsKeys List
+     *
+     * @return
+     */
+    public List<CombinationsKeys> getCombinationsKeys() {
+
+        List<CombinationsKeys> listCombinationsKeys = new ArrayList();
+
+        LOGGER.debug("Calling for Get the CombinationsKeys List");
+
+        try {
+            List<GetCombinationsKeysResult> listGetCombinationsKeysResult = wsAdmin.getCombinationsKeys();
+
+            for (GetCombinationsKeysResult getCombinationsKeysResult : listGetCombinationsKeysResult) {
+
+                CombinationsKeys CombinationsKeys = new CombinationsKeys(getCombinationsKeysResult);
+                listCombinationsKeys.add(CombinationsKeys);
+            }
+
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage(),e);
+            throw new FrameworkException(e);
+        }
+
+        return listCombinationsKeys;
     }
 
 }
