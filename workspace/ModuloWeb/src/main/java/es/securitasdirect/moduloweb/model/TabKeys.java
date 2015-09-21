@@ -7,6 +7,11 @@ package es.securitasdirect.moduloweb.model;
  *	Key1, Key2, Key3: Combinación para determinar la pestaña activa
  */
 public class TabKeys {
+
+    /**
+     * clave autonumerica para la tabla
+     */
+    private Integer id;
 	/**
 	 * id de la pestaña
 	 */
@@ -27,6 +32,30 @@ public class TabKeys {
 	 * Key3
 	 */
 	private String key3;
+
+    //constructor copia de la clase TabKeys
+    /*
+    public TabKeys(final org.wso2.ws.dataservice.GetTabKeysResult getTabKeysResult) {
+        this.id = getTabKeysResult.getId().intValue();
+        this.tabId = getTabKeysResult.getTabId();
+        this.name = getTabKeysResult.getName();
+        this.key1 = getTabKeysResult.getKey1();
+        this.key2 = getTabKeysResult.getKey2();
+        this.key3 = getTabKeysResult.getKey3();
+    }
+    */
+
+
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
 	public String getTabId() {
 		return tabId;
 	}
