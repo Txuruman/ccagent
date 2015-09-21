@@ -138,7 +138,7 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
             method:'get',
             url:'listcombinationskeys'
         }).success(function(data,status,headers,config){
-            $scope.keysTable = $filter('orderBy')(data.keysTable,'position',false);
+            $scope.combinationsKeys = $filter('orderBy')(data.combinationsKeys,'position',false);
             CommonService.processBaseResponse(data,status,headers,config);
             //$log.debug(data);
         }).error(function(data,status,headers,config){
