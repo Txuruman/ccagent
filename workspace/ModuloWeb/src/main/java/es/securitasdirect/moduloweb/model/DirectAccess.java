@@ -29,12 +29,12 @@ public class DirectAccess {
     }
 
     //constructor copia de la clase DirectAccess
-    public DirectAccess(final org.wso2.ws.dataservice.GetDirectAccessResult directAccess) {
-        this.id = Integer.parseInt(directAccess.getId());
-        this.name = directAccess.getName();
-        this.description = directAccess.getDescription();
-        this.url = directAccess.getUrl();
-        this.position = directAccess.getPosition().intValue();
+    public DirectAccess(final org.wso2.ws.dataservice.GetDirectAccessResult getDirectAccessResult) {
+        this.id = Integer.parseInt(getDirectAccessResult.getId());
+        this.name = getDirectAccessResult.getName();
+        this.description = getDirectAccessResult.getDescription();
+        this.url = getDirectAccessResult.getUrl();
+        this.position = getDirectAccessResult.getPosition().intValue();
     }
 
 
