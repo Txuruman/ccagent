@@ -5,6 +5,11 @@ package es.securitasdirect.moduloweb.model;
  *
  */
 public class InvoiceItem {
+
+    /**
+     * clave autonumerica para la tabla
+     */
+    private Integer id;
 	/**
 	 * Nº de la factura a la que está asociado el concepto
 	 */
@@ -29,6 +34,28 @@ public class InvoiceItem {
 	 * Impuestos aplicados al concepto
 	 */
 	private Double Tax;
+
+    //constructor copia de la clase InvoiceItem
+    /*
+    public InvoiceItem(final org.wso2.ws.dataservice.GetInvoiceItemResult getInvoiceItemResult) {
+        this.id = getInvoiceItemResult.getId().intValue();
+        this.InvoiceNumber = getInvoiceItemResult.getInvoiceNumber();
+        this.Description = getInvoiceItemResult.getDescription();
+        this.Period = getInvoiceItemResult.getPeriod();
+        this.Amount = getInvoiceItemResult.getAmount();
+        this.Tax = getInvoiceItemResult.getTax();
+
+    }
+    */
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
 	public Integer getInvoiceNumber() {
 		return InvoiceNumber;
