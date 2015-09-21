@@ -7,10 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.wso2.ws.dataservice.Audit;
-import org.wso2.ws.dataservice.CCAGENTADMPortType;
-import org.wso2.ws.dataservice.Entry;
-import org.wso2.ws.dataservice.GetDirectAccessResult;
+import org.wso2.ws.dataservice.*;
 
 import javax.inject.Inject;
 import javax.jws.WebParam;
@@ -79,8 +76,8 @@ public class AdminServiceTest {
     public void getCombinationsKeys() {
 
 
-        //List<GetCombinationsKeys> list = adminService.getCombinationsKeys();
-        //LOGGER.debug("lista", list);
+        List<GetCombinationsKeys> list = adminService.getCombinationsKeys();
+        LOGGER.debug("lista", list);
 
     }
 
