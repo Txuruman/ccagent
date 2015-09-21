@@ -66,7 +66,7 @@ public class AdminService {
      */
     public List<DirectAccess> getDirectAccess() {
 
-        List<DirectAccess> list = new ArrayList();
+        List<DirectAccess> listDirectAccess = new ArrayList();
 
         LOGGER.debug("Calling for Get the DirectAccess List");
 
@@ -78,14 +78,14 @@ public class AdminService {
                 List<GetDirectAccessParamsResult> listGetDirectAccessParamsResult = wsAdmin.getDirectAccessParams(Integer.parseInt(getDirectAccessResult.getId()));
 
                 // LISTA DE PARAMETROS DE CADA ACCESO DIRECTO
-                List<DirectAccessParams> list2 = new ArrayList();
+                List<DirectAccessParams> listDirectAccessParams = new ArrayList();
                 for (GetDirectAccessParamsResult getDirectAccessParamsResult : listGetDirectAccessParamsResult) {
-                    list2.add(new DirectAccessParams(getDirectAccessParamsResult));
+                    listDirectAccessParams.add(new DirectAccessParams(getDirectAccessParamsResult));
                 }
 
                 DirectAccess directAccess = new DirectAccess(getDirectAccessResult);
-                directAccess.setParams(list2);
-                list.add(directAccess);
+                directAccess.setParams(listDirectAccessParams);
+                listDirectAccess.add(directAccess);
             }
 
         } catch (Exception e) {
@@ -93,7 +93,7 @@ public class AdminService {
             throw new FrameworkException(e);
         }
 
-        return list;
+        return listDirectAccess;
     }
 
 }
