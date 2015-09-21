@@ -112,7 +112,6 @@ public class AdminService {
             List<GetCombinationsKeysResult> listGetCombinationsKeysResult = wsAdmin.getCombinationsKeys();
 
             for (GetCombinationsKeysResult getCombinationsKeysResult : listGetCombinationsKeysResult) {
-
                 CombinationsKeys CombinationsKeys = new CombinationsKeys(getCombinationsKeysResult);
                 listCombinationsKeys.add(CombinationsKeys);
             }
