@@ -1,6 +1,7 @@
 package es.securitasdirect.moduloweb.service;
 
 import es.securitasdirect.moduloweb.model.DirectAccess;
+import es.securitasdirect.moduloweb.model.CombinationsKeys;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -76,7 +77,7 @@ public class AdminServiceTest {
     public void getCombinationsKeys() {
 
 
-        List<GetCombinationsKeys> list = adminService.getCombinationsKeys();
+        List<CombinationsKeys> list = adminService.getCombinationsKeys();
         LOGGER.debug("lista", list);
 
     }
