@@ -29,16 +29,16 @@ public class ActionPlan {
     private Phone phone3;
 
 
-    //constructor copia de la clase Phone
+    //constructor copia de la clase ActionPlan
     /*
-    public Phone(final org.wso2.ws.dataservice.GetPhoneResult getPhoneResult) {
-        this.id = getFieldConfigResult.getId().intValue();
-        this.type = getFieldConfigResult.getType();
-        this.secuence = getFieldConfigResult.getSecuence();
-        this.contactName = getFieldConfigResult.getContactName();
-        this.phone1 = getFieldConfigResult.getPhone1();
-        this.phone2 = getFieldConfigResult.getPhone2();
-        this.phone3 = getFieldConfigResult.getPhone3();
+    public ActionPlan(final org.wso2.ws.dataservice.GetActionPlanResult getPhoneResult) {
+        this.id = getActionPlanResult.getId().intValue();
+        this.type = getActionPlanResult.getType();
+        this.secuence = getActionPlanResult.getSecuence();
+        this.contactName = getActionPlanResult.getContactName();
+        this.phone1 = getActionPlanResult.getPhone1();
+        this.phone2 = getActionPlanResult.getPhone2();
+        this.phone3 = getActionPlanResult.getPhone3();
 
     }
     */
