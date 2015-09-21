@@ -26,6 +26,21 @@ public class FieldConfig {
     private boolean editable;
 
 
+
+    public FieldConfig() {
+
+    }
+
+    //constructor copia de la clase FieldConfig
+    public FieldConfig(final org.wso2.ws.dataservice.GetFieldConfigResult getFieldConfigResult) {
+        this.id = getFieldConfigResult.getId().intValue();
+        this.app = getFieldConfigResult.getApp();
+        this.identifier = getFieldConfigResult.getIdentifier();
+        this.description = getFieldConfigResult.getDescription();
+        this.visible = getFieldConfigResult.isVisible();
+        this.editable = getFieldConfigResult.isEditable();
+    }
+
     public Integer getId() {
         return id;
     }
