@@ -59,6 +59,21 @@ public class Audit {
     private String detail;
 
 
+    //constructor copia de la clase Audit
+    /*
+    public Audit(final org.wso2.ws.dataservice.GetAuditResult getAuditResult) {
+        this.id = getAuditResult.getId().intValue();
+        this.date = getAuditResult.getDate();
+        this.user = getAuditResult.getUser();
+        this.app = getAuditResult.getApp();
+        this.action = getAuditResult.getAction();
+        this.result = getAuditResult.getResult();
+        this.detail = getAuditResult.getDetail();
+
+    }
+    */
+
+
     public Date getDate() {
         return date;
     }
