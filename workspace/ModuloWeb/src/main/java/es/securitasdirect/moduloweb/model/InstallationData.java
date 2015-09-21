@@ -7,6 +7,11 @@ import java.util.List;
  */
 public class InstallationData {
 
+    /**
+     * clave autonumerica para la tabla
+     */
+    private Integer id;
+
     /** Modelo de Panel */
     private String panel;
 
@@ -74,7 +79,46 @@ public class InstallationData {
     
     /** Email de servicios*/
     private String emailServicios;
-    
+
+    //constructor copia de la clase InstallationData
+    /*
+    public InstallationData(final org.wso2.ws.dataservice.GetInstallationDataResult getInstallationDataResult) {
+        this.id = getInstallationDataResult.getId().intValue();
+        this.panel = getInstallationDataResult.getPanel();
+        this.version = getInstallationDataResult.getVersion();
+        this.installationNumber = getInstallationDataResult.getInstallationNumber();
+        this.panelPhone = getInstallationDataResult.getPanelPhone();
+        this.customerName = getInstallationDataResult.getCustomerName();
+        this.emailMonitoring = getInstallationDataResult.getEmailMonitoring();
+        this.emailBilling = getInstallationDataResult.getEmailBilling();
+        this.emailUpdate = getInstallationDataResult.getEmailUpdate();
+        this.emailServices = getInstallationDataResult.getEmailServices();
+        this.camera = getInstallationDataResult.getCamera();
+        this.aka = getInstallationDataResult.getAka();
+        this.address = getInstallationDataResult.getAddress();
+        this.city = getInstallationDataResult.getCity();
+        this.monitoringStatus = getInstallationDataResult.getMonitoringStatus();
+        this.subtype = getInstallationDataResult.getSubtype();
+        this.language = getInstallationDataResult.getLanguage();
+        this.customerPassword = getInstallationDataResult.getCustomerPassword();
+        this.securitasPassword = getInstallationDataResult.getSecuritasPassword();
+        this.coercionPassword = getInstallationDataResult.getCoercionPassword();
+        this.actionplans = getInstallationDataResult.getActionplans();
+        this.telefono1 = getInstallationDataResult.getTelefono1();
+        this.telefono2 = getInstallationDataResult.getTelefono2();
+        this.telefono3 = getInstallationDataResult.getTelefono3();
+        this.telefonoServicios = getInstallationDataResult.getTelefonoServicios();
+        this.emailServicios = getInstallationDataResult.getEmailServicios();
+    }
+    */
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getPanel() {
         return panel;
