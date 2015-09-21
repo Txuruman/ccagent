@@ -2,6 +2,7 @@ package es.securitasdirect.moduloweb.service;
 
 import es.securitasdirect.moduloweb.model.DirectAccess;
 import es.securitasdirect.moduloweb.model.CombinationsKeys;
+import es.securitasdirect.moduloweb.model.FieldConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -78,6 +79,15 @@ public class AdminServiceTest {
 
 
         List<CombinationsKeys> list = adminService.getCombinationsKeys();
+        LOGGER.debug("lista", list);
+
+    }
+
+    @Test
+    public void getFieldConfig() {
+
+
+        List<FieldConfig> list = adminService.getFieldConfig();
         LOGGER.debug("lista", list);
 
     }
