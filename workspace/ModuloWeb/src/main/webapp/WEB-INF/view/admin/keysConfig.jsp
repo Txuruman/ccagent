@@ -56,7 +56,7 @@
 <!-- 								<td class="tablaDA-td3"><input type="text" class="actionPlanTableText" name="{{'key2'+$index}}" ng-model="k.key2" ng-readonly="!editingKey" ng-required="true"></td> -->
 <!-- 								<td class="tablaDA-td4"><input type="text" class="actionPlanTableText" name="{{'key3'+$index}}" ng-model="k.key3" ng-readonly="!editingKey" ng-required="true"></td> -->
 								<td class="tablaDA-td3">
-									<button type="button" class="btn btn-default btn-sm" ng-show="" title="<spring:message code="boton.erase"/>" ng-click="">
+									<button type="button" class="btn btn-default btn-sm"  title="<spring:message code="boton.erase"/>" ng-click="">
 				                      	<span class="glyphicon glyphicon-trash colorErase" aria-hidden="true"></span>
 				                    </button>
 								</td>
