@@ -21,16 +21,15 @@ public class CombinationsKeys {
     }
 
     //constructor copia de la clase CombinationsKeys
-    /*
     public CombinationsKeys(final org.wso2.ws.dataservice.GetCombinationsKeysResult getCombinationsKeysResult) {
-        this.id = Integer.parseInt(getCombinationsKeysResult.getId());
+        this.id = getCombinationsKeysResult.getId().intValue();
         this.key1 = getCombinationsKeysResult.getKey1();
         this.key2 = getCombinationsKeysResult.getKey2();
         this.key3 = getCombinationsKeysResult.getKey3();
         this.tab = getCombinationsKeysResult.getTab();
 
     }
-    */
+
 
 
     public Integer getId() {
