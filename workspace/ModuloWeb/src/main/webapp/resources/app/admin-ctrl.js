@@ -1,6 +1,8 @@
 app.controller('adminController', function ($timeout, $scope, $http, CommonService,$log, $filter) {
 	////$log.debug('Empezando...');
     //alert("Empezando");
+
+    /*
 	$scope.keysTable=[{
 		tab:"info install",
 		key1:3,
@@ -22,6 +24,8 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
 		key2:8,
 		key3:6
 	}];
+	*/
+
     $scope.getDirectAccess=function(){
     	//console.log('Get Direct Access');
     	
@@ -126,8 +130,26 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
 		}
 	}
     /** FIN Gestión Direct Access */
-    
+
+    $scope.getCombinationsKeys=function(){
+        //console.log('Get Combinations Keys');
+
+        $http({
+            method:'get',
+            url:'listcombinationskeys'
+        }).success(function(data,status,headers,config){
+            $scope.keysTable = $filter('orderBy')(data.keysTable,'position',false);
+            CommonService.processBaseResponse(data,status,headers,config);
+            //$log.debug(data);
+        }).error(function(data,status,headers,config){
+            CommonService.processBaseResponse(data,status,headers,config);
+        });
+    }
+
+
     $scope.getDirectAccess();
+
+    $scope.getCombinationsKeys();
     
     /**Valores Iniciales*/
     //Parametros del direct access activo
