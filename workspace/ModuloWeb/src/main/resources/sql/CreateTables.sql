@@ -203,7 +203,7 @@ CREATE TABLE "dbo"."users"
   id int IDENTITY (1, 1) NOT NULL,
   user_id varchar(255),
   name varchar(255),
-  isAdmin bit,
+  is_admin bit,
   CONSTRAINT phone_PK PRIMARY KEY (id)
 )
 
