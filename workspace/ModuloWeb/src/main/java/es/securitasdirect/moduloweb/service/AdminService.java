@@ -2,13 +2,11 @@ package es.securitasdirect.moduloweb.service;
 
 import es.securitasdirect.moduloweb.exceptions.BusinessException;
 import es.securitasdirect.moduloweb.exceptions.FrameworkException;
-import es.securitasdirect.moduloweb.model.Audit;
-import es.securitasdirect.moduloweb.model.DirectAccess;
-import es.securitasdirect.moduloweb.model.DummyGenerator;
-import es.securitasdirect.moduloweb.model.FieldConfig;
+import es.securitasdirect.moduloweb.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.wso2.ws.dataservice.CCAGENTADMPortType;
+import org.wso2.ws.dataservice.GetDirectAccessParamsResult;
 import org.wso2.ws.dataservice.GetDirectAccessResult;
 
 
@@ -76,10 +74,18 @@ public class AdminService {
             List<GetDirectAccessResult> listGetDirectAccessResult = wsAdmin.getDirectAccess();
 
             for (GetDirectAccessResult getDirectAccessResult : listGetDirectAccessResult) {
-                // TODO LISTA DE PARAMETROS DE CADA ACCESO DIRECTO
 
-                LOGGER.debug("listGetDirectAccessResultParams", wsAdmin.getDirectAccessParams(Integer.parseInt(getDirectAccessResult.getId())) );
-                list.add(new DirectAccess(getDirectAccessResult));
+                List<GetDirectAccessParamsResult> listGetDirectAccessParamsResult = wsAdmin.getDirectAccessParams(Integer.parseInt(getDirectAccessResult.getId()));
+
+                // LISTA DE PARAMETROS DE CADA ACCESO DIRECTO
+                List<DirectAccessParams> list2 = new ArrayList();
+                for (GetDirectAccessParamsResult getDirectAccessParamsResult : listGetDirectAccessParamsResult) {
+                    list2.add(new DirectAccessParams(getDirectAccessParamsResult));
+                }
+
+                DirectAccess directAccess = new DirectAccess(getDirectAccessResult);
+                directAccess.setParams(list2);
+                list.add(directAccess);
             }
 
         } catch (Exception e) {
