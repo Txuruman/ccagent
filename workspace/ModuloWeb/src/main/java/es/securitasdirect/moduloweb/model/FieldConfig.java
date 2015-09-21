@@ -6,8 +6,9 @@ package es.securitasdirect.moduloweb.model;
  */
 public class FieldConfig {
 
-    //TODO Id?? para poder gestionar en bbdd tendremos que tener un ID unico, podría ser app+identifier
-    // clave autonumerica para la tabla
+    /**
+     * clave autonumerica para la tabla
+     */
     private Integer id;
 
     /** Nombre del módulo (Instalacion, Facturación, otros) para poder filtrar por aplicación. */
