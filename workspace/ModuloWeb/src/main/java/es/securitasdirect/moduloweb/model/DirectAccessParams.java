@@ -2,7 +2,9 @@ package es.securitasdirect.moduloweb.model;
 
 public class DirectAccessParams {
 
-    // clave autonumerica para la tabla
+    /**
+     * clave autonumerica para la tabla
+     */
     private Integer id;
 	private String name;
 	private String value;	

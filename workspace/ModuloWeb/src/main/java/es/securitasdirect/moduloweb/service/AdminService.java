@@ -159,5 +159,27 @@ public class AdminService {
         return listFieldConfig;
     }
 
+    public List<Users> getUsers() {
+
+        List<Users> listUsers = new ArrayList();
+
+        LOGGER.debug("Calling for Get the Users List");
+
+        try {
+            List<GetUsersResult> listGetUsersResult = wsAdmin.getUsers();
+
+            for (GetUsersResult getUsersResult : listGetUsersResult) {
+                Users Users = new Users(getUsersResult);
+                listUsers.add(Users);
+            }
+
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage(),e);
+            throw new FrameworkException(e);
+        }
+
+        return listUsers;
+    }
+
 
 }

@@ -9,7 +9,9 @@ package es.securitasdirect.moduloweb.model;
  */
 public class Users {
 
-    // clave autonumerica para la tabla
+    /**
+     * clave autonumerica para la tabla
+     */
     private Integer id;
 	/**
 	 * Id del usuario
@@ -23,6 +25,14 @@ public class Users {
 	 * Usuario administrador o no
 	 */
 	private boolean isAdmin;
+
+    //constructor copia de la clase CombinationsKeys
+    public Users(final org.wso2.ws.dataservice.GetUsersResult getUsersResult) {
+        this.id = getUsersResult.getId().intValue();
+        this.userId = getUsersResult.getUserId();
+        this.name = getUsersResult.getName();
+        this.isAdmin = getUsersResult.isIsAdmin();
+    }
 
 
     public Integer getId() {

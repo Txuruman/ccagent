@@ -7,7 +7,9 @@ public class CombinationsKeys {
 
 
 
-    // clave autonumerica para la tabla
+    /**
+     * clave autonumerica para la tabla
+     */
     private Integer id;
 
     private String key1;

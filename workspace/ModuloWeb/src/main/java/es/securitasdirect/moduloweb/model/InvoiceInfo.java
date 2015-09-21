@@ -5,6 +5,10 @@ package es.securitasdirect.moduloweb.model;
  */
 public class InvoiceInfo {
 
+    /**
+     * clave autonumerica para la tabla
+     */
+    private Integer id;
     /** Indica si está activado el envío de facturas para la instalación. */
     public Boolean invoiceSend;
 
@@ -26,6 +30,27 @@ public class InvoiceInfo {
     
     /** Cuenta corriente */
     private String ccc;
+
+    //constructor copia de la clase InvoiceInfo
+    /*
+    public InvoiceInfo(final org.wso2.ws.dataservice.GetInvoiceInfoResult getInvoiceInfoResult) {
+        this.id = getInvoiceInfoResult.getId().intValue();
+        this.debtAmount = getInvoiceInfoResult.getDebtAmount();
+        this.financialEntity = getInvoiceInfoResult.getFinancialEntity();
+        this.payMode = getInvoiceInfoResult.getPayMode();
+        this.discount = getInvoiceInfoResult.getDiscount();
+        this.emailBilling = getInvoiceInfoResult.getEmailBilling();
+        this.ccc = getInvoiceInfoResult.getCcc();
+    }*/
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Boolean getInvoiceSend() {
         return invoiceSend;

@@ -5,6 +5,11 @@ package es.securitasdirect.moduloweb.model;
  */
 public class ActionPlan {
 
+    /**
+     * clave autonumerica para la tabla
+     */
+    private Integer id;
+
     /** Tipo de plan */ /* TODO PASAR A ENUM??? */
     private String type;
 
@@ -23,6 +28,29 @@ public class ActionPlan {
     /** Datos de contacto 3 de la persona */
     private Phone phone3;
 
+
+    //constructor copia de la clase Phone
+    /*
+    public Phone(final org.wso2.ws.dataservice.GetPhoneResult getPhoneResult) {
+        this.id = getFieldConfigResult.getId().intValue();
+        this.type = getFieldConfigResult.getType();
+        this.secuence = getFieldConfigResult.getSecuence();
+        this.contactName = getFieldConfigResult.getContactName();
+        this.phone1 = getFieldConfigResult.getPhone1();
+        this.phone2 = getFieldConfigResult.getPhone2();
+        this.phone3 = getFieldConfigResult.getPhone3();
+
+    }
+    */
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getType() {
         return type;

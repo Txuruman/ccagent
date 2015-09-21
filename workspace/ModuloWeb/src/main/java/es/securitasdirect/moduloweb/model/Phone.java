@@ -10,6 +10,10 @@ public class Phone {
         public static final String FIJO="fijo";
     }
 
+    /**
+     * clave autonumerica para la tabla
+     */
+    private Integer id;
     /** Tipo de telefono, movil, fijo... */
     private String type;
 
@@ -22,6 +26,25 @@ public class Phone {
     public Phone(String type, String number) {
         this.type = type;
         this.number = number;
+    }
+
+    //constructor copia de la clase Phone
+    /*
+    public Phone(final org.wso2.ws.dataservice.GetPhoneResult getPhoneResult) {
+        this.id = getPhoneResult.getId().intValue();
+        this.type = getPhoneResult.getType();
+        this.number = getPhoneResult.getNumber();
+    }
+    */
+
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getType() {
