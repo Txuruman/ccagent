@@ -18,7 +18,12 @@ public class InvoiceData {
         public static final String ONE="One Time";
         public static final String CYCLE="Cycle Feeds";
     }
-	
+
+
+    /**
+     * clave autonumerica para la tabla
+     */
+    private Integer id;
 	/**
 	 * Nº de la factura
 	 */
@@ -58,6 +63,29 @@ public class InvoiceData {
 	 * Fecha límite de pago
 	 */
 	private Date DueDate;
+
+    //constructor copia de la clase InvoiceData
+    /*
+    public InvoiceData(final org.wso2.ws.dataservice.GetInvoiceDataResult getInvoiceDataResult) {
+        this.id = getInvoiceDataResult.getId().intValue();
+        this.InvoiceNumber = getInvoiceDataResult.getInvoiceNumber();
+        this.ExtInvoiceNo = getInvoiceDataResult.getExtInvoiceNo();
+        this.IntallationNumber = getInvoiceDataResult.getIntallationNumber();
+        this.InvoiceType = getInvoiceDataResult.getInvoiceType();
+        this.Amount = getInvoiceDataResult.getAmount();
+        this.SystemDate = getInvoiceDataResult.getSystemDate();
+        this.TransactionDate = getInvoiceDataResult.getTransactionDate();
+        this.DueDate = getInvoiceDataResult.getDueDate();
+    }
+    */
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
 	public Integer getInvoiceNumber() {
 		return InvoiceNumber;
