@@ -5,7 +5,9 @@ package es.securitasdirect.moduloweb.model;
  */
 public class ActionPlan {
 
-    // clave autonumerica para la tabla
+    /**
+     * clave autonumerica para la tabla
+     */
     private Integer id;
 
     /** Tipo de plan */ /* TODO PASAR A ENUM??? */
