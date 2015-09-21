@@ -3,6 +3,7 @@ package es.securitasdirect.moduloweb.service;
 import es.securitasdirect.moduloweb.model.DirectAccess;
 import es.securitasdirect.moduloweb.model.CombinationsKeys;
 import es.securitasdirect.moduloweb.model.FieldConfig;
+import es.securitasdirect.moduloweb.model.Users;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -91,5 +92,16 @@ public class AdminServiceTest {
         LOGGER.debug("lista", list);
 
     }
+
+
+    @Test
+    public void getUsers() {
+
+
+        List<Users> list = adminService.getUsers();
+        LOGGER.debug("lista", list);
+
+    }
+
 
 }
