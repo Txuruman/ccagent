@@ -6,6 +6,7 @@ import es.securitasdirect.moduloweb.web.dto.response.ListCombinationsKeysRespons
 import es.securitasdirect.moduloweb.web.dto.request.SearchInstallationRequest;
 import es.securitasdirect.moduloweb.web.dto.response.AuditResponse;
 import es.securitasdirect.moduloweb.web.dto.response.SimpleResponse;
+import es.securitasdirect.moduloweb.web.dto.support.BaseResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -44,7 +45,7 @@ public class AdminController extends BaseController {
         //TODO Respuesta?
         return response;
     }
-    
+    /*
     @RequestMapping(value = "/getTabKeys", method = {RequestMethod.GET}, produces = {MediaType.APPLICATION_JSON_VALUE})
     public
     @ResponseBody
@@ -70,7 +71,7 @@ public class AdminController extends BaseController {
         	return processException(exception);
         }
     }
-
+*/
     @RequestMapping(value = "listcombinationskeys", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public
     @ResponseBody
