@@ -6,10 +6,15 @@ package es.securitasdirect.moduloweb.model;
  *	Una instalación solo está relacionada con un Resumen de Cuotas.
  */
 public class Cuote {
+
+    /**
+     * clave autonumerica para la tabla
+     */
+    private Integer id;
 	/** 
 	 * Número de instalación
 	 */
-    	private Integer installationNumber;
+    private Integer installationNumber;
 	/**
 	 * Cuota del mes actual.
 	 */
@@ -22,6 +27,27 @@ public class Cuote {
 	 * Couta del mes de enero del año pasado.
 	 */
 	private Double eneroPasado1;
+
+
+    //constructor copia de la clase Cuote
+    /*
+    public Cuote(final org.wso2.ws.dataservice.GetCuoteResult getCuoteResult) {
+        this.id = getCuoteResult.getId().intValue();
+        this.installationNumber = getCuoteResult.geInstallationNumber();
+        this.mesActual = getCuoteResult.getMesActual();
+        this.eneroActual = getCuoteResult.getEneroActual();
+        this.eneroPasado1 = getCuoteResult.getEneroPasado1();
+    }
+    */
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 	
 	public Integer getInstallationNumber() {
 		return installationNumber;
