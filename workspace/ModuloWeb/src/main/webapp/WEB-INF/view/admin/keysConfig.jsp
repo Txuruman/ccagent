@@ -41,9 +41,9 @@
 					<div class="thead cabecillas">
 						<div class="theadTR headScroll">
 							<div class="tablaDA-td1 theadTH"><spring:message code="admin.keys.tab"/></div>
-							<div class="tablaDA-td2 theadTH">K1</div>
-							<div class="tablaDA-td3 theadTH">K2</div>
-							<div class="tablaDA-td4 theadTH">K3</div>
+<!-- 							<div class="tablaDA-td2 theadTH">K1</div> -->
+<!-- 							<div class="tablaDA-td3 theadTH">K2</div> -->
+<!-- 							<div class="tablaDA-td4 theadTH">K3</div> -->
 							<div class="scrollBarTH theadTH"></div>
 						</div>
 					</div>
@@ -52,9 +52,14 @@
 						<table class="tbody">
 							<tr ng-repeat="k in combinationsKeys" ng-click="currentKey=$index" ng-class="($index===currentKey) ? 'currentDA' : ' '">
 								<td class="tablaDA-td1"><input type="text" class="actionPlanTableText" name="{{'tab'+$index}}" ng-model="k.tab" ng-readonly="!editingKey" ng-required="true"></td>
-								<td class="tablaDA-td2"><input type="text" class="actionPlanTableText" name="{{'key1'+$index}}" ng-model="k.key1" ng-readonly="!editingKey" ng-required="true"></td>
-								<td class="tablaDA-td3"><input type="text" class="actionPlanTableText" name="{{'key2'+$index}}" ng-model="k.key2" ng-readonly="!editingKey" ng-required="true"></td>
-								<td class="tablaDA-td4"><input type="text" class="actionPlanTableText" name="{{'key3'+$index}}" ng-model="k.key3" ng-readonly="!editingKey" ng-required="true"></td>
+<!-- 								<td class="tablaDA-td2"><input type="text" class="actionPlanTableText" name="{{'key1'+$index}}" ng-model="k.key1" ng-readonly="!editingKey" ng-required="true"></td> -->
+<!-- 								<td class="tablaDA-td3"><input type="text" class="actionPlanTableText" name="{{'key2'+$index}}" ng-model="k.key2" ng-readonly="!editingKey" ng-required="true"></td> -->
+<!-- 								<td class="tablaDA-td4"><input type="text" class="actionPlanTableText" name="{{'key3'+$index}}" ng-model="k.key3" ng-readonly="!editingKey" ng-required="true"></td> -->
+								<td class="tablaDA-td3">
+									<button type="button" class="btn btn-default btn-sm" ng-show="" title="<spring:message code="boton.erase"/>" ng-click="">
+				                      	<span class="glyphicon glyphicon-trash colorErase" aria-hidden="true"></span>
+				                    </button>
+								</td>
 							</tr>
 						</table>
 					</div>
