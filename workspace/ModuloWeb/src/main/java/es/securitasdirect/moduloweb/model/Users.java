@@ -8,6 +8,9 @@ package es.securitasdirect.moduloweb.model;
  *	isAdmin: el usuario es administrador o no
  */
 public class Users {
+
+    // clave autonumerica para la tabla
+    private Integer id;
 	/**
 	 * Id del usuario
 	 */
@@ -20,7 +23,16 @@ public class Users {
 	 * Usuario administrador o no
 	 */
 	private boolean isAdmin;
-	
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
 	public String getUserId() {
 		return userId;
 	}
