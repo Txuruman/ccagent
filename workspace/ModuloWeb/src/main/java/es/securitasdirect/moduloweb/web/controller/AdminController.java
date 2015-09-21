@@ -1,17 +1,11 @@
 package es.securitasdirect.moduloweb.web.controller;
 
 import es.securitasdirect.moduloweb.model.Audit;
-import es.securitasdirect.moduloweb.model.InstallationData;
-import es.securitasdirect.moduloweb.service.AdminService;
-import es.securitasdirect.moduloweb.service.AuditService;
+import es.securitasdirect.moduloweb.model.CombinationsKeys;import es.securitasdirect.moduloweb.service.AdminService;
+import es.securitasdirect.moduloweb.web.dto.response.ListCombinationsKeysResponse;import es.securitasdirect.moduloweb.service.AuditService;
 import es.securitasdirect.moduloweb.web.dto.request.SearchInstallationRequest;
 import es.securitasdirect.moduloweb.web.dto.response.AuditResponse;
-import es.securitasdirect.moduloweb.web.dto.response.GetTabKeysResponse;
-import es.securitasdirect.moduloweb.web.dto.response.GetUsersResponse;
-import es.securitasdirect.moduloweb.web.dto.response.SearchInstallationResponse;
 import es.securitasdirect.moduloweb.web.dto.response.SimpleResponse;
-import es.securitasdirect.moduloweb.web.dto.support.BaseResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -76,4 +70,19 @@ public class AdminController extends BaseController {
         	return processException(exception);
         }
     }
+
+    @RequestMapping(value = "listcombinationskeys", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public
+    @ResponseBody
+    BaseResponse getListDirectAccess() {
+        try{
+            ListCombinationsKeysResponse response = new ListCombinationsKeysResponse();
+            List<CombinationsKeys> list = adminService.getCombinationsKeys();
+            response.setCombinationsKeys(list);
+            return response;
+        }catch(Exception exception){
+            return processException(exception);
+        }
+    }
+
 }

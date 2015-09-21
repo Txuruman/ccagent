@@ -3,6 +3,7 @@ package es.securitasdirect.moduloweb.model;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  * Un acceso directo mantiene la información necesaria para proporcionar al módulo web la capacidad de poder abrir aplicaciones externas.
  * Los Accesos Directos se administran desde el Módulo de Administración. Los accesos directos podrán recibir los parámetros que
@@ -22,6 +23,19 @@ public class DirectAccess {
     private int position=0;
     /** Lista de parametros para los accesos directos. */
     private List<DirectAccessParams> params;
+
+    public DirectAccess() {
+
+    }
+
+    //constructor copia de la clase DirectAccess
+    public DirectAccess(final org.wso2.ws.dataservice.GetDirectAccessResult getDirectAccessResult) {
+        this.id = Integer.parseInt(getDirectAccessResult.getId());
+        this.name = getDirectAccessResult.getName();
+        this.description = getDirectAccessResult.getDescription();
+        this.url = getDirectAccessResult.getUrl();
+        this.position = getDirectAccessResult.getPosition().intValue();
+    }
 
 
     public Integer getId() {

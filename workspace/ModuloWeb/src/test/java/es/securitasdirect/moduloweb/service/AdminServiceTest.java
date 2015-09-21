@@ -1,16 +1,19 @@
 package es.securitasdirect.moduloweb.service;
 
+import es.securitasdirect.moduloweb.model.DirectAccess;
+import es.securitasdirect.moduloweb.model.CombinationsKeys;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.wso2.ws.dataservice.Audit;
-import org.wso2.ws.dataservice.CCAGENTADMPortType;
+import org.wso2.ws.dataservice.*;
 
 import javax.inject.Inject;
 import javax.jws.WebParam;
+import java.math.BigInteger;
+import java.util.List;
 
 /**
  * Created by Javier Naval on 23/06/2015.
@@ -32,21 +35,51 @@ public class AdminServiceTest {
 
     @Test
     public void testDirecto() {
-        java.lang.Integer id=1;
+
+        /*
         java.lang.String name="test1";
         java.lang.String descripition="desc1";
         java.lang.String url="url1";
         java.lang.Integer position =12;
 
-        wsAdmin.insertDirectAccessOperation( id,
-                name,
-                descripition,
-                url,
-                position);
+        try {
+            List<Entry> le =  wsAdmin.insertDirectAccessOperation(
+                    name,
+                    descripition,
+                    url,
+                    position);
+
+            BigInteger salida = le.get(0).getID();
+        }
+        catch (Exception e) {
+            LOGGER.equals("Error");
+        }
+        */
     }
 
     @Test
     public void insertDirectAccess() {
 
     }
+
+
+    @Test
+    public void getDirectAccess() {
+
+
+        List<DirectAccess> list = adminService.getDirectAccess();
+        LOGGER.debug("lista", list);
+
+    }
+
+
+    @Test
+    public void getCombinationsKeys() {
+
+
+        List<CombinationsKeys> list = adminService.getCombinationsKeys();
+        LOGGER.debug("lista", list);
+
+    }
+
 }

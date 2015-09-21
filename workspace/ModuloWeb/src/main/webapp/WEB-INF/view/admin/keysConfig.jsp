@@ -50,7 +50,7 @@
 					
 					<div class="scrollTabla borderTablaBottom">
 						<table class="tbody">
-							<tr ng-repeat="k in keysTable" ng-click="currentKey=$index"> <!-- ng-class="($index===currentKey) ? 'currentDA' : ' '">  -->
+							<tr ng-repeat="k in combinationsKeys" ng-click="currentKey=$index" ng-class="($index===currentKey) ? 'currentDA' : ' '">
 								<td class="tablaDA-td1"><input type="text" class="actionPlanTableText" name="{{'tab'+$index}}" ng-model="k.tab" ng-readonly="!editingKey" ng-required="true"></td>
 								<td class="tablaDA-td2"><input type="text" class="actionPlanTableText" name="{{'key1'+$index}}" ng-model="k.key1" ng-readonly="!editingKey" ng-required="true"></td>
 								<td class="tablaDA-td3"><input type="text" class="actionPlanTableText" name="{{'key2'+$index}}" ng-model="k.key2" ng-readonly="!editingKey" ng-required="true"></td>

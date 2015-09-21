@@ -15,6 +15,13 @@ public class DirectAccessParams {
 		this.value = value;
 	}
 
+    //constructor copia de la clase DirectAccessParams
+    public DirectAccessParams(final org.wso2.ws.dataservice.GetDirectAccessParamsResult getDirectAccessParamsResult) {
+        this.id = getDirectAccessParamsResult.getId().intValue();
+        this.name = getDirectAccessParamsResult.getName();
+        this.value = getDirectAccessParamsResult.getValue();
+    }
+
     public Integer getId() {
         return id;
     }
