@@ -8,6 +8,11 @@ import java.util.Date;
  *En el caso que el Cycle Fee esté asociado a una factura, se almacenará como Item de la Factura, pero si se debe mostrar en la pantalla independiente de Cycle Fees, se asociará únicamente a la instalación.
  */
 public class CycleFeeds {
+
+    /**
+     * clave autonumerica para la tabla
+     */
+    private Integer id;
 	/**
 	 * Número de instalación (si el Cycle Fee no está asociado )
 	 */
@@ -42,7 +47,31 @@ public class CycleFeeds {
 	 * Cantidad de items.
 	 */
 	public int Count;
-	
+
+
+    //constructor copia de la clase CycleFeeds
+    /*
+    public CycleFeeds(final org.wso2.ws.dataservice.GetCycleFeedsResult getCycleFeedsResult) {
+        this.id = getCycleFeedsResult.getId().intValue();
+        this.insNo = getCycleFeedsResult.getInsNo();
+        this.FromDate = getCycleFeedsResult.getFromDate();
+        this.ToDate = getCycleFeedsResult.getToDate();
+        this.Fee = getCycleFeedsResult.Fee();
+        this.RevTp = getCycleFeedsResult.getRevTp();
+        this.Description = getCycleFeedsResult.getDescription();
+        this.Count = getCycleFeedsResult.Count();
+    }
+    */
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
 	public String getInsNo() {
 		return insNo;
 	}
