@@ -11,7 +11,9 @@ import java.util.Map;
  */
 public class DirectAccess {
 
-    // clave autonumerica para la tabla
+    /**
+     * clave autonumerica para la tabla
+     */
     private Integer id;
     /** Etiqueta que se muestra en el módulo web como texto del acceso directo. */
     private String name;
