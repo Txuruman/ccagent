@@ -24,6 +24,16 @@ public class Users {
 	 */
 	private boolean isAdmin;
 
+    //constructor copia de la clase CombinationsKeys
+    /*
+    public Users(final org.wso2.ws.dataservice.GetUsersResult getUsersResult) {
+        this.id = getUsersResult.getId().intValue();
+        this.userId = getUsersResult.getUserId();
+        this.name = getUsersResult.getName();
+        this.isAdmin = geUsersResult.isAdmin();
+    }
+    */
+
 
     public Integer getId() {
         return id;
