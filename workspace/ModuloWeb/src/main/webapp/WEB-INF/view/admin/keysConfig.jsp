@@ -50,7 +50,7 @@
 					
 					<div class="scrollTabla borderTablaBottom">
 						<table class="tbody">
-							<tr ng-repeat="k in combinationsKeys" ng-click="currentKey=$index" ng-class="($index===currentKey) ? 'currentDA' : ' '">
+							<tr ng-repeat="k in combinationsKeys" ng-click="setCurrentKeyConfig($index)" ng-class="($index===currentKey) ? 'currentDA' : ' '">
 								<td class="tablaDA-td1"><input type="text" class="actionPlanTableText" name="{{'tab'+$index}}" ng-model="k.tab" ng-readonly="!editingKey" ng-required="true"></td>
 <!-- 								<td class="tablaDA-td2"><input type="text" class="actionPlanTableText" name="{{'key1'+$index}}" ng-model="k.key1" ng-readonly="!editingKey" ng-required="true"></td> -->
 <!-- 								<td class="tablaDA-td3"><input type="text" class="actionPlanTableText" name="{{'key2'+$index}}" ng-model="k.key2" ng-readonly="!editingKey" ng-required="true"></td> -->
@@ -68,25 +68,25 @@
 				<div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
 					<div class="form-group">
 						<label>Nombre</label>
-						<input type="text" class="form-control input-sm" name="{{'tab'+$index}}" ng-model="k.tab" ng-readonly="!editingKey" ng-required="true">
+						<input type="text" class="form-control input-sm" name="{{'tab'+$index}}" ng-model="currentKeyConfig.tab" ng-readonly="!editingKey" ng-required="true">
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
 					<div class="form-group">
 						<label>Key1</label>
-						<input type="text" class="form-control input-sm" name="{{'key1'+$index}}" ng-model="k.key1" ng-readonly="!editingKey" ng-required="true">
+						<input type="text" class="form-control input-sm" name="{{'key1'+$index}}" ng-model="currentKeyConfig.key1" ng-readonly="!editingKey" ng-required="true">
 					</div>
 				</div>	
 				<div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
 					<div class="form-group">		
 						<label>Key2</label>
-						<input type="text" class="form-control input-sm" name="{{'key2'+$index}}" ng-model="k.key2" ng-readonly="!editingKey" ng-required="true">
+						<input type="text" class="form-control input-sm" name="{{'key2'+$index}}" ng-model="currentKeyConfig.key2" ng-readonly="!editingKey" ng-required="true">
 					</div>
 				</div>	
 				<div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
 					<div class="form-group">	
 						<label>Key3</label>
-						<input type="text" class="form-control input-sm" name="{{'key3'+$index}}" ng-model="k.key3" ng-readonly="!editingKey" ng-required="true">
+						<input type="text" class="form-control input-sm" name="{{'key3'+$index}}" ng-model="currentKeyConfig.key3" ng-readonly="!editingKey" ng-required="true">
 					</div>
 				</div>	
 			</div>

@@ -590,7 +590,62 @@ input.actionPlanTablePhone{
 }
 
 
-
+/*FIELDS*/
+#tablaFields{
+	display:inline-block;
+	width:28%;
+}
+#tablaFields table, #tablaFields .thead, #tablaFields .tbody, #tablaFields tr{
+	display:block;
+}
+#tablaFields table{
+	width:100%;
+}
+#tablaFields tbody, #tablaFields thead{
+	display:block;
+	width:100%;
+}
+#tablaFields .thead, #tablaFields .tbody, #tablaFields tr{
+	width:100%;
+}
+#tablaFields td, #tablaFields .theadTH{
+	display:inline-block;
+	padding:1px;
+	vertical-align:middle;
+	text-align:center;
+}
+#tablaFields .tablaDA-td1{
+	width:40%;
+}
+#tablaFields .tablaDA-td3{
+	width:15%;
+}
+#tablaFields .tbody tr:hover{
+	background-color:#d6ddf0;
+}
+#tablaFields .tbody td:hover{
+	cursor:pointer;	
+}
+#tablaFields .tbody tr.currentDA{
+	background-color:#d6ddf0;
+}
+#tablaFields .tbody tr{
+	border-bottom:1px solid #ddd;
+}
+#tablaFields input{
+	background-color:transparent;
+}
+#tablaFields .scrollBarTH{
+	width:3%;
+}
+.FieldConfigForm{
+	display:inline-block;
+	width:70%;
+	vertical-align:top;
+}
+.checkGroup{
+	padding-top:15px !important;
+}
 /**************GENÉRICAS****************/
 .margin-top20{
 	margin-top:20px;	

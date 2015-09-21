@@ -131,7 +131,10 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
 	}
     /** FIN Gestión Direct Access */
 
-    $scope.getCombinationsKeys=function(){
+    /**
+     * Gestion de Keys
+     */
+	$scope.getCombinationsKeys=function(){
         //console.log('Get Combinations Keys');
 
         $http({
@@ -145,7 +148,39 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
             CommonService.processBaseResponse(data,status,headers,config);
         });
     }
+	
+	$scope.setCurrentKeyConfig=function($index){
+		//alert($index);
+		$scope.currentKeyConfig=$scope.combinationsKeys[$index];
+		$scope.currentKey=$index;
+	}
+	     
+    /** FIN Gestion de keys */
+    
+    /** Gestion de Campos*/
+	$scope.getCombinationsKeys=function(){
+        //console.log('Get Combinations Keys');
 
+        $http({
+            method:'get',
+            url:'admin/getFieldConfig'
+        }).success(function(data,status,headers,config){
+            $scope.ListFieldConfig = data.fieldConfig;
+            CommonService.processBaseResponse(data,status,headers,config);
+            //$log.debug(data);
+        }).error(function(data,status,headers,config){
+            CommonService.processBaseResponse(data,status,headers,config);
+        });
+    }
+	
+	$scope.setCurrentFieldConfig=function($index){
+		//alert($index);
+		$scope.currentFieldConfig=$scope.ListFieldConfig[$index];
+		$scope.currentField=$index;
+	}
+	
+	/** FIN Gestion de Campos */
+    
 
     $scope.getDirectAccess();
 
