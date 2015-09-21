@@ -72,9 +72,16 @@ public class AdminServiceTest {
         List<DirectAccess> list = adminService.getDirectAccess();
         LOGGER.debug("lista", list);
 
-
-
     }
 
+
+    @Test
+    public void getCombinationsKeys() {
+
+
+        //List<GetCombinationsKeys> list = adminService.getCombinationsKeys();
+        //LOGGER.debug("lista", list);
+
+    }
 
 }
