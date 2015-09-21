@@ -274,4 +274,8 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 	$scope.erasingActionPlans=false;
 	//Elementos borrados de la lista de Actions Plans antes de guardar
 	$scope.actionPlansErased=[];
+	
+	//TODO: BORRAR, hecho para demo Jesús
+	$scope.searchBy.email="frherrero@email.com";
+	$scope.searchInstallation();
 });

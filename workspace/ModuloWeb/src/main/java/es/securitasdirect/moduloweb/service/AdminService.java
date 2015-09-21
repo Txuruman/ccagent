@@ -5,6 +5,8 @@ import es.securitasdirect.moduloweb.model.Audit;
 import es.securitasdirect.moduloweb.model.DirectAccess;
 import es.securitasdirect.moduloweb.model.DummyGenerator;
 import es.securitasdirect.moduloweb.model.FieldConfig;
+import es.securitasdirect.moduloweb.model.TabKeys;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.wso2.ws.dataservice.CCAGENTADMPortType;
@@ -64,6 +66,15 @@ public class AdminService {
             throw new BusinessException(BusinessException.ErrorCode.ERROR_DIRECT_ACCESS_NOT_FOUND);
         }else{
             return list;
+        }
+    }
+    
+    public List<TabKeys> getTabKeys(){
+    	List<TabKeys> tabKeys= DummyGenerator.getTabKeys();
+    	if (tabKeys.isEmpty()) {
+            throw new BusinessException(BusinessException.ErrorCode.ERROR_TAB_KEYS_NOT_FOUND);
+        }else{
+            return tabKeys;
         }
     }
 

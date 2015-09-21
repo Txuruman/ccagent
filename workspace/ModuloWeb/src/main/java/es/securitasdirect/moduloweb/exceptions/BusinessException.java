@@ -22,7 +22,8 @@ public class BusinessException extends RuntimeException {
 		ERROR_INVOICE_INFO_NOT_FOUND,
 		ERROR_CYCLE_FEEDS_NOT_FOUND,
 		ERROR_INVOICE_LIST_NOT_FOUND,
-		ERROR_CUOTES_NOT_FOUND
+		ERROR_CUOTES_NOT_FOUND,
+		ERROR_TAB_KEYS_NOT_FOUND
     };
 	
 	private ErrorCode errorCode = null;

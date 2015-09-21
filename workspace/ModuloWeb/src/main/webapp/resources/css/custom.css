@@ -311,6 +311,7 @@ input.actionPlanTablePhone{
 	font-weight:bold;
 }
 
+
 #tablaBuscar{
 	display:block;
 	width:100%;
@@ -358,12 +359,63 @@ input.actionPlanTablePhone{
 #tablaBuscar .scrollTabla{
 	display: block;
     width: 100%;
-    height: 50px;
+    height: 25px;
     overflow-y: scroll;
 }
 #tablaBuscar .tablaVacia{
 	height: 15px !important;
 }
+
+
+
+#tablaBuscarEmail{
+	display:block;
+	width:100%;
+}
+#tablaBuscarEmail tbody, #tablaBuscarEmail thead{
+	display:block;
+	width:100%;
+}
+#tablaBuscarEmail table, #tablaBuscarEmail .thead, #tablaBuscarEmail .tbody, #tablaBuscarEmail tr{
+	display:block;
+}
+#tablaBuscarEmail table{
+	width:100%;
+}
+#tablaBuscarEmail .thead, #tablaBuscarEmail .tbody, #tablaBuscarEmail tr{
+	width:100%;
+}
+#tablaBuscarEmail td, #tablaBuscarEmail .theadTH{
+	display:inline-block;
+	padding:1px;
+	vertical-align:middle;
+	text-align:center;
+}
+#tablaBuscarEmail .tabla-td1{
+	width:17%;
+}
+#tablaBuscarEmail .tabla-td2{
+	width:17%;
+}
+#tablaBuscarEmail .tabla-td3{
+	width:17%;
+}
+#tablaBuscarEmail .tabla-td4{
+	width:17%;
+}
+#tablaBuscarEmail .tabla-td7{
+	width:30%;
+}
+#tablaBuscarEmail .scrollTabla{
+	display: block;
+    width: 100%;
+    height: 25px;
+    overflow-y: scroll;
+}
+#tablaBuscarEmail .tablaVacia{
+	height: 15px !important;
+}
+
 /************INVOICING*******************/
 #invoicing td, #invoicing th {
 	padding:2px !important;

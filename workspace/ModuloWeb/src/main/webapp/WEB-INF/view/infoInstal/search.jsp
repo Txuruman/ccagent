@@ -52,30 +52,92 @@
 			</div>
 	</div>
 </form>
+<!-- <div class="row"> -->
+<!--     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="margin-top: 5px;"> -->
+<!--         <div id="tablaBuscar">	 -->
+<!-- 			<div class="thead"> -->
+<!-- 				<div class="cabecillas theadTR"> -->
+<%-- 					<div class="tabla-td1 theadTH"><spring:message code="infoinstal.installationNumber"/></div> --%>
+<%-- 					<div class="tabla-td2 theadTH" title='<spring:message code="infoinstal.emailMonitoring"/>'>EM</div> --%>
+<%-- 					<div class="tabla-td3 theadTH" title='<spring:message code="infoinstal.emailBilling"/>'>EB</div> --%>
+<%-- 					<div class="tabla-td4 theadTH" title='<spring:message code="installation.search.emailservices"/>'>ES</div> --%>
+<%-- 					<div class="tabla-td5 theadTH" title='<spring:message code="actionplan.phone"/>'>TP</div> --%>
+<%-- 					<div class="tabla-td6 theadTH" title='<spring:message code="installation.search.servicesphone"/>'>TS</div> --%>
+<%-- 					<div class="tabla-td7 theadTH" title='<spring:message code="infoinstal.address"/>'><spring:message code="infoinstal.address"/></div> --%>
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!--       			<div class="scrollTabla borderTablaBottom" ng-class="(searchedInstallations==null || searchedInstallations==undefined) ? 'tablaVacia' : null"> -->
+<!-- 					<table class="tbody"> -->
+<!-- 			       		<tr ng-repeat="i in searchedInstallations">  -->
+<!-- 			                <td class="tabla-td1">{{i.installationNumber}}</td> -->
+<!-- 			                <td class="tabla-td2" style="color:white;background-color: green;">{{i.emailMonitoring}}</td> -->
+<!-- 			                <td class="tabla-td3">{{ i.emailBilling }}</td> -->
+<!-- 			                <td class="tabla-td4">{{ i.emailServices }}</td> -->
+<!-- 			                <td class="tabla-td5">telefono del plan</td> -->
+<!-- 			                <td class="tabla-td6">telefono de servicio</td> -->
+<!-- 			                <td class="tabla-td7">{{i.address+", "+i.city}}</td> -->
+<!-- 			            </tr> -->
+<!-- 					 </table> -->
+<!--   				</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- </div> -->
+
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="margin-top: 5px;">
+        <div id="tablaBuscarEmail">	
+			<div class="thead">
+				<div class="cabecillas theadTR">
+					<div class="tabla-td1 theadTH"><spring:message code="infoinstal.installationNumber"/></div>
+					<div class="tabla-td7 theadTH" title='<spring:message code="infoinstal.address"/>'><spring:message code="infoinstal.address"/></div>
+					<div class="tabla-td2 theadTH" title='<spring:message code="infoinstal.emailMonitoring"/>'>EM</div>
+					<div class="tabla-td3 theadTH" title='<spring:message code="infoinstal.emailBilling"/>'>EB</div>
+					<div class="tabla-td4 theadTH" title='<spring:message code="installation.search.emailservices"/>'>ES</div>
+				</div>
+			</div>
+      			<div class="scrollTabla borderTablaBottom" > <!--ng-class="(searchedInstallations==null || searchedInstallations==undefined) ? 'tablaVacia' : null"> -->
+					<table class="tbody">
+			       		<tr ng-repeat="i in searchedInstallations"> 
+			                <td class="tabla-td1">{{i.installationNumber}}</td>
+			                <td class="tabla-td7">{{i.address+", "+i.city}}</td>
+			                <td class="tabla-td2" style="color:white;background-color: green;">{{i.emailMonitoring}}</td>
+			                <td class="tabla-td3"> {{ i.emailBilling }} </td>
+			                <td class="tabla-td4">{{ i.emailServices }}</td>
+			            </tr>
+					 </table>
+  				</div>
+		</div>
+	</div>
+</div>
+
+
+
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="margin-top: 5px;">
         <div id="tablaBuscar">	
 			<div class="thead">
 				<div class="cabecillas theadTR">
 					<div class="tabla-td1 theadTH"><spring:message code="infoinstal.installationNumber"/></div>
-					<div class="tabla-td2 theadTH" title='<spring:message code="infoinstal.emailMonitoring"/>'>EM</div>
-					<div class="tabla-td3 theadTH" title='<spring:message code="infoinstal.emailBilling"/>'>EB</div>
-					<div class="tabla-td4 theadTH" title='<spring:message code="installation.search.emailservices"/>'>ES</div>
-					<div class="tabla-td5 theadTH" title='<spring:message code="actionplan.phone"/>'>TP</div>
-					<div class="tabla-td6 theadTH" title='<spring:message code="installation.search.servicesphone"/>'>TS</div>
 					<div class="tabla-td7 theadTH" title='<spring:message code="infoinstal.address"/>'><spring:message code="infoinstal.address"/></div>
+					<div class="tabla-td1 theadTH">Tel1</div>
+					<div class="tabla-td1 theadTH">Tel2</div>
+					<div class="tabla-td1 theadTH">Tel3</div>
+					<div class="tabla-td6 theadTH" title='<spring:message code="installation.search.servicesphone"/>'>TS</div>
+					<div class="tabla-td5 theadTH" title='<spring:message code="actionplan.phone"/>'>TP</div>
+					
 				</div>
 			</div>
       			<div class="scrollTabla borderTablaBottom" ng-class="(searchedInstallations==null || searchedInstallations==undefined) ? 'tablaVacia' : null">
 					<table class="tbody">
 			       		<tr ng-repeat="i in searchedInstallations"> 
 			                <td class="tabla-td1">{{i.installationNumber}}</td>
-			                <td class="tabla-td2" style="color:white;background-color: green;">{{i.emailMonitoring}}</td>
-			                <td class="tabla-td3"><!-- {{ i.emailBilling }} --></td>
-			                <td class="tabla-td4">{{ i.emailServices }}</td>
-			                <td class="tabla-td5"><!-- telefono del plan --></td>
-			                <td class="tabla-td6"><!-- telefono de servicio --></td>
 			                <td class="tabla-td7">{{i.address+", "+i.city}}</td>
+			                <td class="tabla-td5">{{ i.telefono1 }}</td>
+			                <td class="tabla-td6">{{ i.telefono2 }}</td>
+			                <td class="tabla-td6">{{ i.telefono3 }}</td>
+			                <td class="tabla-td6">{{ i.telefonoServicios }}</td>
+			                <td class="tabla-td6">{{ i.panelPhone }}</td>
 			            </tr>
 					 </table>
   				</div>

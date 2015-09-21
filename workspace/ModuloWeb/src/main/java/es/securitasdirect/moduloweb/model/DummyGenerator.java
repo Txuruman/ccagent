@@ -111,7 +111,7 @@ public class DummyGenerator {
         installation.setCoercionPassword("1234");
         installation.setCustomerName("Francisco Herrero");
         installation.setCustomerPassword("12345");
-        //installation.setEmailBilling("correo1@prueba.es");
+        installation.setEmailBilling("correo1@prueba.es");
         installation.setEmailMonitoring("frherrero@email.com");
         installation.setEmailUpdate("01-01-2015");
         installation.setInstallationNumber(installationNumber);
@@ -123,7 +123,10 @@ public class DummyGenerator {
         installation.setVersion("FAST A.06");
         installation.setLanguage("Español");
         installation.setEmailServices("servicios@email.es");
-
+        installation.setTelefono1("944169426");
+        installation.setTelefono3("923694267");
+        installation.setTelefono2("914582690");
+        installation.setTelefonoServicios("902514569");
         installation.setActionplans(getActionPlan());
 
         return installation;
@@ -490,5 +493,42 @@ public class DummyGenerator {
         result.add(fc);
 
         return result;
+    }
+    
+    public static List<TabKeys> getTabKeys(){
+    	List<TabKeys> result = new ArrayList<TabKeys>();
+    	TabKeys tabkey1=new TabKeys();
+    	tabkey1.setTabId("1");
+    	tabkey1.setKey1("3");
+    	tabkey1.setKey2("6");
+    	tabkey1.setKey3("2");
+    	tabkey1.setName("INFO INST");
+    	result.add(tabkey1);
+    	
+    	TabKeys tabkey2=new TabKeys();
+    	tabkey2.setTabId("2");
+    	tabkey2.setKey1("7");
+    	tabkey2.setKey2("2");
+    	tabkey2.setKey3("5");
+    	tabkey2.setName("FACTURACIÓN");
+    	result.add(tabkey2);
+    	
+    	TabKeys tabkey3=new TabKeys();
+    	tabkey3.setTabId("3");
+    	tabkey3.setKey1("4");
+    	tabkey3.setKey2("7");
+    	tabkey3.setKey3("8");
+    	tabkey3.setName("AVERÍAS");
+    	result.add(tabkey3);
+    	
+    	TabKeys tabkey4=new TabKeys();
+    	tabkey4.setTabId("4");
+    	tabkey4.setKey1("7");
+    	tabkey4.setKey2("3");
+    	tabkey4.setKey3("1");
+    	tabkey4.setName("ADMINISTRACIÓN");
+    	result.add(tabkey4);
+    	
+    	return result;
     }
 }

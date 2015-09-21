@@ -23,7 +23,7 @@ public class InstallationData {
 
     private String emailMonitoring;
 
-//    private String emailBilling; //Lo cambiamos a InvoiceInfo
+    private String emailBilling; //Lo cambiamos a InvoiceInfo
 
     private String emailUpdate;
     
@@ -65,6 +65,16 @@ public class InstallationData {
 
     /** Lista de los planes de acción de la instalación */
     private List<ActionPlan> actionplans;
+    
+    /** Teléfonos ¿? */
+    private String telefono1;
+    private String telefono2;
+    private String telefono3;
+    private String telefonoServicios;
+    
+    /** Email de servicios*/
+    private String emailServicios;
+    
 
     public String getPanel() {
         return panel;
@@ -114,13 +124,13 @@ public class InstallationData {
         this.emailMonitoring = emailMonitoring;
     }
 
-//    public String getEmailBilling() {
-//        return emailBilling;
-//    }
-//
-//    public void setEmailBilling(String emailBilling) {
-//        this.emailBilling = emailBilling;
-//    }
+    public String getEmailBilling() {
+        return emailBilling;
+    }
+
+    public void setEmailBilling(String emailBilling) {
+        this.emailBilling = emailBilling;
+    }
 
     public String getEmailUpdate() {
         return emailUpdate;
@@ -234,14 +244,51 @@ public class InstallationData {
         this.actionplans = actionplans;
     }
 
+	public String getTelefono1() {
+		return telefono1;
+	}
+
+	public void setTelefono1(String telefono1) {
+		this.telefono1 = telefono1;
+	}
+
+	public String getTelefono2() {
+		return telefono2;
+	}
+
+	public void setTelefono2(String telefono2) {
+		this.telefono2 = telefono2;
+	}
+
+	public String getTelefono3() {
+		return telefono3;
+	}
+
+	public void setTelefono3(String telefono3) {
+		this.telefono3 = telefono3;
+	}
+
+	public String getTelefonoServicios() {
+		return telefonoServicios;
+	}
+
+	public void setTelefonoServicios(String telefonoServicios) {
+		this.telefonoServicios = telefonoServicios;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "InstallationData [panel=" + panel + ", version=" + version + ", installationNumber="
 				+ installationNumber + ", panelPhone=" + panelPhone + ", customerName=" + customerName
-				+ ", emailMonitoring=" + emailMonitoring + ", emailUpdate=" + emailUpdate + ", emailServices="
-				+ emailServices + ", camera=" + camera + ", aka=" + aka + ", address=" + address + ", city=" + city
-				+ ", monitoringStatus=" + monitoringStatus + ", subtype=" + subtype + ", language=" + language
-				+ ", customerPassword=" + customerPassword + ", securitasPassword=" + securitasPassword
-				+ ", coercionPassword=" + coercionPassword + ", actionplans=" + actionplans + "]";
+				+ ", emailMonitoring=" + emailMonitoring + ", emailBilling=" + emailBilling + ", emailUpdate="
+				+ emailUpdate + ", emailServices=" + emailServices + ", camera=" + camera + ", aka=" + aka
+				+ ", address=" + address + ", city=" + city + ", monitoringStatus=" + monitoringStatus + ", subtype="
+				+ subtype + ", language=" + language + ", customerPassword=" + customerPassword + ", securitasPassword="
+				+ securitasPassword + ", coercionPassword=" + coercionPassword + ", actionplans=" + actionplans
+				+ ", telefono1=" + telefono1 + ", telefono2=" + telefono2 + ", telefono3=" + telefono3
+				+ ", telefonoServicios=" + telefonoServicios + "]";
 	}
+    
+    
 }
