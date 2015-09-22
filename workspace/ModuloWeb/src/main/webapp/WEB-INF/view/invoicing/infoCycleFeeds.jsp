@@ -23,8 +23,8 @@
 	                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight"><spring:message code="invoices.cycleFee.FromDate" /></div>
 	                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight"><spring:message code="invoices.cycleFee.ToDate" /></div>
 	                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight"><spring:message code="invoices.cycleFee.Fee" /></div>
-	                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight"><spring:message code="invoices.cycleFee.RevTp" /></div>
-	                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 text-center borderTablaRight"><spring:message code="invoices.cycleFee.Description" /></div>
+<%-- 	                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight"><spring:message code="invoices.cycleFee.RevTp" /></div> --%>
+	                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center borderTablaRight"><spring:message code="invoices.cycleFee.Description" /></div>
 	                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center"><spring:message code="invoices.cycleFee.Count" /></div>
 			</div>
 			<div class="scrollTabla2">
@@ -33,8 +33,8 @@
 		                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight">{{item.FromDate | date:'dd/MM/yyyy'}}</div>
 		                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight">{{item.ToDate | date:'dd/MM/yyyy'}}</div>
 		                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight">{{item.Fee}}</div>
-		                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight">{{item.RevTp}}</div>
-		                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 text-center borderTablaRight">{{item.Description}}</div>
+<!-- 		                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight">{{item.RevTp}}</div> -->
+		                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center borderTablaRight">{{item.Description}}</div>
 		                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center">{{item.Count}}</div>
 		            
 		           </div>

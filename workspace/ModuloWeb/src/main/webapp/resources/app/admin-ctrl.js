@@ -134,6 +134,7 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
     /**
      * Gestion de Keys
      */
+	//Obtencion de las keys
 	$scope.getCombinationsKeys=function(){
         //console.log('Get Combinations Keys');
 
@@ -148,17 +149,60 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
             CommonService.processBaseResponse(data,status,headers,config);
         });
     }
-	
+	//Asignar el keyConfig activo
 	$scope.setCurrentKeyConfig=function($index){
 		//alert($index);
 		$scope.currentKeyConfig=$scope.combinationsKeys[$index];
 		$scope.currentKey=$index;
 	}
-	     
+	//Boton insertar
+	$scope.insertingKeyButton=function(){
+		$scope.insertingKey=true;
+		$scope.currentKeyConfig={
+				tab:"",
+				key1:"",
+				key2:"",
+				key3:""
+		}
+		
+	}
+	//Boton Salvar
+	$scope.saveKeyButton=function(){
+		if($scope.insertingKey){
+			$scope.insertKeyConfig();
+		}
+	}
+	//Boton cancelar
+	$scope.cancelButton=function(){
+		$scope.insertingKey=false;
+		$scope.editingKey=false;
+		$scope.currentKeyConfig={
+				tab:"",
+				key1:"",
+				key2:"",
+				key3:""
+		}
+	}
+	//Insertar nuevo KeyConfig
+	$scope.insertKeyConfig=function(){
+		var insertKeyConfigRequest={
+				combinationKeys:$scope.currentKeyConfig
+		}
+		$http.post("admin/insertCombinationsKeys",insertKeyConfigRequest).success(function(data,status,headers,config){
+			//volvemos a obtener las keys
+			$scope.getCombinationsKeys();
+			$scope.insertingKey=false;
+            CommonService.processBaseResponse(data,status,headers,config);
+            //$log.debug(data);
+        }).error(function(data,status,headers,config){
+        	CommonService.processBaseResponse(data,status,headers,config);
+        });
+	}
+	
     /** FIN Gestion de keys */
     
     /** Gestion de Campos*/
-	$scope.getCombinationsKeys=function(){
+	$scope.getFieldConfig=function(){
         //console.log('Get Combinations Keys');
 
         $http({
@@ -185,6 +229,8 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
     $scope.getDirectAccess();
 
     $scope.getCombinationsKeys();
+    
+    $scope.getFieldConfig();
     
     /**Valores Iniciales*/
     //Parametros del direct access activo

@@ -70,6 +70,7 @@
 					name="panelPhone">
 			</div>
 		</div>
+		
 	<!-- FIN, Campos que se mostrarán siempre, y protegidos.  -->
 	
 	<!-- Campos que no se mostrarán salvo que lo configure el administrador. Si se muestran, estarán protegidos. -->	
@@ -110,6 +111,38 @@
 			</div>	
 		</div>
 	<!-- FIN, Campos que no se mostrarán salvo que lo configure el administrador. Si se muestran, estarán protegidos. -->
+	
+	<!-- Internacionalizar -->
+		<div class="col-md-3 col-sm-3 col-xs-4">
+			<div class="form-group">
+				<label>Teléfono panel</label> <input class="form-control input-sm"
+					 type="text" name="camera" readonly="true" value="94125368">
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-3 col-xs-4">
+			<div class="form-group">
+				<label>Teléfono monitoring 2</label> <input class="form-control input-sm"
+					 type="text" name="panel" readonly="true" value="95261358">
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-3 col-xs-4">
+			<div class="form-group">
+				<label>Teléfono monitoring 3</label> <input class="form-control input-sm"
+					readonly="true" type="text" 
+					name="version" value="91524892">
+			</div>
+		</div>
+		<div class="col-md-3 col-sm-3 col-xs-4">
+			<div class="form-group">
+				<label>Teléfono servicios</label><input class="form-control input-sm"
+					readonly="true"  type="text"
+					name="panelPhone" value="926352148">
+			</div>
+		</div>
+	
+	
+	
+	
 	
 	<!-- Campos que se mostrarán protegidos, pero que se podrán modificar, si el usuario pulsa el botón de edición correspondiente. -->		
 		<div class="col-md-3 col-sm-3 col-xs-4">

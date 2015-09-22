@@ -34,7 +34,7 @@
                 <th class="text-center"><spring:message code="invoices.creationdate"/></th>
                 <th class="text-center"><spring:message code="invoices.transactiondate"/></th>
                 <th class="text-center"><spring:message code="invoices.duedate"/></th>
-                
+                <th class="text-center"><spring:message code="invoices.balance"/></th>
                 <th class="text-center"></th>
             </tr>
             
@@ -46,6 +46,7 @@
                 <td>{{item.systemDate | date:'dd/MM/yyyy'}}</td>
                 <td>{{item.transactionDate | date:'dd/MM/yyyy'}}</td>
                 <td>{{item.dueDate | date:'dd/MM/yyyy'}}</td>
+                <td>91.352</td>
                 <td>
                 <div class="btn-group inline">
 	        		<button type="button" class="btn btn-default btn-sm" ng-click="openInvoiceDetailModal(item.invoiceNumber)" title="Ver detalle">

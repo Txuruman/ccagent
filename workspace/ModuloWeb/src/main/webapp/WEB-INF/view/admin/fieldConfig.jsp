@@ -4,28 +4,28 @@
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
-<form method="post" name="adminKeysForm">
+<form method="post" name="adminFieldsForm">
 	<div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<h3 class="enlinea tituloSeccion margin-right10"><spring:message code="titulo.admin.keys"/></h3>
+			<h3 class="enlinea tituloSeccion margin-right10"><spring:message code="titulo.admin.field"/></h3>
 			<div class="btn-group inline enlinea">
-				<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.edit"/>" ng-hide="editingKey || insertingKey" ng-click="editingKey=true">
+				<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.edit"/>" ng-hide="editingKey" ng-click="editingKey=true">
 				   	<span class="glyphicon glyphicon-pencil colorEdit" aria-hidden="true"></span>
 		        </button>
-		        <button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.add"/>" ng-hide="editingKey || insertingKey" ng-click="insertingKeyButton()">
+		        <button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.add"/>" ng-hide="editingKey" ng-click="editingKey=true">
 				   	<span class="glyphicon glyphicon-plus colorAdd" aria-hidden="true"></span>
 		        </button>
 	        </div>
 			<div class="btn-group inline enlinea">
-	        	<button type="submit" class="btn btn-default btn-sm" title="<spring:message code="boton.save"/>" ng-show="editingKey || insertingKey" ng-click="adminDAForm.$valid ? saveKeyButton() : null">
+	        	<button type="submit" class="btn btn-default btn-sm" title="<spring:message code="boton.save"/>" ng-show="editingKey" ng-click="adminDAForm.$valid ? editingKey=false : null">
 			    	<span class="glyphicon glyphicon-ok colorSave" aria-hidden="true"></span>
 	        	</button>
-	        	<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.cancel"/>" ng-show="editingKey || insertingKey" ng-click="cancelButton()">
+	        	<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.cancel"/>" ng-show="editingKey" ng-click="editingKey=false">
 			    	<span class="glyphicon glyphicon-remove colorCancel" aria-hidden="true"></span>
 	        	</button>
 			</div>
 			<div class="enlinea">
-<%-- 				<span class="error margin-left5" ng-show="adminKeysForm.$error.required"><spring:message code="error.required"/></span> --%>
+<%-- 				<span class="error margin-left5" ng-show="adminFieldsForm.$error.required"><spring:message code="error.required"/></span> --%>
 			</div>
 		</div>
 	</div>
@@ -37,10 +37,11 @@
 
 	<div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<div id="tablaKeys">	
+			<div id="tablaFields">	
 					<div class="thead cabecillas">
 						<div class="theadTR headScroll">
-							<div class="tablaDA-td1 theadTH"><spring:message code="admin.keys.tab"/></div>
+							<div class="tablaDA-td1 theadTH"><spring:message code="admin.field.name"/></div>
+							<div class="tablaDA-td1 theadTH"><spring:message code="admin.field.app"/></div>
 <!-- 							<div class="tablaDA-td2 theadTH">K1</div> -->
 <!-- 							<div class="tablaDA-td3 theadTH">K2</div> -->
 <!-- 							<div class="tablaDA-td4 theadTH">K3</div> -->
@@ -50,11 +51,9 @@
 					
 					<div class="scrollTabla borderTablaBottom">
 						<table class="tbody">
-							<tr ng-repeat="k in combinationsKeys" ng-click="(!editingKey && !insertingKey) ? setCurrentKeyConfig($index) : null" ng-class="($index===currentKey) ? 'currentDA' : ' '">
-								<td class="tablaDA-td1"><input type="text" class="actionPlanTableText" name="{{'tab'+$index}}" ng-model="k.tab" ng-readonly="true"></td>
-<!-- 								<td class="tablaDA-td2"><input type="text" class="actionPlanTableText" name="{{'key1'+$index}}" ng-model="k.key1" ng-readonly="!editingKey" ng-required="true"></td> -->
-<!-- 								<td class="tablaDA-td3"><input type="text" class="actionPlanTableText" name="{{'key2'+$index}}" ng-model="k.key2" ng-readonly="!editingKey" ng-required="true"></td> -->
-<!-- 								<td class="tablaDA-td4"><input type="text" class="actionPlanTableText" name="{{'key3'+$index}}" ng-model="k.key3" ng-readonly="!editingKey" ng-required="true"></td> -->
+							<tr ng-repeat="k in ListFieldConfig" ng-click="setCurrentFieldConfig($index)" ng-class="($index===currentField) ? 'currentDA' : ' '">
+								<td class="tablaDA-td1"><input type="text" class="actionPlanTableText" name="{{'tab'+$index}}" ng-model="k.identifier" ng-readonly="!editingKey" ng-required="true"></td>
+								<td class="tablaDA-td1"><input type="text" class="actionPlanTableText" name="{{'tab'+$index}}" ng-model="k.app" ng-readonly="!editingKey" ng-required="true"></td>
 								<td class="tablaDA-td3">
 									<button type="button" class="btn btn-default btn-sm"  title="<spring:message code="boton.erase"/>" ng-click="">
 				                      	<span class="glyphicon glyphicon-trash colorErase" aria-hidden="true"></span>
@@ -64,29 +63,31 @@
 						</table>
 					</div>
 			</div>
-			<div class="KeysConfigForm">
+			<div class="FieldConfigForm">
 				<div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
 					<div class="form-group">
-						<label>Nombre</label>
-						<input type="text" class="form-control input-sm" name="{{'tab'+$index}}" ng-model="currentKeyConfig.tab" ng-readonly="!editingKey && !insertingKey" ng-required="true">
+						<label><spring:message code="admin.field.name"/></label>
+						<input type="text" class="form-control input-sm" name="{{'tab'+$index}}" ng-model="currentFieldConfig.identifier" ng-readonly="!editingKey" ng-required="true">
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
 					<div class="form-group">
-						<label>Key1</label>
-						<input type="text" class="form-control input-sm" name="{{'key1'+$index}}" ng-model="currentKeyConfig.key1" ng-readonly="!editingKey && !insertingKey" ng-required="true">
+						<label><spring:message code="admin.field.app"/></label>
+						<input type="text" class="form-control input-sm" name="{{'key1'+$index}}" ng-model="currentFieldConfig.app" ng-readonly="!editingKey" ng-required="true">
 					</div>
 				</div>	
 				<div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
 					<div class="form-group">		
-						<label>Key2</label>
-						<input type="text" class="form-control input-sm" name="{{'key2'+$index}}" ng-model="currentKeyConfig.key2" ng-readonly="!editingKey && !insertingKey" ng-required="true">
+						<label><spring:message code="admin.field.description"/></label>
+						<input type="text" class="form-control input-sm" name="{{'key2'+$index}}" ng-model="currentFieldConfig.description" ng-readonly="!editingKey" ng-required="true">
 					</div>
 				</div>	
 				<div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
-					<div class="form-group">	
-						<label>Key3</label>
-						<input type="text" class="form-control input-sm" name="{{'key3'+$index}}" ng-model="currentKeyConfig.key3" ng-readonly="!editingKey && !insertingKey" ng-required="true">
+					<div class="checkGroup">
+						<label class="checkbox-inline"><input type="checkbox" name="{{'key3'+$index}}" ng-model="currentFieldConfig.visible" ng-readonly="!editingKey">
+						<spring:message code="admin.field.visible"/></label>
+						<label class="checkbox-inline"><input type="checkbox" name="{{'key3'+$index}}" ng-model="currentFieldConfig.editable" ng-readonly="!editingKey">
+						<spring:message code="admin.field.editable"/></label>
 					</div>
 				</div>	
 			</div>

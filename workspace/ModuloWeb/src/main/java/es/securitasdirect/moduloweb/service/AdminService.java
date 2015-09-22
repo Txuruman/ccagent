@@ -136,7 +136,16 @@ public class AdminService {
         return listCombinationsKeys;
     }
 
-
+    /**
+     * Insert Combination Keys
+     * @return
+     */
+    public void insertCombinationsKeys(CombinationsKeys combinationKeys){
+    	wsAdmin.insertCombinationsKeysOperation(combinationKeys.getKey1(), combinationKeys.getKey2(), combinationKeys.getKey3(), combinationKeys.getTab());
+    	//TODO: Salida 
+    }
+    
+    
     public List<FieldConfig> getFieldConfig() {
 
         List<FieldConfig> listFieldConfig = new ArrayList();

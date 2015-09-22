@@ -5,11 +5,13 @@ import es.securitasdirect.moduloweb.model.CombinationsKeys;
 import es.securitasdirect.moduloweb.model.FieldConfig;
 import es.securitasdirect.moduloweb.service.AdminService;
 import es.securitasdirect.moduloweb.web.dto.response.ListCombinationsKeysResponse;import es.securitasdirect.moduloweb.service.AuditService;
+import es.securitasdirect.moduloweb.web.dto.request.InsertCombinationsKeysRequest;
 import es.securitasdirect.moduloweb.web.dto.request.SearchInstallationRequest;
 import es.securitasdirect.moduloweb.web.dto.response.AuditResponse;
 import es.securitasdirect.moduloweb.web.dto.response.ListFieldConfigResponse;
 import es.securitasdirect.moduloweb.web.dto.response.SimpleResponse;
 import es.securitasdirect.moduloweb.web.dto.support.BaseResponse;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -42,7 +44,7 @@ public class AdminController extends BaseController {
     @RequestMapping(value = "getFieldConfig", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public
     @ResponseBody
-    BaseResponse getFieldConfig(@RequestParam(value = "app", required = true) String app) {
+    BaseResponse getFieldConfig() {
         ListFieldConfigResponse response = new ListFieldConfigResponse();
         List<FieldConfig> list = adminService.getFieldConfig();
         response.setFieldConfig(list);
@@ -87,6 +89,20 @@ public class AdminController extends BaseController {
         }catch(Exception exception){
             return processException(exception);
         }
+    }
+    @RequestMapping(value = "insertCombinationsKeys", method = {RequestMethod.POST}, consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public
+    @ResponseBody
+    BaseResponse insertCombinationsKeys(@RequestBody InsertCombinationsKeysRequest request) {
+        BaseResponse response = new BaseResponse();
+        try {
+        	adminService.insertCombinationsKeys(request.getCombinationKeys());
+        	response.info(messageUtil.getProperty("createtask.create.success"));
+        } catch (Exception e) {
+            LOGGER.error("Error creating task.", e);
+            response = processException(e);
+        }
+        return response;
     }
 
 }
