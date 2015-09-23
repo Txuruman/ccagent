@@ -9,12 +9,15 @@
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<h3 class="enlinea tituloSeccion margin-right10"><spring:message code="titulo.admin.keys"/></h3>
 			<div class="btn-group inline enlinea">
-				<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.edit"/>" ng-hide="editingKey || insertingKey" ng-click="editingKey=true">
+				<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.edit"/>" ng-hide="editingKey || insertingKey" ng-click="editingKeyButton()" ng-disabled="currentKey<0 ? true : false">
 				   	<span class="glyphicon glyphicon-pencil colorEdit" aria-hidden="true"></span>
 		        </button>
 		        <button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.add"/>" ng-hide="editingKey || insertingKey" ng-click="insertingKeyButton()">
 				   	<span class="glyphicon glyphicon-plus colorAdd" aria-hidden="true"></span>
 		        </button>
+		        <button type="button" class="btn btn-default btn-sm"  title="<spring:message code="boton.erase"/>" ng-hide="editingKey || insertingKey || currentKey<0" ng-click="deleteKeyButton()">
+                   	<span class="glyphicon glyphicon-trash colorErase" aria-hidden="true"></span>
+                 </button>
 	        </div>
 			<div class="btn-group inline enlinea">
 	        	<button type="submit" class="btn btn-default btn-sm" title="<spring:message code="boton.save"/>" ng-show="editingKey || insertingKey" ng-click="adminDAForm.$valid ? saveKeyButton() : null">
@@ -66,6 +69,7 @@
 			</div>
 			<div class="KeysConfigForm">
 				<div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
+					<input type="hidden" ng-model="currentKeyConfig.id">
 					<div class="form-group">
 						<label>Nombre</label>
 						<input type="text" class="form-control input-sm" name="{{'tab'+$index}}" ng-model="currentKeyConfig.tab" ng-readonly="!editingKey && !insertingKey" ng-required="true">

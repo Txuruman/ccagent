@@ -135,7 +135,7 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 			$scope.keys.customerPassword="";
 			$scope.keys.securitasPassword="";
 			$scope.keys.coercionPassword="";
-		}, 5000);
+		}, 8000);
 	}
 	//Editando las palabras clave
 	$scope.keysEdit=function(){

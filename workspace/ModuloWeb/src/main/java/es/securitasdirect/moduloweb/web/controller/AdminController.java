@@ -7,6 +7,7 @@ import es.securitasdirect.moduloweb.service.AdminService;
 import es.securitasdirect.moduloweb.web.dto.response.ListCombinationsKeysResponse;import es.securitasdirect.moduloweb.service.AuditService;
 import es.securitasdirect.moduloweb.web.dto.request.InsertCombinationsKeysRequest;
 import es.securitasdirect.moduloweb.web.dto.request.SearchInstallationRequest;
+import es.securitasdirect.moduloweb.web.dto.request.UpdateCombinationsKeysRequest;
 import es.securitasdirect.moduloweb.web.dto.response.AuditResponse;
 import es.securitasdirect.moduloweb.web.dto.response.ListFieldConfigResponse;
 import es.securitasdirect.moduloweb.web.dto.response.SimpleResponse;
@@ -77,6 +78,14 @@ public class AdminController extends BaseController {
         }
     }
 */
+    
+    /**
+     * Gestion de CombinationKeys
+     * getCombinationsKeys: Obtener la lista de combinationKeys
+     * insertCombinationsKeys: Insertar un nuevo combinationKeys
+     * updateCombinationsKeys: Actualizar el valor de un combinationKeys
+     * @return
+     */
     @RequestMapping(value = "listcombinationskeys", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public
     @ResponseBody
@@ -97,6 +106,20 @@ public class AdminController extends BaseController {
         BaseResponse response = new BaseResponse();
         try {
         	adminService.insertCombinationsKeys(request.getCombinationKeys());
+        	response.info(messageUtil.getProperty("createtask.create.success"));
+        } catch (Exception e) {
+            LOGGER.error("Error creating task.", e);
+            response = processException(e);
+        }
+        return response;
+    }
+    @RequestMapping(value = "updateCombinationsKeys", method = {RequestMethod.PUT}, consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public
+    @ResponseBody
+    BaseResponse updateCombinationsKeys(@RequestBody UpdateCombinationsKeysRequest request) {
+        BaseResponse response = new BaseResponse();
+        try {
+        	adminService.updateCombinationsKeys(request.getCombinationKeys());
         	response.info(messageUtil.getProperty("createtask.create.success"));
         } catch (Exception e) {
             LOGGER.error("Error creating task.", e);

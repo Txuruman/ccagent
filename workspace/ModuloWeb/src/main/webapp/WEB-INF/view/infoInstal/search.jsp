@@ -120,9 +120,9 @@
 				<div class="cabecillas theadTR">
 					<div class="tabla-td1 theadTH"><spring:message code="infoinstal.installationNumber"/></div>
 					<div class="tabla-td7 theadTH" title='<spring:message code="infoinstal.address"/>'><spring:message code="infoinstal.address"/></div>
-					<div class="tabla-td1 theadTH">Tel1</div>
-					<div class="tabla-td1 theadTH">Tel2</div>
-					<div class="tabla-td1 theadTH">Tel3</div>
+					<div class="tabla-td1 theadTH"><spring:message code="infoinstal.panelPhone"/></div>
+					<div class="tabla-td1 theadTH"><spring:message code="infoinstal.Phone2"/></div>
+					<div class="tabla-td1 theadTH"><spring:message code="infoinstal.Phone3"/></div>
 					<div class="tabla-td6 theadTH" title='<spring:message code="installation.search.servicesphone"/>'><spring:message code="installation.search.servicesphone"/></div>
 					<div class="tabla-td5 theadTH" title='<spring:message code="actionplan.phone"/>'><spring:message code="actionplan.phone"/></div>
 					

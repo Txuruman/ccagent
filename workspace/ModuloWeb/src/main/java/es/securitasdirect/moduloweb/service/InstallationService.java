@@ -9,11 +9,19 @@ import es.securitasdirect.moduloweb.web.dto.request.SearchInstallationRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.wso2.ws.dataservice.DataServiceFault;
+import org.wso2.ws.dataservice.GetAlarmIdsBasicInfoResult;
+import org.wso2.ws.dataservice.GetMonitoringStatusResult;
 import org.wso2.ws.dataservice.Installation;
+import org.wso2.ws.dataservice.Mainstallationdataresult;
+import org.wso2.ws.dataservice.ResultcheckInstallationNumber;
+import org.wso2.ws.dataservice.SPInstallationMonDataPortType;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,18 +31,92 @@ import java.util.List;
 @Named(value = "installationService")
 @Singleton
 public class InstallationService {
-
+	
+	@Inject
+    protected SPInstallationMonDataPortType spInstallationMonData;
+	
+	
+	
     private static final Logger LOGGER = LoggerFactory.getLogger(InstallationService.class);
 
 
 
     public InstallationData getInstallation(String installationNumber) {
-    	InstallationData installation = DummyGenerator.getInstallation(installationNumber);
-    	if (installation==null) {
-    		throw new BusinessException(BusinessException.ErrorCode.ERROR_INSTALLATION_NOT_FOUND);
-		}else{
-			return installation;
+    	//Comprobamos la instalacion
+    	List<GetMonitoringStatusResult> GetMonitoringStatusResult;
+    	InstallationData installation =new InstallationData();
+    	try {
+    		//TODO:BORRAR
+			installationNumber="1087817";
+			
+			GetMonitoringStatusResult=spInstallationMonData.getMonitoringStatus(Integer.parseInt(installationNumber));
+    		String monitoringStatus=GetMonitoringStatusResult.get(0).getMonStat();
+    		LOGGER.debug("Monitoring status {}", monitoringStatus);
+			//TODO: comprobar estado
+        	//Si el estado es correcto buscamos la instalacion
+			
+			/**
+			 * WS getInstallationData
+			 * in: installationNumber
+			 * out: List<Mainstallationdataresult>
+			 */
+			List<Mainstallationdataresult> mainstallationdataresults=spInstallationMonData.getInstallationData(installationNumber);
+			//Cogemos el primer elemento de la lista
+			Mainstallationdataresult mainstallationdataresult=mainstallationdataresults.get(0);
+			
+			//Instalation Number
+			installation.setInstallationNumber(mainstallationdataresult.getInsNo());
+			//Panel
+			installation.setPanel(mainstallationdataresult.getPanel());
+			//CustomerName --> Apellidos, Nombre 
+			installation.setCustomerName(mainstallationdataresult.getName() + ", " + mainstallationdataresult.getFname());
+			//Address --> calle "calle" numero codigo postal
+			installation.setAddress(mainstallationdataresult.getStreet1No2() +" "+ mainstallationdataresult.getStreet2() +" "+ mainstallationdataresult.getStreet1No1() + ", " + mainstallationdataresult.getZip());
+			//City --> Ciudad, provincia
+			installation.setCity(mainstallationdataresult.getCity()+ ", " +mainstallationdataresult.getCity2());
+			//Monitoring Status
+			installation.setMonitoringStatus(mainstallationdataresult.getMonStat());
+			//Panel Phone
+			installation.setPanelPhone(mainstallationdataresult.getPhone());
+			//Language
+			installation.setLanguage(mainstallationdataresult.getIdiomaServicio());
+			//Email de servicio
+			installation.setEmailServicios(mainstallationdataresult.getEmailServicio());
+			//Lista de planes de accion
+			installation.setActionplans(mainstallationdataresult.getInstallationcontactsresults().getInstallationcontactsresult());
+			
+			/**
+			 * WS CheckInstallationNumber
+			 * in: country, sins, instalationNumber
+			 * out: resultcheckInstallationNumber
+			 */
+			List<ResultcheckInstallationNumber> resultcheckInstallationNumber=spInstallationMonData.checkInstallationNumber("ES", 0, installationNumber);
+			LOGGER.debug("WS checkInstallationNumber {}", resultcheckInstallationNumber);
+			BigInteger sins=resultcheckInstallationNumber.get(0).getSins();
+			String dealer=resultcheckInstallationNumber.get(0).getDealer();
+			
+			/**
+			 * WS getAlarmIdsBasicInfo
+			 * in: installationNumber, cid=dealer (leído en checkInstallationNumber), alaid (leído en getInstallationData)
+			 * out: revision=versión del panel
+			 */
+			List<GetAlarmIdsBasicInfoResult> versions=spInstallationMonData.getAlarmIdsBasicInfo(sins.intValue(), Integer.parseInt(dealer), mainstallationdataresult.getAlaid());
+			//Version del panel
+			installation.setVersion(versions.get(0).getRevision());
+			
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (DataServiceFault e) {
+			e.printStackTrace();
 		}
+		return installation;
+    	
+//    	InstallationData installation = DummyGenerator.getInstallation(installationNumber);
+//    	if (installation==null) {
+//    		throw new BusinessException(BusinessException.ErrorCode.ERROR_INSTALLATION_NOT_FOUND);
+//		}else{
+//			return installation;
+//		}
     	
     }
     

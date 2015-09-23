@@ -2,6 +2,8 @@ package es.securitasdirect.moduloweb.model;
 
 import java.util.List;
 
+import org.wso2.ws.dataservice.Installationcontactsresult;
+
 /**
  * Info of the Installation
  */
@@ -20,9 +22,13 @@ public class InstallationData {
     /** Número del cliente. Esto es el número de instalación????  */
     private String installationNumber;
 
-    /** Teléfono del Panel */
+    /** Teléfonos del Panel */
     private String panelPhone;
-
+    private String phone2;
+    private String phone3;
+    private String servicesPhone;
+    
+    
     /** Nombre del cliente */
     private String customerName;
 
@@ -69,7 +75,7 @@ public class InstallationData {
     private String coercionPassword;
 
     /** Lista de los planes de acción de la instalación */
-    private List<ActionPlan> actionplans;
+    private List<Installationcontactsresult> actionplans;
     
     /** Teléfonos ¿? */
     private String telefono1;
@@ -280,11 +286,11 @@ public class InstallationData {
         this.coercionPassword = coercionPassword;
     }
 
-    public List<ActionPlan> getActionplans() {
+    public List<Installationcontactsresult> getActionplans() {
         return actionplans;
     }
 
-    public void setActionplans(List<ActionPlan> actionplans) {
+    public void setActionplans(List<Installationcontactsresult> actionplans) {
         this.actionplans = actionplans;
     }
 
@@ -320,19 +326,54 @@ public class InstallationData {
 		this.telefonoServicios = telefonoServicios;
 	}
 
-	
+	public String getPhone2() {
+		return phone2;
+	}
+
+	public void setPhone2(String phone2) {
+		this.phone2 = phone2;
+	}
+
+	public String getPhone3() {
+		return phone3;
+	}
+
+	public void setPhone3(String phone3) {
+		this.phone3 = phone3;
+	}
+
+	public String getServicesPhone() {
+		return servicesPhone;
+	}
+
+	public void setServicesPhone(String servicesPhone) {
+		this.servicesPhone = servicesPhone;
+	}
+
+	public String getEmailServicios() {
+		return emailServicios;
+	}
+
+	public void setEmailServicios(String emailServicios) {
+		this.emailServicios = emailServicios;
+	}
+
 	@Override
 	public String toString() {
-		return "InstallationData [panel=" + panel + ", version=" + version + ", installationNumber="
-				+ installationNumber + ", panelPhone=" + panelPhone + ", customerName=" + customerName
-				+ ", emailMonitoring=" + emailMonitoring + ", emailBilling=" + emailBilling + ", emailUpdate="
-				+ emailUpdate + ", emailServices=" + emailServices + ", camera=" + camera + ", aka=" + aka
-				+ ", address=" + address + ", city=" + city + ", monitoringStatus=" + monitoringStatus + ", subtype="
-				+ subtype + ", language=" + language + ", customerPassword=" + customerPassword + ", securitasPassword="
-				+ securitasPassword + ", coercionPassword=" + coercionPassword + ", actionplans=" + actionplans
-				+ ", telefono1=" + telefono1 + ", telefono2=" + telefono2 + ", telefono3=" + telefono3
-				+ ", telefonoServicios=" + telefonoServicios + "]";
+		return "InstallationData [id=" + id + ", panel=" + panel + ", version=" + version + ", installationNumber="
+				+ installationNumber + ", panelPhone=" + panelPhone + ", phone2=" + phone2 + ", phone3=" + phone3
+				+ ", servicesPhone=" + servicesPhone + ", customerName=" + customerName + ", emailMonitoring="
+				+ emailMonitoring + ", emailBilling=" + emailBilling + ", emailUpdate=" + emailUpdate
+				+ ", emailServices=" + emailServices + ", camera=" + camera + ", aka=" + aka + ", address=" + address
+				+ ", city=" + city + ", monitoringStatus=" + monitoringStatus + ", subtype=" + subtype + ", language="
+				+ language + ", customerPassword=" + customerPassword + ", securitasPassword=" + securitasPassword
+				+ ", coercionPassword=" + coercionPassword + ", actionplans=" + actionplans + ", telefono1=" + telefono1
+				+ ", telefono2=" + telefono2 + ", telefono3=" + telefono3 + ", telefonoServicios=" + telefonoServicios
+				+ ", emailServicios=" + emailServicios + "]";
 	}
+
+	
+	
     
     
 }

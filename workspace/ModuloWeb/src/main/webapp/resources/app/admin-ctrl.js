@@ -155,9 +155,14 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
 		$scope.currentKeyConfig=$scope.combinationsKeys[$index];
 		$scope.currentKey=$index;
 	}
+	//Boton editar
+	$scope.editingKeyButton=function(){
+		$scope.editingKey=true;
+	}
 	//Boton insertar
 	$scope.insertingKeyButton=function(){
 		$scope.insertingKey=true;
+		$scope.currentKey=-1;
 		$scope.currentKeyConfig={
 				tab:"",
 				key1:"",
@@ -166,16 +171,41 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
 		}
 		
 	}
+	//Boton borrar
+	$scope.deleteKeyButton=function(){
+		$scope.combinationKeysOriginal= angular.copy($scope.combinationsKeys);
+		$scope.deletingKey=true;
+		//Quitamos el elemento de la lista en angular
+		for (var i = 0; i < $scope.combinationsKeys.length; i++) {
+			if($scope.combinationsKeys.id==$scope.currentKeyConfig.id){
+				$scope.combinationsKeys.splice(i,1);
+			}
+		}
+		//Metemos el elemento borrado en una variable temporal
+		$scope.keyDeleted=angular.copy($scope.currentKeyConfig);
+		//Ponemos el currentKey con valores vacios
+		$scope.currentKeyConfig={
+				tab:"",
+				key1:"",
+				key2:"",
+				key3:""
+		}
+	}
 	//Boton Salvar
 	$scope.saveKeyButton=function(){
 		if($scope.insertingKey){
 			$scope.insertKeyConfig();
+		}else if($scope.editingKey){
+			$scope.updateCombinationKeys();
+		}else if($scope.deletingKey){
+			$scope.deleteCombinationKeys();
 		}
 	}
 	//Boton cancelar
 	$scope.cancelButton=function(){
 		$scope.insertingKey=false;
 		$scope.editingKey=false;
+		$scope.currentKey=-1;
 		$scope.currentKeyConfig={
 				tab:"",
 				key1:"",
@@ -188,7 +218,8 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
 		var insertKeyConfigRequest={
 				combinationKeys:$scope.currentKeyConfig
 		}
-		$http.post("admin/insertCombinationsKeys",insertKeyConfigRequest).success(function(data,status,headers,config){
+		$http.post("admin/insertCombinationsKeys",insertKeyConfigRequest)
+		.success(function(data,status,headers,config){
 			//volvemos a obtener las keys
 			$scope.getCombinationsKeys();
 			$scope.insertingKey=false;
@@ -198,7 +229,38 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
         	CommonService.processBaseResponse(data,status,headers,config);
         });
 	}
-	
+	//Editar combinationKeys
+	$scope.updateCombinationKeys=function(){
+		var updateCombinationKeysRequest={
+				combinationKeys:$scope.currentKeyConfig
+		}
+		$http.put("admin/updateCombinationsKeys", updateCombinationKeysRequest)
+		.success(function(data,status,headers,config){
+			//volvemos a obtener las keys
+			$scope.getCombinationsKeys();
+			$scope.editingKey=false;
+            CommonService.processBaseResponse(data,status,headers,config);
+            //$log.debug(data);
+        }).error(function(data,status,headers,config){
+        	CommonService.processBaseResponse(data,status,headers,config);
+        });
+	}
+	//Borrar combinationKeys
+	$scope.deleteCombinationKeys=function(){
+		var deleteCombinationKeysRequest={
+			combinationKeys:$scope.keyDeleted
+		}
+		$http.put("admin/deleteCombinationsKeys", deleteCombinationKeysRequest)
+		.success(function(data,status,headers,config){
+			//volvemos a obtener las keys
+			$scope.getCombinationsKeys();
+			$scope.deletingKey=false;
+            CommonService.processBaseResponse(data,status,headers,config);
+            //$log.debug(data);
+        }).error(function(data,status,headers,config){
+        	CommonService.processBaseResponse(data,status,headers,config);
+        });
+	}
     /** FIN Gestion de keys */
     
     /** Gestion de Campos*/
@@ -244,4 +306,6 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
     $scope.erasingDA=false;
     //DA borrados
     $scope.DAErased=[];
+    //Key activo -1 para que no sea ninguno de inicio
+    $scope.currentKey=-1;
 });

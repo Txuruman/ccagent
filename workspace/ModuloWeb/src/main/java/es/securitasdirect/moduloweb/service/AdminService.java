@@ -144,7 +144,15 @@ public class AdminService {
     	wsAdmin.insertCombinationsKeysOperation(combinationKeys.getKey1(), combinationKeys.getKey2(), combinationKeys.getKey3(), combinationKeys.getTab());
     	//TODO: Salida 
     }
-    
+    /**
+     * Update Combination Keys
+     * @return
+     */
+    public void updateCombinationsKeys(CombinationsKeys combinationKeys) {
+    	wsAdmin.updateCombinationsKeysOperation(combinationKeys.getKey1(), combinationKeys.getKey2(), combinationKeys.getKey3(), combinationKeys.getTab(), combinationKeys.getId());
+    	// TODO Auto-generated method stub
+		
+	}
     
     public List<FieldConfig> getFieldConfig() {
 
@@ -189,6 +197,9 @@ public class AdminService {
 
         return listUsers;
     }
+
+
+	
 
 
 }

@@ -63,13 +63,6 @@
 					name="version">
 			</div>
 		</div>
-		<div class="col-md-3 col-sm-3 col-xs-4">
-			<div class="form-group">
-				<label><spring:message code="infoinstal.panelPhone"/></label><input class="form-control input-sm"
-					readonly="true" ng-model="installation.panelPhone" type="text"
-					name="panelPhone">
-			</div>
-		</div>
 		
 	<!-- FIN, Campos que se mostrarán siempre, y protegidos.  -->
 	
@@ -115,28 +108,28 @@
 	<!-- Internacionalizar -->
 		<div class="col-md-3 col-sm-3 col-xs-4">
 			<div class="form-group">
-				<label>Teléfono panel</label> <input class="form-control input-sm"
-					 type="text" name="camera" readonly="true" value="94125368">
+				<label><spring:message code="infoinstal.panelPhone"/></label><input class="form-control input-sm"
+					ng-readonly="!editingInstallationInfo" ng-model="installation.panelPhone" type="text" 
+					name="panelPhone">
 			</div>
 		</div>
 		<div class="col-md-3 col-sm-3 col-xs-4">
 			<div class="form-group">
-				<label>Teléfono monitoring 2</label> <input class="form-control input-sm"
-					 type="text" name="panel" readonly="true" value="95261358">
+				<label><spring:message code="infoinstal.Phone2"/></label> <input class="form-control input-sm"
+					 type="text" name="phone2" ng-readonly="!editingInstallationInfo" ng-model="installation.phone2" value="95261358">
 			</div>
 		</div>
 		<div class="col-md-3 col-sm-3 col-xs-4">
 			<div class="form-group">
-				<label>Teléfono monitoring 3</label> <input class="form-control input-sm"
-					readonly="true" type="text" 
-					name="version" value="91524892">
+				<label><spring:message code="infoinstal.Phone3"/></label> <input class="form-control input-sm"
+					 type="text" name="phone3" ng-readonly="!editingInstallationInfo" ng-model="installation.phone3" value="95261358">
 			</div>
 		</div>
 		<div class="col-md-3 col-sm-3 col-xs-4">
 			<div class="form-group">
-				<label>Teléfono servicios</label><input class="form-control input-sm"
-					readonly="true"  type="text"
-					name="panelPhone" value="926352148">
+				<label><spring:message code="installation.search.servicesphone"/></label><input class="form-control input-sm"
+					ng-readonly="!editingInstallationInfo"  type="text" ng-model="installation.servicesPhone"
+					name="servicePhone" value="926352148">
 			</div>
 		</div>
 	
@@ -156,7 +149,7 @@
 		<div class="col-md-3 col-sm-3 col-xs-4">
 			<div class="form-group">
 				<label><spring:message code="infoinstal.servicesemail"/></label><input class="form-control input-sm" ng-readonly="!editingInstallationInfo" type="email"
-				 ng-model="installation.emailServices" name="ServEmail" value="" required="true">
+				 ng-model="installation.emailServicios" name="ServEmail" value="" required="true">
 			</div>
 			<span class="error" ng-show="InfoInstallForm.ServEmail.$error.required"><spring:message code="error.required"/>  </span>
            	<span class="error" ng-show="InfoInstallForm.ServEmail.$error.email"><spring:message code="error.email"/></span> 
