@@ -51,7 +51,7 @@
 					
 						</pdf-viewer>
 <%-- 					<%@include file="pruebaCall.jsp"%> --%>
-<!-- 					<iframe class="iframes" src="http://sd_dev.elecnor-deimos.com:7001/sdaverias/" height="600px" frameborder="0"></iframe> -->
+					<iframe class="iframes" src="http://sd_dev.elecnor-deimos.com:7001/sdaverias/" height="600px" frameborder="0"></iframe>
 <!-- 					<iframe class="iframes" src="http://www.marca.com/" height="600px" style="position:relative" frameborder="0"></iframe> -->
 				</li>
 				<li tab heading="<spring:message code="titulo.tab.admin"/>">

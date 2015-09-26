@@ -40,18 +40,26 @@ public class InstallationService {
     private static final Logger LOGGER = LoggerFactory.getLogger(InstallationService.class);
 
 
-
+    /**
+     * Obtener instalación por installationNumber
+     * @param installationNumber
+     * @return
+     */
     public InstallationData getInstallation(String installationNumber) {
     	//Comprobamos la instalacion
-    	List<GetMonitoringStatusResult> GetMonitoringStatusResult;
+    	List<GetMonitoringStatusResult> getMonitoringStatusResult;
     	InstallationData installation =new InstallationData();
     	try {
     		//TODO:BORRAR
 			installationNumber="1087817";
 			
-			GetMonitoringStatusResult=spInstallationMonData.getMonitoringStatus(Integer.parseInt(installationNumber));
-    		String monitoringStatus=GetMonitoringStatusResult.get(0).getMonStat();
-    		LOGGER.debug("Monitoring status {}", monitoringStatus);
+			getMonitoringStatusResult=spInstallationMonData.getMonitoringStatus(Integer.parseInt(installationNumber));
+			LOGGER.debug("Monitoring status LIST {}", getMonitoringStatusResult);
+			if (!getMonitoringStatusResult.isEmpty()) {
+				String monitoringStatus=getMonitoringStatusResult.get(0).getMonStat();
+	    		LOGGER.debug("Monitoring status {}", monitoringStatus);
+			}
+    		
 			//TODO: comprobar estado
         	//Si el estado es correcto buscamos la instalacion
 			
@@ -61,6 +69,10 @@ public class InstallationService {
 			 * out: List<Mainstallationdataresult>
 			 */
 			List<Mainstallationdataresult> mainstallationdataresults=spInstallationMonData.getInstallationData(installationNumber);
+			//Si no hay instalación no se sigue
+			if (mainstallationdataresults.isEmpty()) {
+				//TODO: Exception no instalacion
+			}
 			//Cogemos el primer elemento de la lista
 			Mainstallationdataresult mainstallationdataresult=mainstallationdataresults.get(0);
 			
@@ -92,6 +104,7 @@ public class InstallationService {
 			 */
 			List<ResultcheckInstallationNumber> resultcheckInstallationNumber=spInstallationMonData.checkInstallationNumber("ES", 0, installationNumber);
 			LOGGER.debug("WS checkInstallationNumber {}", resultcheckInstallationNumber);
+			
 			BigInteger sins=resultcheckInstallationNumber.get(0).getSins();
 			String dealer=resultcheckInstallationNumber.get(0).getDealer();
 			
@@ -109,6 +122,7 @@ public class InstallationService {
 		} catch (DataServiceFault e) {
 			e.printStackTrace();
 		}
+    	
 		return installation;
     	
 //    	InstallationData installation = DummyGenerator.getInstallation(installationNumber);
@@ -164,6 +178,7 @@ public class InstallationService {
 
 	private List<InstallationData> searchByInstallationNumber(String installationNumber) {
 		 LOGGER.debug("Buscando por installationNumber {}", installationNumber);
+		 
 		// TODO Auto-generated method stub
 		 return null;
 	}
