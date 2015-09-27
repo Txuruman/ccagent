@@ -127,7 +127,7 @@ public class DummyGenerator {
         installation.setTelefono3("923694267");
         installation.setTelefono2("914582690");
         installation.setTelefonoServicios("902514569");
-        installation.setActionplans(getActionPlan());
+        //installation.setActionplans(getActionPlan());
 
         return installation;
     }
