@@ -23,6 +23,7 @@ public class BusinessException extends RuntimeException {
 		ERROR_CYCLE_FEEDS_NOT_FOUND,
 		ERROR_INVOICE_LIST_NOT_FOUND,
 		ERROR_CUOTES_NOT_FOUND,
+		ERROR_NOT_AUTHENTICATED,
 		ERROR_TAB_KEYS_NOT_FOUND
     };
 	
