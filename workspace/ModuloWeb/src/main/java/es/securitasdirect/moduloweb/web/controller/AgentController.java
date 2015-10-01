@@ -6,7 +6,7 @@ import es.securitasdirect.moduloweb.service.SecurityService;
 import es.securitasdirect.moduloweb.web.dto.AgentResponse;
 import es.securitasdirect.moduloweb.web.dto.support.BaseResponse;
 import es.securitasdirect.moduloweb.web.controller.params.ExternalParams;
-import es.securitasdirect.moduloweb.web.controller.util.MessageUtil;
+import es.securitasdirect.moduloweb.web.util.MessageUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

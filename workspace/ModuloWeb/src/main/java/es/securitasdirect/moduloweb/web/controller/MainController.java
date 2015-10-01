@@ -31,10 +31,11 @@ public class MainController extends BaseController {
      * Parámetros post que se reciven en la request al cargar el marco principal
      */
     public interface EXTERNAL_PARAMS {
-        String INSTALLATION = "inst_no";
+        String INSTALLATION = "bp_out_INSTALACION";
         String KEY1 = "key1";
         String KEY2 = "key2";
         String KEY3 = "key3";
+        String MATRICULA = "bp_agentIBS";
     }
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MainController.class);
@@ -60,10 +61,12 @@ public class MainController extends BaseController {
         String key2 = hsr.getParameter(EXTERNAL_PARAMS.KEY2);
         String key3 = hsr.getParameter(EXTERNAL_PARAMS.KEY3);
         String installation = hsr.getParameter(EXTERNAL_PARAMS.INSTALLATION);
-
+        String agent = hsr.getParameter(EXTERNAL_PARAMS.MATRICULA);
+        
         mv.addObject("activeTab", adminService.getActiveTabFromKeys(key1, key2, key3));
         mv.addObject("installation", installation);
-
+        mv.addObject("agent", agent);
+        
         return mv;
     }
 

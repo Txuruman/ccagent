@@ -75,7 +75,7 @@ public class InstallationData {
     private String coercionPassword;
 
     /** Lista de los planes de acción de la instalación */
-    private List<Installationcontactsresult> actionplans;
+    private List<ActionPlan> actionplans;
     
     /** Teléfonos ¿? */
     private String telefono1;
@@ -286,11 +286,11 @@ public class InstallationData {
         this.coercionPassword = coercionPassword;
     }
 
-    public List<Installationcontactsresult> getActionplans() {
+    public List<ActionPlan> getActionplans() {
         return actionplans;
     }
 
-    public void setActionplans(List<Installationcontactsresult> actionplans) {
+    public void setActionplans(List<ActionPlan> actionplans) {
         this.actionplans = actionplans;
     }
 

@@ -84,7 +84,7 @@
 <!-- </div> -->
 
 
-<div class="row">
+<div class="row" ng-show="seachByInstOrMail">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="margin-top: 5px;">
         <div id="tablaBuscarEmail">	
 			<div class="thead">
@@ -99,9 +99,9 @@
       			<div class="scrollTabla borderTablaBottom" > <!--ng-class="(searchedInstallations==null || searchedInstallations==undefined) ? 'tablaVacia' : null"> -->
 					<table class="tbody">
 			       		<tr ng-repeat="i in searchedInstallations"> 
-			                <td class="tabla-td1">{{i.installationNumber}}</td>
+			                <td class="tabla-td1 searchedTd">{{i.installationNumber}}</td>
 			                <td class="tabla-td7">{{i.address+", "+i.city}}</td>
-			                <td class="tabla-td2 searchedTd">{{i.emailMonitoring}}</td>
+			                <td class="tabla-td2">{{i.emailMonitoring}}</td>
 			                <td class="tabla-td3"> {{ i.emailBilling }} </td>
 			                <td class="tabla-td4">{{ i.emailServices }}</td>
 			            </tr>
@@ -113,7 +113,7 @@
 
 
 
-<div class="row">
+<div class="row" ng-show="seachByPhone">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="margin-top: 5px;">
         <div id="tablaBuscar">	
 			<div class="thead">
@@ -133,11 +133,11 @@
 			       		<tr ng-repeat="i in searchedInstallations"> 
 			                <td class="tabla-td1">{{i.installationNumber}}</td>
 			                <td class="tabla-td7">{{i.address+", "+i.city}}</td>
-			                <td class="tabla-td5">{{ i.telefono1 }}</td>
-			                <td class="tabla-td6">{{ i.telefono2 }}</td>
-			                <td class="tabla-td6 searchedTd">{{ i.telefono3 }}</td>
-			                <td class="tabla-td6">{{ i.telefonoServicios }}</td>
-			                <td class="tabla-td6">{{ i.panelPhone }}</td>
+			                <td class="tabla-td5" ng-class="(i.panelPhone==searchBy.phone)?'searchedTd':null">{{ i.panelPhone }}</td>
+			                <td class="tabla-td6" ng-class="(i.telefono2==searchBy.phone)?'searchedTd':null">{{ i.telefono2 }}</td>
+			                <td class="tabla-td6" ng-class="(i.telefono3==searchBy.phone)?'searchedTd':null">{{ i.telefono3 }}</td>
+			                <td class="tabla-td6" ng-class="(i.telefonoServicios==searchBy.phone)?'searchedTd':null">{{ i.telefonoServicios }}</td>
+			                <td class="tabla-td6" ng-class="(i.telefono1==searchBy.phone)?'searchedTd':null">{{ i.telefono1 }}</td>
 			            </tr>
 					 </table>
   				</div>

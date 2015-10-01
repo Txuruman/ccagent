@@ -4,7 +4,7 @@
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
-<div ng-controller="InfoInstalacionController" id="InfoInstalacion" class="font12">
+<div ng-controller="InfoInstalacionController" id="InfoInstalacion" class="font12" ng-init="init()">
 	<!-- BÚSQUEDA -->
 	<div class="panel panel-default panel-body margin-bottom5 primerCuadro sinPaddingBottom">
 		<div class="row">

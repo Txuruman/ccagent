@@ -1,14 +1,14 @@
-var app = angular.module("myApp", ['ui.bootstrap']); //,'angularUtils.directives.dirPagination'
+var app = angular.module("myApp", ['ui.bootstrap','angular-loading-bar']); //,'angularUtils.directives.dirPagination'
 
 
 
 // Configure the $httpProvider by adding our date transformer
-app.config(["$httpProvider","$sceDelegateProvider", function ($httpProvider,$sceDelegateProvider) {
+app.config(["cfpLoadingBarProvider","$httpProvider","$sceDelegateProvider", function (cfpLoadingBarProvider,$httpProvider,$sceDelegateProvider) {
     $httpProvider.defaults.transformResponse.push(function(responseData){
         convertDateStringsToDates(responseData);
         return responseData;
     });
-
+    cfpLoadingBarProvider.includeSpinner = false;
     /*Lista de web permitidas para el ng-include*/
 //    $sceDelegateProvider.resourceUrlWhitelist([
 //        // Allow same origin resource loads.
