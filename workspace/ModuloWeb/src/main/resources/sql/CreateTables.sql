@@ -33,11 +33,13 @@ DROP TABLE "dbo"."field_config";
 CREATE TABLE "dbo"."field_config"
 (
 id int IDENTITY (1, 1) NOT NULL,
+position int,
 app varchar(255),
 identifier varchar(255),
 description varchar(255),
 visible bit,
 editable bit,
+administrable bit,
 CONSTRAINT field_config_PK PRIMARY KEY (id)
 )
 
