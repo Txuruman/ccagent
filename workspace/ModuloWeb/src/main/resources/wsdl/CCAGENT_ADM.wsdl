@@ -11,49 +11,39 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="delete_TipoAvisoMntoGrupoPanel_operation">
+            <xs:element name="update_users_operation">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="tipoAvisoMntoGrupoPanelId" nillable="true" type="xs:int"/>
+                        <xs:element name="user_id" nillable="true" type="xs:string"/>
+                        <xs:element name="name" nillable="true" type="xs:string"/>
+                        <xs:element name="is_admin" nillable="true" type="xs:boolean"/>
+                        <xs:element name="id" nillable="true" type="xs:int"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="insert_TipoOperador_operation">
+            <xs:element name="getFieldConfigByApp_operation">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="tipoOperadorId" nillable="true" type="xs:string"/>
-                        <xs:element name="descripcion" nillable="true" type="xs:string"/>
+                        <xs:element name="app" nillable="true" type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="update_TipoAvisoMntoConfig_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="key1Id" nillable="true" type="xs:string"/>
-                        <xs:element name="key2Id" nillable="true" type="xs:string"/>
-                        <xs:element name="key3Id" nillable="true" type="xs:string"/>
-                        <xs:element name="tipoAvisoId" nillable="true" type="xs:string"/>
-                        <xs:element name="motivoAvisoId" nillable="true" type="xs:string"/>
-                        <xs:element name="tipoAvisoMntoConfigId" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="select_all_TipoAvisoMnto_operation">
-                <xs:complexType>
-                    <xs:sequence/>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="TipoAvisoMntoCollection" type="ns0:TipoAvisoMntoCollection"/>
-            <xs:complexType name="TipoAvisoMntoCollection">
+            <xs:element name="getFieldConfigByAppResults" type="ns0:getFieldConfigByAppResults"/>
+            <xs:complexType name="getFieldConfigByAppResults">
                 <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="TipoAvisoMnto" type="ns0:TipoAvisoMnto"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="EntrygetFieldConfigByAppResult" type="ns0:EntrygetFieldConfigByAppResult"/>
                 </xs:sequence>
             </xs:complexType>
-            <xs:complexType name="TipoAvisoMnto">
+            <xs:complexType name="EntrygetFieldConfigByAppResult">
                 <xs:sequence>
-                    <xs:element name="key1Id" nillable="true" type="xs:string"/>
-                    <xs:element name="key2Id" nillable="true" type="xs:string"/>
-                    <xs:element name="key3Id" nillable="true" type="xs:string"/>
+                    <xs:element name="id" nillable="true" type="xs:integer"/>
+                    <xs:element name="position" nillable="true" type="xs:integer"/>
+                    <xs:element name="app" nillable="true" type="xs:string"/>
+                    <xs:element name="identifier" nillable="true" type="xs:string"/>
+                    <xs:element name="description" nillable="true" type="xs:string"/>
+                    <xs:element name="visible" nillable="true" type="xs:boolean"/>
+                    <xs:element name="editable" nillable="true" type="xs:boolean"/>
+                    <xs:element name="administrable" nillable="true" type="xs:boolean"/>
                 </xs:sequence>
             </xs:complexType>
             <xs:element name="getDirectAccess">
@@ -76,14 +66,6 @@
                     <xs:element name="description" nillable="true" type="xs:string"/>
                 </xs:sequence>
             </xs:complexType>
-            <xs:element name="update_MetodoContacto_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="descripcion" nillable="true" type="xs:string"/>
-                        <xs:element name="metodoContactoId" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
             <xs:element name="insert_field_config_operation">
                 <xs:complexType>
                     <xs:sequence>
@@ -92,450 +74,6 @@
                         <xs:element name="description" nillable="true" type="xs:string"/>
                         <xs:element name="visible" nillable="true" type="xs:boolean"/>
                         <xs:element name="editable" nillable="true" type="xs:boolean"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="select_all_TEST_operation">
-                <xs:complexType>
-                    <xs:sequence/>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="TESTCollection" type="ns0:TESTCollection"/>
-            <xs:complexType name="TESTCollection">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="TEST" type="ns0:TEST"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:complexType name="TEST">
-                <xs:sequence>
-                    <xs:element name="PERSON_ID" nillable="true" type="xs:integer"/>
-                    <xs:element name="LAST_NAME" nillable="true" type="xs:string"/>
-                    <xs:element name="FIRST_NAME" nillable="true" type="xs:string"/>
-                    <xs:element name="ADDRESS" nillable="true" type="xs:string"/>
-                    <xs:element name="CITY" nillable="true" type="xs:string"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:element name="delete_field_config_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="id" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="delete_combinations_keys_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="id" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="update_PuestaEnPruebas_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="minutos" nillable="true" type="xs:int"/>
-                        <xs:element name="sacarDePruebas" nillable="true" type="xs:boolean"/>
-                        <xs:element name="puestaEnPruebasId" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="insert_TipoAvisoMnto_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="key1Id" nillable="true" type="xs:string"/>
-                        <xs:element name="key2Id" nillable="true" type="xs:string"/>
-                        <xs:element name="key3Id" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="delete_TipoOperador_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="tipoOperadorId" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="delete_TipoAvisoMntoPanel_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="tipoAvisoMntoPanelId" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="update_field_config_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="app" nillable="true" type="xs:string"/>
-                        <xs:element name="identifier" nillable="true" type="xs:string"/>
-                        <xs:element name="description" nillable="true" type="xs:string"/>
-                        <xs:element name="visible" nillable="true" type="xs:boolean"/>
-                        <xs:element name="editable" nillable="true" type="xs:boolean"/>
-                        <xs:element name="id" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="delete_TipoAvisoMnto_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="key1Id" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="select_all_Tiempo_operation">
-                <xs:complexType>
-                    <xs:sequence/>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="TiempoCollection" type="ns0:TiempoCollection"/>
-            <xs:complexType name="TiempoCollection">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="Tiempo" type="ns0:Tiempo"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:complexType name="Tiempo">
-                <xs:sequence>
-                    <xs:element name="tiempoId" nillable="true" type="xs:string"/>
-                    <xs:element name="descripcion" nillable="true" type="xs:string"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:element name="delete_MetodoContacto_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="metodoContactoId" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="select_with_key_direct_access_params_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="id" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="direct_access_paramsCollection" type="ns0:direct_access_paramsCollection"/>
-            <xs:complexType name="direct_access_paramsCollection">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="direct_access_params" type="ns0:direct_access_params"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:complexType name="direct_access_params">
-                <xs:sequence>
-                    <xs:element name="id" nillable="true" type="xs:integer"/>
-                    <xs:element name="name" nillable="true" type="xs:string"/>
-                    <xs:element name="value" nillable="true" type="xs:string"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:element name="getFieldConfig">
-                <xs:complexType>
-                    <xs:sequence/>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="GetFieldConfigResults" type="ns0:GetFieldConfigResults"/>
-            <xs:complexType name="GetFieldConfigResults">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="GetFieldConfigResult" type="ns0:GetFieldConfigResult"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:complexType name="GetFieldConfigResult">
-                <xs:sequence>
-                    <xs:element name="id" nillable="true" type="xs:integer"/>
-                    <xs:element name="app" nillable="true" type="xs:string"/>
-                    <xs:element name="identifier" nillable="true" type="xs:string"/>
-                    <xs:element name="description" nillable="true" type="xs:string"/>
-                    <xs:element name="visible" nillable="true" type="xs:boolean"/>
-                    <xs:element name="editable" nillable="true" type="xs:boolean"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:element name="insert_MetodoContacto_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="metodoContactoId" nillable="true" type="xs:string"/>
-                        <xs:element name="descripcion" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="select_with_key_TipoAvisoMnto_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="key1Id" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="insert_Tiempo_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="tiempoId" nillable="true" type="xs:string"/>
-                        <xs:element name="descripcion" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="select_with_key_field_config_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="id" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="field_configCollection" type="ns0:field_configCollection"/>
-            <xs:complexType name="field_configCollection">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="field_config" type="ns0:field_config"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:complexType name="field_config">
-                <xs:sequence>
-                    <xs:element name="id" nillable="true" type="xs:integer"/>
-                    <xs:element name="app" nillable="true" type="xs:string"/>
-                    <xs:element name="identifier" nillable="true" type="xs:string"/>
-                    <xs:element name="description" nillable="true" type="xs:string"/>
-                    <xs:element name="visible" nillable="true" type="xs:integer"/>
-                    <xs:element name="editable" nillable="true" type="xs:integer"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:element name="delete_direct_access_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="id" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="select_with_key_TEST_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="PERSON_ID" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="insert_combinations_keys_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="key1" nillable="true" type="xs:string"/>
-                        <xs:element name="key2" nillable="true" type="xs:string"/>
-                        <xs:element name="key3" nillable="true" type="xs:string"/>
-                        <xs:element name="tab" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="select_with_key_TipoOperador_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="tipoOperadorId" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="TipoOperadorCollection" type="ns0:TipoOperadorCollection"/>
-            <xs:complexType name="TipoOperadorCollection">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="TipoOperador" type="ns0:TipoOperador"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:complexType name="TipoOperador">
-                <xs:sequence>
-                    <xs:element name="tipoOperadorId" nillable="true" type="xs:string"/>
-                    <xs:element name="descripcion" nillable="true" type="xs:string"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:element name="select_with_key_TipoAvisoMntoPanel_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="tipoAvisoMntoPanelId" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="TipoAvisoMntoPanelCollection" type="ns0:TipoAvisoMntoPanelCollection"/>
-            <xs:complexType name="TipoAvisoMntoPanelCollection">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="TipoAvisoMntoPanel" type="ns0:TipoAvisoMntoPanel"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:complexType name="TipoAvisoMntoPanel">
-                <xs:sequence>
-                    <xs:element name="tipoAvisoMntoPanelId" nillable="true" type="xs:integer"/>
-                    <xs:element name="tipoAvisoMntoConfigId" nillable="true" type="xs:integer"/>
-                    <xs:element name="panelId" nillable="true" type="xs:string"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:element name="update_TipoAvisoMntoPanel_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="tipoAvisoMntoConfigId" nillable="true" type="xs:int"/>
-                        <xs:element name="panelId" nillable="true" type="xs:string"/>
-                        <xs:element name="tipoAvisoMntoPanelId" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="select_all_field_config_operation">
-                <xs:complexType>
-                    <xs:sequence/>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="insert_users_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="user_id" nillable="true" type="xs:string"/>
-                        <xs:element name="name" nillable="true" type="xs:string"/>
-                        <xs:element name="is_admin" nillable="true" type="xs:boolean"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="insert_direct_access_params_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="name" nillable="true" type="xs:string"/>
-                        <xs:element name="value" nillable="true" type="xs:string"/>
-                        <xs:element name="direct_access" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="delete_TEST_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="PERSON_ID" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="delete_TipoAvisoMntoConfig_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="tipoAvisoMntoConfigId" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="insert_TipoAvisoMntoPanel_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="tipoAvisoMntoPanelId" nillable="true" type="xs:int"/>
-                        <xs:element name="tipoAvisoMntoConfigId" nillable="true" type="xs:int"/>
-                        <xs:element name="panelId" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="select_all_TipoAvisoMntoConfig_operation">
-                <xs:complexType>
-                    <xs:sequence/>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="TipoAvisoMntoConfigCollection" type="ns0:TipoAvisoMntoConfigCollection"/>
-            <xs:complexType name="TipoAvisoMntoConfigCollection">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="TipoAvisoMntoConfig" type="ns0:TipoAvisoMntoConfig"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:complexType name="TipoAvisoMntoConfig">
-                <xs:sequence>
-                    <xs:element name="tipoAvisoMntoConfigId" nillable="true" type="xs:integer"/>
-                    <xs:element name="key1Id" nillable="true" type="xs:string"/>
-                    <xs:element name="key2Id" nillable="true" type="xs:string"/>
-                    <xs:element name="key3Id" nillable="true" type="xs:string"/>
-                    <xs:element name="tipoAvisoId" nillable="true" type="xs:string"/>
-                    <xs:element name="motivoAvisoId" nillable="true" type="xs:string"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:element name="update_TipoAlerta_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="tipoAlerta" nillable="true" type="xs:string"/>
-                        <xs:element name="prioridad" nillable="true" type="xs:int"/>
-                        <xs:element name="nombre" nillable="true" type="xs:string"/>
-                        <xs:element name="descripcion" nillable="true" type="xs:string"/>
-                        <xs:element name="orientacion" nillable="true" type="xs:string"/>
-                        <xs:element name="abrirAviso" nillable="true" type="xs:boolean"/>
-                        <xs:element name="abrirMnto" nillable="true" type="xs:boolean"/>
-                        <xs:element name="abrirGPD" nillable="true" type="xs:boolean"/>
-                        <xs:element name="tiempoId" nillable="true" type="xs:string"/>
-                        <xs:element name="callTypeOperadorId" nillable="true" type="xs:string"/>
-                        <xs:element name="callTypeId" nillable="true" type="xs:string"/>
-                        <xs:element name="statusCode1OperadorId" nillable="true" type="xs:string"/>
-                        <xs:element name="statusCode1Id" nillable="true" type="xs:string"/>
-                        <xs:element name="statusCodeOpLogico" nillable="true" type="xs:string"/>
-                        <xs:element name="statusCode2OperadorId" nillable="true" type="xs:string"/>
-                        <xs:element name="statusCode2Id" nillable="true" type="xs:string"/>
-                        <xs:element name="key1OperadorId" nillable="true" type="xs:string"/>
-                        <xs:element name="key1Id" nillable="true" type="xs:string"/>
-                        <xs:element name="key2OperadorId" nillable="true" type="xs:string"/>
-                        <xs:element name="key2Id" nillable="true" type="xs:string"/>
-                        <xs:element name="key3OperadorId" nillable="true" type="xs:string"/>
-                        <xs:element name="key3Id" nillable="true" type="xs:string"/>
-                        <xs:element name="tipoAlertaId" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="update_TipoAvisoMntoGrupoPanel_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="tipoAvisoMntoConfigId" nillable="true" type="xs:int"/>
-                        <xs:element name="grupoPanelId" nillable="true" type="xs:string"/>
-                        <xs:element name="tipoAvisoMntoGrupoPanelId" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="insert_TEST_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="LAST_NAME" nillable="true" type="xs:string"/>
-                        <xs:element name="FIRST_NAME" nillable="true" type="xs:string"/>
-                        <xs:element name="ADDRESS" nillable="true" type="xs:string"/>
-                        <xs:element name="CITY" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="update_TEST_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="LAST_NAME" nillable="true" type="xs:string"/>
-                        <xs:element name="FIRST_NAME" nillable="true" type="xs:string"/>
-                        <xs:element name="ADDRESS" nillable="true" type="xs:string"/>
-                        <xs:element name="CITY" nillable="true" type="xs:string"/>
-                        <xs:element name="PERSON_ID" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="insert_TipoAvisoMntoGrupoPanel_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="tipoAvisoMntoGrupoPanelId" nillable="true" type="xs:int"/>
-                        <xs:element name="tipoAvisoMntoConfigId" nillable="true" type="xs:int"/>
-                        <xs:element name="grupoPanelId" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="delete_PuestaEnPruebas_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="puestaEnPruebasId" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="delete_Tiempo_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="tiempoId" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="select_with_key_TipoAvisoMntoGrupoPanel_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="tipoAvisoMntoGrupoPanelId" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="TipoAvisoMntoGrupoPanelCollection" type="ns0:TipoAvisoMntoGrupoPanelCollection"/>
-            <xs:complexType name="TipoAvisoMntoGrupoPanelCollection">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="TipoAvisoMntoGrupoPanel" type="ns0:TipoAvisoMntoGrupoPanel"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:complexType name="TipoAvisoMntoGrupoPanel">
-                <xs:sequence>
-                    <xs:element name="tipoAvisoMntoGrupoPanelId" nillable="true" type="xs:integer"/>
-                    <xs:element name="tipoAvisoMntoConfigId" nillable="true" type="xs:integer"/>
-                    <xs:element name="grupoPanelId" nillable="true" type="xs:string"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:element name="select_with_key_TipoAvisoMntoConfig_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="tipoAvisoMntoConfigId" nillable="true" type="xs:int"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -550,9 +88,18 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="select_all_TipoAvisoMntoPanel_operation">
+            <xs:element name="delete_combinations_keys_operation">
                 <xs:complexType>
-                    <xs:sequence/>
+                    <xs:sequence>
+                        <xs:element name="id" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="delete_field_config_operation">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id" nillable="true" type="xs:int"/>
+                    </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="select_with_key_combinations_keys_operation">
@@ -597,47 +144,6 @@
                     <xs:element name="position" nillable="true" type="xs:integer"/>
                 </xs:sequence>
             </xs:complexType>
-            <xs:element name="update_TipoAvisoMnto_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="key2Id" nillable="true" type="xs:string"/>
-                        <xs:element name="key3Id" nillable="true" type="xs:string"/>
-                        <xs:element name="key1Id" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="select_with_key_MetodoContacto_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="metodoContactoId" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="MetodoContactoCollection" type="ns0:MetodoContactoCollection"/>
-            <xs:complexType name="MetodoContactoCollection">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="MetodoContacto" type="ns0:MetodoContacto"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:complexType name="MetodoContacto">
-                <xs:sequence>
-                    <xs:element name="metodoContactoId" nillable="true" type="xs:string"/>
-                    <xs:element name="descripcion" nillable="true" type="xs:string"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:element name="select_all_TipoAvisoMntoGrupoPanel_operation">
-                <xs:complexType>
-                    <xs:sequence/>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="update_Tiempo_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="descripcion" nillable="true" type="xs:string"/>
-                        <xs:element name="tiempoId" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
             <xs:element name="update_direct_access_params_operation">
                 <xs:complexType>
                     <xs:sequence>
@@ -647,55 +153,27 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="update_field_config_operation">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="app" nillable="true" type="xs:string"/>
+                        <xs:element name="identifier" nillable="true" type="xs:string"/>
+                        <xs:element name="description" nillable="true" type="xs:string"/>
+                        <xs:element name="visible" nillable="true" type="xs:boolean"/>
+                        <xs:element name="editable" nillable="true" type="xs:boolean"/>
+                        <xs:element name="id" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="select_all_combinations_keys_operation">
                 <xs:complexType>
                     <xs:sequence/>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="select_all_TipoAlerta_operation">
-                <xs:complexType>
-                    <xs:sequence/>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="TipoAlertaCollection" type="ns0:TipoAlertaCollection"/>
-            <xs:complexType name="TipoAlertaCollection">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="TipoAlerta" type="ns0:TipoAlerta"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:complexType name="TipoAlerta">
-                <xs:sequence>
-                    <xs:element name="tipoAlertaId" nillable="true" type="xs:integer"/>
-                    <xs:element name="tipoAlerta" nillable="true" type="xs:string"/>
-                    <xs:element name="prioridad" nillable="true" type="xs:integer"/>
-                    <xs:element name="nombre" nillable="true" type="xs:string"/>
-                    <xs:element name="descripcion" nillable="true" type="xs:string"/>
-                    <xs:element name="orientacion" nillable="true" type="xs:string"/>
-                    <xs:element name="abrirAviso" nillable="true" type="xs:integer"/>
-                    <xs:element name="abrirMnto" nillable="true" type="xs:integer"/>
-                    <xs:element name="abrirGPD" nillable="true" type="xs:integer"/>
-                    <xs:element name="tiempoId" nillable="true" type="xs:string"/>
-                    <xs:element name="callTypeOperadorId" nillable="true" type="xs:string"/>
-                    <xs:element name="callTypeId" nillable="true" type="xs:string"/>
-                    <xs:element name="statusCode1OperadorId" nillable="true" type="xs:string"/>
-                    <xs:element name="statusCode1Id" nillable="true" type="xs:string"/>
-                    <xs:element name="statusCodeOpLogico" nillable="true" type="xs:string"/>
-                    <xs:element name="statusCode2OperadorId" nillable="true" type="xs:string"/>
-                    <xs:element name="statusCode2Id" nillable="true" type="xs:string"/>
-                    <xs:element name="key1OperadorId" nillable="true" type="xs:string"/>
-                    <xs:element name="key1Id" nillable="true" type="xs:string"/>
-                    <xs:element name="key2OperadorId" nillable="true" type="xs:string"/>
-                    <xs:element name="key2Id" nillable="true" type="xs:string"/>
-                    <xs:element name="key3OperadorId" nillable="true" type="xs:string"/>
-                    <xs:element name="key3Id" nillable="true" type="xs:string"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:element name="insert_PuestaEnPruebas_operation">
+            <xs:element name="delete_users_operation">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="puestaEnPruebasId" nillable="true" type="xs:int"/>
-                        <xs:element name="minutos" nillable="true" type="xs:int"/>
-                        <xs:element name="sacarDePruebas" nillable="true" type="xs:boolean"/>
+                        <xs:element name="id" nillable="true" type="xs:int"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -703,13 +181,6 @@
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="id" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="delete_TipoAlerta_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="tipoAlertaId" nillable="true" type="xs:int"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -741,6 +212,26 @@
                     <xs:element name="direct_access" nillable="true" type="xs:integer"/>
                 </xs:sequence>
             </xs:complexType>
+            <xs:element name="select_with_key_direct_access_params_operation">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="direct_access_paramsCollection" type="ns0:direct_access_paramsCollection"/>
+            <xs:complexType name="direct_access_paramsCollection">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="direct_access_params" type="ns0:direct_access_params"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="direct_access_params">
+                <xs:sequence>
+                    <xs:element name="id" nillable="true" type="xs:integer"/>
+                    <xs:element name="name" nillable="true" type="xs:string"/>
+                    <xs:element name="value" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
             <xs:element name="insert_direct_access_operation">
                 <xs:complexType>
                     <xs:sequence>
@@ -751,48 +242,29 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="insert_TipoAlerta_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="tipoAlertaId" nillable="true" type="xs:int"/>
-                        <xs:element name="tipoAlerta" nillable="true" type="xs:string"/>
-                        <xs:element name="prioridad" nillable="true" type="xs:int"/>
-                        <xs:element name="nombre" nillable="true" type="xs:string"/>
-                        <xs:element name="descripcion" nillable="true" type="xs:string"/>
-                        <xs:element name="orientacion" nillable="true" type="xs:string"/>
-                        <xs:element name="abrirAviso" nillable="true" type="xs:boolean"/>
-                        <xs:element name="abrirMnto" nillable="true" type="xs:boolean"/>
-                        <xs:element name="abrirGPD" nillable="true" type="xs:boolean"/>
-                        <xs:element name="tiempoId" nillable="true" type="xs:string"/>
-                        <xs:element name="callTypeOperadorId" nillable="true" type="xs:string"/>
-                        <xs:element name="callTypeId" nillable="true" type="xs:string"/>
-                        <xs:element name="statusCode1OperadorId" nillable="true" type="xs:string"/>
-                        <xs:element name="statusCode1Id" nillable="true" type="xs:string"/>
-                        <xs:element name="statusCodeOpLogico" nillable="true" type="xs:string"/>
-                        <xs:element name="statusCode2OperadorId" nillable="true" type="xs:string"/>
-                        <xs:element name="statusCode2Id" nillable="true" type="xs:string"/>
-                        <xs:element name="key1OperadorId" nillable="true" type="xs:string"/>
-                        <xs:element name="key1Id" nillable="true" type="xs:string"/>
-                        <xs:element name="key2OperadorId" nillable="true" type="xs:string"/>
-                        <xs:element name="key2Id" nillable="true" type="xs:string"/>
-                        <xs:element name="key3OperadorId" nillable="true" type="xs:string"/>
-                        <xs:element name="key3Id" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="update_TipoOperador_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="descripcion" nillable="true" type="xs:string"/>
-                        <xs:element name="tipoOperadorId" nillable="true" type="xs:string"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="select_all_TipoOperador_operation">
+            <xs:element name="getFieldConfig">
                 <xs:complexType>
                     <xs:sequence/>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="GetFieldConfigResults" type="ns0:GetFieldConfigResults"/>
+            <xs:complexType name="GetFieldConfigResults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="GetFieldConfigResult" type="ns0:GetFieldConfigResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GetFieldConfigResult">
+                <xs:sequence>
+                    <xs:element name="id" nillable="true" type="xs:integer"/>
+                    <xs:element name="position" nillable="true" type="xs:integer"/>
+                    <xs:element name="app" nillable="true" type="xs:string"/>
+                    <xs:element name="identifier" nillable="true" type="xs:string"/>
+                    <xs:element name="description" nillable="true" type="xs:string"/>
+                    <xs:element name="visible" nillable="true" type="xs:boolean"/>
+                    <xs:element name="editable" nillable="true" type="xs:boolean"/>
+                    <xs:element name="administrable" nillable="true" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
             <xs:element name="update_direct_access_operation">
                 <xs:complexType>
                     <xs:sequence>
@@ -801,38 +273,6 @@
                         <xs:element name="url" nillable="true" type="xs:string"/>
                         <xs:element name="position" nillable="true" type="xs:int"/>
                         <xs:element name="id" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="select_all_PuestaEnPruebas_operation">
-                <xs:complexType>
-                    <xs:sequence/>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="PuestaEnPruebasCollection" type="ns0:PuestaEnPruebasCollection"/>
-            <xs:complexType name="PuestaEnPruebasCollection">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="PuestaEnPruebas" type="ns0:PuestaEnPruebas"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:complexType name="PuestaEnPruebas">
-                <xs:sequence>
-                    <xs:element name="puestaEnPruebasId" nillable="true" type="xs:integer"/>
-                    <xs:element name="minutos" nillable="true" type="xs:integer"/>
-                    <xs:element name="sacarDePruebas" nillable="true" type="xs:integer"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:element name="select_with_key_TipoAlerta_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="tipoAlertaId" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="select_with_key_PuestaEnPruebas_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="puestaEnPruebasId" nillable="true" type="xs:int"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -856,33 +296,72 @@
                     <xs:element name="tab" nillable="true" type="xs:string"/>
                 </xs:sequence>
             </xs:complexType>
+            <xs:element name="select_with_key_field_config_operation">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="field_configCollection" type="ns0:field_configCollection"/>
+            <xs:complexType name="field_configCollection">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="field_config" type="ns0:field_config"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="field_config">
+                <xs:sequence>
+                    <xs:element name="id" nillable="true" type="xs:integer"/>
+                    <xs:element name="app" nillable="true" type="xs:string"/>
+                    <xs:element name="identifier" nillable="true" type="xs:string"/>
+                    <xs:element name="description" nillable="true" type="xs:string"/>
+                    <xs:element name="visible" nillable="true" type="xs:integer"/>
+                    <xs:element name="editable" nillable="true" type="xs:integer"/>
+                </xs:sequence>
+            </xs:complexType>
             <xs:element name="select_all_direct_access_params_operation">
                 <xs:complexType>
                     <xs:sequence/>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="insert_TipoAvisoMntoConfig_operation">
+            <xs:element name="delete_direct_access_operation">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="tipoAvisoMntoConfigId" nillable="true" type="xs:int"/>
-                        <xs:element name="key1Id" nillable="true" type="xs:string"/>
-                        <xs:element name="key2Id" nillable="true" type="xs:string"/>
-                        <xs:element name="key3Id" nillable="true" type="xs:string"/>
-                        <xs:element name="tipoAvisoId" nillable="true" type="xs:string"/>
-                        <xs:element name="motivoAvisoId" nillable="true" type="xs:string"/>
+                        <xs:element name="id" nillable="true" type="xs:int"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="select_with_key_Tiempo_operation">
+            <xs:element name="insert_combinations_keys_operation">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="tiempoId" nillable="true" type="xs:string"/>
+                        <xs:element name="key1" nillable="true" type="xs:string"/>
+                        <xs:element name="key2" nillable="true" type="xs:string"/>
+                        <xs:element name="key3" nillable="true" type="xs:string"/>
+                        <xs:element name="tab" nillable="true" type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="select_all_MetodoContacto_operation">
+            <xs:element name="select_all_field_config_operation">
                 <xs:complexType>
                     <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="insert_users_operation">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="user_id" nillable="true" type="xs:string"/>
+                        <xs:element name="name" nillable="true" type="xs:string"/>
+                        <xs:element name="is_admin" nillable="true" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="insert_direct_access_params_operation">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="name" nillable="true" type="xs:string"/>
+                        <xs:element name="value" nillable="true" type="xs:string"/>
+                        <xs:element name="direct_access" nillable="true" type="xs:int"/>
+                    </xs:sequence>
                 </xs:complexType>
             </xs:element>
             <xs:element name="getUsers">
@@ -906,9 +385,6 @@
             </xs:complexType>
         </xs:schema>
     </wsdl:types>
-    <wsdl:message name="update_TipoOperador_operationRequest">
-        <wsdl:part name="parameters" element="ns0:update_TipoOperador_operation"/>
-    </wsdl:message>
     <wsdl:message name="select_with_key_direct_access_operationRequest">
         <wsdl:part name="parameters" element="ns0:select_with_key_direct_access_operation"/>
     </wsdl:message>
@@ -924,53 +400,8 @@
     <wsdl:message name="select_all_direct_access_operationResponse">
         <wsdl:part name="parameters" element="ns0:direct_accessCollection"/>
     </wsdl:message>
-    <wsdl:message name="select_all_TEST_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_all_TEST_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_all_TEST_operationResponse">
-        <wsdl:part name="parameters" element="ns0:TESTCollection"/>
-    </wsdl:message>
-    <wsdl:message name="select_all_TipoAvisoMntoConfig_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_all_TipoAvisoMntoConfig_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_all_TipoAvisoMntoConfig_operationResponse">
-        <wsdl:part name="parameters" element="ns0:TipoAvisoMntoConfigCollection"/>
-    </wsdl:message>
-    <wsdl:message name="delete_MetodoContacto_operationRequest">
-        <wsdl:part name="parameters" element="ns0:delete_MetodoContacto_operation"/>
-    </wsdl:message>
-    <wsdl:message name="update_TEST_operationRequest">
-        <wsdl:part name="parameters" element="ns0:update_TEST_operation"/>
-    </wsdl:message>
     <wsdl:message name="update_direct_access_operationRequest">
         <wsdl:part name="parameters" element="ns0:update_direct_access_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_all_TipoAvisoMntoPanel_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_all_TipoAvisoMntoPanel_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_all_TipoAvisoMntoPanel_operationResponse">
-        <wsdl:part name="parameters" element="ns0:TipoAvisoMntoPanelCollection"/>
-    </wsdl:message>
-    <wsdl:message name="update_TipoAvisoMntoGrupoPanel_operationRequest">
-        <wsdl:part name="parameters" element="ns0:update_TipoAvisoMntoGrupoPanel_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_with_key_Tiempo_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_with_key_Tiempo_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_with_key_Tiempo_operationResponse">
-        <wsdl:part name="parameters" element="ns0:TiempoCollection"/>
-    </wsdl:message>
-    <wsdl:message name="insert_TEST_operationRequest">
-        <wsdl:part name="parameters" element="ns0:insert_TEST_operation"/>
-    </wsdl:message>
-    <wsdl:message name="insert_MetodoContacto_operationRequest">
-        <wsdl:part name="parameters" element="ns0:insert_MetodoContacto_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_all_PuestaEnPruebas_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_all_PuestaEnPruebas_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_all_PuestaEnPruebas_operationResponse">
-        <wsdl:part name="parameters" element="ns0:PuestaEnPruebasCollection"/>
     </wsdl:message>
     <wsdl:message name="select_all_field_config_operationRequest">
         <wsdl:part name="parameters" element="ns0:select_all_field_config_operation"/>
@@ -978,26 +409,8 @@
     <wsdl:message name="select_all_field_config_operationResponse">
         <wsdl:part name="parameters" element="ns0:field_configCollection"/>
     </wsdl:message>
-    <wsdl:message name="update_TipoAlerta_operationRequest">
-        <wsdl:part name="parameters" element="ns0:update_TipoAlerta_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_all_MetodoContacto_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_all_MetodoContacto_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_all_MetodoContacto_operationResponse">
-        <wsdl:part name="parameters" element="ns0:MetodoContactoCollection"/>
-    </wsdl:message>
     <wsdl:message name="update_field_config_operationRequest">
         <wsdl:part name="parameters" element="ns0:update_field_config_operation"/>
-    </wsdl:message>
-    <wsdl:message name="insert_PuestaEnPruebas_operationRequest">
-        <wsdl:part name="parameters" element="ns0:insert_PuestaEnPruebas_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_with_key_TipoAvisoMnto_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_with_key_TipoAvisoMnto_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_with_key_TipoAvisoMnto_operationResponse">
-        <wsdl:part name="parameters" element="ns0:TipoAvisoMntoCollection"/>
     </wsdl:message>
     <wsdl:message name="select_all_direct_access_params_operationRequest">
         <wsdl:part name="parameters" element="ns0:select_all_direct_access_params_operation"/>
@@ -1005,68 +418,20 @@
     <wsdl:message name="select_all_direct_access_params_operationResponse">
         <wsdl:part name="parameters" element="ns0:direct_access_paramsCollection"/>
     </wsdl:message>
-    <wsdl:message name="delete_TipoAvisoMntoPanel_operationRequest">
-        <wsdl:part name="parameters" element="ns0:delete_TipoAvisoMntoPanel_operation"/>
-    </wsdl:message>
-    <wsdl:message name="insert_TipoAvisoMntoPanel_operationRequest">
-        <wsdl:part name="parameters" element="ns0:insert_TipoAvisoMntoPanel_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_with_key_TipoOperador_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_with_key_TipoOperador_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_with_key_TipoOperador_operationResponse">
-        <wsdl:part name="parameters" element="ns0:TipoOperadorCollection"/>
-    </wsdl:message>
-    <wsdl:message name="update_PuestaEnPruebas_operationRequest">
-        <wsdl:part name="parameters" element="ns0:update_PuestaEnPruebas_operation"/>
-    </wsdl:message>
-    <wsdl:message name="delete_TipoAlerta_operationRequest">
-        <wsdl:part name="parameters" element="ns0:delete_TipoAlerta_operation"/>
-    </wsdl:message>
     <wsdl:message name="select_with_key_combinations_keys_operationRequest">
         <wsdl:part name="parameters" element="ns0:select_with_key_combinations_keys_operation"/>
     </wsdl:message>
     <wsdl:message name="select_with_key_combinations_keys_operationResponse">
         <wsdl:part name="parameters" element="ns0:combinations_keysCollection"/>
     </wsdl:message>
-    <wsdl:message name="select_all_Tiempo_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_all_Tiempo_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_all_Tiempo_operationResponse">
-        <wsdl:part name="parameters" element="ns0:TiempoCollection"/>
-    </wsdl:message>
-    <wsdl:message name="delete_TEST_operationRequest">
-        <wsdl:part name="parameters" element="ns0:delete_TEST_operation"/>
+    <wsdl:message name="delete_field_config_operationRequest">
+        <wsdl:part name="parameters" element="ns0:delete_field_config_operation"/>
     </wsdl:message>
     <wsdl:message name="update_combinations_keys_operationRequest">
         <wsdl:part name="parameters" element="ns0:update_combinations_keys_operation"/>
     </wsdl:message>
-    <wsdl:message name="delete_field_config_operationRequest">
-        <wsdl:part name="parameters" element="ns0:delete_field_config_operation"/>
-    </wsdl:message>
-    <wsdl:message name="insert_TipoAlerta_operationRequest">
-        <wsdl:part name="parameters" element="ns0:insert_TipoAlerta_operation"/>
-    </wsdl:message>
-    <wsdl:message name="insert_TipoAvisoMnto_operationRequest">
-        <wsdl:part name="parameters" element="ns0:insert_TipoAvisoMnto_operation"/>
-    </wsdl:message>
-    <wsdl:message name="insert_TipoAvisoMntoConfig_operationRequest">
-        <wsdl:part name="parameters" element="ns0:insert_TipoAvisoMntoConfig_operation"/>
-    </wsdl:message>
     <wsdl:message name="insert_direct_access_params_operationRequest">
         <wsdl:part name="parameters" element="ns0:insert_direct_access_params_operation"/>
-    </wsdl:message>
-    <wsdl:message name="update_TipoAvisoMntoPanel_operationRequest">
-        <wsdl:part name="parameters" element="ns0:update_TipoAvisoMntoPanel_operation"/>
-    </wsdl:message>
-    <wsdl:message name="update_TipoAvisoMntoConfig_operationRequest">
-        <wsdl:part name="parameters" element="ns0:update_TipoAvisoMntoConfig_operation"/>
-    </wsdl:message>
-    <wsdl:message name="delete_TipoAvisoMntoGrupoPanel_operationRequest">
-        <wsdl:part name="parameters" element="ns0:delete_TipoAvisoMntoGrupoPanel_operation"/>
-    </wsdl:message>
-    <wsdl:message name="update_Tiempo_operationRequest">
-        <wsdl:part name="parameters" element="ns0:update_Tiempo_operation"/>
     </wsdl:message>
     <wsdl:message name="getUsersRequest">
         <wsdl:part name="parameters" element="ns0:getUsers"/>
@@ -1074,23 +439,8 @@
     <wsdl:message name="getUsersResponse">
         <wsdl:part name="parameters" element="ns0:getUsersResults"/>
     </wsdl:message>
-    <wsdl:message name="select_with_key_TipoAlerta_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_with_key_TipoAlerta_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_with_key_TipoAlerta_operationResponse">
-        <wsdl:part name="parameters" element="ns0:TipoAlertaCollection"/>
-    </wsdl:message>
-    <wsdl:message name="select_with_key_MetodoContacto_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_with_key_MetodoContacto_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_with_key_MetodoContacto_operationResponse">
-        <wsdl:part name="parameters" element="ns0:MetodoContactoCollection"/>
-    </wsdl:message>
-    <wsdl:message name="select_with_key_TipoAvisoMntoConfig_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_with_key_TipoAvisoMntoConfig_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_with_key_TipoAvisoMntoConfig_operationResponse">
-        <wsdl:part name="parameters" element="ns0:TipoAvisoMntoConfigCollection"/>
+    <wsdl:message name="insert_users_operationRequest">
+        <wsdl:part name="parameters" element="ns0:insert_users_operation"/>
     </wsdl:message>
     <wsdl:message name="getCombinationsKeysRequest">
         <wsdl:part name="parameters" element="ns0:getCombinationsKeys"/>
@@ -1098,47 +448,14 @@
     <wsdl:message name="getCombinationsKeysResponse">
         <wsdl:part name="parameters" element="ns0:getCombinationsKeysResults"/>
     </wsdl:message>
-    <wsdl:message name="select_with_key_TipoAvisoMntoGrupoPanel_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_with_key_TipoAvisoMntoGrupoPanel_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_with_key_TipoAvisoMntoGrupoPanel_operationResponse">
-        <wsdl:part name="parameters" element="ns0:TipoAvisoMntoGrupoPanelCollection"/>
-    </wsdl:message>
-    <wsdl:message name="insert_users_operationRequest">
-        <wsdl:part name="parameters" element="ns0:insert_users_operation"/>
-    </wsdl:message>
-    <wsdl:message name="insert_Tiempo_operationRequest">
-        <wsdl:part name="parameters" element="ns0:insert_Tiempo_operation"/>
-    </wsdl:message>
-    <wsdl:message name="insert_TipoOperador_operationRequest">
-        <wsdl:part name="parameters" element="ns0:insert_TipoOperador_operation"/>
-    </wsdl:message>
-    <wsdl:message name="delete_PuestaEnPruebas_operationRequest">
-        <wsdl:part name="parameters" element="ns0:delete_PuestaEnPruebas_operation"/>
+    <wsdl:message name="insert_field_config_operationRequest">
+        <wsdl:part name="parameters" element="ns0:insert_field_config_operation"/>
     </wsdl:message>
     <wsdl:message name="delete_direct_access_operationRequest">
         <wsdl:part name="parameters" element="ns0:delete_direct_access_operation"/>
     </wsdl:message>
-    <wsdl:message name="insert_field_config_operationRequest">
-        <wsdl:part name="parameters" element="ns0:insert_field_config_operation"/>
-    </wsdl:message>
     <wsdl:message name="delete_combinations_keys_operationRequest">
         <wsdl:part name="parameters" element="ns0:delete_combinations_keys_operation"/>
-    </wsdl:message>
-    <wsdl:message name="delete_Tiempo_operationRequest">
-        <wsdl:part name="parameters" element="ns0:delete_Tiempo_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_all_TipoAvisoMnto_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_all_TipoAvisoMnto_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_all_TipoAvisoMnto_operationResponse">
-        <wsdl:part name="parameters" element="ns0:TipoAvisoMntoCollection"/>
-    </wsdl:message>
-    <wsdl:message name="select_all_TipoOperador_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_all_TipoOperador_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_all_TipoOperador_operationResponse">
-        <wsdl:part name="parameters" element="ns0:TipoOperadorCollection"/>
     </wsdl:message>
     <wsdl:message name="insert_direct_access_operationRequest">
         <wsdl:part name="parameters" element="ns0:insert_direct_access_operation"/>
@@ -1152,12 +469,6 @@
     <wsdl:message name="update_direct_access_params_operationRequest">
         <wsdl:part name="parameters" element="ns0:update_direct_access_params_operation"/>
     </wsdl:message>
-    <wsdl:message name="select_with_key_TipoAvisoMntoPanel_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_with_key_TipoAvisoMntoPanel_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_with_key_TipoAvisoMntoPanel_operationResponse">
-        <wsdl:part name="parameters" element="ns0:TipoAvisoMntoPanelCollection"/>
-    </wsdl:message>
     <wsdl:message name="select_with_key_field_config_operationRequest">
         <wsdl:part name="parameters" element="ns0:select_with_key_field_config_operation"/>
     </wsdl:message>
@@ -1169,21 +480,6 @@
     </wsdl:message>
     <wsdl:message name="getFieldConfigResponse">
         <wsdl:part name="parameters" element="ns0:GetFieldConfigResults"/>
-    </wsdl:message>
-    <wsdl:message name="select_with_key_PuestaEnPruebas_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_with_key_PuestaEnPruebas_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_with_key_PuestaEnPruebas_operationResponse">
-        <wsdl:part name="parameters" element="ns0:PuestaEnPruebasCollection"/>
-    </wsdl:message>
-    <wsdl:message name="insert_TipoAvisoMntoGrupoPanel_operationRequest">
-        <wsdl:part name="parameters" element="ns0:insert_TipoAvisoMntoGrupoPanel_operation"/>
-    </wsdl:message>
-    <wsdl:message name="update_MetodoContacto_operationRequest">
-        <wsdl:part name="parameters" element="ns0:update_MetodoContacto_operation"/>
-    </wsdl:message>
-    <wsdl:message name="delete_TipoOperador_operationRequest">
-        <wsdl:part name="parameters" element="ns0:delete_TipoOperador_operation"/>
     </wsdl:message>
     <wsdl:message name="select_with_key_direct_access_params_operationRequest">
         <wsdl:part name="parameters" element="ns0:select_with_key_direct_access_params_operation"/>
@@ -1200,47 +496,28 @@
     <wsdl:message name="select_all_combinations_keys_operationResponse">
         <wsdl:part name="parameters" element="ns0:combinations_keysCollection"/>
     </wsdl:message>
-    <wsdl:message name="select_with_key_TEST_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_with_key_TEST_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_with_key_TEST_operationResponse">
-        <wsdl:part name="parameters" element="ns0:TESTCollection"/>
-    </wsdl:message>
     <wsdl:message name="getDirectAccessParamsRequest">
         <wsdl:part name="parameters" element="ns0:getDirectAccessParams"/>
     </wsdl:message>
     <wsdl:message name="getDirectAccessParamsResponse">
         <wsdl:part name="parameters" element="ns0:getDirectAccessParamsResults"/>
     </wsdl:message>
-    <wsdl:message name="select_all_TipoAlerta_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_all_TipoAlerta_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_all_TipoAlerta_operationResponse">
-        <wsdl:part name="parameters" element="ns0:TipoAlertaCollection"/>
+    <wsdl:message name="update_users_operationRequest">
+        <wsdl:part name="parameters" element="ns0:update_users_operation"/>
     </wsdl:message>
     <wsdl:message name="insert_combinations_keys_operationRequest">
         <wsdl:part name="parameters" element="ns0:insert_combinations_keys_operation"/>
     </wsdl:message>
-    <wsdl:message name="delete_TipoAvisoMnto_operationRequest">
-        <wsdl:part name="parameters" element="ns0:delete_TipoAvisoMnto_operation"/>
+    <wsdl:message name="delete_users_operationRequest">
+        <wsdl:part name="parameters" element="ns0:delete_users_operation"/>
     </wsdl:message>
-    <wsdl:message name="delete_TipoAvisoMntoConfig_operationRequest">
-        <wsdl:part name="parameters" element="ns0:delete_TipoAvisoMntoConfig_operation"/>
+    <wsdl:message name="getFieldConfigByApp_operationRequest">
+        <wsdl:part name="parameters" element="ns0:getFieldConfigByApp_operation"/>
     </wsdl:message>
-    <wsdl:message name="select_all_TipoAvisoMntoGrupoPanel_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_all_TipoAvisoMntoGrupoPanel_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_all_TipoAvisoMntoGrupoPanel_operationResponse">
-        <wsdl:part name="parameters" element="ns0:TipoAvisoMntoGrupoPanelCollection"/>
-    </wsdl:message>
-    <wsdl:message name="update_TipoAvisoMnto_operationRequest">
-        <wsdl:part name="parameters" element="ns0:update_TipoAvisoMnto_operation"/>
+    <wsdl:message name="getFieldConfigByApp_operationResponse">
+        <wsdl:part name="parameters" element="ns0:getFieldConfigByAppResults"/>
     </wsdl:message>
     <wsdl:portType name="CCAGENT_ADMPortType">
-        <wsdl:operation name="update_TipoOperador_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:update_TipoOperador_operationRequest" wsaw:Action="urn:update_TipoOperador_operation"/>
-        </wsdl:operation>
         <wsdl:operation name="select_with_key_direct_access_operation">
             <wsdl:documentation/>
             <wsdl:input message="ns0:select_with_key_direct_access_operationRequest" wsaw:Action="urn:select_with_key_direct_access_operation"/>
@@ -1253,59 +530,9 @@
             <wsdl:output message="ns0:select_all_direct_access_operationResponse" wsaw:Action="urn:select_all_direct_access_operationResponse"/>
             <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_direct_access_operationDataServiceFault"/>
         </wsdl:operation>
-        <wsdl:operation name="select_all_TEST_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:select_all_TEST_operationRequest" wsaw:Action="urn:select_all_TEST_operation"/>
-            <wsdl:output message="ns0:select_all_TEST_operationResponse" wsaw:Action="urn:select_all_TEST_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_TEST_operationDataServiceFault"/>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_TipoAvisoMntoConfig_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:select_all_TipoAvisoMntoConfig_operationRequest" wsaw:Action="urn:select_all_TipoAvisoMntoConfig_operation"/>
-            <wsdl:output message="ns0:select_all_TipoAvisoMntoConfig_operationResponse" wsaw:Action="urn:select_all_TipoAvisoMntoConfig_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_TipoAvisoMntoConfig_operationDataServiceFault"/>
-        </wsdl:operation>
-        <wsdl:operation name="delete_MetodoContacto_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:delete_MetodoContacto_operationRequest" wsaw:Action="urn:delete_MetodoContacto_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="update_TEST_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:update_TEST_operationRequest" wsaw:Action="urn:update_TEST_operation"/>
-        </wsdl:operation>
         <wsdl:operation name="update_direct_access_operation">
             <wsdl:documentation/>
             <wsdl:input message="ns0:update_direct_access_operationRequest" wsaw:Action="urn:update_direct_access_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_TipoAvisoMntoPanel_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:select_all_TipoAvisoMntoPanel_operationRequest" wsaw:Action="urn:select_all_TipoAvisoMntoPanel_operation"/>
-            <wsdl:output message="ns0:select_all_TipoAvisoMntoPanel_operationResponse" wsaw:Action="urn:select_all_TipoAvisoMntoPanel_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_TipoAvisoMntoPanel_operationDataServiceFault"/>
-        </wsdl:operation>
-        <wsdl:operation name="update_TipoAvisoMntoGrupoPanel_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:update_TipoAvisoMntoGrupoPanel_operationRequest" wsaw:Action="urn:update_TipoAvisoMntoGrupoPanel_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_Tiempo_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:select_with_key_Tiempo_operationRequest" wsaw:Action="urn:select_with_key_Tiempo_operation"/>
-            <wsdl:output message="ns0:select_with_key_Tiempo_operationResponse" wsaw:Action="urn:select_with_key_Tiempo_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_Tiempo_operationDataServiceFault"/>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TEST_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:insert_TEST_operationRequest" wsaw:Action="urn:insert_TEST_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="insert_MetodoContacto_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:insert_MetodoContacto_operationRequest" wsaw:Action="urn:insert_MetodoContacto_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_PuestaEnPruebas_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:select_all_PuestaEnPruebas_operationRequest" wsaw:Action="urn:select_all_PuestaEnPruebas_operation"/>
-            <wsdl:output message="ns0:select_all_PuestaEnPruebas_operationResponse" wsaw:Action="urn:select_all_PuestaEnPruebas_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_PuestaEnPruebas_operationDataServiceFault"/>
         </wsdl:operation>
         <wsdl:operation name="select_all_field_config_operation">
             <wsdl:documentation/>
@@ -1313,29 +540,9 @@
             <wsdl:output message="ns0:select_all_field_config_operationResponse" wsaw:Action="urn:select_all_field_config_operationResponse"/>
             <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_field_config_operationDataServiceFault"/>
         </wsdl:operation>
-        <wsdl:operation name="update_TipoAlerta_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:update_TipoAlerta_operationRequest" wsaw:Action="urn:update_TipoAlerta_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_MetodoContacto_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:select_all_MetodoContacto_operationRequest" wsaw:Action="urn:select_all_MetodoContacto_operation"/>
-            <wsdl:output message="ns0:select_all_MetodoContacto_operationResponse" wsaw:Action="urn:select_all_MetodoContacto_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_MetodoContacto_operationDataServiceFault"/>
-        </wsdl:operation>
         <wsdl:operation name="update_field_config_operation">
             <wsdl:documentation/>
             <wsdl:input message="ns0:update_field_config_operationRequest" wsaw:Action="urn:update_field_config_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="insert_PuestaEnPruebas_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:insert_PuestaEnPruebas_operationRequest" wsaw:Action="urn:insert_PuestaEnPruebas_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoAvisoMnto_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:select_with_key_TipoAvisoMnto_operationRequest" wsaw:Action="urn:select_with_key_TipoAvisoMnto_operation"/>
-            <wsdl:output message="ns0:select_with_key_TipoAvisoMnto_operationResponse" wsaw:Action="urn:select_with_key_TipoAvisoMnto_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_TipoAvisoMnto_operationDataServiceFault"/>
         </wsdl:operation>
         <wsdl:operation name="select_all_direct_access_params_operation">
             <wsdl:documentation/>
@@ -1343,83 +550,23 @@
             <wsdl:output message="ns0:select_all_direct_access_params_operationResponse" wsaw:Action="urn:select_all_direct_access_params_operationResponse"/>
             <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_direct_access_params_operationDataServiceFault"/>
         </wsdl:operation>
-        <wsdl:operation name="delete_TipoAvisoMntoPanel_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:delete_TipoAvisoMntoPanel_operationRequest" wsaw:Action="urn:delete_TipoAvisoMntoPanel_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoAvisoMntoPanel_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:insert_TipoAvisoMntoPanel_operationRequest" wsaw:Action="urn:insert_TipoAvisoMntoPanel_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoOperador_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:select_with_key_TipoOperador_operationRequest" wsaw:Action="urn:select_with_key_TipoOperador_operation"/>
-            <wsdl:output message="ns0:select_with_key_TipoOperador_operationResponse" wsaw:Action="urn:select_with_key_TipoOperador_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_TipoOperador_operationDataServiceFault"/>
-        </wsdl:operation>
-        <wsdl:operation name="update_PuestaEnPruebas_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:update_PuestaEnPruebas_operationRequest" wsaw:Action="urn:update_PuestaEnPruebas_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="delete_TipoAlerta_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:delete_TipoAlerta_operationRequest" wsaw:Action="urn:delete_TipoAlerta_operation"/>
-        </wsdl:operation>
         <wsdl:operation name="select_with_key_combinations_keys_operation">
             <wsdl:documentation/>
             <wsdl:input message="ns0:select_with_key_combinations_keys_operationRequest" wsaw:Action="urn:select_with_key_combinations_keys_operation"/>
             <wsdl:output message="ns0:select_with_key_combinations_keys_operationResponse" wsaw:Action="urn:select_with_key_combinations_keys_operationResponse"/>
             <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_combinations_keys_operationDataServiceFault"/>
         </wsdl:operation>
-        <wsdl:operation name="select_all_Tiempo_operation">
+        <wsdl:operation name="delete_field_config_operation">
             <wsdl:documentation/>
-            <wsdl:input message="ns0:select_all_Tiempo_operationRequest" wsaw:Action="urn:select_all_Tiempo_operation"/>
-            <wsdl:output message="ns0:select_all_Tiempo_operationResponse" wsaw:Action="urn:select_all_Tiempo_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_Tiempo_operationDataServiceFault"/>
-        </wsdl:operation>
-        <wsdl:operation name="delete_TEST_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:delete_TEST_operationRequest" wsaw:Action="urn:delete_TEST_operation"/>
+            <wsdl:input message="ns0:delete_field_config_operationRequest" wsaw:Action="urn:delete_field_config_operation"/>
         </wsdl:operation>
         <wsdl:operation name="update_combinations_keys_operation">
             <wsdl:documentation/>
             <wsdl:input message="ns0:update_combinations_keys_operationRequest" wsaw:Action="urn:update_combinations_keys_operation"/>
         </wsdl:operation>
-        <wsdl:operation name="delete_field_config_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:delete_field_config_operationRequest" wsaw:Action="urn:delete_field_config_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoAlerta_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:insert_TipoAlerta_operationRequest" wsaw:Action="urn:insert_TipoAlerta_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoAvisoMnto_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:insert_TipoAvisoMnto_operationRequest" wsaw:Action="urn:insert_TipoAvisoMnto_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoAvisoMntoConfig_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:insert_TipoAvisoMntoConfig_operationRequest" wsaw:Action="urn:insert_TipoAvisoMntoConfig_operation"/>
-        </wsdl:operation>
         <wsdl:operation name="insert_direct_access_params_operation">
             <wsdl:documentation/>
             <wsdl:input message="ns0:insert_direct_access_params_operationRequest" wsaw:Action="urn:insert_direct_access_params_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="update_TipoAvisoMntoPanel_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:update_TipoAvisoMntoPanel_operationRequest" wsaw:Action="urn:update_TipoAvisoMntoPanel_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="update_TipoAvisoMntoConfig_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:update_TipoAvisoMntoConfig_operationRequest" wsaw:Action="urn:update_TipoAvisoMntoConfig_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="delete_TipoAvisoMntoGrupoPanel_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:delete_TipoAvisoMntoGrupoPanel_operationRequest" wsaw:Action="urn:delete_TipoAvisoMntoGrupoPanel_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="update_Tiempo_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:update_Tiempo_operationRequest" wsaw:Action="urn:update_Tiempo_operation"/>
         </wsdl:operation>
         <wsdl:operation name="getUsers">
             <wsdl:documentation/>
@@ -1427,23 +574,9 @@
             <wsdl:output message="ns0:getUsersResponse" wsaw:Action="urn:getUsersResponse"/>
             <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getUsersDataServiceFault"/>
         </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoAlerta_operation">
+        <wsdl:operation name="insert_users_operation">
             <wsdl:documentation/>
-            <wsdl:input message="ns0:select_with_key_TipoAlerta_operationRequest" wsaw:Action="urn:select_with_key_TipoAlerta_operation"/>
-            <wsdl:output message="ns0:select_with_key_TipoAlerta_operationResponse" wsaw:Action="urn:select_with_key_TipoAlerta_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_TipoAlerta_operationDataServiceFault"/>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_MetodoContacto_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:select_with_key_MetodoContacto_operationRequest" wsaw:Action="urn:select_with_key_MetodoContacto_operation"/>
-            <wsdl:output message="ns0:select_with_key_MetodoContacto_operationResponse" wsaw:Action="urn:select_with_key_MetodoContacto_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_MetodoContacto_operationDataServiceFault"/>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoAvisoMntoConfig_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:select_with_key_TipoAvisoMntoConfig_operationRequest" wsaw:Action="urn:select_with_key_TipoAvisoMntoConfig_operation"/>
-            <wsdl:output message="ns0:select_with_key_TipoAvisoMntoConfig_operationResponse" wsaw:Action="urn:select_with_key_TipoAvisoMntoConfig_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_TipoAvisoMntoConfig_operationDataServiceFault"/>
+            <wsdl:input message="ns0:insert_users_operationRequest" wsaw:Action="urn:insert_users_operation"/>
         </wsdl:operation>
         <wsdl:operation name="getCombinationsKeys">
             <wsdl:documentation/>
@@ -1451,55 +584,17 @@
             <wsdl:output message="ns0:getCombinationsKeysResponse" wsaw:Action="urn:getCombinationsKeysResponse"/>
             <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getCombinationsKeysDataServiceFault"/>
         </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoAvisoMntoGrupoPanel_operation">
+        <wsdl:operation name="insert_field_config_operation">
             <wsdl:documentation/>
-            <wsdl:input message="ns0:select_with_key_TipoAvisoMntoGrupoPanel_operationRequest" wsaw:Action="urn:select_with_key_TipoAvisoMntoGrupoPanel_operation"/>
-            <wsdl:output message="ns0:select_with_key_TipoAvisoMntoGrupoPanel_operationResponse" wsaw:Action="urn:select_with_key_TipoAvisoMntoGrupoPanel_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_TipoAvisoMntoGrupoPanel_operationDataServiceFault"/>
-        </wsdl:operation>
-        <wsdl:operation name="insert_users_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:insert_users_operationRequest" wsaw:Action="urn:insert_users_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="insert_Tiempo_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:insert_Tiempo_operationRequest" wsaw:Action="urn:insert_Tiempo_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoOperador_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:insert_TipoOperador_operationRequest" wsaw:Action="urn:insert_TipoOperador_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="delete_PuestaEnPruebas_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:delete_PuestaEnPruebas_operationRequest" wsaw:Action="urn:delete_PuestaEnPruebas_operation"/>
+            <wsdl:input message="ns0:insert_field_config_operationRequest" wsaw:Action="urn:insert_field_config_operation"/>
         </wsdl:operation>
         <wsdl:operation name="delete_direct_access_operation">
             <wsdl:documentation/>
             <wsdl:input message="ns0:delete_direct_access_operationRequest" wsaw:Action="urn:delete_direct_access_operation"/>
         </wsdl:operation>
-        <wsdl:operation name="insert_field_config_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:insert_field_config_operationRequest" wsaw:Action="urn:insert_field_config_operation"/>
-        </wsdl:operation>
         <wsdl:operation name="delete_combinations_keys_operation">
             <wsdl:documentation/>
             <wsdl:input message="ns0:delete_combinations_keys_operationRequest" wsaw:Action="urn:delete_combinations_keys_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="delete_Tiempo_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:delete_Tiempo_operationRequest" wsaw:Action="urn:delete_Tiempo_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_TipoAvisoMnto_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:select_all_TipoAvisoMnto_operationRequest" wsaw:Action="urn:select_all_TipoAvisoMnto_operation"/>
-            <wsdl:output message="ns0:select_all_TipoAvisoMnto_operationResponse" wsaw:Action="urn:select_all_TipoAvisoMnto_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_TipoAvisoMnto_operationDataServiceFault"/>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_TipoOperador_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:select_all_TipoOperador_operationRequest" wsaw:Action="urn:select_all_TipoOperador_operation"/>
-            <wsdl:output message="ns0:select_all_TipoOperador_operationResponse" wsaw:Action="urn:select_all_TipoOperador_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_TipoOperador_operationDataServiceFault"/>
         </wsdl:operation>
         <wsdl:operation name="insert_direct_access_operation">
             <wsdl:documentation/>
@@ -1515,12 +610,6 @@
             <wsdl:documentation/>
             <wsdl:input message="ns0:update_direct_access_params_operationRequest" wsaw:Action="urn:update_direct_access_params_operation"/>
         </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoAvisoMntoPanel_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:select_with_key_TipoAvisoMntoPanel_operationRequest" wsaw:Action="urn:select_with_key_TipoAvisoMntoPanel_operation"/>
-            <wsdl:output message="ns0:select_with_key_TipoAvisoMntoPanel_operationResponse" wsaw:Action="urn:select_with_key_TipoAvisoMntoPanel_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_TipoAvisoMntoPanel_operationDataServiceFault"/>
-        </wsdl:operation>
         <wsdl:operation name="select_with_key_field_config_operation">
             <wsdl:documentation/>
             <wsdl:input message="ns0:select_with_key_field_config_operationRequest" wsaw:Action="urn:select_with_key_field_config_operation"/>
@@ -1532,24 +621,6 @@
             <wsdl:input message="ns0:getFieldConfigRequest" wsaw:Action="urn:getFieldConfig"/>
             <wsdl:output message="ns0:getFieldConfigResponse" wsaw:Action="urn:getFieldConfigResponse"/>
             <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getFieldConfigDataServiceFault"/>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_PuestaEnPruebas_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:select_with_key_PuestaEnPruebas_operationRequest" wsaw:Action="urn:select_with_key_PuestaEnPruebas_operation"/>
-            <wsdl:output message="ns0:select_with_key_PuestaEnPruebas_operationResponse" wsaw:Action="urn:select_with_key_PuestaEnPruebas_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_PuestaEnPruebas_operationDataServiceFault"/>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoAvisoMntoGrupoPanel_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:insert_TipoAvisoMntoGrupoPanel_operationRequest" wsaw:Action="urn:insert_TipoAvisoMntoGrupoPanel_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="update_MetodoContacto_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:update_MetodoContacto_operationRequest" wsaw:Action="urn:update_MetodoContacto_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="delete_TipoOperador_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:delete_TipoOperador_operationRequest" wsaw:Action="urn:delete_TipoOperador_operation"/>
         </wsdl:operation>
         <wsdl:operation name="select_with_key_direct_access_params_operation">
             <wsdl:documentation/>
@@ -1567,55 +638,33 @@
             <wsdl:output message="ns0:select_all_combinations_keys_operationResponse" wsaw:Action="urn:select_all_combinations_keys_operationResponse"/>
             <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_combinations_keys_operationDataServiceFault"/>
         </wsdl:operation>
-        <wsdl:operation name="select_with_key_TEST_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:select_with_key_TEST_operationRequest" wsaw:Action="urn:select_with_key_TEST_operation"/>
-            <wsdl:output message="ns0:select_with_key_TEST_operationResponse" wsaw:Action="urn:select_with_key_TEST_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_TEST_operationDataServiceFault"/>
-        </wsdl:operation>
         <wsdl:operation name="getDirectAccessParams">
             <wsdl:documentation/>
             <wsdl:input message="ns0:getDirectAccessParamsRequest" wsaw:Action="urn:getDirectAccessParams"/>
             <wsdl:output message="ns0:getDirectAccessParamsResponse" wsaw:Action="urn:getDirectAccessParamsResponse"/>
             <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getDirectAccessParamsDataServiceFault"/>
         </wsdl:operation>
-        <wsdl:operation name="select_all_TipoAlerta_operation">
+        <wsdl:operation name="update_users_operation">
             <wsdl:documentation/>
-            <wsdl:input message="ns0:select_all_TipoAlerta_operationRequest" wsaw:Action="urn:select_all_TipoAlerta_operation"/>
-            <wsdl:output message="ns0:select_all_TipoAlerta_operationResponse" wsaw:Action="urn:select_all_TipoAlerta_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_TipoAlerta_operationDataServiceFault"/>
+            <wsdl:input message="ns0:update_users_operationRequest" wsaw:Action="urn:update_users_operation"/>
         </wsdl:operation>
         <wsdl:operation name="insert_combinations_keys_operation">
             <wsdl:documentation/>
             <wsdl:input message="ns0:insert_combinations_keys_operationRequest" wsaw:Action="urn:insert_combinations_keys_operation"/>
         </wsdl:operation>
-        <wsdl:operation name="delete_TipoAvisoMnto_operation">
+        <wsdl:operation name="delete_users_operation">
             <wsdl:documentation/>
-            <wsdl:input message="ns0:delete_TipoAvisoMnto_operationRequest" wsaw:Action="urn:delete_TipoAvisoMnto_operation"/>
+            <wsdl:input message="ns0:delete_users_operationRequest" wsaw:Action="urn:delete_users_operation"/>
         </wsdl:operation>
-        <wsdl:operation name="delete_TipoAvisoMntoConfig_operation">
+        <wsdl:operation name="getFieldConfigByApp_operation">
             <wsdl:documentation/>
-            <wsdl:input message="ns0:delete_TipoAvisoMntoConfig_operationRequest" wsaw:Action="urn:delete_TipoAvisoMntoConfig_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_TipoAvisoMntoGrupoPanel_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:select_all_TipoAvisoMntoGrupoPanel_operationRequest" wsaw:Action="urn:select_all_TipoAvisoMntoGrupoPanel_operation"/>
-            <wsdl:output message="ns0:select_all_TipoAvisoMntoGrupoPanel_operationResponse" wsaw:Action="urn:select_all_TipoAvisoMntoGrupoPanel_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_TipoAvisoMntoGrupoPanel_operationDataServiceFault"/>
-        </wsdl:operation>
-        <wsdl:operation name="update_TipoAvisoMnto_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:update_TipoAvisoMnto_operationRequest" wsaw:Action="urn:update_TipoAvisoMnto_operation"/>
+            <wsdl:input message="ns0:getFieldConfigByApp_operationRequest" wsaw:Action="urn:getFieldConfigByApp_operation"/>
+            <wsdl:output message="ns0:getFieldConfigByApp_operationResponse" wsaw:Action="urn:getFieldConfigByApp_operationResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getFieldConfigByApp_operationDataServiceFault"/>
         </wsdl:operation>
     </wsdl:portType>
     <wsdl:binding name="CCAGENT_ADMSOAP11Binding" type="ns0:CCAGENT_ADMPortType">
         <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-        <wsdl:operation name="update_TipoOperador_operation">
-            <soap:operation soapAction="urn:update_TipoOperador_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
         <wsdl:operation name="select_with_key_direct_access_operation">
             <soap:operation soapAction="urn:select_with_key_direct_access_operation" style="document"/>
             <wsdl:input>
@@ -1640,122 +689,14 @@
                 <soap:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="select_all_TEST_operation">
-            <soap:operation soapAction="urn:select_all_TEST_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_TipoAvisoMntoConfig_operation">
-            <soap:operation soapAction="urn:select_all_TipoAvisoMntoConfig_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="delete_MetodoContacto_operation">
-            <soap:operation soapAction="urn:delete_MetodoContacto_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="update_TEST_operation">
-            <soap:operation soapAction="urn:update_TEST_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
         <wsdl:operation name="update_direct_access_operation">
             <soap:operation soapAction="urn:update_direct_access_operation" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
         </wsdl:operation>
-        <wsdl:operation name="select_all_TipoAvisoMntoPanel_operation">
-            <soap:operation soapAction="urn:select_all_TipoAvisoMntoPanel_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="update_TipoAvisoMntoGrupoPanel_operation">
-            <soap:operation soapAction="urn:update_TipoAvisoMntoGrupoPanel_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_Tiempo_operation">
-            <soap:operation soapAction="urn:select_with_key_Tiempo_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TEST_operation">
-            <soap:operation soapAction="urn:insert_TEST_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="insert_MetodoContacto_operation">
-            <soap:operation soapAction="urn:insert_MetodoContacto_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_PuestaEnPruebas_operation">
-            <soap:operation soapAction="urn:select_all_PuestaEnPruebas_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
         <wsdl:operation name="select_all_field_config_operation">
             <soap:operation soapAction="urn:select_all_field_config_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="update_TipoAlerta_operation">
-            <soap:operation soapAction="urn:update_TipoAlerta_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_MetodoContacto_operation">
-            <soap:operation soapAction="urn:select_all_MetodoContacto_operation" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -1772,24 +713,6 @@
                 <soap:body use="literal"/>
             </wsdl:input>
         </wsdl:operation>
-        <wsdl:operation name="insert_PuestaEnPruebas_operation">
-            <soap:operation soapAction="urn:insert_PuestaEnPruebas_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoAvisoMnto_operation">
-            <soap:operation soapAction="urn:select_with_key_TipoAvisoMnto_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
         <wsdl:operation name="select_all_direct_access_params_operation">
             <soap:operation soapAction="urn:select_all_direct_access_params_operation" style="document"/>
             <wsdl:input>
@@ -1801,42 +724,6 @@
             <wsdl:fault name="DataServiceFault">
                 <soap:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="delete_TipoAvisoMntoPanel_operation">
-            <soap:operation soapAction="urn:delete_TipoAvisoMntoPanel_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoAvisoMntoPanel_operation">
-            <soap:operation soapAction="urn:insert_TipoAvisoMntoPanel_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoOperador_operation">
-            <soap:operation soapAction="urn:select_with_key_TipoOperador_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="update_PuestaEnPruebas_operation">
-            <soap:operation soapAction="urn:update_PuestaEnPruebas_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="delete_TipoAlerta_operation">
-            <soap:operation soapAction="urn:delete_TipoAlerta_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="select_with_key_combinations_keys_operation">
             <soap:operation soapAction="urn:select_with_key_combinations_keys_operation" style="document"/>
@@ -1850,20 +737,8 @@
                 <soap:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="select_all_Tiempo_operation">
-            <soap:operation soapAction="urn:select_all_Tiempo_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="delete_TEST_operation">
-            <soap:operation soapAction="urn:delete_TEST_operation" style="document"/>
+        <wsdl:operation name="delete_field_config_operation">
+            <soap:operation soapAction="urn:delete_field_config_operation" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -1874,56 +749,8 @@
                 <soap:body use="literal"/>
             </wsdl:input>
         </wsdl:operation>
-        <wsdl:operation name="delete_field_config_operation">
-            <soap:operation soapAction="urn:delete_field_config_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoAlerta_operation">
-            <soap:operation soapAction="urn:insert_TipoAlerta_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoAvisoMnto_operation">
-            <soap:operation soapAction="urn:insert_TipoAvisoMnto_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoAvisoMntoConfig_operation">
-            <soap:operation soapAction="urn:insert_TipoAvisoMntoConfig_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
         <wsdl:operation name="insert_direct_access_params_operation">
             <soap:operation soapAction="urn:insert_direct_access_params_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="update_TipoAvisoMntoPanel_operation">
-            <soap:operation soapAction="urn:update_TipoAvisoMntoPanel_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="update_TipoAvisoMntoConfig_operation">
-            <soap:operation soapAction="urn:update_TipoAvisoMntoConfig_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="delete_TipoAvisoMntoGrupoPanel_operation">
-            <soap:operation soapAction="urn:delete_TipoAvisoMntoGrupoPanel_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="update_Tiempo_operation">
-            <soap:operation soapAction="urn:update_Tiempo_operation" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -1940,41 +767,11 @@
                 <soap:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoAlerta_operation">
-            <soap:operation soapAction="urn:select_with_key_TipoAlerta_operation" style="document"/>
+        <wsdl:operation name="insert_users_operation">
+            <soap:operation soapAction="urn:insert_users_operation" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_MetodoContacto_operation">
-            <soap:operation soapAction="urn:select_with_key_MetodoContacto_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoAvisoMntoConfig_operation">
-            <soap:operation soapAction="urn:select_with_key_TipoAvisoMntoConfig_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getCombinationsKeys">
             <soap:operation soapAction="urn:getCombinationsKeys" style="document"/>
@@ -1988,38 +785,8 @@
                 <soap:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoAvisoMntoGrupoPanel_operation">
-            <soap:operation soapAction="urn:select_with_key_TipoAvisoMntoGrupoPanel_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="insert_users_operation">
-            <soap:operation soapAction="urn:insert_users_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="insert_Tiempo_operation">
-            <soap:operation soapAction="urn:insert_Tiempo_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoOperador_operation">
-            <soap:operation soapAction="urn:insert_TipoOperador_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="delete_PuestaEnPruebas_operation">
-            <soap:operation soapAction="urn:delete_PuestaEnPruebas_operation" style="document"/>
+        <wsdl:operation name="insert_field_config_operation">
+            <soap:operation soapAction="urn:insert_field_config_operation" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -2030,47 +797,11 @@
                 <soap:body use="literal"/>
             </wsdl:input>
         </wsdl:operation>
-        <wsdl:operation name="insert_field_config_operation">
-            <soap:operation soapAction="urn:insert_field_config_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
         <wsdl:operation name="delete_combinations_keys_operation">
             <soap:operation soapAction="urn:delete_combinations_keys_operation" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="delete_Tiempo_operation">
-            <soap:operation soapAction="urn:delete_Tiempo_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_TipoAvisoMnto_operation">
-            <soap:operation soapAction="urn:select_all_TipoAvisoMnto_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_TipoOperador_operation">
-            <soap:operation soapAction="urn:select_all_TipoOperador_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="insert_direct_access_operation">
             <soap:operation soapAction="urn:insert_direct_access_operation" style="document"/>
@@ -2096,18 +827,6 @@
                 <soap:body use="literal"/>
             </wsdl:input>
         </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoAvisoMntoPanel_operation">
-            <soap:operation soapAction="urn:select_with_key_TipoAvisoMntoPanel_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
         <wsdl:operation name="select_with_key_field_config_operation">
             <soap:operation soapAction="urn:select_with_key_field_config_operation" style="document"/>
             <wsdl:input>
@@ -2131,36 +850,6 @@
             <wsdl:fault name="DataServiceFault">
                 <soap:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_PuestaEnPruebas_operation">
-            <soap:operation soapAction="urn:select_with_key_PuestaEnPruebas_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoAvisoMntoGrupoPanel_operation">
-            <soap:operation soapAction="urn:insert_TipoAvisoMntoGrupoPanel_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="update_MetodoContacto_operation">
-            <soap:operation soapAction="urn:update_MetodoContacto_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="delete_TipoOperador_operation">
-            <soap:operation soapAction="urn:delete_TipoOperador_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="select_with_key_direct_access_params_operation">
             <soap:operation soapAction="urn:select_with_key_direct_access_params_operation" style="document"/>
@@ -2192,18 +881,6 @@
                 <soap:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="select_with_key_TEST_operation">
-            <soap:operation soapAction="urn:select_with_key_TEST_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
         <wsdl:operation name="getDirectAccessParams">
             <soap:operation soapAction="urn:getDirectAccessParams" style="document"/>
             <wsdl:input>
@@ -2216,17 +893,11 @@
                 <soap:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="select_all_TipoAlerta_operation">
-            <soap:operation soapAction="urn:select_all_TipoAlerta_operation" style="document"/>
+        <wsdl:operation name="update_users_operation">
+            <soap:operation soapAction="urn:update_users_operation" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="insert_combinations_keys_operation">
             <soap:operation soapAction="urn:insert_combinations_keys_operation" style="document"/>
@@ -2234,20 +905,14 @@
                 <soap:body use="literal"/>
             </wsdl:input>
         </wsdl:operation>
-        <wsdl:operation name="delete_TipoAvisoMnto_operation">
-            <soap:operation soapAction="urn:delete_TipoAvisoMnto_operation" style="document"/>
+        <wsdl:operation name="delete_users_operation">
+            <soap:operation soapAction="urn:delete_users_operation" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
         </wsdl:operation>
-        <wsdl:operation name="delete_TipoAvisoMntoConfig_operation">
-            <soap:operation soapAction="urn:delete_TipoAvisoMntoConfig_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_TipoAvisoMntoGrupoPanel_operation">
-            <soap:operation soapAction="urn:select_all_TipoAvisoMntoGrupoPanel_operation" style="document"/>
+        <wsdl:operation name="getFieldConfigByApp_operation">
+            <soap:operation soapAction="urn:getFieldConfigByApp_operation" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -2258,21 +923,9 @@
                 <soap:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="update_TipoAvisoMnto_operation">
-            <soap:operation soapAction="urn:update_TipoAvisoMnto_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
     </wsdl:binding>
     <wsdl:binding name="CCAGENT_ADMSOAP12Binding" type="ns0:CCAGENT_ADMPortType">
         <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-        <wsdl:operation name="update_TipoOperador_operation">
-            <soap12:operation soapAction="urn:update_TipoOperador_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
         <wsdl:operation name="select_with_key_direct_access_operation">
             <soap12:operation soapAction="urn:select_with_key_direct_access_operation" style="document"/>
             <wsdl:input>
@@ -2297,122 +950,14 @@
                 <soap12:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="select_all_TEST_operation">
-            <soap12:operation soapAction="urn:select_all_TEST_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_TipoAvisoMntoConfig_operation">
-            <soap12:operation soapAction="urn:select_all_TipoAvisoMntoConfig_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="delete_MetodoContacto_operation">
-            <soap12:operation soapAction="urn:delete_MetodoContacto_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="update_TEST_operation">
-            <soap12:operation soapAction="urn:update_TEST_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
         <wsdl:operation name="update_direct_access_operation">
             <soap12:operation soapAction="urn:update_direct_access_operation" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
         </wsdl:operation>
-        <wsdl:operation name="select_all_TipoAvisoMntoPanel_operation">
-            <soap12:operation soapAction="urn:select_all_TipoAvisoMntoPanel_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="update_TipoAvisoMntoGrupoPanel_operation">
-            <soap12:operation soapAction="urn:update_TipoAvisoMntoGrupoPanel_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_Tiempo_operation">
-            <soap12:operation soapAction="urn:select_with_key_Tiempo_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TEST_operation">
-            <soap12:operation soapAction="urn:insert_TEST_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="insert_MetodoContacto_operation">
-            <soap12:operation soapAction="urn:insert_MetodoContacto_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_PuestaEnPruebas_operation">
-            <soap12:operation soapAction="urn:select_all_PuestaEnPruebas_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
         <wsdl:operation name="select_all_field_config_operation">
             <soap12:operation soapAction="urn:select_all_field_config_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="update_TipoAlerta_operation">
-            <soap12:operation soapAction="urn:update_TipoAlerta_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_MetodoContacto_operation">
-            <soap12:operation soapAction="urn:select_all_MetodoContacto_operation" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -2429,24 +974,6 @@
                 <soap12:body use="literal"/>
             </wsdl:input>
         </wsdl:operation>
-        <wsdl:operation name="insert_PuestaEnPruebas_operation">
-            <soap12:operation soapAction="urn:insert_PuestaEnPruebas_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoAvisoMnto_operation">
-            <soap12:operation soapAction="urn:select_with_key_TipoAvisoMnto_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
         <wsdl:operation name="select_all_direct_access_params_operation">
             <soap12:operation soapAction="urn:select_all_direct_access_params_operation" style="document"/>
             <wsdl:input>
@@ -2458,42 +985,6 @@
             <wsdl:fault name="DataServiceFault">
                 <soap12:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="delete_TipoAvisoMntoPanel_operation">
-            <soap12:operation soapAction="urn:delete_TipoAvisoMntoPanel_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoAvisoMntoPanel_operation">
-            <soap12:operation soapAction="urn:insert_TipoAvisoMntoPanel_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoOperador_operation">
-            <soap12:operation soapAction="urn:select_with_key_TipoOperador_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="update_PuestaEnPruebas_operation">
-            <soap12:operation soapAction="urn:update_PuestaEnPruebas_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="delete_TipoAlerta_operation">
-            <soap12:operation soapAction="urn:delete_TipoAlerta_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="select_with_key_combinations_keys_operation">
             <soap12:operation soapAction="urn:select_with_key_combinations_keys_operation" style="document"/>
@@ -2507,20 +998,8 @@
                 <soap12:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="select_all_Tiempo_operation">
-            <soap12:operation soapAction="urn:select_all_Tiempo_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="delete_TEST_operation">
-            <soap12:operation soapAction="urn:delete_TEST_operation" style="document"/>
+        <wsdl:operation name="delete_field_config_operation">
+            <soap12:operation soapAction="urn:delete_field_config_operation" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -2531,56 +1010,8 @@
                 <soap12:body use="literal"/>
             </wsdl:input>
         </wsdl:operation>
-        <wsdl:operation name="delete_field_config_operation">
-            <soap12:operation soapAction="urn:delete_field_config_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoAlerta_operation">
-            <soap12:operation soapAction="urn:insert_TipoAlerta_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoAvisoMnto_operation">
-            <soap12:operation soapAction="urn:insert_TipoAvisoMnto_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoAvisoMntoConfig_operation">
-            <soap12:operation soapAction="urn:insert_TipoAvisoMntoConfig_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
         <wsdl:operation name="insert_direct_access_params_operation">
             <soap12:operation soapAction="urn:insert_direct_access_params_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="update_TipoAvisoMntoPanel_operation">
-            <soap12:operation soapAction="urn:update_TipoAvisoMntoPanel_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="update_TipoAvisoMntoConfig_operation">
-            <soap12:operation soapAction="urn:update_TipoAvisoMntoConfig_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="delete_TipoAvisoMntoGrupoPanel_operation">
-            <soap12:operation soapAction="urn:delete_TipoAvisoMntoGrupoPanel_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="update_Tiempo_operation">
-            <soap12:operation soapAction="urn:update_Tiempo_operation" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -2597,41 +1028,11 @@
                 <soap12:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoAlerta_operation">
-            <soap12:operation soapAction="urn:select_with_key_TipoAlerta_operation" style="document"/>
+        <wsdl:operation name="insert_users_operation">
+            <soap12:operation soapAction="urn:insert_users_operation" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_MetodoContacto_operation">
-            <soap12:operation soapAction="urn:select_with_key_MetodoContacto_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoAvisoMntoConfig_operation">
-            <soap12:operation soapAction="urn:select_with_key_TipoAvisoMntoConfig_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="getCombinationsKeys">
             <soap12:operation soapAction="urn:getCombinationsKeys" style="document"/>
@@ -2645,38 +1046,8 @@
                 <soap12:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoAvisoMntoGrupoPanel_operation">
-            <soap12:operation soapAction="urn:select_with_key_TipoAvisoMntoGrupoPanel_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="insert_users_operation">
-            <soap12:operation soapAction="urn:insert_users_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="insert_Tiempo_operation">
-            <soap12:operation soapAction="urn:insert_Tiempo_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoOperador_operation">
-            <soap12:operation soapAction="urn:insert_TipoOperador_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="delete_PuestaEnPruebas_operation">
-            <soap12:operation soapAction="urn:delete_PuestaEnPruebas_operation" style="document"/>
+        <wsdl:operation name="insert_field_config_operation">
+            <soap12:operation soapAction="urn:insert_field_config_operation" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -2687,47 +1058,11 @@
                 <soap12:body use="literal"/>
             </wsdl:input>
         </wsdl:operation>
-        <wsdl:operation name="insert_field_config_operation">
-            <soap12:operation soapAction="urn:insert_field_config_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
         <wsdl:operation name="delete_combinations_keys_operation">
             <soap12:operation soapAction="urn:delete_combinations_keys_operation" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="delete_Tiempo_operation">
-            <soap12:operation soapAction="urn:delete_Tiempo_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_TipoAvisoMnto_operation">
-            <soap12:operation soapAction="urn:select_all_TipoAvisoMnto_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_TipoOperador_operation">
-            <soap12:operation soapAction="urn:select_all_TipoOperador_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="insert_direct_access_operation">
             <soap12:operation soapAction="urn:insert_direct_access_operation" style="document"/>
@@ -2753,18 +1088,6 @@
                 <soap12:body use="literal"/>
             </wsdl:input>
         </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoAvisoMntoPanel_operation">
-            <soap12:operation soapAction="urn:select_with_key_TipoAvisoMntoPanel_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
         <wsdl:operation name="select_with_key_field_config_operation">
             <soap12:operation soapAction="urn:select_with_key_field_config_operation" style="document"/>
             <wsdl:input>
@@ -2788,36 +1111,6 @@
             <wsdl:fault name="DataServiceFault">
                 <soap12:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_PuestaEnPruebas_operation">
-            <soap12:operation soapAction="urn:select_with_key_PuestaEnPruebas_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoAvisoMntoGrupoPanel_operation">
-            <soap12:operation soapAction="urn:insert_TipoAvisoMntoGrupoPanel_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="update_MetodoContacto_operation">
-            <soap12:operation soapAction="urn:update_MetodoContacto_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="delete_TipoOperador_operation">
-            <soap12:operation soapAction="urn:delete_TipoOperador_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="select_with_key_direct_access_params_operation">
             <soap12:operation soapAction="urn:select_with_key_direct_access_params_operation" style="document"/>
@@ -2849,18 +1142,6 @@
                 <soap12:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="select_with_key_TEST_operation">
-            <soap12:operation soapAction="urn:select_with_key_TEST_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
         <wsdl:operation name="getDirectAccessParams">
             <soap12:operation soapAction="urn:getDirectAccessParams" style="document"/>
             <wsdl:input>
@@ -2873,17 +1154,11 @@
                 <soap12:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="select_all_TipoAlerta_operation">
-            <soap12:operation soapAction="urn:select_all_TipoAlerta_operation" style="document"/>
+        <wsdl:operation name="update_users_operation">
+            <soap12:operation soapAction="urn:update_users_operation" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="insert_combinations_keys_operation">
             <soap12:operation soapAction="urn:insert_combinations_keys_operation" style="document"/>
@@ -2891,20 +1166,14 @@
                 <soap12:body use="literal"/>
             </wsdl:input>
         </wsdl:operation>
-        <wsdl:operation name="delete_TipoAvisoMnto_operation">
-            <soap12:operation soapAction="urn:delete_TipoAvisoMnto_operation" style="document"/>
+        <wsdl:operation name="delete_users_operation">
+            <soap12:operation soapAction="urn:delete_users_operation" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
         </wsdl:operation>
-        <wsdl:operation name="delete_TipoAvisoMntoConfig_operation">
-            <soap12:operation soapAction="urn:delete_TipoAvisoMntoConfig_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_TipoAvisoMntoGrupoPanel_operation">
-            <soap12:operation soapAction="urn:select_all_TipoAvisoMntoGrupoPanel_operation" style="document"/>
+        <wsdl:operation name="getFieldConfigByApp_operation">
+            <soap12:operation soapAction="urn:getFieldConfigByApp_operation" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -2915,21 +1184,9 @@
                 <soap12:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="update_TipoAvisoMnto_operation">
-            <soap12:operation soapAction="urn:update_TipoAvisoMnto_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
     </wsdl:binding>
     <wsdl:binding name="CCAGENT_ADMHttpBinding" type="ns0:CCAGENT_ADMPortType">
         <http:binding verb="POST"/>
-        <wsdl:operation name="update_TipoOperador_operation">
-            <http:operation location="update_TipoOperador_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
         <wsdl:operation name="select_with_key_direct_access_operation">
             <http:operation location="select_with_key_direct_access_operation"/>
             <wsdl:input>
@@ -2948,104 +1205,14 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="select_all_TEST_operation">
-            <http:operation location="select_all_TEST_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_TipoAvisoMntoConfig_operation">
-            <http:operation location="select_all_TipoAvisoMntoConfig_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="delete_MetodoContacto_operation">
-            <http:operation location="delete_MetodoContacto_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="update_TEST_operation">
-            <http:operation location="update_TEST_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
         <wsdl:operation name="update_direct_access_operation">
             <http:operation location="update_direct_access_operation"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
         </wsdl:operation>
-        <wsdl:operation name="select_all_TipoAvisoMntoPanel_operation">
-            <http:operation location="select_all_TipoAvisoMntoPanel_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="update_TipoAvisoMntoGrupoPanel_operation">
-            <http:operation location="update_TipoAvisoMntoGrupoPanel_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_Tiempo_operation">
-            <http:operation location="select_with_key_Tiempo_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TEST_operation">
-            <http:operation location="insert_TEST_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="insert_MetodoContacto_operation">
-            <http:operation location="insert_MetodoContacto_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_PuestaEnPruebas_operation">
-            <http:operation location="select_all_PuestaEnPruebas_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
         <wsdl:operation name="select_all_field_config_operation">
             <http:operation location="select_all_field_config_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="update_TipoAlerta_operation">
-            <http:operation location="update_TipoAlerta_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_MetodoContacto_operation">
-            <http:operation location="select_all_MetodoContacto_operation"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
@@ -3059,21 +1226,6 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
         </wsdl:operation>
-        <wsdl:operation name="insert_PuestaEnPruebas_operation">
-            <http:operation location="insert_PuestaEnPruebas_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoAvisoMnto_operation">
-            <http:operation location="select_with_key_TipoAvisoMnto_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
         <wsdl:operation name="select_all_direct_access_params_operation">
             <http:operation location="select_all_direct_access_params_operation"/>
             <wsdl:input>
@@ -3082,39 +1234,6 @@
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="delete_TipoAvisoMntoPanel_operation">
-            <http:operation location="delete_TipoAvisoMntoPanel_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoAvisoMntoPanel_operation">
-            <http:operation location="insert_TipoAvisoMntoPanel_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoOperador_operation">
-            <http:operation location="select_with_key_TipoOperador_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="update_PuestaEnPruebas_operation">
-            <http:operation location="update_PuestaEnPruebas_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="delete_TipoAlerta_operation">
-            <http:operation location="delete_TipoAlerta_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="select_with_key_combinations_keys_operation">
             <http:operation location="select_with_key_combinations_keys_operation"/>
@@ -3125,17 +1244,8 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="select_all_Tiempo_operation">
-            <http:operation location="select_all_Tiempo_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="delete_TEST_operation">
-            <http:operation location="delete_TEST_operation"/>
+        <wsdl:operation name="delete_field_config_operation">
+            <http:operation location="delete_field_config_operation"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
@@ -3146,56 +1256,8 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
         </wsdl:operation>
-        <wsdl:operation name="delete_field_config_operation">
-            <http:operation location="delete_field_config_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoAlerta_operation">
-            <http:operation location="insert_TipoAlerta_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoAvisoMnto_operation">
-            <http:operation location="insert_TipoAvisoMnto_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoAvisoMntoConfig_operation">
-            <http:operation location="insert_TipoAvisoMntoConfig_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
         <wsdl:operation name="insert_direct_access_params_operation">
             <http:operation location="insert_direct_access_params_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="update_TipoAvisoMntoPanel_operation">
-            <http:operation location="update_TipoAvisoMntoPanel_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="update_TipoAvisoMntoConfig_operation">
-            <http:operation location="update_TipoAvisoMntoConfig_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="delete_TipoAvisoMntoGrupoPanel_operation">
-            <http:operation location="delete_TipoAvisoMntoGrupoPanel_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="update_Tiempo_operation">
-            <http:operation location="update_Tiempo_operation"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
@@ -3209,32 +1271,11 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoAlerta_operation">
-            <http:operation location="select_with_key_TipoAlerta_operation"/>
+        <wsdl:operation name="insert_users_operation">
+            <http:operation location="insert_users_operation"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_MetodoContacto_operation">
-            <http:operation location="select_with_key_MetodoContacto_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoAvisoMntoConfig_operation">
-            <http:operation location="select_with_key_TipoAvisoMntoConfig_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="getCombinationsKeys">
             <http:operation location="getCombinationsKeys"/>
@@ -3245,35 +1286,8 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoAvisoMntoGrupoPanel_operation">
-            <http:operation location="select_with_key_TipoAvisoMntoGrupoPanel_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="insert_users_operation">
-            <http:operation location="insert_users_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="insert_Tiempo_operation">
-            <http:operation location="insert_Tiempo_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoOperador_operation">
-            <http:operation location="insert_TipoOperador_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="delete_PuestaEnPruebas_operation">
-            <http:operation location="delete_PuestaEnPruebas_operation"/>
+        <wsdl:operation name="insert_field_config_operation">
+            <http:operation location="insert_field_config_operation"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
@@ -3284,41 +1298,11 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
         </wsdl:operation>
-        <wsdl:operation name="insert_field_config_operation">
-            <http:operation location="insert_field_config_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
         <wsdl:operation name="delete_combinations_keys_operation">
             <http:operation location="delete_combinations_keys_operation"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="delete_Tiempo_operation">
-            <http:operation location="delete_Tiempo_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_TipoAvisoMnto_operation">
-            <http:operation location="select_all_TipoAvisoMnto_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_TipoOperador_operation">
-            <http:operation location="select_all_TipoOperador_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="insert_direct_access_operation">
             <http:operation location="insert_direct_access_operation"/>
@@ -3341,15 +1325,6 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
         </wsdl:operation>
-        <wsdl:operation name="select_with_key_TipoAvisoMntoPanel_operation">
-            <http:operation location="select_with_key_TipoAvisoMntoPanel_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
         <wsdl:operation name="select_with_key_field_config_operation">
             <http:operation location="select_with_key_field_config_operation"/>
             <wsdl:input>
@@ -3367,33 +1342,6 @@
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_PuestaEnPruebas_operation">
-            <http:operation location="select_with_key_PuestaEnPruebas_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="insert_TipoAvisoMntoGrupoPanel_operation">
-            <http:operation location="insert_TipoAvisoMntoGrupoPanel_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="update_MetodoContacto_operation">
-            <http:operation location="update_MetodoContacto_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="delete_TipoOperador_operation">
-            <http:operation location="delete_TipoOperador_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="select_with_key_direct_access_params_operation">
             <http:operation location="select_with_key_direct_access_params_operation"/>
@@ -3419,15 +1367,6 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="select_with_key_TEST_operation">
-            <http:operation location="select_with_key_TEST_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
         <wsdl:operation name="getDirectAccessParams">
             <http:operation location="getDirectAccessParams"/>
             <wsdl:input>
@@ -3437,14 +1376,11 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="select_all_TipoAlerta_operation">
-            <http:operation location="select_all_TipoAlerta_operation"/>
+        <wsdl:operation name="update_users_operation">
+            <http:operation location="update_users_operation"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="insert_combinations_keys_operation">
             <http:operation location="insert_combinations_keys_operation"/>
@@ -3452,32 +1388,20 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
         </wsdl:operation>
-        <wsdl:operation name="delete_TipoAvisoMnto_operation">
-            <http:operation location="delete_TipoAvisoMnto_operation"/>
+        <wsdl:operation name="delete_users_operation">
+            <http:operation location="delete_users_operation"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
         </wsdl:operation>
-        <wsdl:operation name="delete_TipoAvisoMntoConfig_operation">
-            <http:operation location="delete_TipoAvisoMntoConfig_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_TipoAvisoMntoGrupoPanel_operation">
-            <http:operation location="select_all_TipoAvisoMntoGrupoPanel_operation"/>
+        <wsdl:operation name="getFieldConfigByApp_operation">
+            <http:operation location="getFieldConfigByApp_operation"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="update_TipoAvisoMnto_operation">
-            <http:operation location="update_TipoAvisoMnto_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
         </wsdl:operation>
     </wsdl:binding>
     <wsdl:service name="CCAGENT_ADM">

@@ -1,5 +1,8 @@
 package es.securitasdirect.moduloweb.model;
 
+import org.wso2.ws.dataservice.EntrygetFieldConfigByAppResult;
+import org.wso2.ws.dataservice.GetFieldConfigResult;
+
 /**
  * El sistema debe almacenar un listado de campos de las aplicaciones que se mostrarán dentro de las pestañas.
  * Asociados a dichos campos están los valores de editable y visible que permiten configurar dinámicamente el comportamiento de sub módulos.
@@ -25,21 +28,40 @@ public class FieldConfig {
 
     /** Indica si el campo es editable. */
     private boolean editable;
+    
+    /** Indica si el campo es administrable. */
+    private boolean administrable;
+    
+    /** Indica posicion del campo. */
+    private Integer position;
 
-
-
+    
     public FieldConfig() {
 
     }
 
     //constructor copia de la clase FieldConfig
-    public FieldConfig(final org.wso2.ws.dataservice.GetFieldConfigResult getFieldConfigResult) {
+    public FieldConfig(final EntrygetFieldConfigByAppResult getFieldConfigResult) {
         this.id = getFieldConfigResult.getId().intValue();
         this.app = getFieldConfigResult.getApp();
         this.identifier = getFieldConfigResult.getIdentifier();
         this.description = getFieldConfigResult.getDescription();
         this.visible = getFieldConfigResult.isVisible();
         this.editable = getFieldConfigResult.isEditable();
+        this.administrable = getFieldConfigResult.isAdministrable();
+        this.position = getFieldConfigResult.getPosition().intValue();
+    }
+    
+    //constructor copia de la clase FieldConfig
+    public FieldConfig(final GetFieldConfigResult getFieldConfigResult) {
+        this.id = getFieldConfigResult.getId().intValue();
+        this.app = getFieldConfigResult.getApp();
+        this.identifier = getFieldConfigResult.getIdentifier();
+        this.description = getFieldConfigResult.getDescription();
+        this.visible = getFieldConfigResult.isVisible();
+        this.editable = getFieldConfigResult.isEditable();
+        this.administrable = getFieldConfigResult.isAdministrable();
+        this.position = getFieldConfigResult.getPosition().intValue();
     }
 
     public Integer getId() {
@@ -90,16 +112,29 @@ public class FieldConfig {
         this.editable = editable;
     }
 
-    @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer("FieldConfig{");
-        sb.append("id='").append(id).append('\'');
-        sb.append("app='").append(app).append('\'');
-        sb.append(", identifier='").append(identifier).append('\'');
-        sb.append(", description='").append(description).append('\'');
-        sb.append(", visible=").append(visible);
-        sb.append(", editable=").append(editable);
-        sb.append('}');
-        return sb.toString();
-    }
+	public boolean isAdministrable() {
+		return administrable;
+	}
+
+	public void setAdministrable(boolean administrable) {
+		this.administrable = administrable;
+	}
+
+	public Integer getPosition() {
+		return position;
+	}
+
+	public void setPosition(Integer position) {
+		this.position = position;
+	}
+
+	@Override
+	public String toString() {
+		return "FieldConfig [id=" + id + ", app=" + app + ", identifier=" + identifier + ", description=" + description
+				+ ", visible=" + visible + ", editable=" + editable + ", administrable=" + administrable + ", position="
+				+ position + "]";
+	}
+    
+    
+   
 }

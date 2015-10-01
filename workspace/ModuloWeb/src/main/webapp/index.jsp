@@ -14,7 +14,7 @@
 
 Enlaces
 <ul>
-    <li><a href="marco.html?ins_no=111111">Marco Principal</a></li>
+    <li><a href="marco.html?bp_out_INSTALACION=1087817&key1=2&bp_agentIBS=M0OOS">Marco Principal</a></li>
     <li><a href="test.html">Test</a></li>
   </ul>
 </body>

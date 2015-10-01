@@ -1,0 +1,1425 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns0="http://ws.wso2.org/dataservice" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.wso2.org/dataservice">
+    <wsdl:documentation/>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ws.wso2.org/dataservice">
+            <xs:element name="DataServiceFault" type="xs:string"/>
+            <xs:element name="REQUEST_STATUS" type="xs:string"/>
+            <xs:element name="DATA_SERVICE_RESPONSE">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:any minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inet_aplan_upd_contact">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                        <xs:element name="pix" nillable="true" type="xs:int"/>
+                        <xs:element name="s_pc" nillable="true" type="xs:int"/>
+                        <xs:element name="s_cont" nillable="true" type="xs:int"/>
+                        <xs:element name="cix" nillable="true" type="xs:int"/>
+                        <xs:element name="passcard" nillable="true" type="xs:string"/>
+                        <xs:element name="passtext" nillable="true" type="xs:string"/>
+                        <xs:element name="gdel_flg" nillable="true" type="xs:string"/>
+                        <xs:element name="gexp_date" nillable="true" type="xs:string"/>
+                        <xs:element name="gexp_time" nillable="true" type="xs:string"/>
+                        <xs:element name="plevel" nillable="true" type="xs:string"/>
+                        <xs:element name="ilevel" nillable="true" type="xs:string"/>
+                        <xs:element name="pdel_flg" nillable="true" type="xs:string"/>
+                        <xs:element name="pexp_date" nillable="true" type="xs:string"/>
+                        <xs:element name="pexp_time" nillable="true" type="xs:string"/>
+                        <xs:element name="name" nillable="true" type="xs:string"/>
+                        <xs:element name="ph1" nillable="true" type="xs:string"/>
+                        <xs:element name="ph1type" nillable="true" type="xs:string"/>
+                        <xs:element name="ph1text" nillable="true" type="xs:string"/>
+                        <xs:element name="ph2" nillable="true" type="xs:string"/>
+                        <xs:element name="ph2type" nillable="true" type="xs:string"/>
+                        <xs:element name="ph2text" nillable="true" type="xs:string"/>
+                        <xs:element name="ph3" nillable="true" type="xs:string"/>
+                        <xs:element name="ph3type" nillable="true" type="xs:string"/>
+                        <xs:element name="ph3text" nillable="true" type="xs:string"/>
+                        <xs:element name="comment1" nillable="true" type="xs:string"/>
+                        <xs:element name="comment2" nillable="true" type="xs:string"/>
+                        <xs:element name="codeword" nillable="true" type="xs:string"/>
+                        <xs:element name="keyholder" nillable="true" type="xs:string"/>
+                        <xs:element name="exdays1" nillable="true" type="xs:string"/>
+                        <xs:element name="exsttm1" nillable="true" type="xs:string"/>
+                        <xs:element name="exentm1" nillable="true" type="xs:string"/>
+                        <xs:element name="exdays2" nillable="true" type="xs:string"/>
+                        <xs:element name="exsttm2" nillable="true" type="xs:string"/>
+                        <xs:element name="exentm2" nillable="true" type="xs:string"/>
+                        <xs:element name="exdays3" nillable="true" type="xs:string"/>
+                        <xs:element name="exsttm3" nillable="true" type="xs:string"/>
+                        <xs:element name="exentm3" nillable="true" type="xs:string"/>
+                        <xs:element name="email1" nillable="true" type="xs:string"/>
+                        <xs:element name="email2" nillable="true" type="xs:string"/>
+                        <xs:element name="userid" nillable="true" type="xs:string"/>
+                        <xs:element name="allincl" nillable="true" type="xs:string"/>
+                        <xs:element name="chk_pix" nillable="true" type="xs:int"/>
+                        <xs:element name="aprof" nillable="true" type="xs:string"/>
+                        <xs:element name="enabled" nillable="true" type="xs:string"/>
+                        <xs:element name="ext_psw" nillable="true" type="xs:string"/>
+                        <xs:element name="ext_psw_edate" nillable="true" type="xs:string"/>
+                        <xs:element name="ext_psw_etime" nillable="true" type="xs:string"/>
+                        <xs:element name="ot_psw" nillable="true" type="xs:string"/>
+                        <xs:element name="ot_psw_edate" nillable="true" type="xs:string"/>
+                        <xs:element name="ot_psw_etime" nillable="true" type="xs:string"/>
+                        <xs:element name="aut_phone" nillable="true" type="xs:string"/>
+                        <xs:element name="dob" nillable="true" type="xs:string"/>
+                        <xs:element name="lang" nillable="true" type="xs:string"/>
+                        <xs:element name="cont_tp" nillable="true" type="xs:string"/>
+                        <xs:element name="cont_rel" nillable="true" type="xs:string"/>
+                        <xs:element name="sex" nillable="true" type="xs:string"/>
+                        <xs:element name="title" nillable="true" type="xs:string"/>
+                        <xs:element name="signer" nillable="true" type="xs:string"/>
+                        <xs:element name="st_time" nillable="true" type="xs:string"/>
+                        <xs:element name="st_date" nillable="true" type="xs:string"/>
+                        <xs:element name="updseqlix" nillable="true" type="xs:int"/>
+                        <xs:element name="seq" nillable="true" type="xs:int"/>
+                        <xs:element name="lix" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inet_aplan_add_agency">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                        <xs:element name="pix" nillable="true" type="xs:int"/>
+                        <xs:element name="agency" nillable="true" type="xs:string"/>
+                        <xs:element name="type" nillable="true" type="xs:int"/>
+                        <xs:element name="seq" nillable="true" type="xs:int"/>
+                        <xs:element name="vtp" nillable="true" type="xs:int"/>
+                        <xs:element name="s_ctr" nillable="true" type="xs:int"/>
+                        <xs:element name="s_pc" nillable="true" type="xs:int"/>
+                        <xs:element name="s_cont" nillable="true" type="xs:int"/>
+                        <xs:element name="cix" nillable="true" type="xs:int"/>
+                        <xs:element name="misc1" nillable="true" type="xs:string"/>
+                        <xs:element name="misc2" nillable="true" type="xs:string"/>
+                        <xs:element name="cred" nillable="true" type="xs:int"/>
+                        <xs:element name="userid" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inetaplanaddagencyresults" type="ns0:inetaplanaddagencyresults"/>
+            <xs:complexType name="inetaplanaddagencyresults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="inetaplanaddagencyresult" type="ns0:inetaplanaddagencyresult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="inetaplanaddagencyresult">
+                <xs:sequence>
+                    <xs:element name="return_code" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="ma_actplan_ovf1_upd">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                        <xs:element name="opc" nillable="true" type="xs:int"/>
+                        <xs:element name="pix" nillable="true" type="xs:int"/>
+                        <xs:element name="tp" nillable="true" type="xs:int"/>
+                        <xs:element name="charge" nillable="true" type="xs:string"/>
+                        <xs:element name="u_fee" nillable="true" type="xs:string"/>
+                        <xs:element name="o_fee" nillable="true" type="xs:string"/>
+                        <xs:element name="rtime" nillable="true" type="xs:string"/>
+                        <xs:element name="other" nillable="true" type="xs:string"/>
+                        <xs:element name="unit" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="maactplanovf1updresults" type="ns0:maactplanovf1updresults"/>
+            <xs:complexType name="maactplanovf1updresults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="maactplanovf1updresult" type="ns0:maactplanovf1updresult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="maactplanovf1updresult">
+                <xs:sequence>
+                    <xs:element name="return_code" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="inet_aplan_upd_agency">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                        <xs:element name="opc" nillable="true" type="xs:int"/>
+                        <xs:element name="opix" nillable="true" type="xs:int"/>
+                        <xs:element name="pix" nillable="true" type="xs:int"/>
+                        <xs:element name="agency" nillable="true" type="xs:string"/>
+                        <xs:element name="type" nillable="true" type="xs:int"/>
+                        <xs:element name="oseq" nillable="true" type="xs:int"/>
+                        <xs:element name="seq" nillable="true" type="xs:int"/>
+                        <xs:element name="vtp" nillable="true" type="xs:int"/>
+                        <xs:element name="s_ctr" nillable="true" type="xs:int"/>
+                        <xs:element name="s_pc" nillable="true" type="xs:int"/>
+                        <xs:element name="s_cont" nillable="true" type="xs:int"/>
+                        <xs:element name="cix" nillable="true" type="xs:int"/>
+                        <xs:element name="misc1" nillable="true" type="xs:string"/>
+                        <xs:element name="misc2" nillable="true" type="xs:string"/>
+                        <xs:element name="cred" nillable="true" type="xs:int"/>
+                        <xs:element name="userid" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inetaplanupdagencyresults" type="ns0:inetaplanupdagencyresults"/>
+            <xs:complexType name="inetaplanupdagencyresults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="inetaplanupdagencyresult" type="ns0:inetaplanupdagencyresult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="inetaplanupdagencyresult">
+                <xs:sequence>
+                    <xs:element name="return_code" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="end_boxcar">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getAgency">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="zip" nillable="true" type="xs:string"/>
+                        <xs:element name="tp" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getagencyresults" type="ns0:getagencyresults"/>
+            <xs:complexType name="getagencyresults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="getagencyresult" type="ns0:getagencyresult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getagencyresult">
+                <xs:sequence>
+                    <xs:element name="agency" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="inet_call_list_get_cont">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                        <xs:element name="pix" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inetcalllistgetcontresults" type="ns0:inetcalllistgetcontresults"/>
+            <xs:complexType name="inetcalllistgetcontresults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="inetcalllistgetcontresult" type="ns0:inetcalllistgetcontresult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="inetcalllistgetcontresult">
+                <xs:sequence>
+                    <xs:element name="s_pc" nillable="true" type="xs:string"/>
+                    <xs:element name="s_cont" nillable="true" type="xs:string"/>
+                    <xs:element name="s_cix" nillable="true" type="xs:string"/>
+                    <xs:element name="passcard" nillable="true" type="xs:string"/>
+                    <xs:element name="passext" nillable="true" type="xs:string"/>
+                    <xs:element name="name" nillable="true" type="xs:string"/>
+                    <xs:element name="seq" nillable="true" type="xs:string"/>
+                    <xs:element name="phone1" nillable="true" type="xs:string"/>
+                    <xs:element name="phone2" nillable="true" type="xs:string"/>
+                    <xs:element name="phone3" nillable="true" type="xs:string"/>
+                    <xs:element name="pix" nillable="true" type="xs:string"/>
+                    <xs:element name="email1" nillable="true" type="xs:string"/>
+                    <xs:element name="email2" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="ma_actplan_text_upd_prep">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                        <xs:element name="pix" nillable="true" type="xs:int"/>
+                        <xs:element name="text_limit" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="maactplantextupdprepresults" type="ns0:maactplantextupdprepresults"/>
+            <xs:complexType name="maactplantextupdprepresults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="maactplantextupdprepresult" type="ns0:maactplantextupdprepresult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="maactplantextupdprepresult">
+                <xs:sequence>
+                    <xs:element name="ma_atext" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="ma_actplan_text_upd">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="sins" nillable="true" type="xs:int"/>
+                        <xs:element name="pix" nillable="true" type="xs:int"/>
+                        <xs:element name="lix" nillable="true" type="xs:int"/>
+                        <xs:element name="opc" nillable="true" type="xs:int"/>
+                        <xs:element name="text" nillable="true" type="xs:string"/>
+                        <xs:element name="userid" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="aplantextupdresults" type="ns0:aplantextupdresults"/>
+            <xs:complexType name="aplantextupdresults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="aplantextupdresult" type="ns0:aplantextupdresult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="aplantextupdresult">
+                <xs:sequence>
+                    <xs:element name="return_code" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="inet_aplan_get_name">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                        <xs:element name="pix" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inetaplangetnameresults" type="ns0:inetaplangetnameresults"/>
+            <xs:complexType name="inetaplangetnameresults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="inetaplangetnameresult" type="ns0:inetaplangetnameresult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="inetaplangetnameresult">
+                <xs:sequence>
+                    <xs:element name="pix" nillable="true" type="xs:string"/>
+                    <xs:element name="text" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="create_action_plan">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="deal_id" nillable="true" type="xs:string"/>
+                        <xs:element name="ins_no" nillable="true" type="xs:string"/>
+                        <xs:element name="id_action_plan" nillable="true" type="xs:string"/>
+                        <xs:element name="start_date" nillable="true" type="xs:string"/>
+                        <xs:element name="end_date" nillable="true" type="xs:string"/>
+                        <xs:element name="s_cont1" nillable="true" type="xs:int"/>
+                        <xs:element name="cix1" nillable="true" type="xs:int"/>
+                        <xs:element name="rel_contact1" nillable="true" type="xs:string"/>
+                        <xs:element name="s_cont2" nillable="true" type="xs:int"/>
+                        <xs:element name="cix2" nillable="true" type="xs:int"/>
+                        <xs:element name="rel_contact2" nillable="true" type="xs:string"/>
+                        <xs:element name="s_cont3" nillable="true" type="xs:int"/>
+                        <xs:element name="cix3" nillable="true" type="xs:int"/>
+                        <xs:element name="rel_contact3" nillable="true" type="xs:string"/>
+                        <xs:element name="s_cont4" nillable="true" type="xs:int"/>
+                        <xs:element name="cix4" nillable="true" type="xs:int"/>
+                        <xs:element name="rel_contact4" nillable="true" type="xs:string"/>
+                        <xs:element name="s_cont5" nillable="true" type="xs:int"/>
+                        <xs:element name="cix5" nillable="true" type="xs:int"/>
+                        <xs:element name="rel_contact5" nillable="true" type="xs:string"/>
+                        <xs:element name="s_cont6" nillable="true" type="xs:int"/>
+                        <xs:element name="cix6" nillable="true" type="xs:int"/>
+                        <xs:element name="rel_contact6" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createactionplanresults" type="ns0:createactionplanresults"/>
+            <xs:complexType name="createactionplanresults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="createactionplanresult" type="ns0:createactionplanresult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="createactionplanresult">
+                <xs:sequence>
+                    <xs:element name="return_code" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="createAPContact">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ins_no" nillable="true" type="xs:string"/>
+                        <xs:element name="name" nillable="true" type="xs:string"/>
+                        <xs:element name="phone1" nillable="true" type="xs:string"/>
+                        <xs:element name="phone2" nillable="true" type="xs:string"/>
+                        <xs:element name="phone3" nillable="true" type="xs:string"/>
+                        <xs:element name="code" nillable="true" type="xs:string"/>
+                        <xs:element name="pix" nillable="true" type="xs:int"/>
+                        <xs:element name="lix" nillable="true" type="xs:string"/>
+                        <xs:element name="email1" nillable="true" type="xs:string"/>
+                        <xs:element name="nseq" nillable="true" type="xs:int"/>
+                        <xs:element name="s_pc" nillable="true" type="xs:int"/>
+                        <xs:element name="s_cont" nillable="true" type="xs:int"/>
+                        <xs:element name="cix" nillable="true" type="xs:int"/>
+                        <xs:element name="opc" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="spcreainsapcresults" type="ns0:spcreainsapcresults"/>
+            <xs:complexType name="spcreainsapcresults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="spcreainsapcresult" type="ns0:spcreainsapcresult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="spcreainsapcresult">
+                <xs:sequence>
+                    <xs:element name="return_code" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="abort_boxcar">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ma_actplan_call_lin_upd">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                        <xs:element name="pix" nillable="true" type="xs:int"/>
+                        <xs:element name="s_pc" nillable="true" type="xs:int"/>
+                        <xs:element name="s_cont" nillable="true" type="xs:int"/>
+                        <xs:element name="cix" nillable="true" type="xs:int"/>
+                        <xs:element name="opc" nillable="true" type="xs:int"/>
+                        <xs:element name="passcid" nillable="true" type="xs:string"/>
+                        <xs:element name="passcidtext" nillable="true" type="xs:string"/>
+                        <xs:element name="name" nillable="true" type="xs:string"/>
+                        <xs:element name="phone1" nillable="true" type="xs:string"/>
+                        <xs:element name="seq" nillable="true" type="xs:int"/>
+                        <xs:element name="tmp_plevel" nillable="true" type="xs:string"/>
+                        <xs:element name="dwnldb" nillable="true" type="xs:string"/>
+                        <xs:element name="lix" nillable="true" type="xs:string"/>
+                        <xs:element name="allincl" nillable="true" type="xs:string"/>
+                        <xs:element name="prreq" nillable="true" type="xs:string"/>
+                        <xs:element name="br" nillable="true" type="xs:string"/>
+                        <xs:element name="os_pc" nillable="true" type="xs:int"/>
+                        <xs:element name="os_cont" nillable="true" type="xs:int"/>
+                        <xs:element name="ocix" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inet_ma_actplan_upd">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                        <xs:element name="opc" nillable="true" type="xs:int"/>
+                        <xs:element name="pix" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ma_actplan_replace_upd">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                        <xs:element name="pix" nillable="true" type="xs:string"/>
+                        <xs:element name="ix" nillable="true" type="xs:int"/>
+                        <xs:element name="opc" nillable="true" type="xs:int"/>
+                        <xs:element name="rdays" nillable="true" type="xs:string"/>
+                        <xs:element name="rftime" nillable="true" type="xs:string"/>
+                        <xs:element name="rttime" nillable="true" type="xs:string"/>
+                        <xs:element name="rplan" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="maactplanreplaceupdresults" type="ns0:maactplanreplaceupdresults"/>
+            <xs:complexType name="maactplanreplaceupdresults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="maactplanreplaceupdresult" type="ns0:maactplanreplaceupdresult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="maactplanreplaceupdresult">
+                <xs:sequence>
+                    <xs:element name="return_code" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="aplan_get_contacts_internal_ids">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="sin" nillable="true" type="xs:int"/>
+                        <xs:element name="pix" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="spaplancontactsgetresults" type="ns0:spaplancontactsgetresults"/>
+            <xs:complexType name="spaplancontactsgetresults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="spaplancontactsgetresult" type="ns0:spaplancontactsgetresult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="spaplancontactsgetresult">
+                <xs:sequence>
+                    <xs:element name="scont" nillable="true" type="xs:string"/>
+                    <xs:element name="spc" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="inet_aplan_upd_contact_rc">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                        <xs:element name="pix" nillable="true" type="xs:int"/>
+                        <xs:element name="s_pc" nillable="true" type="xs:int"/>
+                        <xs:element name="s_cont" nillable="true" type="xs:int"/>
+                        <xs:element name="cix" nillable="true" type="xs:int"/>
+                        <xs:element name="passcard" nillable="true" type="xs:string"/>
+                        <xs:element name="passtext" nillable="true" type="xs:string"/>
+                        <xs:element name="gdel_flg" nillable="true" type="xs:string"/>
+                        <xs:element name="gexp_date" nillable="true" type="xs:string"/>
+                        <xs:element name="gexp_time" nillable="true" type="xs:string"/>
+                        <xs:element name="plevel" nillable="true" type="xs:string"/>
+                        <xs:element name="ilevel" nillable="true" type="xs:string"/>
+                        <xs:element name="pdel_flg" nillable="true" type="xs:string"/>
+                        <xs:element name="pexp_date" nillable="true" type="xs:string"/>
+                        <xs:element name="pexp_time" nillable="true" type="xs:string"/>
+                        <xs:element name="name" nillable="true" type="xs:string"/>
+                        <xs:element name="ph1" nillable="true" type="xs:string"/>
+                        <xs:element name="ph1type" nillable="true" type="xs:string"/>
+                        <xs:element name="ph1text" nillable="true" type="xs:string"/>
+                        <xs:element name="ph2" nillable="true" type="xs:string"/>
+                        <xs:element name="ph2type" nillable="true" type="xs:string"/>
+                        <xs:element name="ph2text" nillable="true" type="xs:string"/>
+                        <xs:element name="ph3" nillable="true" type="xs:string"/>
+                        <xs:element name="ph3type" nillable="true" type="xs:string"/>
+                        <xs:element name="ph3text" nillable="true" type="xs:string"/>
+                        <xs:element name="comment1" nillable="true" type="xs:string"/>
+                        <xs:element name="comment2" nillable="true" type="xs:string"/>
+                        <xs:element name="codeword" nillable="true" type="xs:string"/>
+                        <xs:element name="keyholder" nillable="true" type="xs:string"/>
+                        <xs:element name="exdays1" nillable="true" type="xs:string"/>
+                        <xs:element name="exsttm1" nillable="true" type="xs:string"/>
+                        <xs:element name="exentm1" nillable="true" type="xs:string"/>
+                        <xs:element name="exdays2" nillable="true" type="xs:string"/>
+                        <xs:element name="exsttm2" nillable="true" type="xs:string"/>
+                        <xs:element name="exentm2" nillable="true" type="xs:string"/>
+                        <xs:element name="exdays3" nillable="true" type="xs:string"/>
+                        <xs:element name="exsttm3" nillable="true" type="xs:string"/>
+                        <xs:element name="exentm3" nillable="true" type="xs:string"/>
+                        <xs:element name="email1" nillable="true" type="xs:string"/>
+                        <xs:element name="email2" nillable="true" type="xs:string"/>
+                        <xs:element name="userid" nillable="true" type="xs:string"/>
+                        <xs:element name="allincl" nillable="true" type="xs:string"/>
+                        <xs:element name="chk_pix" nillable="true" type="xs:int"/>
+                        <xs:element name="aprof" nillable="true" type="xs:string"/>
+                        <xs:element name="enabled" nillable="true" type="xs:string"/>
+                        <xs:element name="ext_psw" nillable="true" type="xs:string"/>
+                        <xs:element name="ext_psw_edate" nillable="true" type="xs:string"/>
+                        <xs:element name="ext_psw_etime" nillable="true" type="xs:string"/>
+                        <xs:element name="ot_psw" nillable="true" type="xs:string"/>
+                        <xs:element name="ot_psw_edate" nillable="true" type="xs:string"/>
+                        <xs:element name="ot_psw_etime" nillable="true" type="xs:string"/>
+                        <xs:element name="aut_phone" nillable="true" type="xs:string"/>
+                        <xs:element name="dob" nillable="true" type="xs:string"/>
+                        <xs:element name="lang" nillable="true" type="xs:string"/>
+                        <xs:element name="cont_tp" nillable="true" type="xs:string"/>
+                        <xs:element name="cont_rel" nillable="true" type="xs:string"/>
+                        <xs:element name="sex" nillable="true" type="xs:string"/>
+                        <xs:element name="title" nillable="true" type="xs:string"/>
+                        <xs:element name="signer" nillable="true" type="xs:string"/>
+                        <xs:element name="st_time" nillable="true" type="xs:string"/>
+                        <xs:element name="st_date" nillable="true" type="xs:string"/>
+                        <xs:element name="updseqlix" nillable="true" type="xs:int"/>
+                        <xs:element name="seq" nillable="true" type="xs:int"/>
+                        <xs:element name="lix" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inetaplanupdcontactresults" type="ns0:inetaplanupdcontactresults"/>
+            <xs:complexType name="inetaplanupdcontactresults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="inetaplanupdcontactresult" type="ns0:inetaplanupdcontactresult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="inetaplanupdcontactresult">
+                <xs:sequence>
+                    <xs:element name="return_value" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="begin_boxcar">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inet_aplan_get_contact">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                        <xs:element name="pix" nillable="true" type="xs:int"/>
+                        <xs:element name="s_pc" nillable="true" type="xs:int"/>
+                        <xs:element name="s_cont" nillable="true" type="xs:int"/>
+                        <xs:element name="cix" nillable="true" type="xs:int"/>
+                        <xs:element name="timezone" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="copyActionPlan">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                        <xs:element name="pix" nillable="true" type="xs:int"/>
+                        <xs:element name="npix" nillable="true" type="xs:int"/>
+                        <xs:element name="userid" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="inet_aplan_upd_contact_rcRequest">
+        <wsdl:part name="parameters" element="ns0:inet_aplan_upd_contact_rc"/>
+    </wsdl:message>
+    <wsdl:message name="inet_aplan_upd_contact_rcResponse">
+        <wsdl:part name="parameters" element="ns0:inetaplanupdcontactresults"/>
+    </wsdl:message>
+    <wsdl:message name="DataServiceFault">
+        <wsdl:part name="parameters" element="ns0:DataServiceFault"/>
+    </wsdl:message>
+    <wsdl:message name="abort_boxcarRequest">
+        <wsdl:part name="parameters" element="ns0:abort_boxcar"/>
+    </wsdl:message>
+    <wsdl:message name="ma_actplan_replace_updRequest">
+        <wsdl:part name="parameters" element="ns0:ma_actplan_replace_upd"/>
+    </wsdl:message>
+    <wsdl:message name="ma_actplan_replace_updResponse">
+        <wsdl:part name="parameters" element="ns0:maactplanreplaceupdresults"/>
+    </wsdl:message>
+    <wsdl:message name="inet_aplan_upd_agencyRequest">
+        <wsdl:part name="parameters" element="ns0:inet_aplan_upd_agency"/>
+    </wsdl:message>
+    <wsdl:message name="inet_aplan_upd_agencyResponse">
+        <wsdl:part name="parameters" element="ns0:inetaplanupdagencyresults"/>
+    </wsdl:message>
+    <wsdl:message name="copyActionPlanRequest">
+        <wsdl:part name="parameters" element="ns0:copyActionPlan"/>
+    </wsdl:message>
+    <wsdl:message name="copyActionPlanResponse">
+        <wsdl:part name="parameters" element="ns0:REQUEST_STATUS"/>
+    </wsdl:message>
+    <wsdl:message name="begin_boxcarRequest">
+        <wsdl:part name="parameters" element="ns0:begin_boxcar"/>
+    </wsdl:message>
+    <wsdl:message name="ma_actplan_call_lin_updRequest">
+        <wsdl:part name="parameters" element="ns0:ma_actplan_call_lin_upd"/>
+    </wsdl:message>
+    <wsdl:message name="end_boxcarRequest">
+        <wsdl:part name="parameters" element="ns0:end_boxcar"/>
+    </wsdl:message>
+    <wsdl:message name="end_boxcarResponse">
+        <wsdl:part name="parameters" element="ns0:DATA_SERVICE_RESPONSE"/>
+    </wsdl:message>
+    <wsdl:message name="createAPContactRequest">
+        <wsdl:part name="parameters" element="ns0:createAPContact"/>
+    </wsdl:message>
+    <wsdl:message name="createAPContactResponse">
+        <wsdl:part name="parameters" element="ns0:spcreainsapcresults"/>
+    </wsdl:message>
+    <wsdl:message name="ma_actplan_text_upd_prepRequest">
+        <wsdl:part name="parameters" element="ns0:ma_actplan_text_upd_prep"/>
+    </wsdl:message>
+    <wsdl:message name="ma_actplan_text_upd_prepResponse">
+        <wsdl:part name="parameters" element="ns0:maactplantextupdprepresults"/>
+    </wsdl:message>
+    <wsdl:message name="inet_aplan_get_contactRequest">
+        <wsdl:part name="parameters" element="ns0:inet_aplan_get_contact"/>
+    </wsdl:message>
+    <wsdl:message name="inet_call_list_get_contRequest">
+        <wsdl:part name="parameters" element="ns0:inet_call_list_get_cont"/>
+    </wsdl:message>
+    <wsdl:message name="inet_call_list_get_contResponse">
+        <wsdl:part name="parameters" element="ns0:inetcalllistgetcontresults"/>
+    </wsdl:message>
+    <wsdl:message name="ma_actplan_ovf1_updRequest">
+        <wsdl:part name="parameters" element="ns0:ma_actplan_ovf1_upd"/>
+    </wsdl:message>
+    <wsdl:message name="ma_actplan_ovf1_updResponse">
+        <wsdl:part name="parameters" element="ns0:maactplanovf1updresults"/>
+    </wsdl:message>
+    <wsdl:message name="getAgencyRequest">
+        <wsdl:part name="parameters" element="ns0:getAgency"/>
+    </wsdl:message>
+    <wsdl:message name="getAgencyResponse">
+        <wsdl:part name="parameters" element="ns0:getagencyresults"/>
+    </wsdl:message>
+    <wsdl:message name="inet_ma_actplan_updRequest">
+        <wsdl:part name="parameters" element="ns0:inet_ma_actplan_upd"/>
+    </wsdl:message>
+    <wsdl:message name="inet_aplan_add_agencyRequest">
+        <wsdl:part name="parameters" element="ns0:inet_aplan_add_agency"/>
+    </wsdl:message>
+    <wsdl:message name="inet_aplan_add_agencyResponse">
+        <wsdl:part name="parameters" element="ns0:inetaplanaddagencyresults"/>
+    </wsdl:message>
+    <wsdl:message name="inet_aplan_upd_contactRequest">
+        <wsdl:part name="parameters" element="ns0:inet_aplan_upd_contact"/>
+    </wsdl:message>
+    <wsdl:message name="create_action_planRequest">
+        <wsdl:part name="parameters" element="ns0:create_action_plan"/>
+    </wsdl:message>
+    <wsdl:message name="create_action_planResponse">
+        <wsdl:part name="parameters" element="ns0:createactionplanresults"/>
+    </wsdl:message>
+    <wsdl:message name="inet_aplan_get_nameRequest">
+        <wsdl:part name="parameters" element="ns0:inet_aplan_get_name"/>
+    </wsdl:message>
+    <wsdl:message name="inet_aplan_get_nameResponse">
+        <wsdl:part name="parameters" element="ns0:inetaplangetnameresults"/>
+    </wsdl:message>
+    <wsdl:message name="ma_actplan_text_updRequest">
+        <wsdl:part name="parameters" element="ns0:ma_actplan_text_upd"/>
+    </wsdl:message>
+    <wsdl:message name="ma_actplan_text_updResponse">
+        <wsdl:part name="parameters" element="ns0:aplantextupdresults"/>
+    </wsdl:message>
+    <wsdl:message name="aplan_get_contacts_internal_idsRequest">
+        <wsdl:part name="parameters" element="ns0:aplan_get_contacts_internal_ids"/>
+    </wsdl:message>
+    <wsdl:message name="aplan_get_contacts_internal_idsResponse">
+        <wsdl:part name="parameters" element="ns0:spaplancontactsgetresults"/>
+    </wsdl:message>
+    <wsdl:portType name="SP_IBSActionPlanDataPortType">
+        <wsdl:operation name="inet_aplan_upd_contact_rc">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:inet_aplan_upd_contact_rcRequest" wsaw:Action="urn:inet_aplan_upd_contact_rc"/>
+            <wsdl:output message="ns0:inet_aplan_upd_contact_rcResponse" wsaw:Action="urn:inet_aplan_upd_contact_rcResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_aplan_upd_contact_rcDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="abort_boxcar">
+            <wsdl:documentation>Control operation for aborting a boxcarring session</wsdl:documentation>
+            <wsdl:input message="ns0:abort_boxcarRequest" wsaw:Action="urn:abort_boxcar"/>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_replace_upd">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:ma_actplan_replace_updRequest" wsaw:Action="urn:ma_actplan_replace_upd"/>
+            <wsdl:output message="ns0:ma_actplan_replace_updResponse" wsaw:Action="urn:ma_actplan_replace_updResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:ma_actplan_replace_updDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="inet_aplan_upd_agency">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:inet_aplan_upd_agencyRequest" wsaw:Action="urn:inet_aplan_upd_agency"/>
+            <wsdl:output message="ns0:inet_aplan_upd_agencyResponse" wsaw:Action="urn:inet_aplan_upd_agencyResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_aplan_upd_agencyDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="copyActionPlan">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:copyActionPlanRequest" wsaw:Action="urn:copyActionPlan"/>
+            <wsdl:output message="ns0:copyActionPlanResponse" wsaw:Action="urn:copyActionPlanResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:copyActionPlanDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="begin_boxcar">
+            <wsdl:documentation>Control operation for beginning a boxcarring session</wsdl:documentation>
+            <wsdl:input message="ns0:begin_boxcarRequest" wsaw:Action="urn:begin_boxcar"/>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_call_lin_upd">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:ma_actplan_call_lin_updRequest" wsaw:Action="urn:ma_actplan_call_lin_upd"/>
+        </wsdl:operation>
+        <wsdl:operation name="end_boxcar">
+            <wsdl:documentation>Control operation for ending a boxcarring session</wsdl:documentation>
+            <wsdl:input message="ns0:end_boxcarRequest" wsaw:Action="urn:end_boxcar"/>
+            <wsdl:output message="ns0:end_boxcarResponse" wsaw:Action="urn:end_boxcarResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:end_boxcarDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="createAPContact">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:createAPContactRequest" wsaw:Action="urn:createAPContact"/>
+            <wsdl:output message="ns0:createAPContactResponse" wsaw:Action="urn:createAPContactResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:createAPContactDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_text_upd_prep">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:ma_actplan_text_upd_prepRequest" wsaw:Action="urn:ma_actplan_text_upd_prep"/>
+            <wsdl:output message="ns0:ma_actplan_text_upd_prepResponse" wsaw:Action="urn:ma_actplan_text_upd_prepResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:ma_actplan_text_upd_prepDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="inet_aplan_get_contact">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:inet_aplan_get_contactRequest" wsaw:Action="urn:inet_aplan_get_contact"/>
+        </wsdl:operation>
+        <wsdl:operation name="inet_call_list_get_cont">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:inet_call_list_get_contRequest" wsaw:Action="urn:inet_call_list_get_cont"/>
+            <wsdl:output message="ns0:inet_call_list_get_contResponse" wsaw:Action="urn:inet_call_list_get_contResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_call_list_get_contDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_ovf1_upd">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:ma_actplan_ovf1_updRequest" wsaw:Action="urn:ma_actplan_ovf1_upd"/>
+            <wsdl:output message="ns0:ma_actplan_ovf1_updResponse" wsaw:Action="urn:ma_actplan_ovf1_updResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:ma_actplan_ovf1_updDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAgency">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:getAgencyRequest" wsaw:Action="urn:getAgency"/>
+            <wsdl:output message="ns0:getAgencyResponse" wsaw:Action="urn:getAgencyResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getAgencyDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="inet_ma_actplan_upd">
+            <wsdl:documentation>inet_ma_actplan_upd</wsdl:documentation>
+            <wsdl:input message="ns0:inet_ma_actplan_updRequest" wsaw:Action="urn:inet_ma_actplan_upd"/>
+        </wsdl:operation>
+        <wsdl:operation name="inet_aplan_add_agency">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:inet_aplan_add_agencyRequest" wsaw:Action="urn:inet_aplan_add_agency"/>
+            <wsdl:output message="ns0:inet_aplan_add_agencyResponse" wsaw:Action="urn:inet_aplan_add_agencyResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_aplan_add_agencyDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="inet_aplan_upd_contact">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:inet_aplan_upd_contactRequest" wsaw:Action="urn:inet_aplan_upd_contact"/>
+        </wsdl:operation>
+        <wsdl:operation name="create_action_plan">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:create_action_planRequest" wsaw:Action="urn:create_action_plan"/>
+            <wsdl:output message="ns0:create_action_planResponse" wsaw:Action="urn:create_action_planResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:create_action_planDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="inet_aplan_get_name">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:inet_aplan_get_nameRequest" wsaw:Action="urn:inet_aplan_get_name"/>
+            <wsdl:output message="ns0:inet_aplan_get_nameResponse" wsaw:Action="urn:inet_aplan_get_nameResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_aplan_get_nameDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_text_upd">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:ma_actplan_text_updRequest" wsaw:Action="urn:ma_actplan_text_upd"/>
+            <wsdl:output message="ns0:ma_actplan_text_updResponse" wsaw:Action="urn:ma_actplan_text_updResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:ma_actplan_text_updDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="aplan_get_contacts_internal_ids">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:aplan_get_contacts_internal_idsRequest" wsaw:Action="urn:aplan_get_contacts_internal_ids"/>
+            <wsdl:output message="ns0:aplan_get_contacts_internal_idsResponse" wsaw:Action="urn:aplan_get_contacts_internal_idsResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:aplan_get_contacts_internal_idsDataServiceFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SP_IBSActionPlanDataSOAP11Binding" type="ns0:SP_IBSActionPlanDataPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="inet_aplan_upd_contact_rc">
+            <soap:operation soapAction="urn:inet_aplan_upd_contact_rc" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="abort_boxcar">
+            <soap:operation soapAction="urn:abort_boxcar" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_replace_upd">
+            <soap:operation soapAction="urn:ma_actplan_replace_upd" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_aplan_upd_agency">
+            <soap:operation soapAction="urn:inet_aplan_upd_agency" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="copyActionPlan">
+            <soap:operation soapAction="urn:copyActionPlan" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="begin_boxcar">
+            <soap:operation soapAction="urn:begin_boxcar" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_call_lin_upd">
+            <soap:operation soapAction="urn:ma_actplan_call_lin_upd" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="end_boxcar">
+            <soap:operation soapAction="urn:end_boxcar" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createAPContact">
+            <soap:operation soapAction="urn:createAPContact" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_text_upd_prep">
+            <soap:operation soapAction="urn:ma_actplan_text_upd_prep" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_aplan_get_contact">
+            <soap:operation soapAction="urn:inet_aplan_get_contact" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="inet_call_list_get_cont">
+            <soap:operation soapAction="urn:inet_call_list_get_cont" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_ovf1_upd">
+            <soap:operation soapAction="urn:ma_actplan_ovf1_upd" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAgency">
+            <soap:operation soapAction="urn:getAgency" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_ma_actplan_upd">
+            <soap:operation soapAction="urn:inet_ma_actplan_upd" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="inet_aplan_add_agency">
+            <soap:operation soapAction="urn:inet_aplan_add_agency" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_aplan_upd_contact">
+            <soap:operation soapAction="urn:inet_aplan_upd_contact" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="create_action_plan">
+            <soap:operation soapAction="urn:create_action_plan" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_aplan_get_name">
+            <soap:operation soapAction="urn:inet_aplan_get_name" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_text_upd">
+            <soap:operation soapAction="urn:ma_actplan_text_upd" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="aplan_get_contacts_internal_ids">
+            <soap:operation soapAction="urn:aplan_get_contacts_internal_ids" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="SP_IBSActionPlanDataSOAP12Binding" type="ns0:SP_IBSActionPlanDataPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="inet_aplan_upd_contact_rc">
+            <soap12:operation soapAction="urn:inet_aplan_upd_contact_rc" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="abort_boxcar">
+            <soap12:operation soapAction="urn:abort_boxcar" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_replace_upd">
+            <soap12:operation soapAction="urn:ma_actplan_replace_upd" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_aplan_upd_agency">
+            <soap12:operation soapAction="urn:inet_aplan_upd_agency" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="copyActionPlan">
+            <soap12:operation soapAction="urn:copyActionPlan" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="begin_boxcar">
+            <soap12:operation soapAction="urn:begin_boxcar" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_call_lin_upd">
+            <soap12:operation soapAction="urn:ma_actplan_call_lin_upd" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="end_boxcar">
+            <soap12:operation soapAction="urn:end_boxcar" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="createAPContact">
+            <soap12:operation soapAction="urn:createAPContact" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_text_upd_prep">
+            <soap12:operation soapAction="urn:ma_actplan_text_upd_prep" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_aplan_get_contact">
+            <soap12:operation soapAction="urn:inet_aplan_get_contact" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="inet_call_list_get_cont">
+            <soap12:operation soapAction="urn:inet_call_list_get_cont" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_ovf1_upd">
+            <soap12:operation soapAction="urn:ma_actplan_ovf1_upd" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAgency">
+            <soap12:operation soapAction="urn:getAgency" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_ma_actplan_upd">
+            <soap12:operation soapAction="urn:inet_ma_actplan_upd" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="inet_aplan_add_agency">
+            <soap12:operation soapAction="urn:inet_aplan_add_agency" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_aplan_upd_contact">
+            <soap12:operation soapAction="urn:inet_aplan_upd_contact" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="create_action_plan">
+            <soap12:operation soapAction="urn:create_action_plan" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_aplan_get_name">
+            <soap12:operation soapAction="urn:inet_aplan_get_name" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_text_upd">
+            <soap12:operation soapAction="urn:ma_actplan_text_upd" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="aplan_get_contacts_internal_ids">
+            <soap12:operation soapAction="urn:aplan_get_contacts_internal_ids" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="SP_IBSActionPlanDataHttpBinding" type="ns0:SP_IBSActionPlanDataPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="inet_aplan_upd_contact_rc">
+            <http:operation location="inet_aplan_upd_contact_rc"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="abort_boxcar">
+            <http:operation location="abort_boxcar"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_replace_upd">
+            <http:operation location="ma_actplan_replace_upd"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="inet_aplan_upd_agency">
+            <http:operation location="inet_aplan_upd_agency"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="copyActionPlan">
+            <http:operation location="copyActionPlan"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="begin_boxcar">
+            <http:operation location="begin_boxcar"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_call_lin_upd">
+            <http:operation location="ma_actplan_call_lin_upd"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="end_boxcar">
+            <http:operation location="end_boxcar"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createAPContact">
+            <http:operation location="createAPContact"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_text_upd_prep">
+            <http:operation location="ma_actplan_text_upd_prep"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="inet_aplan_get_contact">
+            <http:operation location="inet_aplan_get_contact"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="inet_call_list_get_cont">
+            <http:operation location="inet_call_list_get_cont"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_ovf1_upd">
+            <http:operation location="ma_actplan_ovf1_upd"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAgency">
+            <http:operation location="getAgency"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="inet_ma_actplan_upd">
+            <http:operation location="inet_ma_actplan_upd"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="inet_aplan_add_agency">
+            <http:operation location="inet_aplan_add_agency"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="inet_aplan_upd_contact">
+            <http:operation location="inet_aplan_upd_contact"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="create_action_plan">
+            <http:operation location="create_action_plan"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="inet_aplan_get_name">
+            <http:operation location="inet_aplan_get_name"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_text_upd">
+            <http:operation location="ma_actplan_text_upd"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="aplan_get_contacts_internal_ids">
+            <http:operation location="aplan_get_contacts_internal_ids"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="SP_IBSActionPlanData">
+        <wsdl:port name="SOAP11Endpoint" binding="ns0:SP_IBSActionPlanDataSOAP11Binding">
+            <soap:address location="http://10.2.144.63:9763/services/SP_IBSActionPlanData.SOAP11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="LOCALSOAP11Endpoint" binding="ns0:SP_IBSActionPlanDataSOAP11Binding">
+            <soap:address location="local:///services/SP_IBSActionPlanData.LOCALSOAP11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="SecureSOAP11Endpoint" binding="ns0:SP_IBSActionPlanDataSOAP11Binding">
+            <soap:address location="https://10.2.144.63:9443/services/SP_IBSActionPlanData.SecureSOAP11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="LOCALSOAP12Endpoint" binding="ns0:SP_IBSActionPlanDataSOAP12Binding">
+            <soap12:address location="local:///services/SP_IBSActionPlanData.LOCALSOAP12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="SecureSOAP12Endpoint" binding="ns0:SP_IBSActionPlanDataSOAP12Binding">
+            <soap12:address location="https://10.2.144.63:9443/services/SP_IBSActionPlanData.SecureSOAP12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="SOAP12Endpoint" binding="ns0:SP_IBSActionPlanDataSOAP12Binding">
+            <soap12:address location="http://10.2.144.63:9763/services/SP_IBSActionPlanData.SOAP12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="HTTPEndpoint" binding="ns0:SP_IBSActionPlanDataHttpBinding">
+            <http:address location="http://10.2.144.63:9763/services/SP_IBSActionPlanData.HTTPEndpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="SecureHTTPEndpoint" binding="ns0:SP_IBSActionPlanDataHttpBinding">
+            <http:address location="https://10.2.144.63:9443/services/SP_IBSActionPlanData.SecureHTTPEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

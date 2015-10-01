@@ -38,18 +38,11 @@ public class AdminService {
         /* Nombres a utilizar en la JSP mainFrame.jsp */
         public static final String INSTALLATION="INST";
         public static final String INVOICING="INV";
+        public static final String AVERIAS="AVE";
+        public static final String ADMIN="ADM";
     }
 
-    /**
-     * Get the field config for a specific app
-     * @param app
-     * @return
-     */
-    public List<FieldConfig> getFieldConfig(String app) {
-        assert app!=null;
-        return DummyGenerator.getFieldConfig();
-    }
-
+    
 
     /**
      * Query the active Tab for the keys combination
@@ -59,7 +52,13 @@ public class AdminService {
      * @return
      */
     public String getActiveTabFromKeys(String key1, String key2, String key3) {
-        return TABS.INSTALLATION;
+    	if(key1!=null && !key1.isEmpty() && (key1.equals("AV") || key1.equals("av"))){
+    		return TABS.AVERIAS;
+    	}
+    	else{
+    		return TABS.INSTALLATION;
+    	}
+        
     }
 
 
@@ -156,7 +155,7 @@ public class AdminService {
     
     public List<FieldConfig> getFieldConfig() {
 
-        List<FieldConfig> listFieldConfig = new ArrayList();
+        List<FieldConfig> listFieldConfig = new ArrayList<FieldConfig>();
 
         LOGGER.debug("Calling for Get the FieldConfig List");
 
@@ -175,7 +174,29 @@ public class AdminService {
 
         return listFieldConfig;
     }
+    
+    public List<FieldConfig> getFieldConfigByApp(String app) {
 
+        List<FieldConfig> listFieldConfig = new ArrayList<FieldConfig>();
+
+        LOGGER.debug("Calling for Get the FieldConfig List of "+app);
+
+        try {
+            List<EntrygetFieldConfigByAppResult> listGetFieldConfigResult = wsAdmin.getFieldConfigByAppOperation(app);
+
+            for (EntrygetFieldConfigByAppResult getFieldConfigResult : listGetFieldConfigResult) {
+                FieldConfig FieldConfig = new FieldConfig(getFieldConfigResult);
+                listFieldConfig.add(FieldConfig);
+            }
+
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage(),e);
+            throw new FrameworkException(e);
+        }
+
+        return listFieldConfig;
+    }
+    
     public List<Users> getUsers() {
 
         List<Users> listUsers = new ArrayList();

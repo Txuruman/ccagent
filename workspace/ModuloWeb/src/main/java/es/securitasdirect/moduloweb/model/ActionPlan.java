@@ -6,9 +6,9 @@ package es.securitasdirect.moduloweb.model;
 public class ActionPlan {
 
     /**
-     * clave autonumerica para la tabla
+     * clave interna del contacto
      */
-    private Integer id;
+    private String id;
 
     /** Tipo de plan */ /* TODO PASAR A ENUM??? */
     private String type;
@@ -27,7 +27,8 @@ public class ActionPlan {
 
     /** Datos de contacto 3 de la persona */
     private Phone phone3;
-
+    /** Posicion (indice) del contacto */
+    private Integer position;
 
     //constructor copia de la clase ActionPlan
     /*
@@ -44,11 +45,11 @@ public class ActionPlan {
     */
 
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -99,17 +100,18 @@ public class ActionPlan {
     public void setPhone3(Phone phone3) {
         this.phone3 = phone3;
     }
+    
+    public Integer getPosition() {
+		return position;
+	}
 
-    @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer("ActionPlan{");
-        sb.append("type='").append(type).append('\'');
-        sb.append(", secuence=").append(secuence);
-        sb.append(", contactName='").append(contactName).append('\'');
-        sb.append(", phone1=").append(phone1);
-        sb.append(", phone2=").append(phone2);
-        sb.append(", phone3=").append(phone3);
-        sb.append('}');
-        return sb.toString();
-    }
+	public void setPosition(Integer position) {
+		this.position = position;
+	}
+
+	@Override
+	public String toString() {
+		return "ActionPlan [id=" + id + ", type=" + type + ", secuence=" + secuence + ", contactName=" + contactName
+				+ ", phone1=" + phone1 + ", phone2=" + phone2 + ", phone3=" + phone3 + ", position=" + position + "]";
+	}
 }

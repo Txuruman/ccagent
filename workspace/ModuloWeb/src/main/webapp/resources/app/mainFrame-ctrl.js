@@ -1,4 +1,4 @@
-app.controller('mainFrameController', function ($timeout, $scope, $http, CommonService,$log) {
+app.controller('mainFrameController', function ($timeout, $scope, $http, CommonService,$log, $window) {
 	
     $scope.getDirectAccess=function(){
     	
@@ -18,4 +18,8 @@ app.controller('mainFrameController', function ($timeout, $scope, $http, CommonS
     
     $scope.getDirectAccess();
    
+    $scope.goTo=function(url){
+    	$window.location.href=url;
+    }
+    
 });

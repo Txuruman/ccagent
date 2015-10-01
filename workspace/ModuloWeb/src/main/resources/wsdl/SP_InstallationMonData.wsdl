@@ -1,4 +1,3 @@
-
 <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns0="http://ws.wso2.org/dataservice" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.wso2.org/dataservice">
     <wsdl:documentation/>
     <wsdl:types>
@@ -724,6 +723,24 @@
                     <xs:element name="code" nillable="true" type="xs:string"/>
                 </xs:sequence>
             </xs:complexType>
+            <xs:element name="getInstallationDataFromPhone">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="phone" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="installations" type="ns0:installations"/>
+            <xs:complexType name="installations">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="installation" type="ns0:installation"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="installation">
+                <xs:sequence>
+                    <xs:element name="installation" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
             <xs:element name="ins_maintypes_upd">
                 <xs:complexType>
                     <xs:sequence>
@@ -766,10 +783,10 @@
             <xs:element name="installationResults" type="ns0:installationResults"/>
             <xs:complexType name="installationResults">
                 <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="installation" type="ns0:installation"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="installation" type="ns0:installation2"/>
                 </xs:sequence>
             </xs:complexType>
-            <xs:complexType name="installation">
+            <xs:complexType name="installation2">
                 <xs:sequence>
                     <xs:element name="br" nillable="true" type="xs:string"/>
                     <xs:element name="sub_tp" nillable="true" type="xs:string"/>
@@ -1005,6 +1022,28 @@
             <xs:complexType name="getClassResult">
                 <xs:sequence>
                     <xs:element name="sub_exptp" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="updateBasicsMaintenanceInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="sins" nillable="true" type="xs:int"/>
+                        <xs:element name="ix" nillable="true" type="xs:int"/>
+                        <xs:element name="type" nillable="true" type="xs:string"/>
+                        <xs:element name="freq" nillable="true" type="xs:string"/>
+                        <xs:element name="date" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updatebasicsmaintinforesults" type="ns0:updatebasicsmaintinforesults"/>
+            <xs:complexType name="updatebasicsmaintinforesults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="updatebasicsmaintinforesult" type="ns0:updatebasicsmaintinforesult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="updatebasicsmaintinforesult">
+                <xs:sequence>
+                    <xs:element name="rc" nillable="true" type="xs:integer"/>
                 </xs:sequence>
             </xs:complexType>
             <xs:element name="updatePhone1">
@@ -1376,12 +1415,6 @@
     <wsdl:message name="getAgenciesFromZipResponse">
         <wsdl:part name="parameters" element="ns0:resultsgetAgenciesFromZip"/>
     </wsdl:message>
-    <wsdl:message name="getTestIntervalRequest">
-        <wsdl:part name="parameters" element="ns0:getTestInterval"/>
-    </wsdl:message>
-    <wsdl:message name="getTestIntervalResponse">
-        <wsdl:part name="parameters" element="ns0:getTestIntervalResults"/>
-    </wsdl:message>
     <wsdl:message name="getPanelRequest">
         <wsdl:part name="parameters" element="ns0:getPanel"/>
     </wsdl:message>
@@ -1393,6 +1426,18 @@
     </wsdl:message>
     <wsdl:message name="inet_get_installation_idsResponse">
         <wsdl:part name="parameters" element="ns0:installationids"/>
+    </wsdl:message>
+    <wsdl:message name="getTestIntervalRequest">
+        <wsdl:part name="parameters" element="ns0:getTestInterval"/>
+    </wsdl:message>
+    <wsdl:message name="getTestIntervalResponse">
+        <wsdl:part name="parameters" element="ns0:getTestIntervalResults"/>
+    </wsdl:message>
+    <wsdl:message name="getInstallationDataFromPhoneRequest">
+        <wsdl:part name="parameters" element="ns0:getInstallationDataFromPhone"/>
+    </wsdl:message>
+    <wsdl:message name="getInstallationDataFromPhoneResponse">
+        <wsdl:part name="parameters" element="ns0:installations"/>
     </wsdl:message>
     <wsdl:message name="getDatosTransmisionRequest">
         <wsdl:part name="parameters" element="ns0:getDatosTransmision"/>
@@ -1480,6 +1525,12 @@
     </wsdl:message>
     <wsdl:message name="inet_inst_extstat_updResponse">
         <wsdl:part name="parameters" element="ns0:inetinstextstatupdresults"/>
+    </wsdl:message>
+    <wsdl:message name="updateBasicsMaintenanceInfoRequest">
+        <wsdl:part name="parameters" element="ns0:updateBasicsMaintenanceInfo"/>
+    </wsdl:message>
+    <wsdl:message name="updateBasicsMaintenanceInfoResponse">
+        <wsdl:part name="parameters" element="ns0:updatebasicsmaintinforesults"/>
     </wsdl:message>
     <wsdl:message name="getVehicleDataRequest">
         <wsdl:part name="parameters" element="ns0:getVehicleData"/>
@@ -1659,12 +1710,6 @@
             <wsdl:output message="ns0:getAgenciesFromZipResponse" wsaw:Action="urn:getAgenciesFromZipResponse"/>
             <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getAgenciesFromZipDataServiceFault"/>
         </wsdl:operation>
-        <wsdl:operation name="getTestInterval">
-            <wsdl:documentation>Obtencion del campo TEST INTERVAL</wsdl:documentation>
-            <wsdl:input message="ns0:getTestIntervalRequest" wsaw:Action="urn:getTestInterval"/>
-            <wsdl:output message="ns0:getTestIntervalResponse" wsaw:Action="urn:getTestIntervalResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getTestIntervalDataServiceFault"/>
-        </wsdl:operation>
         <wsdl:operation name="getPanel">
             <wsdl:documentation>Obtencion de campo PANEL</wsdl:documentation>
             <wsdl:input message="ns0:getPanelRequest" wsaw:Action="urn:getPanel"/>
@@ -1676,6 +1721,18 @@
             <wsdl:input message="ns0:inet_get_installation_idsRequest" wsaw:Action="urn:inet_get_installation_ids"/>
             <wsdl:output message="ns0:inet_get_installation_idsResponse" wsaw:Action="urn:inet_get_installation_idsResponse"/>
             <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_get_installation_idsDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getTestInterval">
+            <wsdl:documentation>Obtencion del campo TEST INTERVAL</wsdl:documentation>
+            <wsdl:input message="ns0:getTestIntervalRequest" wsaw:Action="urn:getTestInterval"/>
+            <wsdl:output message="ns0:getTestIntervalResponse" wsaw:Action="urn:getTestIntervalResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getTestIntervalDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getInstallationDataFromPhone">
+            <wsdl:documentation>Devuelve las instalaciones asociadas al teléfono pasado como parametro                                  &#xd;                                    </wsdl:documentation>
+            <wsdl:input message="ns0:getInstallationDataFromPhoneRequest" wsaw:Action="urn:getInstallationDataFromPhone"/>
+            <wsdl:output message="ns0:getInstallationDataFromPhoneResponse" wsaw:Action="urn:getInstallationDataFromPhoneResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getInstallationDataFromPhoneDataServiceFault"/>
         </wsdl:operation>
         <wsdl:operation name="getDatosTransmision">
             <wsdl:documentation>Obtiene los datos de transmision</wsdl:documentation>
@@ -1764,6 +1821,12 @@
             <wsdl:input message="ns0:inet_inst_extstat_updRequest" wsaw:Action="urn:inet_inst_extstat_upd"/>
             <wsdl:output message="ns0:inet_inst_extstat_updResponse" wsaw:Action="urn:inet_inst_extstat_updResponse"/>
             <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_inst_extstat_updDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateBasicsMaintenanceInfo">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:updateBasicsMaintenanceInfoRequest" wsaw:Action="urn:updateBasicsMaintenanceInfo"/>
+            <wsdl:output message="ns0:updateBasicsMaintenanceInfoResponse" wsaw:Action="urn:updateBasicsMaintenanceInfoResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:updateBasicsMaintenanceInfoDataServiceFault"/>
         </wsdl:operation>
         <wsdl:operation name="getVehicleData">
             <wsdl:documentation/>
@@ -2096,18 +2159,6 @@
                 <soap:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="getTestInterval">
-            <soap:operation soapAction="urn:getTestInterval" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
         <wsdl:operation name="getPanel">
             <soap:operation soapAction="urn:getPanel" style="document"/>
             <wsdl:input>
@@ -2122,6 +2173,30 @@
         </wsdl:operation>
         <wsdl:operation name="inet_get_installation_ids">
             <soap:operation soapAction="urn:inet_get_installation_ids" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getTestInterval">
+            <soap:operation soapAction="urn:getTestInterval" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getInstallationDataFromPhone">
+            <soap:operation soapAction="urn:getInstallationDataFromPhone" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -2296,6 +2371,18 @@
         </wsdl:operation>
         <wsdl:operation name="inet_inst_extstat_upd">
             <soap:operation soapAction="urn:inet_inst_extstat_upd" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateBasicsMaintenanceInfo">
+            <soap:operation soapAction="urn:updateBasicsMaintenanceInfo" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -2651,18 +2738,6 @@
                 <soap12:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="getTestInterval">
-            <soap12:operation soapAction="urn:getTestInterval" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
         <wsdl:operation name="getPanel">
             <soap12:operation soapAction="urn:getPanel" style="document"/>
             <wsdl:input>
@@ -2677,6 +2752,30 @@
         </wsdl:operation>
         <wsdl:operation name="inet_get_installation_ids">
             <soap12:operation soapAction="urn:inet_get_installation_ids" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getTestInterval">
+            <soap12:operation soapAction="urn:getTestInterval" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getInstallationDataFromPhone">
+            <soap12:operation soapAction="urn:getInstallationDataFromPhone" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -2851,6 +2950,18 @@
         </wsdl:operation>
         <wsdl:operation name="inet_inst_extstat_upd">
             <soap12:operation soapAction="urn:inet_inst_extstat_upd" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateBasicsMaintenanceInfo">
+            <soap12:operation soapAction="urn:updateBasicsMaintenanceInfo" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -3137,15 +3248,6 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="getTestInterval">
-            <http:operation location="getTestInterval"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
         <wsdl:operation name="getPanel">
             <http:operation location="getPanel"/>
             <wsdl:input>
@@ -3157,6 +3259,24 @@
         </wsdl:operation>
         <wsdl:operation name="inet_get_installation_ids">
             <http:operation location="inet_get_installation_ids"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getTestInterval">
+            <http:operation location="getTestInterval"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getInstallationDataFromPhone">
+            <http:operation location="getInstallationDataFromPhone"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
@@ -3289,6 +3409,15 @@
         </wsdl:operation>
         <wsdl:operation name="inet_inst_extstat_upd">
             <http:operation location="inet_inst_extstat_upd"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="updateBasicsMaintenanceInfo">
+            <http:operation location="updateBasicsMaintenanceInfo"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
