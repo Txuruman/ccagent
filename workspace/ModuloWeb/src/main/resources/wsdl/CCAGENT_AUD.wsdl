@@ -11,182 +11,86 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="insert_audit_operation">
+            <xs:element name="select_audit_by_parameters_operation">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="date" nillable="true" type="xs:string"/>
                         <xs:element name="actor" nillable="true" type="xs:string"/>
-                        <xs:element name="id" nillable="true" type="xs:int"/>
                         <xs:element name="app" nillable="true" type="xs:string"/>
-                        <xs:element name="event" nillable="true" type="xs:string"/>
-                        <xs:element name="result" nillable="true" type="xs:string"/>
-                        <xs:element name="detail" nillable="true" type="xs:string"/>
+                        <xs:element name="audit_date" nillable="true" type="xs:dateTime"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="GeneratedKeys" type="ns0:GeneratedKeys"/>
-            <xs:complexType name="GeneratedKeys">
+            <xs:element name="Entries" type="ns0:Entries"/>
+            <xs:complexType name="Entries">
                 <xs:sequence>
                     <xs:element maxOccurs="unbounded" minOccurs="0" name="Entry" type="ns0:Entry"/>
                 </xs:sequence>
             </xs:complexType>
             <xs:complexType name="Entry">
                 <xs:sequence>
-                    <xs:element name="ID" nillable="true" type="xs:integer"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:element name="select_all_audit_operation">
-                <xs:complexType>
-                    <xs:sequence/>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="auditCollection" type="ns0:auditCollection"/>
-            <xs:complexType name="auditCollection">
-                <xs:sequence>
-                    <xs:element maxOccurs="unbounded" minOccurs="0" name="audit" type="ns0:audit"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:complexType name="audit">
-                <xs:sequence>
-                    <xs:element name="date" nillable="true" type="xs:string"/>
-                    <xs:element name="actor" nillable="true" type="xs:string"/>
                     <xs:element name="id" nillable="true" type="xs:integer"/>
+                    <xs:element name="audit_date" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="actor" nillable="true" type="xs:string"/>
                     <xs:element name="app" nillable="true" type="xs:string"/>
                     <xs:element name="event" nillable="true" type="xs:string"/>
                     <xs:element name="result" nillable="true" type="xs:string"/>
                     <xs:element name="detail" nillable="true" type="xs:string"/>
                 </xs:sequence>
             </xs:complexType>
-            <xs:element name="select_with_key_audit_operation">
+            <xs:element name="insert_audit_operation">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="id" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="update_audit_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="date" nillable="true" type="xs:string"/>
+                        <xs:element name="audit_date" nillable="true" type="xs:dateTime"/>
                         <xs:element name="actor" nillable="true" type="xs:string"/>
                         <xs:element name="app" nillable="true" type="xs:string"/>
                         <xs:element name="event" nillable="true" type="xs:string"/>
                         <xs:element name="result" nillable="true" type="xs:string"/>
                         <xs:element name="detail" nillable="true" type="xs:string"/>
-                        <xs:element name="id" nillable="true" type="xs:int"/>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-            <xs:element name="delete_audit_operation">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="id" nillable="true" type="xs:int"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
         </xs:schema>
     </wsdl:types>
-    <wsdl:message name="insert_audit_operationRequest">
-        <wsdl:part name="parameters" element="ns0:insert_audit_operation"/>
+    <wsdl:message name="select_audit_by_parameters_operationRequest">
+        <wsdl:part name="parameters" element="ns0:select_audit_by_parameters_operation"/>
     </wsdl:message>
-    <wsdl:message name="insert_audit_operationResponse">
-        <wsdl:part name="parameters" element="ns0:GeneratedKeys"/>
+    <wsdl:message name="select_audit_by_parameters_operationResponse">
+        <wsdl:part name="parameters" element="ns0:Entries"/>
     </wsdl:message>
     <wsdl:message name="DataServiceFault">
         <wsdl:part name="parameters" element="ns0:DataServiceFault"/>
     </wsdl:message>
-    <wsdl:message name="select_with_key_audit_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_with_key_audit_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_with_key_audit_operationResponse">
-        <wsdl:part name="parameters" element="ns0:auditCollection"/>
-    </wsdl:message>
-    <wsdl:message name="update_audit_operationRequest">
-        <wsdl:part name="parameters" element="ns0:update_audit_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_all_audit_operationRequest">
-        <wsdl:part name="parameters" element="ns0:select_all_audit_operation"/>
-    </wsdl:message>
-    <wsdl:message name="select_all_audit_operationResponse">
-        <wsdl:part name="parameters" element="ns0:auditCollection"/>
-    </wsdl:message>
-    <wsdl:message name="delete_audit_operationRequest">
-        <wsdl:part name="parameters" element="ns0:delete_audit_operation"/>
+    <wsdl:message name="insert_audit_operationRequest">
+        <wsdl:part name="parameters" element="ns0:insert_audit_operation"/>
     </wsdl:message>
     <wsdl:portType name="CCAGENT_AUDPortType">
+        <wsdl:operation name="select_audit_by_parameters_operation">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:select_audit_by_parameters_operationRequest" wsaw:Action="urn:select_audit_by_parameters_operation"/>
+            <wsdl:output message="ns0:select_audit_by_parameters_operationResponse" wsaw:Action="urn:select_audit_by_parameters_operationResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_audit_by_parameters_operationDataServiceFault"/>
+        </wsdl:operation>
         <wsdl:operation name="insert_audit_operation">
             <wsdl:documentation/>
             <wsdl:input message="ns0:insert_audit_operationRequest" wsaw:Action="urn:insert_audit_operation"/>
-            <wsdl:output message="ns0:insert_audit_operationResponse" wsaw:Action="urn:insert_audit_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:insert_audit_operationDataServiceFault"/>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_audit_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:select_with_key_audit_operationRequest" wsaw:Action="urn:select_with_key_audit_operation"/>
-            <wsdl:output message="ns0:select_with_key_audit_operationResponse" wsaw:Action="urn:select_with_key_audit_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_with_key_audit_operationDataServiceFault"/>
-        </wsdl:operation>
-        <wsdl:operation name="update_audit_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:update_audit_operationRequest" wsaw:Action="urn:update_audit_operation"/>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_audit_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:select_all_audit_operationRequest" wsaw:Action="urn:select_all_audit_operation"/>
-            <wsdl:output message="ns0:select_all_audit_operationResponse" wsaw:Action="urn:select_all_audit_operationResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:select_all_audit_operationDataServiceFault"/>
-        </wsdl:operation>
-        <wsdl:operation name="delete_audit_operation">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:delete_audit_operationRequest" wsaw:Action="urn:delete_audit_operation"/>
         </wsdl:operation>
     </wsdl:portType>
     <wsdl:binding name="CCAGENT_AUDSOAP11Binding" type="ns0:CCAGENT_AUDPortType">
         <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="select_audit_by_parameters_operation">
+            <soap:operation soapAction="urn:select_audit_by_parameters_operation" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
         <wsdl:operation name="insert_audit_operation">
             <soap:operation soapAction="urn:insert_audit_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_audit_operation">
-            <soap:operation soapAction="urn:select_with_key_audit_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="update_audit_operation">
-            <soap:operation soapAction="urn:update_audit_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_audit_operation">
-            <soap:operation soapAction="urn:select_all_audit_operation" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="delete_audit_operation">
-            <soap:operation soapAction="urn:delete_audit_operation" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -194,50 +98,20 @@
     </wsdl:binding>
     <wsdl:binding name="CCAGENT_AUDSOAP12Binding" type="ns0:CCAGENT_AUDPortType">
         <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="select_audit_by_parameters_operation">
+            <soap12:operation soapAction="urn:select_audit_by_parameters_operation" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
         <wsdl:operation name="insert_audit_operation">
             <soap12:operation soapAction="urn:insert_audit_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_audit_operation">
-            <soap12:operation soapAction="urn:select_with_key_audit_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="update_audit_operation">
-            <soap12:operation soapAction="urn:update_audit_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_audit_operation">
-            <soap12:operation soapAction="urn:select_all_audit_operation" style="document"/>
-            <wsdl:input>
-                <soap12:body use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap12:body use="literal"/>
-            </wsdl:output>
-            <wsdl:fault name="DataServiceFault">
-                <soap12:fault use="literal" name="DataServiceFault"/>
-            </wsdl:fault>
-        </wsdl:operation>
-        <wsdl:operation name="delete_audit_operation">
-            <soap12:operation soapAction="urn:delete_audit_operation" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -245,41 +119,17 @@
     </wsdl:binding>
     <wsdl:binding name="CCAGENT_AUDHttpBinding" type="ns0:CCAGENT_AUDPortType">
         <http:binding verb="POST"/>
+        <wsdl:operation name="select_audit_by_parameters_operation">
+            <http:operation location="select_audit_by_parameters_operation"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="insert_audit_operation">
             <http:operation location="insert_audit_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="select_with_key_audit_operation">
-            <http:operation location="select_with_key_audit_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="update_audit_operation">
-            <http:operation location="update_audit_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-        </wsdl:operation>
-        <wsdl:operation name="select_all_audit_operation">
-            <http:operation location="select_all_audit_operation"/>
-            <wsdl:input>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:input>
-            <wsdl:output>
-                <mime:content type="text/xml" part="parameters"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="delete_audit_operation">
-            <http:operation location="delete_audit_operation"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>

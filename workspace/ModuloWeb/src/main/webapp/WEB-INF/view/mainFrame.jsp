@@ -19,7 +19,7 @@
 
 
 </head>
-<body ng-controller="mainFrameController" class="paddingTop3" ng-init="agent='${agent}'; activeTab='${activeTab}'; installationParam='${installation}'; key1='${key1}'; key2='${key2}'; key3='${key3}'">
+<body ng-controller="mainFrameController" class="paddingTop3" ng-init="agent={agentIBS:'${agent}',fechaInicioAudit:'${fechaInicioAudit}',call_id:'${call_id}'}; activeTab='${activeTab}'; installationParam='${installation}'; key1='${key1}'; key2='${key2}'; key3='${key3}'">
  <app:messages/>
 	<div class="row sinMarginRight">
 		<!-- ACCESOS DIRECTOS -->
@@ -27,7 +27,7 @@
 			class="col-lg-1 col-md-1 col-sm-1 col-xs-1 btn-group-vertical vertical-text-group"
 			role="group" aria-label="">
 			<button type="button" class="vertical-text btn btn-default"
-				ng-repeat="index in directAccess" title="{{index.description}}" ng-click="goTo(index.url)">
+				ng-repeat="index in directAccess" title="{{index.description}}" ng-click="goTo(index)">
 				<a>{{index.name}}</a>
 			</button>
  			
@@ -46,14 +46,8 @@
 					<%@include file="invoicing/invoicing.jsp"%>
 				</li> 
 				<li tab heading="<spring:message code="titulo.tab.breakdown"/>" active="${activeTab eq 'AVE'}">
-					
-<!-- 						<a href="https://www.iscp.ie/sites/default/files/pdf-sample.pdf?keepThis=true&TB_iframe=true&height=300&width=500" title="add a caption to title attribute / or leave blank" class="thickbox">Example 2</a> -->
-<!-- 						<pdf-viewer  delegate-handle="my-pdf-container"   url="https://www.iscp.ie/sites/default/files/pdf-sample.pdf"   scale="1"   show-toolbar="true"   headers="{ 'x-you-know-whats-awesome': 'EVERYTHING' }"> -->
-					
-<!-- 						</pdf-viewer> -->
-<%-- 					<%@include file="pruebaCall.jsp"%> --%>
-					<iframe class="iframes" src="http://sd_dev.elecnor-deimos.com:7001/sdaverias/" height="600px" frameborder="0"></iframe>
-<!-- 					<iframe class="iframes" src="http://www.marca.com/" height="600px" style="position:relative" frameborder="0"></iframe> -->
+					<iframe class="iframes" src="http://10.2.72.132:8011/sdaverias/?num_inst=${installation}&id_user=${agent}&key_1=${key1}&key_2=${key1}&key_3=${key3}&call_id=${call_id}#/visor" height="600px" frameborder="0"></iframe>
+<!-- 					<iframe class="iframes" src="http://sd_dev.elecnor-deimos.com:7001/sdaverias/" height="600px" frameborder="0"></iframe> -->
 				</li>
 				<li tab heading="<spring:message code="titulo.tab.admin"/>" active="${activeTab eq 'ADM'}">
 					<%@include file="admin/admin.jsp"%>

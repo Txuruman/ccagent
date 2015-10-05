@@ -1,0 +1,757 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://services.securitasdirect.com" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:tns="http://com.securitasdirect.es.ws" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax23="http://response.common.ws.securitasdirect.com/xsd" xmlns:ax21="http://exception.ws.securitasdirect.com/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://com.securitasdirect.es.ws">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://exception.ws.securitasdirect.com/xsd">
+            <xs:complexType name="CamerasSamsungException">
+                <xs:sequence/>
+            </xs:complexType>
+        </xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://response.common.ws.securitasdirect.com/xsd">
+            <xs:complexType name="AbstractResultResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="result" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="UpdateCameraFirmwareResultResponse">
+                <xs:complexContent>
+                    <xs:extension base="ax23:AbstractResultResponse">
+                        <xs:sequence/>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="ModifyCameraResultResponse">
+                <xs:complexContent>
+                    <xs:extension base="ax23:AbstractResultResponse">
+                        <xs:sequence/>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="InitProcessResultResponse">
+                <xs:complexContent>
+                    <xs:extension base="ax23:AbstractResultResponse">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="internalInstallationId" nillable="true" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="GetCamerasResultResponse">
+                <xs:complexContent>
+                    <xs:extension base="ax23:AbstractResultResponse">
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="zonesList" nillable="true" type="ax23:CamerasZoneInfo"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="CamerasZoneInfo">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="alias" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="camBrand" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="camModel" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="version" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="zid" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="GetCameraResultResponse">
+                <xs:complexContent>
+                    <xs:extension base="ax23:AbstractResultResponse">
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="zoneList" nillable="true" type="ax23:CameraZoneInfo"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="CameraZoneInfo">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="alias" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="camBrand" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="camModel" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="version" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="EndProcessResultResponse">
+                <xs:complexContent>
+                    <xs:extension base="ax23:AbstractResultResponse">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="internalInstallationId" nillable="true" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="DeleteCameraResultResponse">
+                <xs:complexContent>
+                    <xs:extension base="ax23:AbstractResultResponse">
+                        <xs:sequence/>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="CreateCameraResultResponse">
+                <xs:complexContent>
+                    <xs:extension base="ax23:AbstractResultResponse">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="zoneCode" nillable="true" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="CheckCamerasResultResponse">
+                <xs:complexContent>
+                    <xs:extension base="ax23:AbstractResultResponse">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="incidentId" type="xs:int"/>
+                            <xs:element minOccurs="0" name="installationStatus" type="xs:int"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+        </xs:schema>
+    <xs:schema xmlns:ax22="http://exception.ws.securitasdirect.com/xsd" xmlns:ax24="http://response.common.ws.securitasdirect.com/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://services.securitasdirect.com">
+            <xs:import namespace="http://exception.ws.securitasdirect.com/xsd"/>
+            <xs:import namespace="http://response.common.ws.securitasdirect.com/xsd"/>
+            <xs:element name="CamServiceCamerasSamsungException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CamerasSamsungException" nillable="true" type="ax21:CamerasSamsungException"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateCameraFirmware">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="countryCode" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="numIns" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="camId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="firmwareVersion" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateCameraFirmwareResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax23:UpdateCameraFirmwareResultResponse"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="modifyCamera">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="countryCode" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="numIns" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="camId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="alias" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="modifyCameraResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax23:ModifyCameraResultResponse"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="initProcess">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="countryCode" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="numIns" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="camSerialNumber" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="camBrand" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="camModel" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="firmwareVersion" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="initProcessResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax23:InitProcessResultResponse"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCameras">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="countryCode" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="numIns" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCamerasResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax23:GetCamerasResultResponse"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCamera">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="countryCode" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="numIns" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="camId" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCameraResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax23:GetCameraResultResponse"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="endProcess">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="countryCode" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="numIns" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="camSerialNumber" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="camBrand" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="camModel" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="camId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="finishStatus" type="xs:int"/>
+                        <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="endProcessResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax23:EndProcessResultResponse"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteCamera">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="countryCode" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="numIns" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="camId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="camSerialNumber" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="camBrand" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="camModel" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteCameraResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax23:DeleteCameraResultResponse"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createCamera">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="countryCode" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="numIns" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="camSerialNumber" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="camBrand" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="camModel" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="firmwareVersion" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="connType" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="alias" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="createCameraResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax23:CreateCameraResultResponse"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="checkCameras">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="countryCode" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="numIns" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="checkCamerasResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax23:CheckCamerasResultResponse"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="deleteCameraResponse">
+    <wsdl:part name="parameters" element="ns:deleteCameraResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkCamerasRequest">
+    <wsdl:part name="parameters" element="ns:checkCameras">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCameraResponse">
+    <wsdl:part name="parameters" element="ns:createCameraResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="initProcessRequest">
+    <wsdl:part name="parameters" element="ns:initProcess">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCameraRequest">
+    <wsdl:part name="parameters" element="ns:getCamera">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="endProcessResponse">
+    <wsdl:part name="parameters" element="ns:endProcessResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CamServiceCamerasSamsungException">
+    <wsdl:part name="parameters" element="ns:CamServiceCamerasSamsungException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCamerasRequest">
+    <wsdl:part name="parameters" element="ns:getCameras">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateCameraFirmwareRequest">
+    <wsdl:part name="parameters" element="ns:updateCameraFirmware">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteCameraRequest">
+    <wsdl:part name="parameters" element="ns:deleteCamera">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="initProcessResponse">
+    <wsdl:part name="parameters" element="ns:initProcessResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="checkCamerasResponse">
+    <wsdl:part name="parameters" element="ns:checkCamerasResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCamerasResponse">
+    <wsdl:part name="parameters" element="ns:getCamerasResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCameraRequest">
+    <wsdl:part name="parameters" element="ns:createCamera">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyCameraRequest">
+    <wsdl:part name="parameters" element="ns:modifyCamera">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateCameraFirmwareResponse">
+    <wsdl:part name="parameters" element="ns:updateCameraFirmwareResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="modifyCameraResponse">
+    <wsdl:part name="parameters" element="ns:modifyCameraResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCameraResponse">
+    <wsdl:part name="parameters" element="ns:getCameraResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="endProcessRequest">
+    <wsdl:part name="parameters" element="ns:endProcess">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CamServicePortType">
+    <wsdl:operation name="modifyCamera">
+      <wsdl:input message="tns:modifyCameraRequest" wsaw:Action="urn:modifyCamera">
+    </wsdl:input>
+      <wsdl:output message="tns:modifyCameraResponse" wsaw:Action="urn:modifyCameraResponse">
+    </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException" message="tns:CamServiceCamerasSamsungException" wsaw:Action="urn:modifyCameraCamServiceCamerasSamsungException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="initProcess">
+      <wsdl:input message="tns:initProcessRequest" wsaw:Action="urn:initProcess">
+    </wsdl:input>
+      <wsdl:output message="tns:initProcessResponse" wsaw:Action="urn:initProcessResponse">
+    </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException" message="tns:CamServiceCamerasSamsungException" wsaw:Action="urn:initProcessCamServiceCamerasSamsungException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateCameraFirmware">
+      <wsdl:input message="tns:updateCameraFirmwareRequest" wsaw:Action="urn:updateCameraFirmware">
+    </wsdl:input>
+      <wsdl:output message="tns:updateCameraFirmwareResponse" wsaw:Action="urn:updateCameraFirmwareResponse">
+    </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException" message="tns:CamServiceCamerasSamsungException" wsaw:Action="urn:updateCameraFirmwareCamServiceCamerasSamsungException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="endProcess">
+      <wsdl:input message="tns:endProcessRequest" wsaw:Action="urn:endProcess">
+    </wsdl:input>
+      <wsdl:output message="tns:endProcessResponse" wsaw:Action="urn:endProcessResponse">
+    </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException" message="tns:CamServiceCamerasSamsungException" wsaw:Action="urn:endProcessCamServiceCamerasSamsungException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCameras">
+      <wsdl:input message="tns:getCamerasRequest" wsaw:Action="urn:getCameras">
+    </wsdl:input>
+      <wsdl:output message="tns:getCamerasResponse" wsaw:Action="urn:getCamerasResponse">
+    </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException" message="tns:CamServiceCamerasSamsungException" wsaw:Action="urn:getCamerasCamServiceCamerasSamsungException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createCamera">
+      <wsdl:input message="tns:createCameraRequest" wsaw:Action="urn:createCamera">
+    </wsdl:input>
+      <wsdl:output message="tns:createCameraResponse" wsaw:Action="urn:createCameraResponse">
+    </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException" message="tns:CamServiceCamerasSamsungException" wsaw:Action="urn:createCameraCamServiceCamerasSamsungException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCamera">
+      <wsdl:input message="tns:deleteCameraRequest" wsaw:Action="urn:deleteCamera">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteCameraResponse" wsaw:Action="urn:deleteCameraResponse">
+    </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException" message="tns:CamServiceCamerasSamsungException" wsaw:Action="urn:deleteCameraCamServiceCamerasSamsungException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCamera">
+      <wsdl:input message="tns:getCameraRequest" wsaw:Action="urn:getCamera">
+    </wsdl:input>
+      <wsdl:output message="tns:getCameraResponse" wsaw:Action="urn:getCameraResponse">
+    </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException" message="tns:CamServiceCamerasSamsungException" wsaw:Action="urn:getCameraCamServiceCamerasSamsungException">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="checkCameras">
+      <wsdl:input message="tns:checkCamerasRequest" wsaw:Action="urn:checkCameras">
+    </wsdl:input>
+      <wsdl:output message="tns:checkCamerasResponse" wsaw:Action="urn:checkCamerasResponse">
+    </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException" message="tns:CamServiceCamerasSamsungException" wsaw:Action="urn:checkCamerasCamServiceCamerasSamsungException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CamServiceHttpBinding" type="tns:CamServicePortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="modifyCamera">
+      <http:operation location="modifyCamera"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="initProcess">
+      <http:operation location="initProcess"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateCameraFirmware">
+      <http:operation location="updateCameraFirmware"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCameras">
+      <http:operation location="getCameras"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="endProcess">
+      <http:operation location="endProcess"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createCamera">
+      <http:operation location="createCamera"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCamera">
+      <http:operation location="deleteCamera"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCamera">
+      <http:operation location="getCamera"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkCameras">
+      <http:operation location="checkCameras"/>
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CamServiceSoap11Binding" type="tns:CamServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="modifyCamera">
+      <soap:operation soapAction="urn:modifyCamera" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException">
+        <soap:fault name="CamServiceCamerasSamsungException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="initProcess">
+      <soap:operation soapAction="urn:initProcess" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException">
+        <soap:fault name="CamServiceCamerasSamsungException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateCameraFirmware">
+      <soap:operation soapAction="urn:updateCameraFirmware" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException">
+        <soap:fault name="CamServiceCamerasSamsungException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCameras">
+      <soap:operation soapAction="urn:getCameras" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException">
+        <soap:fault name="CamServiceCamerasSamsungException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="endProcess">
+      <soap:operation soapAction="urn:endProcess" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException">
+        <soap:fault name="CamServiceCamerasSamsungException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createCamera">
+      <soap:operation soapAction="urn:createCamera" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException">
+        <soap:fault name="CamServiceCamerasSamsungException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCamera">
+      <soap:operation soapAction="urn:deleteCamera" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException">
+        <soap:fault name="CamServiceCamerasSamsungException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCamera">
+      <soap:operation soapAction="urn:getCamera" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException">
+        <soap:fault name="CamServiceCamerasSamsungException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="checkCameras">
+      <soap:operation soapAction="urn:checkCameras" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException">
+        <soap:fault name="CamServiceCamerasSamsungException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CamServiceSoap12Binding" type="tns:CamServicePortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="modifyCamera">
+      <soap12:operation soapAction="urn:modifyCamera" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException">
+        <soap12:fault name="CamServiceCamerasSamsungException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="initProcess">
+      <soap12:operation soapAction="urn:initProcess" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException">
+        <soap12:fault name="CamServiceCamerasSamsungException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateCameraFirmware">
+      <soap12:operation soapAction="urn:updateCameraFirmware" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException">
+        <soap12:fault name="CamServiceCamerasSamsungException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCameras">
+      <soap12:operation soapAction="urn:getCameras" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException">
+        <soap12:fault name="CamServiceCamerasSamsungException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="endProcess">
+      <soap12:operation soapAction="urn:endProcess" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException">
+        <soap12:fault name="CamServiceCamerasSamsungException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createCamera">
+      <soap12:operation soapAction="urn:createCamera" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException">
+        <soap12:fault name="CamServiceCamerasSamsungException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCamera">
+      <soap12:operation soapAction="urn:deleteCamera" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException">
+        <soap12:fault name="CamServiceCamerasSamsungException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getCamera">
+      <soap12:operation soapAction="urn:getCamera" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException">
+        <soap12:fault name="CamServiceCamerasSamsungException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="checkCameras">
+      <soap12:operation soapAction="urn:checkCameras" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="CamServiceCamerasSamsungException">
+        <soap12:fault name="CamServiceCamerasSamsungException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CamService">
+    <wsdl:port name="CamServiceHttpSoap12Endpoint" binding="tns:CamServiceSoap12Binding">
+      <soap12:address location="http://10.2.144.63:9763/services/CamService.CamServiceHttpSoap12Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="CamServiceHttpSoap11Endpoint" binding="tns:CamServiceSoap11Binding">
+      <soap:address location="http://10.2.144.63:9763/services/CamService.CamServiceHttpSoap11Endpoint/"/>
+    </wsdl:port>
+    <wsdl:port name="CamServiceHttpEndpoint" binding="tns:CamServiceHttpBinding">
+      <http:address location="http://10.2.144.63:9763/services/CamService.CamServiceHttpEndpoint/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

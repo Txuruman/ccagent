@@ -22,18 +22,19 @@
 		<hr class="tituloSeccion" />
 	</div>
 </div>
+<form name="keyWordInstallationForm"  role="form" >
 <div class="form-inline">
 		<div class="enlinea width29" id="IE8W201"> <!-- class="col-md-3 col-sm-3 col-xs-3" -->
 			<label><spring:message code="infoinstal.customerPassword"/></label>
-			<input class="form-control input-sm" type="text" ng-readonly="NotEditableKeys" ng-model="keys.customerPassword">
+			<input class="form-control input-sm" type="text" ng-readonly="NotEditableKeys" ng-model="keys.customerPassword" required>
 		</div>
 		<div class="enlinea width29" id="IE8W201">
 			<label><spring:message code="infoinstal.securitasPassword"/> </label>
-			<input class="form-control input-sm" type="text" ng-readonly="NotEditableKeys" ng-model="keys.securitasPassword">
+			<input class="form-control input-sm" type="text" ng-readonly="NotEditableKeys" ng-model="keys.securitasPassword" required>
 		</div>
 		<div class="enlinea width29" id="IE8W201">
 			<label><spring:message code="infoinstal.coercionPassword"/> </label>
-			<input class="form-control input-sm" type="text" ng-readonly="NotEditableKeys" ng-model="keys.coercionPassword">
+			<input class="form-control input-sm" type="text" ng-readonly="NotEditableKeys" ng-model="keys.coercionPassword" required>
 		</div>
 		<div class="enlinea width10" id="IE8W202" >
 			<div class="btn-group">
@@ -45,7 +46,7 @@
 	            </button>
 	    	</div>
 	    	<div class="btn-group">
-	    		<button type="button" class="btn btn-default  btn-sm" title="<spring:message code="boton.save"/>" ng-click="keysSave()" ng-show="EditingKeysButtons" >
+	    		<button type="submit" class="btn btn-default  btn-sm" title="<spring:message code="boton.save"/>" ng-click="(keyWordInstallationForm.$valid) ? keysSave() : muestraError=true" ng-show="EditingKeysButtons" >
 				    <span class="glyphicon glyphicon-ok colorSave" aria-hidden="true"></span>
 	            </button>
 				<button type="button" class="btn btn-default  btn-sm" title="<spring:message code="boton.cancel"/>"  ng-click="keysEditCancel()" ng-show="EditingKeysButtons">
@@ -54,4 +55,4 @@
 			</div>
 		</div>
 </div>
-	
+</form>	

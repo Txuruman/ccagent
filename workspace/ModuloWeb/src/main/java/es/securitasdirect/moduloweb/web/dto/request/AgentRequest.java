@@ -1,5 +1,6 @@
 package es.securitasdirect.moduloweb.web.dto.request;
 
+import es.securitasdirect.moduloweb.model.Agent;
 
 /**
  * 
@@ -8,20 +9,20 @@ package es.securitasdirect.moduloweb.web.dto.request;
  *	@param String agent
  */
 public class AgentRequest{
-	private String agent;
+	private Agent agent;
 	
-	public AgentRequest(String agent) {
+	public AgentRequest(Agent agent) {
 		super();
 		this.agent=agent;
 	}
 	
 	public AgentRequest(){}
 
-	public String getAgent() {
+	public Agent getAgent() {
 		return agent;
 	}
 
-	public void setAgent(String agent) {
+	public void setAgent(Agent agent) {
 		this.agent = agent;
 	}
 

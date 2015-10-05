@@ -1,0 +1,1832 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns0="http://ws.wso2.org/dataservice" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.wso2.org/dataservice">
+    <wsdl:documentation/>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://ws.wso2.org/dataservice">
+            <xs:element name="DataServiceFault" type="xs:string"/>
+            <xs:element name="REQUEST_STATUS" type="xs:string"/>
+            <xs:element name="DATA_SERVICE_RESPONSE">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:any minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inet_get_all_installation_ids">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="opc" nillable="true" type="xs:int"/>
+                        <xs:element name="ins_no_in" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_no_in" nillable="true" type="xs:string"/>
+                        <xs:element name="acc_no_in" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inet_get_all_installation_ids_results" type="ns0:inet_get_all_installation_ids_results"/>
+            <xs:complexType name="inet_get_all_installation_ids_results">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="inet_get_all_installation_ids_result" type="ns0:inet_get_all_installation_ids_result"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="inet_get_all_installation_ids_result">
+                <xs:sequence>
+                    <xs:element name="rc" nillable="true" type="xs:integer"/>
+                    <xs:element name="msg" nillable="true" type="xs:string"/>
+                    <xs:element name="deal_id" nillable="true" type="xs:string"/>
+                    <xs:element name="s_ins" nillable="true" type="xs:integer"/>
+                    <xs:element name="ins_no" nillable="true" type="xs:string"/>
+                    <xs:element name="s_ctr" nillable="true" type="xs:integer"/>
+                    <xs:element name="ctr_no" nillable="true" type="xs:string"/>
+                    <xs:element name="s_acc" nillable="true" type="xs:integer"/>
+                    <xs:element name="acc_no" nillable="true" type="xs:string"/>
+                    <xs:element name="mon_stat" nillable="true" type="xs:string"/>
+                    <xs:element name="ctr_stat" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="checkFee">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ins_no" nillable="true" type="xs:string"/>
+                        <xs:element name="item_cd" nillable="true" type="xs:string"/>
+                        <xs:element name="dateFrom" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="grpData" type="ns0:grpData"/>
+            <xs:complexType name="grpData">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="data" type="ns0:data"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="data">
+                <xs:sequence>
+                    <xs:element name="Ok" nillable="true" type="xs:integer"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="end_boxcar">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inet_cycle_fee_upd_op">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ctr" nillable="true" type="xs:int"/>
+                        <xs:element name="ctr_no" nillable="true" type="xs:string"/>
+                        <xs:element name="cdeal_id" nillable="true" type="xs:string"/>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                        <xs:element name="ins_no" nillable="true" type="xs:string"/>
+                        <xs:element name="ideal_id" nillable="true" type="xs:string"/>
+                        <xs:element name="fee_ix" nillable="true" type="xs:int"/>
+                        <xs:element name="rev_tp" nillable="true" type="xs:string"/>
+                        <xs:element name="abbr" nillable="true" type="xs:string"/>
+                        <xs:element name="text" nillable="true" type="xs:string"/>
+                        <xs:element name="cycle_per" nillable="true" type="xs:int"/>
+                        <xs:element name="cycle_day" nillable="true" type="xs:int"/>
+                        <xs:element name="fee_per" nillable="true" type="xs:int"/>
+                        <xs:element name="nfee" nillable="true" type="xs:double"/>
+                        <xs:element name="valid_fr_date" nillable="true" type="xs:string"/>
+                        <xs:element name="valid_to_date" nillable="true" type="xs:string"/>
+                        <xs:element name="cycle_date" nillable="true" type="xs:string"/>
+                        <xs:element name="tax_inc_flg" nillable="true" type="xs:string"/>
+                        <xs:element name="inv_thr" nillable="true" type="xs:string"/>
+                        <xs:element name="dire" nillable="true" type="xs:string"/>
+                        <xs:element name="item_cd" nillable="true" type="xs:string"/>
+                        <xs:element name="item_ct" nillable="true" type="xs:double"/>
+                        <xs:element name="user_id" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getEmailDataFromInstallation">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="instalacion" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getEmails" type="ns0:getEmails"/>
+            <xs:complexType name="getEmails">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="getEmail" type="ns0:getEmail"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getEmail">
+                <xs:sequence>
+                    <xs:element name="Email" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="inet_bl_sepa_chg">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_acc" nillable="true" type="xs:int"/>
+                        <xs:element name="s_pm" nillable="true" type="xs:int"/>
+                        <xs:element name="pay_mean_cd" nillable="true" type="xs:string"/>
+                        <xs:element name="umr" nillable="true" type="xs:string"/>
+                        <xs:element name="type" nillable="true" type="xs:string"/>
+                        <xs:element name="first" nillable="true" type="xs:string"/>
+                        <xs:element name="signed_date" nillable="true" type="xs:string"/>
+                        <xs:element name="cancelled" nillable="true" type="xs:string"/>
+                        <xs:element name="end_date" nillable="true" type="xs:string"/>
+                        <xs:element name="deb_name" nillable="true" type="xs:string"/>
+                        <xs:element name="deb_addr" nillable="true" type="xs:string"/>
+                        <xs:element name="deb_zip" nillable="true" type="xs:string"/>
+                        <xs:element name="deb_city" nillable="true" type="xs:string"/>
+                        <xs:element name="deb_country" nillable="true" type="xs:string"/>
+                        <xs:element name="deb_iban" nillable="true" type="xs:string"/>
+                        <xs:element name="deb_bic" nillable="true" type="xs:string"/>
+                        <xs:element name="crd_ident" nillable="true" type="xs:string"/>
+                        <xs:element name="crd_name" nillable="true" type="xs:string"/>
+                        <xs:element name="crd_addr" nillable="true" type="xs:string"/>
+                        <xs:element name="crd_zip" nillable="true" type="xs:string"/>
+                        <xs:element name="crd_city" nillable="true" type="xs:string"/>
+                        <xs:element name="crd_country" nillable="true" type="xs:string"/>
+                        <xs:element name="frq" nillable="true" type="xs:string"/>
+                        <xs:element name="maxamo" nillable="true" type="xs:string"/>
+                        <xs:element name="tran_type" nillable="true" type="xs:string"/>
+                        <xs:element name="misc1" nillable="true" type="xs:string"/>
+                        <xs:element name="misc2" nillable="true" type="xs:string"/>
+                        <xs:element name="misc3" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inet_ctr_extstat">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="sctr" nillable="true" type="xs:int"/>
+                        <xs:element name="sins" nillable="true" type="xs:int"/>
+                        <xs:element name="extstat" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_stat" nillable="true" type="xs:string"/>
+                        <xs:element name="user_id" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inetctrextstatupdresults" type="ns0:inetctrextstatupdresults"/>
+            <xs:complexType name="inetctrextstatupdresults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="inetctrextstatupdresult" type="ns0:inetctrextstatupdresult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="inetctrextstatupdresult">
+                <xs:sequence>
+                    <xs:element name="result" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="abort_boxcar">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inet_check_acc_no">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="acc_no" nillable="true" type="xs:string"/>
+                        <xs:element name="phone" nillable="true" type="xs:string"/>
+                        <xs:element name="opc" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="checkaccnoresults" type="ns0:checkaccnoresults"/>
+            <xs:complexType name="checkaccnoresults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="checkaccnoresult" type="ns0:checkaccnoresult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="checkaccnoresult">
+                <xs:sequence>
+                    <xs:element name="s_ins" nillable="true" type="xs:integer"/>
+                    <xs:element name="s_ctr" nillable="true" type="xs:integer"/>
+                    <xs:element name="s_acc" nillable="true" type="xs:integer"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="inet_bl_contracts_new">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                        <xs:element name="deal_id" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_no" nillable="true" type="xs:string"/>
+                        <xs:element name="acc_no" nillable="true" type="xs:string"/>
+                        <xs:element name="acc1_no" nillable="true" type="xs:string"/>
+                        <xs:element name="acc2_no" nillable="true" type="xs:string"/>
+                        <xs:element name="pay_term" nillable="true" type="xs:string"/>
+                        <xs:element name="pay_mean_cd" nillable="true" type="xs:string"/>
+                        <xs:element name="pay_mean_no" nillable="true" type="xs:string"/>
+                        <xs:element name="pay_mean_no2" nillable="true" type="xs:string"/>
+                        <xs:element name="pay_mean_no3" nillable="true" type="xs:string"/>
+                        <xs:element name="pay_mean_no4" nillable="true" type="xs:string"/>
+                        <xs:element name="pay_mean_date" nillable="true" type="xs:string"/>
+                        <xs:element name="tax_no" nillable="true" type="xs:string"/>
+                        <xs:element name="tax_no2" nillable="true" type="xs:string"/>
+                        <xs:element name="rem_flg" nillable="true" type="xs:string"/>
+                        <xs:element name="cycinv_flg" nillable="true" type="xs:string"/>
+                        <xs:element name="othinv_flg" nillable="true" type="xs:string"/>
+                        <xs:element name="prt_flgs" nillable="true" type="xs:string"/>
+                        <xs:element name="no_inter" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_date" nillable="true" type="xs:string"/>
+                        <xs:element name="exp_date" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_tp" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_months" nillable="true" type="xs:int"/>
+                        <xs:element name="ctr_ext" nillable="true" type="xs:int"/>
+                        <xs:element name="ctr_warnty" nillable="true" type="xs:int"/>
+                        <xs:element name="ctr_stat" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_stat_date" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_insv_date" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_adit_date" nillable="true" type="xs:string"/>
+                        <xs:element name="inhibit_date" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_tax_pf" nillable="true" type="xs:string"/>
+                        <xs:element name="tax_free_flg" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_brid" nillable="true" type="xs:string"/>
+                        <xs:element name="cycle_mon" nillable="true" type="xs:int"/>
+                        <xs:element name="cycle_day" nillable="true" type="xs:int"/>
+                        <xs:element name="cycle_frq" nillable="true" type="xs:int"/>
+                        <xs:element name="cb_grp1" nillable="true" type="xs:string"/>
+                        <xs:element name="cb_grp2" nillable="true" type="xs:string"/>
+                        <xs:element name="cd_grp1" nillable="true" type="xs:string"/>
+                        <xs:element name="cd_grp2" nillable="true" type="xs:string"/>
+                        <xs:element name="prc_list_grp" nillable="true" type="xs:string"/>
+                        <xs:element name="cd_gl_tp" nillable="true" type="xs:string"/>
+                        <xs:element name="ins_zip" nillable="true" type="xs:string"/>
+                        <xs:element name="bank" nillable="true" type="xs:string"/>
+                        <xs:element name="cb_miscflgs" nillable="true" type="xs:string"/>
+                        <xs:element name="cd_miscflgs" nillable="true" type="xs:string"/>
+                        <xs:element name="cb_cname" nillable="true" type="xs:string"/>
+                        <xs:element name="userid" nillable="true" type="xs:string"/>
+                        <xs:element name="miscno2" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inet_bl_contracts_chg">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                        <xs:element name="s_ctr" nillable="true" type="xs:int"/>
+                        <xs:element name="deal_id" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_no" nillable="true" type="xs:string"/>
+                        <xs:element name="acc_no" nillable="true" type="xs:string"/>
+                        <xs:element name="acc1_no" nillable="true" type="xs:string"/>
+                        <xs:element name="acc2_no" nillable="true" type="xs:string"/>
+                        <xs:element name="pay_term" nillable="true" type="xs:string"/>
+                        <xs:element name="pay_mean_cd" nillable="true" type="xs:string"/>
+                        <xs:element name="pay_mean_no" nillable="true" type="xs:string"/>
+                        <xs:element name="pay_mean_no2" nillable="true" type="xs:string"/>
+                        <xs:element name="pay_mean_no3" nillable="true" type="xs:string"/>
+                        <xs:element name="pay_mean_no4" nillable="true" type="xs:string"/>
+                        <xs:element name="pay_mean_date" nillable="true" type="xs:string"/>
+                        <xs:element name="tax_no" nillable="true" type="xs:string"/>
+                        <xs:element name="tax_no2" nillable="true" type="xs:string"/>
+                        <xs:element name="rem_flg" nillable="true" type="xs:string"/>
+                        <xs:element name="cycinv_flg" nillable="true" type="xs:string"/>
+                        <xs:element name="othinv_flg" nillable="true" type="xs:string"/>
+                        <xs:element name="prt_flgs" nillable="true" type="xs:string"/>
+                        <xs:element name="no_inter" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_date" nillable="true" type="xs:string"/>
+                        <xs:element name="exp_date" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_tp" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_months" nillable="true" type="xs:int"/>
+                        <xs:element name="ctr_ext" nillable="true" type="xs:int"/>
+                        <xs:element name="ctr_warnty" nillable="true" type="xs:int"/>
+                        <xs:element name="ctr_stat" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_stat_date" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_insv_date" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_adit_date" nillable="true" type="xs:string"/>
+                        <xs:element name="inhibit_date" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_tax_pf" nillable="true" type="xs:string"/>
+                        <xs:element name="tax_free_flg" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_brid" nillable="true" type="xs:string"/>
+                        <xs:element name="cycle_mon" nillable="true" type="xs:int"/>
+                        <xs:element name="cycle_day" nillable="true" type="xs:int"/>
+                        <xs:element name="cycle_frq" nillable="true" type="xs:int"/>
+                        <xs:element name="cb_grp1" nillable="true" type="xs:string"/>
+                        <xs:element name="cb_grp2" nillable="true" type="xs:string"/>
+                        <xs:element name="cd_grp1" nillable="true" type="xs:string"/>
+                        <xs:element name="cd_grp2" nillable="true" type="xs:string"/>
+                        <xs:element name="prc_list_grp" nillable="true" type="xs:string"/>
+                        <xs:element name="cd_gl_tp" nillable="true" type="xs:string"/>
+                        <xs:element name="ins_zip" nillable="true" type="xs:string"/>
+                        <xs:element name="bank" nillable="true" type="xs:string"/>
+                        <xs:element name="cb_miscflgs" nillable="true" type="xs:string"/>
+                        <xs:element name="cd_miscflgs" nillable="true" type="xs:string"/>
+                        <xs:element name="cb_cname" nillable="true" type="xs:string"/>
+                        <xs:element name="userid" nillable="true" type="xs:string"/>
+                        <xs:element name="miscno2" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inetblcontractschgresults" type="ns0:inetblcontractschgresults"/>
+            <xs:complexType name="inetblcontractschgresults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="inetblcontractschgresult" type="ns0:inetblcontractschgresult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="inetblcontractschgresult">
+                <xs:sequence>
+                    <xs:element name="return_code" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="GetInstallationInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ins_no" nillable="true" type="xs:string"/>
+                        <xs:element name="deal" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="resultsGetInstallationInfo" type="ns0:resultsGetInstallationInfo"/>
+            <xs:complexType name="resultsGetInstallationInfo">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="resultGetInstallationInfo" type="ns0:resultGetInstallationInfo"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="resultGetInstallationInfo">
+                <xs:sequence>
+                    <xs:element name="phone" nillable="true" type="xs:string"/>
+                    <xs:element name="language" nillable="true" type="xs:string"/>
+                    <xs:element name="email" nillable="true" type="xs:string"/>
+                    <xs:element name="contractDate" nillable="true" type="xs:string"/>
+                    <xs:element name="NIF" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="inet_bl_accounts_chg">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_acc" nillable="true" type="xs:int"/>
+                        <xs:element name="acc_no" nillable="true" type="xs:string"/>
+                        <xs:element name="ins_no" nillable="true" type="xs:string"/>
+                        <xs:element name="deal_id" nillable="true" type="xs:string"/>
+                        <xs:element name="fname" nillable="true" type="xs:string"/>
+                        <xs:element name="iname" nillable="true" type="xs:string"/>
+                        <xs:element name="tname" nillable="true" type="xs:string"/>
+                        <xs:element name="name" nillable="true" type="xs:string"/>
+                        <xs:element name="street1no1" nillable="true" type="xs:string"/>
+                        <xs:element name="street1" nillable="true" type="xs:string"/>
+                        <xs:element name="street1no2" nillable="true" type="xs:string"/>
+                        <xs:element name="street2" nillable="true" type="xs:string"/>
+                        <xs:element name="city" nillable="true" type="xs:string"/>
+                        <xs:element name="city2" nillable="true" type="xs:string"/>
+                        <xs:element name="state" nillable="true" type="xs:string"/>
+                        <xs:element name="zip" nillable="true" type="xs:string"/>
+                        <xs:element name="phone" nillable="true" type="xs:string"/>
+                        <xs:element name="fax" nillable="true" type="xs:string"/>
+                        <xs:element name="cname" nillable="true" type="xs:string"/>
+                        <xs:element name="cphone" nillable="true" type="xs:string"/>
+                        <xs:element name="cphtp" nillable="true" type="xs:string"/>
+                        <xs:element name="text_1" nillable="true" type="xs:string"/>
+                        <xs:element name="text_2" nillable="true" type="xs:string"/>
+                        <xs:element name="stat_flg" nillable="true" type="xs:string"/>
+                        <xs:element name="rem_pf" nillable="true" type="xs:string"/>
+                        <xs:element name="brid" nillable="true" type="xs:string"/>
+                        <xs:element name="grp_no" nillable="true" type="xs:string"/>
+                        <xs:element name="cross_str" nillable="true" type="xs:string"/>
+                        <xs:element name="alias" nillable="true" type="xs:string"/>
+                        <xs:element name="map_grid" nillable="true" type="xs:string"/>
+                        <xs:element name="phone2" nillable="true" type="xs:string"/>
+                        <xs:element name="grp_1" nillable="true" type="xs:string"/>
+                        <xs:element name="grp_2" nillable="true" type="xs:string"/>
+                        <xs:element name="gl_acc" nillable="true" type="xs:string"/>
+                        <xs:element name="taxno" nillable="true" type="xs:string"/>
+                        <xs:element name="pmean" nillable="true" type="xs:string"/>
+                        <xs:element name="pmean2" nillable="true" type="xs:string"/>
+                        <xs:element name="pmean3" nillable="true" type="xs:string"/>
+                        <xs:element name="pmean4" nillable="true" type="xs:string"/>
+                        <xs:element name="sbank" nillable="true" type="xs:string"/>
+                        <xs:element name="paycd" nillable="true" type="xs:string"/>
+                        <xs:element name="paydt" nillable="true" type="xs:string"/>
+                        <xs:element name="remflg" nillable="true" type="xs:string"/>
+                        <xs:element name="gltp" nillable="true" type="xs:string"/>
+                        <xs:element name="no_int_flg" nillable="true" type="xs:string"/>
+                        <xs:element name="lang" nillable="true" type="xs:string"/>
+                        <xs:element name="userid" nillable="true" type="xs:string"/>
+                        <xs:element name="fee_id" nillable="true" type="xs:string"/>
+                        <xs:element name="adeal_id" nillable="true" type="xs:string"/>
+                        <xs:element name="miscno2" nillable="true" type="xs:string"/>
+                        <xs:element name="email1" nillable="true" type="xs:string"/>
+                        <xs:element name="email2" nillable="true" type="xs:string"/>
+                        <xs:element name="miscflgs" nillable="true" type="xs:string"/>
+                        <xs:element name="cprof" nillable="true" type="xs:string"/>
+                        <xs:element name="rprof" nillable="true" type="xs:string"/>
+                        <xs:element name="sub_typ" nillable="true" type="xs:string"/>
+                        <xs:element name="miscno3" nillable="true" type="xs:string"/>
+                        <xs:element name="cred_score" nillable="true" type="xs:string"/>
+                        <xs:element name="cred_res" nillable="true" type="xs:string"/>
+                        <xs:element name="cred_ref" nillable="true" type="xs:string"/>
+                        <xs:element name="cred_date" nillable="true" type="xs:string"/>
+                        <xs:element name="debug" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inetblaccountschgresults" type="ns0:inetblaccountschgresults"/>
+            <xs:complexType name="inetblaccountschgresults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="inetblaccountschgresult" type="ns0:inetblaccountschgresult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="inetblaccountschgresult">
+                <xs:sequence>
+                    <xs:element name="return_code" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="begin_boxcar">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inet_bl_accounts_new">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="acc_no" nillable="true" type="xs:string"/>
+                        <xs:element name="ins_no" nillable="true" type="xs:string"/>
+                        <xs:element name="deal_id" nillable="true" type="xs:string"/>
+                        <xs:element name="fname" nillable="true" type="xs:string"/>
+                        <xs:element name="iname" nillable="true" type="xs:string"/>
+                        <xs:element name="tname" nillable="true" type="xs:string"/>
+                        <xs:element name="name" nillable="true" type="xs:string"/>
+                        <xs:element name="street1no1" nillable="true" type="xs:string"/>
+                        <xs:element name="street1" nillable="true" type="xs:string"/>
+                        <xs:element name="street1no2" nillable="true" type="xs:string"/>
+                        <xs:element name="street2" nillable="true" type="xs:string"/>
+                        <xs:element name="city" nillable="true" type="xs:string"/>
+                        <xs:element name="city2" nillable="true" type="xs:string"/>
+                        <xs:element name="state" nillable="true" type="xs:string"/>
+                        <xs:element name="zip" nillable="true" type="xs:string"/>
+                        <xs:element name="phone" nillable="true" type="xs:string"/>
+                        <xs:element name="fax" nillable="true" type="xs:string"/>
+                        <xs:element name="cname" nillable="true" type="xs:string"/>
+                        <xs:element name="cphone" nillable="true" type="xs:string"/>
+                        <xs:element name="cphtp" nillable="true" type="xs:string"/>
+                        <xs:element name="text_1" nillable="true" type="xs:string"/>
+                        <xs:element name="text_2" nillable="true" type="xs:string"/>
+                        <xs:element name="stat_flg" nillable="true" type="xs:string"/>
+                        <xs:element name="rem_pf" nillable="true" type="xs:string"/>
+                        <xs:element name="brid" nillable="true" type="xs:string"/>
+                        <xs:element name="grp_no" nillable="true" type="xs:string"/>
+                        <xs:element name="cross_str" nillable="true" type="xs:string"/>
+                        <xs:element name="alias" nillable="true" type="xs:string"/>
+                        <xs:element name="map_grid" nillable="true" type="xs:string"/>
+                        <xs:element name="phone2" nillable="true" type="xs:string"/>
+                        <xs:element name="grp_1" nillable="true" type="xs:string"/>
+                        <xs:element name="grp_2" nillable="true" type="xs:string"/>
+                        <xs:element name="gl_acc" nillable="true" type="xs:string"/>
+                        <xs:element name="taxno" nillable="true" type="xs:string"/>
+                        <xs:element name="pmean" nillable="true" type="xs:string"/>
+                        <xs:element name="pmean2" nillable="true" type="xs:string"/>
+                        <xs:element name="pmean3" nillable="true" type="xs:string"/>
+                        <xs:element name="pmean4" nillable="true" type="xs:string"/>
+                        <xs:element name="sbank" nillable="true" type="xs:string"/>
+                        <xs:element name="paycd" nillable="true" type="xs:string"/>
+                        <xs:element name="paydt" nillable="true" type="xs:string"/>
+                        <xs:element name="remflg" nillable="true" type="xs:string"/>
+                        <xs:element name="gltp" nillable="true" type="xs:string"/>
+                        <xs:element name="no_int_flg" nillable="true" type="xs:string"/>
+                        <xs:element name="lang" nillable="true" type="xs:string"/>
+                        <xs:element name="userid" nillable="true" type="xs:string"/>
+                        <xs:element name="rcmode" nillable="true" type="xs:int"/>
+                        <xs:element name="fee_id" nillable="true" type="xs:string"/>
+                        <xs:element name="adeal_id" nillable="true" type="xs:string"/>
+                        <xs:element name="miscno2" nillable="true" type="xs:string"/>
+                        <xs:element name="email1" nillable="true" type="xs:string"/>
+                        <xs:element name="email2" nillable="true" type="xs:string"/>
+                        <xs:element name="miscflgs" nillable="true" type="xs:string"/>
+                        <xs:element name="cprof" nillable="true" type="xs:string"/>
+                        <xs:element name="rprof" nillable="true" type="xs:string"/>
+                        <xs:element name="sub_typ" nillable="true" type="xs:string"/>
+                        <xs:element name="miscno3" nillable="true" type="xs:string"/>
+                        <xs:element name="cred_score" nillable="true" type="xs:string"/>
+                        <xs:element name="cred_res" nillable="true" type="xs:string"/>
+                        <xs:element name="cred_ref" nillable="true" type="xs:string"/>
+                        <xs:element name="cred_date" nillable="true" type="xs:string"/>
+                        <xs:element name="debug" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="pro_bl_contracts_add">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                        <xs:element name="s_ctr" nillable="true" type="xs:int"/>
+                        <xs:element name="deal_id" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_no" nillable="true" type="xs:string"/>
+                        <xs:element name="acc_no" nillable="true" type="xs:string"/>
+                        <xs:element name="acc1_no" nillable="true" type="xs:string"/>
+                        <xs:element name="acc2_no" nillable="true" type="xs:string"/>
+                        <xs:element name="pay_term" nillable="true" type="xs:string"/>
+                        <xs:element name="pay_mean_cd" nillable="true" type="xs:string"/>
+                        <xs:element name="pay_mean_no" nillable="true" type="xs:string"/>
+                        <xs:element name="pay_mean_date" nillable="true" type="xs:string"/>
+                        <xs:element name="tax_no" nillable="true" type="xs:string"/>
+                        <xs:element name="tax_no2" nillable="true" type="xs:string"/>
+                        <xs:element name="rem_flg" nillable="true" type="xs:string"/>
+                        <xs:element name="cycinv_flg" nillable="true" type="xs:string"/>
+                        <xs:element name="othinv_flg" nillable="true" type="xs:string"/>
+                        <xs:element name="prt_flgs" nillable="true" type="xs:string"/>
+                        <xs:element name="no_inter" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_date" nillable="true" type="xs:string"/>
+                        <xs:element name="exp_date" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_tp" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_months" nillable="true" type="xs:int"/>
+                        <xs:element name="ctr_ext" nillable="true" type="xs:int"/>
+                        <xs:element name="ctr_warnty" nillable="true" type="xs:int"/>
+                        <xs:element name="ctr_stat" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_stat_date" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_insv_date" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_adit_date" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_tax_pf" nillable="true" type="xs:string"/>
+                        <xs:element name="tax_free_flg" nillable="true" type="xs:string"/>
+                        <xs:element name="userid" nillable="true" type="xs:int"/>
+                        <xs:element name="ctr_brid" nillable="true" type="xs:string"/>
+                        <xs:element name="cycle_mon" nillable="true" type="xs:int"/>
+                        <xs:element name="cycle_day" nillable="true" type="xs:int"/>
+                        <xs:element name="cycle_frq" nillable="true" type="xs:int"/>
+                        <xs:element name="cb_grp1" nillable="true" type="xs:string"/>
+                        <xs:element name="cb_grp2" nillable="true" type="xs:string"/>
+                        <xs:element name="prc_list_grp" nillable="true" type="xs:string"/>
+                        <xs:element name="cd_grp1" nillable="true" type="xs:string"/>
+                        <xs:element name="cd_grp2" nillable="true" type="xs:string"/>
+                        <xs:element name="cd_gl_tp" nillable="true" type="xs:string"/>
+                        <xs:element name="bank" nillable="true" type="xs:string"/>
+                        <xs:element name="inhibit_date" nillable="true" type="xs:string"/>
+                        <xs:element name="ctr_pay_mean_no2" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inet_bl_sepa_link">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_acc" nillable="true" type="xs:int"/>
+                        <xs:element name="s_pm" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inet_bl_sepa_link_queryresults" type="ns0:inet_bl_sepa_link_queryresults"/>
+            <xs:complexType name="inet_bl_sepa_link_queryresults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="inet_bl_sepa_link_queryresult" type="ns0:inet_bl_sepa_link_queryresult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="inet_bl_sepa_link_queryresult">
+                <xs:sequence>
+                    <xs:element name="return_value" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="getBillingInformation">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="billingdataresults" type="ns0:billingdataresults"/>
+            <xs:complexType name="billingdataresults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="billingdataresult" type="ns0:billingdataresult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="billingdataresult">
+                <xs:sequence>
+                    <xs:element name="s_acc" nillable="true" type="xs:integer"/>
+                    <xs:element name="acc_no" nillable="true" type="xs:string"/>
+                    <xs:element name="acc_deal_id" nillable="true" type="xs:string"/>
+                    <xs:element name="acc_grp1" nillable="true" type="xs:string"/>
+                    <xs:element name="acc_grp2" nillable="true" type="xs:string"/>
+                    <xs:element name="acc_sub_typ" nillable="true" type="xs:string"/>
+                    <xs:element name="acc_s_br" nillable="true" type="xs:string"/>
+                    <xs:element name="s_ctr" nillable="true" type="xs:integer"/>
+                    <xs:element name="ctr_no" nillable="true" type="xs:string"/>
+                    <xs:element name="ctr_deal_id" nillable="true" type="xs:string"/>
+                    <xs:element name="ctr_grp1" nillable="true" type="xs:string"/>
+                    <xs:element name="ctr_grp2" nillable="true" type="xs:string"/>
+                    <xs:element name="ctr_sub_typ" nillable="true" type="xs:string"/>
+                    <xs:element name="ctr_s_br" nillable="true" type="xs:string"/>
+                    <xs:element name="s_ins" nillable="true" type="xs:integer"/>
+                    <xs:element name="ins_no" nillable="true" type="xs:string"/>
+                    <xs:element name="ins_deal_id" nillable="true" type="xs:string"/>
+                    <xs:element name="ins_sub_typ" nillable="true" type="xs:string"/>
+                    <xs:element name="ins_s_br" nillable="true" type="xs:string"/>
+                    <xs:element name="ctr_stat" nillable="true" type="xs:string"/>
+                    <xs:element name="tax_no" nillable="true" type="xs:string"/>
+                    <xs:element name="addresses_email1" nillable="true" type="xs:string"/>
+                    <xs:element name="pay_mean_no" nillable="true" type="xs:string"/>
+                    <xs:element name="pay_mean_no2" nillable="true" type="xs:string"/>
+                    <xs:element name="pay_mean_cd" nillable="true" type="xs:string"/>
+                    <xs:element name="name" nillable="true" type="xs:string"/>
+                    <xs:element name="fname" nillable="true" type="xs:string"/>
+                    <xs:element name="alias_name" nillable="true" type="xs:string"/>
+                    <xs:element name="street1" nillable="true" type="xs:string"/>
+                    <xs:element name="street1no1" nillable="true" type="xs:string"/>
+                    <xs:element name="street1no2" nillable="true" type="xs:string"/>
+                    <xs:element name="street2" nillable="true" type="xs:string"/>
+                    <xs:element name="zip" nillable="true" type="xs:string"/>
+                    <xs:element name="city" nillable="true" type="xs:string"/>
+                    <xs:element name="city2" nillable="true" type="xs:string"/>
+                    <xs:element ref="ns0:taxpfresults"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="taxpfresults" type="ns0:taxpfresults"/>
+            <xs:complexType name="taxpfresults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="taxpfresult" type="ns0:taxpfresult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="taxpfresult">
+                <xs:sequence>
+                    <xs:element name="tax_pf" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="getInstallationDataFromEmail">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="email" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getInstallations" type="ns0:getInstallations"/>
+            <xs:complexType name="getInstallations">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="getInstallation" type="ns0:getInstallation"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getInstallation">
+                <xs:sequence>
+                    <xs:element name="Installation" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="getBillingCycles">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getBillingCyclesResults" type="ns0:getBillingCyclesResults"/>
+            <xs:complexType name="getBillingCyclesResults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="getBillingCyclesResult" type="ns0:getBillingCyclesResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getBillingCyclesResult">
+                <xs:sequence>
+                    <xs:element name="cycle_day" nillable="true" type="xs:integer"/>
+                    <xs:element name="cycle_mon" nillable="true" type="xs:integer"/>
+                    <xs:element name="cycle_frq" nillable="true" type="xs:integer"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="inet_cycle_fees_get_op">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ctr" nillable="true" type="xs:int"/>
+                        <xs:element name="ctr_no" nillable="true" type="xs:string"/>
+                        <xs:element name="cdeal_id" nillable="true" type="xs:string"/>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                        <xs:element name="ins_no" nillable="true" type="xs:string"/>
+                        <xs:element name="ideal_id" nillable="true" type="xs:string"/>
+                        <xs:element name="mode" nillable="true" type="xs:int"/>
+                        <xs:element name="debug" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="inetCycleFeesGetResults" type="ns0:inetCycleFeesGetResults"/>
+            <xs:complexType name="inetCycleFeesGetResults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="inetCycleFeesGetResult" type="ns0:inetCycleFeesGetResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="inetCycleFeesGetResult">
+                <xs:sequence>
+                    <xs:element name="cf_min_fee_ix" nillable="true" type="xs:integer"/>
+                    <xs:element name="cf_fee_ix" nillable="true" type="xs:integer"/>
+                    <xs:element name="cf_valid_fr_date" nillable="true" type="xs:string"/>
+                    <xs:element name="cf_valid_to_date" nillable="true" type="xs:string"/>
+                    <xs:element name="cf_fee" nillable="true" type="xs:string"/>
+                    <xs:element name="cf_rev_tp" nillable="true" type="xs:string"/>
+                    <xs:element name="cf_fee_per" nillable="true" type="xs:integer"/>
+                    <xs:element name="cf_tax_inc_flg" nillable="true" type="xs:string"/>
+                    <xs:element name="cf_cycle_date" nillable="true" type="xs:string"/>
+                    <xs:element name="cf_cycle_day" nillable="true" type="xs:integer"/>
+                    <xs:element name="cf_cycle_per" nillable="true" type="xs:integer"/>
+                    <xs:element name="cf_text" nillable="true" type="xs:string"/>
+                    <xs:element name="cf_inv_thr" nillable="true" type="xs:string"/>
+                    <xs:element name="cf_abbr" nillable="true" type="xs:string"/>
+                    <xs:element name="cf_item_cd" nillable="true" type="xs:string"/>
+                    <xs:element name="cf_fee_incr" nillable="true" type="xs:string"/>
+                    <xs:element name="cf_item_ct" nillable="true" type="xs:double"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="ctr_status_get">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="sins" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ctrstatusgetresults" type="ns0:ctrstatusgetresults"/>
+            <xs:complexType name="ctrstatusgetresults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="ctrstatusgetresult" type="ns0:ctrstatusgetresult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ctrstatusgetresult">
+                <xs:sequence>
+                    <xs:element name="ctr_stat" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="getInternalPaymentCode">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_acc" nillable="true" type="xs:int"/>
+                        <xs:element name="pay_mean_cd" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getInternalPaymentCodeResults" type="ns0:getInternalPaymentCodeResults"/>
+            <xs:complexType name="getInternalPaymentCodeResults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="getInternalPaymentCodeResult" type="ns0:getInternalPaymentCodeResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getInternalPaymentCodeResult">
+                <xs:sequence>
+                    <xs:element name="pm" nillable="true" type="xs:integer"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="inet_cycle_fee_new">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="item_cd" nillable="true" type="xs:string"/>
+                        <xs:element name="ins_no" nillable="true" type="xs:string"/>
+                        <xs:element name="country" nillable="true" type="xs:string"/>
+                        <xs:element name="text" nillable="true" type="xs:string"/>
+                        <xs:element name="fee" nillable="true" type="xs:double"/>
+                        <xs:element name="fromDate" nillable="true" type="xs:string"/>
+                        <xs:element name="toDate" nillable="true" type="xs:string"/>
+                        <xs:element name="userid" nillable="true" type="xs:string"/>
+                        <xs:element name="taxes" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getContractsByPayMeanNo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="PAY_MEAN_NO" nillable="true" type="xs:string"/>
+                        <xs:element name="PAY_MEAN_NO2" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getContractsByTaxnoResults" type="ns0:getContractsByTaxnoResults"/>
+            <xs:complexType name="getContractsByTaxnoResults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="getContractsByTaxnoResult" type="ns0:getContractsByTaxnoResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getContractsByTaxnoResult">
+                <xs:sequence>
+                    <xs:element name="acc_no" nillable="true" type="xs:string"/>
+                    <xs:element name="name_comb" nillable="true" type="xs:string"/>
+                    <xs:element name="pay_mean_no" nillable="true" type="xs:string"/>
+                    <xs:element name="pay_mean_no2" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="inet_bl_accounts_newRequest">
+        <wsdl:part name="parameters" element="ns0:inet_bl_accounts_new"/>
+    </wsdl:message>
+    <wsdl:message name="getBillingInformationRequest">
+        <wsdl:part name="parameters" element="ns0:getBillingInformation"/>
+    </wsdl:message>
+    <wsdl:message name="getBillingInformationResponse">
+        <wsdl:part name="parameters" element="ns0:billingdataresults"/>
+    </wsdl:message>
+    <wsdl:message name="DataServiceFault">
+        <wsdl:part name="parameters" element="ns0:DataServiceFault"/>
+    </wsdl:message>
+    <wsdl:message name="inet_bl_sepa_linkRequest">
+        <wsdl:part name="parameters" element="ns0:inet_bl_sepa_link"/>
+    </wsdl:message>
+    <wsdl:message name="inet_bl_sepa_linkResponse">
+        <wsdl:part name="parameters" element="ns0:inet_bl_sepa_link_queryresults"/>
+    </wsdl:message>
+    <wsdl:message name="abort_boxcarRequest">
+        <wsdl:part name="parameters" element="ns0:abort_boxcar"/>
+    </wsdl:message>
+    <wsdl:message name="getBillingCyclesRequest">
+        <wsdl:part name="parameters" element="ns0:getBillingCycles"/>
+    </wsdl:message>
+    <wsdl:message name="getBillingCyclesResponse">
+        <wsdl:part name="parameters" element="ns0:getBillingCyclesResults"/>
+    </wsdl:message>
+    <wsdl:message name="pro_bl_contracts_addRequest">
+        <wsdl:part name="parameters" element="ns0:pro_bl_contracts_add"/>
+    </wsdl:message>
+    <wsdl:message name="inet_bl_contracts_chgRequest">
+        <wsdl:part name="parameters" element="ns0:inet_bl_contracts_chg"/>
+    </wsdl:message>
+    <wsdl:message name="inet_bl_contracts_chgResponse">
+        <wsdl:part name="parameters" element="ns0:inetblcontractschgresults"/>
+    </wsdl:message>
+    <wsdl:message name="inet_check_acc_noRequest">
+        <wsdl:part name="parameters" element="ns0:inet_check_acc_no"/>
+    </wsdl:message>
+    <wsdl:message name="inet_check_acc_noResponse">
+        <wsdl:part name="parameters" element="ns0:checkaccnoresults"/>
+    </wsdl:message>
+    <wsdl:message name="getEmailDataFromInstallationRequest">
+        <wsdl:part name="parameters" element="ns0:getEmailDataFromInstallation"/>
+    </wsdl:message>
+    <wsdl:message name="getEmailDataFromInstallationResponse">
+        <wsdl:part name="parameters" element="ns0:getEmails"/>
+    </wsdl:message>
+    <wsdl:message name="checkFeeRequest">
+        <wsdl:part name="parameters" element="ns0:checkFee"/>
+    </wsdl:message>
+    <wsdl:message name="checkFeeResponse">
+        <wsdl:part name="parameters" element="ns0:grpData"/>
+    </wsdl:message>
+    <wsdl:message name="inet_cycle_fees_get_opRequest">
+        <wsdl:part name="parameters" element="ns0:inet_cycle_fees_get_op"/>
+    </wsdl:message>
+    <wsdl:message name="inet_cycle_fees_get_opResponse">
+        <wsdl:part name="parameters" element="ns0:inetCycleFeesGetResults"/>
+    </wsdl:message>
+    <wsdl:message name="begin_boxcarRequest">
+        <wsdl:part name="parameters" element="ns0:begin_boxcar"/>
+    </wsdl:message>
+    <wsdl:message name="end_boxcarRequest">
+        <wsdl:part name="parameters" element="ns0:end_boxcar"/>
+    </wsdl:message>
+    <wsdl:message name="end_boxcarResponse">
+        <wsdl:part name="parameters" element="ns0:DATA_SERVICE_RESPONSE"/>
+    </wsdl:message>
+    <wsdl:message name="getContractsByPayMeanNoRequest">
+        <wsdl:part name="parameters" element="ns0:getContractsByPayMeanNo"/>
+    </wsdl:message>
+    <wsdl:message name="getContractsByPayMeanNoResponse">
+        <wsdl:part name="parameters" element="ns0:getContractsByTaxnoResults"/>
+    </wsdl:message>
+    <wsdl:message name="inet_bl_accounts_chgRequest">
+        <wsdl:part name="parameters" element="ns0:inet_bl_accounts_chg"/>
+    </wsdl:message>
+    <wsdl:message name="inet_bl_accounts_chgResponse">
+        <wsdl:part name="parameters" element="ns0:inetblaccountschgresults"/>
+    </wsdl:message>
+    <wsdl:message name="inet_ctr_extstatRequest">
+        <wsdl:part name="parameters" element="ns0:inet_ctr_extstat"/>
+    </wsdl:message>
+    <wsdl:message name="inet_ctr_extstatResponse">
+        <wsdl:part name="parameters" element="ns0:inetctrextstatupdresults"/>
+    </wsdl:message>
+    <wsdl:message name="getInstallationDataFromEmailRequest">
+        <wsdl:part name="parameters" element="ns0:getInstallationDataFromEmail"/>
+    </wsdl:message>
+    <wsdl:message name="getInstallationDataFromEmailResponse">
+        <wsdl:part name="parameters" element="ns0:getInstallations"/>
+    </wsdl:message>
+    <wsdl:message name="getInternalPaymentCodeRequest">
+        <wsdl:part name="parameters" element="ns0:getInternalPaymentCode"/>
+    </wsdl:message>
+    <wsdl:message name="getInternalPaymentCodeResponse">
+        <wsdl:part name="parameters" element="ns0:getInternalPaymentCodeResults"/>
+    </wsdl:message>
+    <wsdl:message name="inet_cycle_fee_upd_opRequest">
+        <wsdl:part name="parameters" element="ns0:inet_cycle_fee_upd_op"/>
+    </wsdl:message>
+    <wsdl:message name="inet_cycle_fee_upd_opResponse">
+        <wsdl:part name="parameters" element="ns0:REQUEST_STATUS"/>
+    </wsdl:message>
+    <wsdl:message name="inet_cycle_fee_newRequest">
+        <wsdl:part name="parameters" element="ns0:inet_cycle_fee_new"/>
+    </wsdl:message>
+    <wsdl:message name="inet_cycle_fee_newResponse">
+        <wsdl:part name="parameters" element="ns0:REQUEST_STATUS"/>
+    </wsdl:message>
+    <wsdl:message name="ctr_status_getRequest">
+        <wsdl:part name="parameters" element="ns0:ctr_status_get"/>
+    </wsdl:message>
+    <wsdl:message name="ctr_status_getResponse">
+        <wsdl:part name="parameters" element="ns0:ctrstatusgetresults"/>
+    </wsdl:message>
+    <wsdl:message name="inet_get_all_installation_idsRequest">
+        <wsdl:part name="parameters" element="ns0:inet_get_all_installation_ids"/>
+    </wsdl:message>
+    <wsdl:message name="inet_get_all_installation_idsResponse">
+        <wsdl:part name="parameters" element="ns0:inet_get_all_installation_ids_results"/>
+    </wsdl:message>
+    <wsdl:message name="inet_bl_sepa_chgRequest">
+        <wsdl:part name="parameters" element="ns0:inet_bl_sepa_chg"/>
+    </wsdl:message>
+    <wsdl:message name="inet_bl_contracts_newRequest">
+        <wsdl:part name="parameters" element="ns0:inet_bl_contracts_new"/>
+    </wsdl:message>
+    <wsdl:message name="GetInstallationInfoRequest">
+        <wsdl:part name="parameters" element="ns0:GetInstallationInfo"/>
+    </wsdl:message>
+    <wsdl:message name="GetInstallationInfoResponse">
+        <wsdl:part name="parameters" element="ns0:resultsGetInstallationInfo"/>
+    </wsdl:message>
+    <wsdl:portType name="SP_InstallationBillDataPortType">
+        <wsdl:operation name="inet_bl_accounts_new">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:inet_bl_accounts_newRequest" wsaw:Action="urn:inet_bl_accounts_new"/>
+        </wsdl:operation>
+        <wsdl:operation name="getBillingInformation">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:getBillingInformationRequest" wsaw:Action="urn:getBillingInformation"/>
+            <wsdl:output message="ns0:getBillingInformationResponse" wsaw:Action="urn:getBillingInformationResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getBillingInformationDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_sepa_link">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:inet_bl_sepa_linkRequest" wsaw:Action="urn:inet_bl_sepa_link"/>
+            <wsdl:output message="ns0:inet_bl_sepa_linkResponse" wsaw:Action="urn:inet_bl_sepa_linkResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_bl_sepa_linkDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="abort_boxcar">
+            <wsdl:documentation>Control operation for aborting a boxcarring session</wsdl:documentation>
+            <wsdl:input message="ns0:abort_boxcarRequest" wsaw:Action="urn:abort_boxcar"/>
+        </wsdl:operation>
+        <wsdl:operation name="getBillingCycles">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:getBillingCyclesRequest" wsaw:Action="urn:getBillingCycles"/>
+            <wsdl:output message="ns0:getBillingCyclesResponse" wsaw:Action="urn:getBillingCyclesResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getBillingCyclesDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="pro_bl_contracts_add">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:pro_bl_contracts_addRequest" wsaw:Action="urn:pro_bl_contracts_add"/>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_contracts_chg">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:inet_bl_contracts_chgRequest" wsaw:Action="urn:inet_bl_contracts_chg"/>
+            <wsdl:output message="ns0:inet_bl_contracts_chgResponse" wsaw:Action="urn:inet_bl_contracts_chgResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_bl_contracts_chgDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="inet_check_acc_no">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:inet_check_acc_noRequest" wsaw:Action="urn:inet_check_acc_no"/>
+            <wsdl:output message="ns0:inet_check_acc_noResponse" wsaw:Action="urn:inet_check_acc_noResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_check_acc_noDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getEmailDataFromInstallation">
+            <wsdl:documentation>                       Obtiene el correo de billing de la instalación             &#xd;                                    </wsdl:documentation>
+            <wsdl:input message="ns0:getEmailDataFromInstallationRequest" wsaw:Action="urn:getEmailDataFromInstallation"/>
+            <wsdl:output message="ns0:getEmailDataFromInstallationResponse" wsaw:Action="urn:getEmailDataFromInstallationResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getEmailDataFromInstallationDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="checkFee">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:checkFeeRequest" wsaw:Action="urn:checkFee"/>
+            <wsdl:output message="ns0:checkFeeResponse" wsaw:Action="urn:checkFeeResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:checkFeeDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="inet_cycle_fees_get_op">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:inet_cycle_fees_get_opRequest" wsaw:Action="urn:inet_cycle_fees_get_op"/>
+            <wsdl:output message="ns0:inet_cycle_fees_get_opResponse" wsaw:Action="urn:inet_cycle_fees_get_opResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_cycle_fees_get_opDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="begin_boxcar">
+            <wsdl:documentation>Control operation for beginning a boxcarring session</wsdl:documentation>
+            <wsdl:input message="ns0:begin_boxcarRequest" wsaw:Action="urn:begin_boxcar"/>
+        </wsdl:operation>
+        <wsdl:operation name="end_boxcar">
+            <wsdl:documentation>Control operation for ending a boxcarring session</wsdl:documentation>
+            <wsdl:input message="ns0:end_boxcarRequest" wsaw:Action="urn:end_boxcar"/>
+            <wsdl:output message="ns0:end_boxcarResponse" wsaw:Action="urn:end_boxcarResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:end_boxcarDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getContractsByPayMeanNo">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:getContractsByPayMeanNoRequest" wsaw:Action="urn:getContractsByPayMeanNo"/>
+            <wsdl:output message="ns0:getContractsByPayMeanNoResponse" wsaw:Action="urn:getContractsByPayMeanNoResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getContractsByPayMeanNoDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_accounts_chg">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:inet_bl_accounts_chgRequest" wsaw:Action="urn:inet_bl_accounts_chg"/>
+            <wsdl:output message="ns0:inet_bl_accounts_chgResponse" wsaw:Action="urn:inet_bl_accounts_chgResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_bl_accounts_chgDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="inet_ctr_extstat">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:inet_ctr_extstatRequest" wsaw:Action="urn:inet_ctr_extstat"/>
+            <wsdl:output message="ns0:inet_ctr_extstatResponse" wsaw:Action="urn:inet_ctr_extstatResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_ctr_extstatDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getInstallationDataFromEmail">
+            <wsdl:documentation>        Obtiene la lista de Instalaciones de billing y monitoring a través de su email                            &#xd;                                    </wsdl:documentation>
+            <wsdl:input message="ns0:getInstallationDataFromEmailRequest" wsaw:Action="urn:getInstallationDataFromEmail"/>
+            <wsdl:output message="ns0:getInstallationDataFromEmailResponse" wsaw:Action="urn:getInstallationDataFromEmailResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getInstallationDataFromEmailDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getInternalPaymentCode">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:getInternalPaymentCodeRequest" wsaw:Action="urn:getInternalPaymentCode"/>
+            <wsdl:output message="ns0:getInternalPaymentCodeResponse" wsaw:Action="urn:getInternalPaymentCodeResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getInternalPaymentCodeDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="inet_cycle_fee_upd_op">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:inet_cycle_fee_upd_opRequest" wsaw:Action="urn:inet_cycle_fee_upd_op"/>
+            <wsdl:output message="ns0:inet_cycle_fee_upd_opResponse" wsaw:Action="urn:inet_cycle_fee_upd_opResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_cycle_fee_upd_opDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="inet_cycle_fee_new">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:inet_cycle_fee_newRequest" wsaw:Action="urn:inet_cycle_fee_new"/>
+            <wsdl:output message="ns0:inet_cycle_fee_newResponse" wsaw:Action="urn:inet_cycle_fee_newResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_cycle_fee_newDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="ctr_status_get">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:ctr_status_getRequest" wsaw:Action="urn:ctr_status_get"/>
+            <wsdl:output message="ns0:ctr_status_getResponse" wsaw:Action="urn:ctr_status_getResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:ctr_status_getDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="inet_get_all_installation_ids">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:inet_get_all_installation_idsRequest" wsaw:Action="urn:inet_get_all_installation_ids"/>
+            <wsdl:output message="ns0:inet_get_all_installation_idsResponse" wsaw:Action="urn:inet_get_all_installation_idsResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_get_all_installation_idsDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_sepa_chg">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:inet_bl_sepa_chgRequest" wsaw:Action="urn:inet_bl_sepa_chg"/>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_contracts_new">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:inet_bl_contracts_newRequest" wsaw:Action="urn:inet_bl_contracts_new"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetInstallationInfo">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:GetInstallationInfoRequest" wsaw:Action="urn:GetInstallationInfo"/>
+            <wsdl:output message="ns0:GetInstallationInfoResponse" wsaw:Action="urn:GetInstallationInfoResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:GetInstallationInfoDataServiceFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SP_InstallationBillDataSOAP11Binding" type="ns0:SP_InstallationBillDataPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="inet_bl_accounts_new">
+            <soap:operation soapAction="urn:inet_bl_accounts_new" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getBillingInformation">
+            <soap:operation soapAction="urn:getBillingInformation" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_sepa_link">
+            <soap:operation soapAction="urn:inet_bl_sepa_link" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="abort_boxcar">
+            <soap:operation soapAction="urn:abort_boxcar" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getBillingCycles">
+            <soap:operation soapAction="urn:getBillingCycles" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="pro_bl_contracts_add">
+            <soap:operation soapAction="urn:pro_bl_contracts_add" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_contracts_chg">
+            <soap:operation soapAction="urn:inet_bl_contracts_chg" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_check_acc_no">
+            <soap:operation soapAction="urn:inet_check_acc_no" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getEmailDataFromInstallation">
+            <soap:operation soapAction="urn:getEmailDataFromInstallation" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="checkFee">
+            <soap:operation soapAction="urn:checkFee" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_cycle_fees_get_op">
+            <soap:operation soapAction="urn:inet_cycle_fees_get_op" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="begin_boxcar">
+            <soap:operation soapAction="urn:begin_boxcar" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="end_boxcar">
+            <soap:operation soapAction="urn:end_boxcar" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getContractsByPayMeanNo">
+            <soap:operation soapAction="urn:getContractsByPayMeanNo" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_accounts_chg">
+            <soap:operation soapAction="urn:inet_bl_accounts_chg" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_ctr_extstat">
+            <soap:operation soapAction="urn:inet_ctr_extstat" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getInstallationDataFromEmail">
+            <soap:operation soapAction="urn:getInstallationDataFromEmail" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getInternalPaymentCode">
+            <soap:operation soapAction="urn:getInternalPaymentCode" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_cycle_fee_upd_op">
+            <soap:operation soapAction="urn:inet_cycle_fee_upd_op" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_cycle_fee_new">
+            <soap:operation soapAction="urn:inet_cycle_fee_new" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="ctr_status_get">
+            <soap:operation soapAction="urn:ctr_status_get" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_get_all_installation_ids">
+            <soap:operation soapAction="urn:inet_get_all_installation_ids" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_sepa_chg">
+            <soap:operation soapAction="urn:inet_bl_sepa_chg" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_contracts_new">
+            <soap:operation soapAction="urn:inet_bl_contracts_new" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="GetInstallationInfo">
+            <soap:operation soapAction="urn:GetInstallationInfo" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="SP_InstallationBillDataSOAP12Binding" type="ns0:SP_InstallationBillDataPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="inet_bl_accounts_new">
+            <soap12:operation soapAction="urn:inet_bl_accounts_new" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getBillingInformation">
+            <soap12:operation soapAction="urn:getBillingInformation" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_sepa_link">
+            <soap12:operation soapAction="urn:inet_bl_sepa_link" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="abort_boxcar">
+            <soap12:operation soapAction="urn:abort_boxcar" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getBillingCycles">
+            <soap12:operation soapAction="urn:getBillingCycles" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="pro_bl_contracts_add">
+            <soap12:operation soapAction="urn:pro_bl_contracts_add" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_contracts_chg">
+            <soap12:operation soapAction="urn:inet_bl_contracts_chg" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_check_acc_no">
+            <soap12:operation soapAction="urn:inet_check_acc_no" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getEmailDataFromInstallation">
+            <soap12:operation soapAction="urn:getEmailDataFromInstallation" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="checkFee">
+            <soap12:operation soapAction="urn:checkFee" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_cycle_fees_get_op">
+            <soap12:operation soapAction="urn:inet_cycle_fees_get_op" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="begin_boxcar">
+            <soap12:operation soapAction="urn:begin_boxcar" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="end_boxcar">
+            <soap12:operation soapAction="urn:end_boxcar" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getContractsByPayMeanNo">
+            <soap12:operation soapAction="urn:getContractsByPayMeanNo" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_accounts_chg">
+            <soap12:operation soapAction="urn:inet_bl_accounts_chg" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_ctr_extstat">
+            <soap12:operation soapAction="urn:inet_ctr_extstat" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getInstallationDataFromEmail">
+            <soap12:operation soapAction="urn:getInstallationDataFromEmail" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getInternalPaymentCode">
+            <soap12:operation soapAction="urn:getInternalPaymentCode" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_cycle_fee_upd_op">
+            <soap12:operation soapAction="urn:inet_cycle_fee_upd_op" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_cycle_fee_new">
+            <soap12:operation soapAction="urn:inet_cycle_fee_new" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="ctr_status_get">
+            <soap12:operation soapAction="urn:ctr_status_get" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_get_all_installation_ids">
+            <soap12:operation soapAction="urn:inet_get_all_installation_ids" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_sepa_chg">
+            <soap12:operation soapAction="urn:inet_bl_sepa_chg" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_contracts_new">
+            <soap12:operation soapAction="urn:inet_bl_contracts_new" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="GetInstallationInfo">
+            <soap12:operation soapAction="urn:GetInstallationInfo" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="SP_InstallationBillDataHttpBinding" type="ns0:SP_InstallationBillDataPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="inet_bl_accounts_new">
+            <http:operation location="inet_bl_accounts_new"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getBillingInformation">
+            <http:operation location="getBillingInformation"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_sepa_link">
+            <http:operation location="inet_bl_sepa_link"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="abort_boxcar">
+            <http:operation location="abort_boxcar"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getBillingCycles">
+            <http:operation location="getBillingCycles"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="pro_bl_contracts_add">
+            <http:operation location="pro_bl_contracts_add"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_contracts_chg">
+            <http:operation location="inet_bl_contracts_chg"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="inet_check_acc_no">
+            <http:operation location="inet_check_acc_no"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getEmailDataFromInstallation">
+            <http:operation location="getEmailDataFromInstallation"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="checkFee">
+            <http:operation location="checkFee"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="inet_cycle_fees_get_op">
+            <http:operation location="inet_cycle_fees_get_op"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="begin_boxcar">
+            <http:operation location="begin_boxcar"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="end_boxcar">
+            <http:operation location="end_boxcar"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getContractsByPayMeanNo">
+            <http:operation location="getContractsByPayMeanNo"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_accounts_chg">
+            <http:operation location="inet_bl_accounts_chg"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="inet_ctr_extstat">
+            <http:operation location="inet_ctr_extstat"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getInstallationDataFromEmail">
+            <http:operation location="getInstallationDataFromEmail"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getInternalPaymentCode">
+            <http:operation location="getInternalPaymentCode"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="inet_cycle_fee_upd_op">
+            <http:operation location="inet_cycle_fee_upd_op"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="inet_cycle_fee_new">
+            <http:operation location="inet_cycle_fee_new"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ctr_status_get">
+            <http:operation location="ctr_status_get"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="inet_get_all_installation_ids">
+            <http:operation location="inet_get_all_installation_ids"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_sepa_chg">
+            <http:operation location="inet_bl_sepa_chg"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_contracts_new">
+            <http:operation location="inet_bl_contracts_new"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="GetInstallationInfo">
+            <http:operation location="GetInstallationInfo"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="SP_InstallationBillData">
+        <wsdl:port name="SOAP11Endpoint" binding="ns0:SP_InstallationBillDataSOAP11Binding">
+            <soap:address location="http://10.2.144.63:9763/services/SP_InstallationBillData.SOAP11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="LOCALSOAP11Endpoint" binding="ns0:SP_InstallationBillDataSOAP11Binding">
+            <soap:address location="local:///services/SP_InstallationBillData.LOCALSOAP11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="SecureSOAP11Endpoint" binding="ns0:SP_InstallationBillDataSOAP11Binding">
+            <soap:address location="https://10.2.144.63:9443/services/SP_InstallationBillData.SecureSOAP11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="LOCALSOAP12Endpoint" binding="ns0:SP_InstallationBillDataSOAP12Binding">
+            <soap12:address location="local:///services/SP_InstallationBillData.LOCALSOAP12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="SecureSOAP12Endpoint" binding="ns0:SP_InstallationBillDataSOAP12Binding">
+            <soap12:address location="https://10.2.144.63:9443/services/SP_InstallationBillData.SecureSOAP12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="SOAP12Endpoint" binding="ns0:SP_InstallationBillDataSOAP12Binding">
+            <soap12:address location="http://10.2.144.63:9763/services/SP_InstallationBillData.SOAP12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="HTTPEndpoint" binding="ns0:SP_InstallationBillDataHttpBinding">
+            <http:address location="http://10.2.144.63:9763/services/SP_InstallationBillData.HTTPEndpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="SecureHTTPEndpoint" binding="ns0:SP_InstallationBillDataHttpBinding">
+            <http:address location="https://10.2.144.63:9443/services/SP_InstallationBillData.SecureHTTPEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

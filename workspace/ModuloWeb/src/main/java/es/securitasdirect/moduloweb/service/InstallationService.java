@@ -1,21 +1,23 @@
 package es.securitasdirect.moduloweb.service;
 
-import es.securitasdirect.moduloweb.exceptions.BusinessException;
-import es.securitasdirect.moduloweb.model.ActionPlan;
-import es.securitasdirect.moduloweb.model.Agent;
-import es.securitasdirect.moduloweb.model.Cuote;
-import es.securitasdirect.moduloweb.model.DirectAccess;
-import es.securitasdirect.moduloweb.model.DummyGenerator;
-import es.securitasdirect.moduloweb.model.InstallationData;
-import es.securitasdirect.moduloweb.model.Phone;
-import es.securitasdirect.moduloweb.service.model.SearchInstallationResult;
-import es.securitasdirect.moduloweb.web.dto.request.SearchInstallationRequest;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Singleton;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.wso2.ws.dataservice.DataServiceFault;
 import org.wso2.ws.dataservice.GetAlarmIdsBasicInfoResult;
+import org.wso2.ws.dataservice.GetEmail;
+import org.wso2.ws.dataservice.GetInstallation;
 import org.wso2.ws.dataservice.GetMonitoringStatusResult;
+import org.wso2.ws.dataservice.GetTieneCamara;
+import org.wso2.ws.dataservice.Inetaplangetcontactresult;
 import org.wso2.ws.dataservice.Inetcalllistgetcontresult;
 import org.wso2.ws.dataservice.Inetcodewordchangeresult;
 import org.wso2.ws.dataservice.Inetinstallationupdresult;
@@ -23,15 +25,19 @@ import org.wso2.ws.dataservice.Installation;
 import org.wso2.ws.dataservice.Mainstallationdataresult;
 import org.wso2.ws.dataservice.ResultcheckInstallationNumber;
 import org.wso2.ws.dataservice.SPIBSActionPlanDataPortType;
+import org.wso2.ws.dataservice.SPInstallationBillDataPortType;
 import org.wso2.ws.dataservice.SPInstallationMonDataPortType;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Singleton;
+import com.securitasdirect.ws.common.response.xsd.GetCamerasResultResponse;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
+import es.securitasdirect.moduloweb.exceptions.BusinessException;
+import es.securitasdirect.moduloweb.model.ActionPlan;
+import es.securitasdirect.moduloweb.model.Agent;
+import es.securitasdirect.moduloweb.model.Audit;
+import es.securitasdirect.moduloweb.model.InstallationData;
+import es.securitasdirect.moduloweb.model.Phone;
+import es.securitasdirect.moduloweb.service.model.SearchInstallationResult;
+import ws.es.securitasdirect.com.CamServicePortType;
 
 /**
  * Service to access the Installation Info
@@ -46,9 +52,22 @@ public class InstallationService {
 	@Inject
 	protected SPIBSActionPlanDataPortType spIBSActionPlanData;
 	
+	@Inject
+	protected AuditService auditService;
+	
+	@Inject
+	protected SPInstallationBillDataPortType spInstallationBillDataPortType;
+	
+	@Inject
+	protected CamServicePortType camServicePortType;
+	
     private static final Logger LOGGER = LoggerFactory.getLogger(InstallationService.class);
 
-
+    /**Crear comentario */
+    public void crearComentario(InstallationData installation, Agent agent, String event) {
+    	spInstallationMonData.setCrearComentario(agent.getAgentIBS(), event, "BINS", installation.getInstallationNumber(), event, installation.getDealer());
+    }
+    
     /**
      * Obtener instalación por installationNumber
      * @param installationNumber
@@ -61,7 +80,24 @@ public class InstallationService {
     	try {
     		//TODO:BORRAR
 //			installationNumber="1087817";
+    		
+			/**
+			 * WS CheckInstallationNumber
+			 * in: country, sins, instalationNumber
+			 * out: resultcheckInstallationNumber
+			 */
+			List<ResultcheckInstallationNumber> resultcheckInstallationNumber=spInstallationMonData.checkInstallationNumber("ES", 0, installationNumber);
+			LOGGER.debug("WS checkInstallationNumber {}", resultcheckInstallationNumber);
 			
+			BigInteger sins=resultcheckInstallationNumber.get(0).getSins();
+			String dealer=resultcheckInstallationNumber.get(0).getDealer();
+			
+			
+			/**
+			 * WS getMonitoringStatus
+			 * in: installationNumber
+			 * out:
+			 */
 			getMonitoringStatusResult=spInstallationMonData.getMonitoringStatus(Integer.parseInt(installationNumber));
 			LOGGER.debug("Monitoring status LIST {}", getMonitoringStatusResult);
 			if (!getMonitoringStatusResult.isEmpty()) {
@@ -71,6 +107,8 @@ public class InstallationService {
     		
 			//TODO: comprobar estado
         	//Si el estado es correcto buscamos la instalacion
+			
+			
 			
 			/**
 			 * WS getInstallationData
@@ -109,12 +147,25 @@ public class InstallationService {
 	            installation.setAka(mainstallationdataresult.getAliasName());
 	            //Phone3
 	            installation.setPhone3(mainstallationdataresult.getPhone3());
-	            //Coercion Password
-	            installation.setCoercionPassword(mainstallationdataresult.getGetCodeWordsResults().getGetCodeWordsResult().get(5).getCode());
-	            //Securitas Password
-	            installation.setSecuritasPassword(mainstallationdataresult.getGetCodeWordsResults().getGetCodeWordsResult().get(2).getCode());
-	            //Customer Password
-	            installation.setCustomerPassword(mainstallationdataresult.getGetCodeWordsResults().getGetCodeWordsResult().get(1).getCode());
+	           
+	            /** Claves
+	             * Si no esta vacia la lista
+	             * Comprobar si hay suficientes antes de obtenerlas
+	             */
+	            if (!mainstallationdataresult.getGetCodeWordsResults().getGetCodeWordsResult().isEmpty()){
+	            	 //Customer Password
+	            	if (mainstallationdataresult.getGetCodeWordsResults().getGetCodeWordsResult().size()>=2) {
+	            		installation.setCustomerPassword(mainstallationdataresult.getGetCodeWordsResults().getGetCodeWordsResult().get(1).getCode());
+					}
+	            	//Securitas Password
+	            	if (mainstallationdataresult.getGetCodeWordsResults().getGetCodeWordsResult().size()>=3) {
+	            		installation.setSecuritasPassword(mainstallationdataresult.getGetCodeWordsResults().getGetCodeWordsResult().get(2).getCode());
+					}
+	            	//Coercion Password
+	            	if (mainstallationdataresult.getGetCodeWordsResults().getGetCodeWordsResult().size()>=6) {
+	            		 installation.setCoercionPassword(mainstallationdataresult.getGetCodeWordsResults().getGetCodeWordsResult().get(5).getCode());
+					}
+	            }
 	            
 				/**
 				 * Lista de planes de accion
@@ -124,52 +175,60 @@ public class InstallationService {
 				 */
 	        	
 				//installation.setActionplans(mainstallationdataresult.getInstallationcontactsresults().getInstallationcontactsresult());
-	            Integer pix=-1; 
+	            Integer pix=0; 
 				List<Inetcalllistgetcontresult> inetcalllistgetcontresults=spIBSActionPlanData.inetCallListGetCont(mainstallationdataresult.getSIns().intValue(), pix);
 	            List<ActionPlan> listaContactos=new ArrayList<ActionPlan>();
-				for (Inetcalllistgetcontresult inetcalllistgetcontresult : inetcalllistgetcontresults) {
-					ActionPlan a=new ActionPlan();
-					a.setContactName(inetcalllistgetcontresult.getName());
-					//En el campo Id se introduce el numero interno del contacto
-					a.setId(inetcalllistgetcontresult.getSCont());
+	            for (Inetcalllistgetcontresult inetcalllistgetcontresult : inetcalllistgetcontresults) {
 					
-					//TODO: ¿Posicion del contacto?
-					Integer pos=Integer.parseInt(inetcalllistgetcontresult.getSCix());
-					if(pos<0){
-						pos=pos * (-1);
+					//Los contactos con seq<0 son las agencias
+					if (Integer.parseInt(inetcalllistgetcontresult.getSeq())>0 && Integer.parseInt(inetcalllistgetcontresult.getPix())!=999){
+						
+						ActionPlan a=new ActionPlan();
+						
+						a.setSins(mainstallationdataresult.getSIns().toString());
+						a.setName(inetcalllistgetcontresult.getName());
+						
+						a.setSeq(Integer.parseInt(inetcalllistgetcontresult.getSeq()));
+						
+						//El tipo siempre será 0
+						a.setType("0");
+						
+						a.setPix(inetcalllistgetcontresult.getPix());
+						
+						a.setScix(inetcalllistgetcontresult.getSCix());
+						
+						a.setScont(inetcalllistgetcontresult.getSCont());
+						
+						a.setSpc(inetcalllistgetcontresult.getSPc());
+						
+						//Obtenemos los tipos y los telefonos de contacto
+						List<Inetaplangetcontactresult> inetaplangetcontactresult = spIBSActionPlanData.inetAplanGetContact(mainstallationdataresult.getSIns().intValue(),
+								Integer.parseInt(inetcalllistgetcontresult.getPix()),	Integer.parseInt(inetcalllistgetcontresult.getSPc()),
+								Integer.parseInt(inetcalllistgetcontresult.getSCont()),Integer.parseInt(inetcalllistgetcontresult.getSCix()),"");
+						//Telefonos
+						Phone p1=new Phone();
+						Phone p2=new Phone();
+						Phone p3=new Phone();
+						
+						//Phone1
+						p1.setNumber(inetaplangetcontactresult.get(0).getPh1());
+						p1.setType(inetaplangetcontactresult.get(0).getPh1Type());
+						a.setPhone1(p1);
+						
+						//Phone2
+						p2.setNumber(inetaplangetcontactresult.get(0).getPh2());
+						p2.setType(inetaplangetcontactresult.get(0).getPh2Type());
+						a.setPhone2(p2);
+						
+						//Phone3
+						p3.setNumber(inetaplangetcontactresult.get(0).getPh3());
+						p3.setType(inetaplangetcontactresult.get(0).getPh3Type());
+						a.setPhone3(p3);
+						
+						listaContactos.add(a);
 					}
-					a.setPosition(pos);
-					
-					//TODO: De momento por defecto 0, doy por supuesto que el WS solo devuelve las que tienen 0
-					a.setSecuence(0);
-					//a.se
-					//Telefonos
-					Phone p1=new Phone();
-					Phone p2=new Phone();
-					Phone p3=new Phone();
-					p1.setNumber(inetcalllistgetcontresult.getPhone1());
-					p1.setType(getTypePhone(p1.getNumber()));
-					a.setPhone1(p1);
-					p2.setNumber(inetcalllistgetcontresult.getPhone2());
-					p2.setType(getTypePhone(p2.getNumber()));
-					a.setPhone2(p2);
-					p3.setNumber(inetcalllistgetcontresult.getPhone3());
-					p3.setType(getTypePhone(p3.getNumber()));
-					a.setPhone2(p3);
-					listaContactos.add(a);
 				}
 	            installation.setActionplans(listaContactos);
-				
-				/**
-				 * WS CheckInstallationNumber
-				 * in: country, sins, instalationNumber
-				 * out: resultcheckInstallationNumber
-				 */
-				List<ResultcheckInstallationNumber> resultcheckInstallationNumber=spInstallationMonData.checkInstallationNumber("ES", 0, installationNumber);
-				LOGGER.debug("WS checkInstallationNumber {}", resultcheckInstallationNumber);
-				
-				BigInteger sins=resultcheckInstallationNumber.get(0).getSins();
-				String dealer=resultcheckInstallationNumber.get(0).getDealer();
 				
 				/**
 				 * WS getAlarmIdsBasicInfo
@@ -181,6 +240,48 @@ public class InstallationService {
 				installation.setVersion(versions.get(0).getRevision());
 				//Phone 2
 	            installation.setPhone2(spInstallationMonData.getPhone2(sins.intValue()).get(0).getPhone2());
+	            
+//	            /**
+//	             * Comprobar si email billing es igual que el monitoring, si son distintos se avisa
+//	             * Utilizar para la facturacion
+//	             */
+	            List<GetEmail> getEmails=spInstallationBillDataPortType.getEmailDataFromInstallation(installationNumber);
+				if (!getEmails.isEmpty()) {
+					if(!getEmails.get(0).getEmail().equals(installation.getEmailMonitoring())){
+						installation.setEmailsAreDiferents(true);
+					}
+					//Email Billing
+					installation.setEmailBilling(getEmails.get(0).getEmail());
+				}
+				
+				/**
+                 * WS getInstallationTieneCamara
+                 * in: sins
+                 * out: tieneCamaras
+                 */
+                 List<GetTieneCamara> tieneCamaras = spInstallationMonData.getInstallationTieneCamara(sins.intValue());
+         
+		         if ((tieneCamaras.get(0).getVideo()!=null) && (tieneCamaras.get(0).getVideo().equals("X"))){
+		         //Tiene camara y lanzamos el WS CamService para obtener si tiene Samsung o Icantec
+		           /**
+	                * WS getCameras
+	                * in: "ESP","CCAgent",installationNumber
+	                * out: camaras
+	                */
+		         GetCamerasResultResponse camaras = camServicePortType.getCameras("ESP", "CCAgent", installationNumber);
+		         
+		          if ((camaras.getZonesList()!=null) && (camaras.getZonesList().size()>0)){
+		                 installation.setCamera("SAMSUNG");
+		         }
+		         else{
+		                 installation.setCamera("ICANTEC");
+		         }
+		         }
+		         else{
+		         //No tiene camara
+		         installation.setCamera("NO");
+		         }
+
 			}else{
 				 LOGGER.error("Can't find installation");
 	             throw new BusinessException(BusinessException.ErrorCode.ERROR_FIND_INSTALLATION);
@@ -232,8 +333,23 @@ public class InstallationService {
 
 	private List<InstallationData> searchByEmail(String email) {
 		 LOGGER.debug("Buscando por email {}", email);
-		// TODO Auto-generated method stub
-		return null;
+		 List<GetInstallation> getInstallation=new ArrayList<GetInstallation>();
+		 try {
+			getInstallation=spInstallationBillDataPortType.getInstallationDataFromEmail(email);
+			LOGGER.debug("Buscando por email Resultado: {}", getInstallation);
+		} catch (Exception e) {
+			throw new BusinessException(BusinessException.ErrorCode.ERROR_INSTALLATION_NOT_FOUND);
+		}
+		 if(!getInstallation.isEmpty()){
+			 List<InstallationData> installations=new ArrayList<InstallationData>();
+			 for (GetInstallation installationNumber : getInstallation) {
+				 installations.add(this.getInstallation(installationNumber.getInstallation()));
+			 }
+			 return installations;
+		 }else{
+			 LOGGER.error("Can't find installation");
+			 throw new BusinessException(BusinessException.ErrorCode.ERROR_FIND_INSTALLATION);
+		 }
 	}
 	/**
 	 * Busqueda por telefono
@@ -269,6 +385,12 @@ public class InstallationService {
 	 * @param installationNumber
 	 */
 	public void codewordChange(String agent, String codeword, Integer ix, String installationNumber){
+		//Auditoria
+		Audit audit=new Audit();
+		audit.setAction("codewordChange");
+		audit.setApp("Info instalacion");
+		audit.setUser(agent);
+		audit.setDate(new Date());
 		
 		/**
 		 * Obtención del SINS
@@ -298,11 +420,17 @@ public class InstallationService {
 			Integer sCont= 0;
 			String type= "";
 		
-		
 			List<Inetcodewordchangeresult> inetcodewordchangeresult=spInstallationMonData.inetCodewordChange(sIns, ix, codeword, type, expdate, vtp, sCtr, sPc, sCont, cix, misc1, misc2, cred, userId);
+			
+			audit.setResult("OK");
+			audit.setDetail("Clave actualizada "+codeword.toString());
+			auditService.insert(audit);
 			if (Integer.parseInt(inetcodewordchangeresult.get(0).getReturnCode())!=0) {
+				audit.setResult("FAIL");
+				audit.setDetail(inetcodewordchangeresult.toString());
+				auditService.insert(audit);
 				throw new BusinessException(BusinessException.ErrorCode.ERROR_UPDATE_CODEWORD);
-			};
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			throw new BusinessException(BusinessException.ErrorCode.ERROR_UPDATE_CODEWORD);
@@ -310,6 +438,12 @@ public class InstallationService {
 	}
 	
 	public void updateInstallation(String agent, InstallationData installationData){
+		//Auditoria
+		Audit audit=new Audit();
+		audit.setAction("updateInstallation");
+		audit.setApp("Info instalacion");
+		audit.setUser(agent);
+		audit.setDate(new Date());
 		try {
 			List<Mainstallationdataresult> mainstallationdataresults=spInstallationMonData.getInstallationData(installationData.getInstallationNumber());
 			Mainstallationdataresult mainstallationdataresult=mainstallationdataresults.get(0);
@@ -475,35 +609,99 @@ public class InstallationService {
 			
 			List<Inetinstallationupdresult> inetinstallationupdresult=spInstallationMonData.inetInstallationUpd(sIns, stamp, insNo, dealId, subDeal, alaid1, alaid2, alaid3, panel1, panel2, panel3, testInt1, testInt2, testInt3, id, code, perm, tmzonpr, subzone, passver, instId, insDate, monStat, monStatDate, subTp, comment1, comment2, txtzonref, phoArea, subExptp, repFlg, insuId, name, fname, iname, tname, street1, street1No1, street1No2, street2, city, city2, state, zip, aliasName, phone1, phone2, phone3, phtxt1, phtxt2, fax, crossStreet, mapGrid, mgrp1, mgrp2, duress, telcoLoc, panelLoc, br, rbr, sbr, mbr, pbr, sreg, preg, refcid, miscno1, miscno2, ro, skill, lang, dcc1, dcc2, backupver, ocexp, ocname, prtreq, maintype, mainfreq, mainexpdate, inst1, inst2, sales1, sales2, brInst, brSale, brServ, miscdate1, miscdate2, miscdate3, miscdate4, miscdate5, miscdate6, misc1, misc2, misc3, misc4, misc5, misc6, misc7, misc8, misc9, misc10, misc20, misc21, misc22, misc23, misc24, misc25, misc26, misc27, misc28, misc29, misc30, misc31, misc32, misc33, misc34, misc35, misc36, misc37, misc38, misc39, misc40, misc41, misc42, misc43, misc44, misc45, misc46, misc47, misc48, misc49, misc50, userId, protArea, email1, email2, misc80);
 			LOGGER.debug("Update installation result: {}", inetinstallationupdresult);
-		} catch (DataServiceFault e) {
+			audit.setResult("OK");
+			audit.setDetail("Instalacion actualizada "+ installationData.getInstallationNumber());
+			auditService.insert(audit);
+		} catch (Exception e) {
+			audit.setResult("FAIL");
+			audit.setDetail(e.getMessage());
+			auditService.insert(audit);
 			throw new BusinessException(BusinessException.ErrorCode.ERROR_UPDATE_INSTALLATION);
 		}
 	}
 	
 	/**
-	 * PROVISIONAL
+	 * 
 	 * metodo para obtener el tipo de telefono de los contactos
+	 * @param actionplan
+	 * @param sins
+	 * @param pix
+	 * @param spc
+	 * @param scont
+	 * @param cix
+	 * @param timezone
+	 * @throws DataServiceFault 
 	 */
-	private String getTypePhone(String tel){
-		if(!tel.isEmpty()){
-			if(tel.substring(0, 1).equals("6")){
-				return Phone.TYPE.MOVIL;
-			}else{
-				return Phone.TYPE.FIJO;
-			}
-		}
-		return null;
-	}
+//	private void getTypesPhones(ActionPlan actionplan, String sins, String pix, String spc, 
+//			String scont, String cix, String timezone) throws DataServiceFault{
+//		
+//		try {
+//			List<Inetaplangetcontactresult> inetaplangetcontactresult = spIBSActionPlanData.inetAplanGetContact(Integer.parseInt(sins),Integer.parseInt(pix),Integer.parseInt(spc),
+//					Integer.parseInt(scont),Integer.parseInt(cix),timezone);
+//		//Telefonos
+//		Phone p1=new Phone();
+//		Phone p2=new Phone();
+//		Phone p3=new Phone();
+//		
+//		//Phone1
+//		p1.setNumber(inetaplangetcontactresult.get(0).getPh1());
+//		p1.setType(inetaplangetcontactresult.get(0).getPh1Type());
+//		actionplan.setPhone1(p1);
+//		
+//		//Phone2
+//		p2.setNumber(inetaplangetcontactresult.get(0).getPh2());
+//		p2.setType(inetaplangetcontactresult.get(0).getPh2Type());
+//		actionplan.setPhone1(p2);
+//		
+//		//Phone3
+//		p3.setNumber(inetaplangetcontactresult.get(0).getPh3());
+//		p3.setType(inetaplangetcontactresult.get(0).getPh3Type());
+//		actionplan.setPhone1(p3);
+//		
+//		} catch (DataServiceFault e) {
+//			LOGGER.error("getTypesPhones result: {}");
+//			throw new DataServiceFault();
+//		}
+//		
+//
+//	}
 	
 	/**
 	 * Eliminar Planes de acción
-	 * @param installationNumber
-	 * @param contactos
+	 * @param agent
+	 * @param actionplans
+	 * @throws DataServiceFault 
 	 */
-	public void deleteActionPlans(String agent, String installationNumber, List<ActionPlan> contactos) {
+	public void deleteActionPlans(String agent, List<ActionPlan> actionplans) {
+		//Auditoria
+		Audit audit=new Audit();
+		audit.setAction("updateInstallation");
+		audit.setApp("Info instalacion");
+		audit.setUser(agent);
+		audit.setDate(new Date());
 		try{
-			// TODO Auto-generated method stub
+			if (actionplans!=null){
+				for (ActionPlan actionplan : actionplans){
+						
+					spIBSActionPlanData.maActplanCallLinUpd(Integer.parseInt(actionplan.getSins()), 
+							Integer.parseInt(actionplan.getPix()), Integer.parseInt(actionplan.getSpc()), 
+							Integer.parseInt(actionplan.getScont()), Integer.parseInt(actionplan.getScix()), 
+							Integer.parseInt("2"), "", "", actionplan.getName(), actionplan.getPhone1().getNumber(), actionplan.getSeq(), 
+							"", "", "", "", "", "", Integer.parseInt(actionplan.getSpc()), 
+							Integer.parseInt(actionplan.getScont()), Integer.parseInt(actionplan.getScix()));
+					
+					audit.setResult("OK");
+					audit.setDetail("Action Plan borrado " +actionplan.getSeq() +" - "+ actionplan.getName());
+					auditService.insert(audit);
+				}
+			}else{
+				throw new BusinessException(BusinessException.ErrorCode.ERROR_DELETE_ACTION_PLAN);
+			}
+
 		}catch (Exception e){
+			audit.setResult("FAIL");
+			audit.setDetail(e.getMessage());
+			auditService.insert(audit);
 			throw new BusinessException(BusinessException.ErrorCode.ERROR_DELETE_ACTION_PLAN);
 		}
 	}
@@ -529,11 +727,35 @@ public class InstallationService {
 	 * @param installationNumber
 	 * @param addedPlan
 	 */
-	private void insertActionPlan(String agent, String installationNumber, ActionPlan addedPlan){
-		LOGGER.debug("Insert Action Plan: {} {}", installationNumber, addedPlan);
+	private void insertActionPlan(String agent, String installationNumber, ActionPlan actionplan){
+		LOGGER.debug("Insert Action Plan: {} {}", installationNumber, actionplan);
+		//Auditoria
+		Audit audit=new Audit();
+		audit.setAction("updateInstallation");
+		audit.setApp("Info instalacion");
+		audit.setUser(agent);
+		audit.setDate(new Date());
 		try{
-			//TODO: Insert Action Plan
+			if (actionplan!=null){
+				spIBSActionPlanData.maActplanCallLinUpd(Integer.getInteger(actionplan.getSins()), 
+						Integer.getInteger(actionplan.getPix()), Integer.getInteger(actionplan.getSpc()), 
+						Integer.getInteger(actionplan.getScont()), Integer.getInteger(actionplan.getScix()), 
+						Integer.getInteger("1"), "", "", actionplan.getName(), actionplan.getPhone1().getNumber(), actionplan.getSeq(), 
+						"", "", "", "", "", "", Integer.getInteger(actionplan.getSpc()), 
+						Integer.getInteger(actionplan.getScont()), Integer.getInteger(actionplan.getScix()));	
+				
+			
+				
+				audit.setResult("OK");
+				audit.setDetail("Action Plan insertado " +actionplan.getSeq() +" - "+ actionplan.getName());
+				auditService.insert(audit);
+			}else{
+				throw new BusinessException(BusinessException.ErrorCode.ERROR_ADD_ACTION_PLAN);
+			}
 		}catch (Exception e){
+			audit.setResult("FAIL");
+			audit.setDetail(e.getMessage());
+			auditService.insert(audit);
 			throw new BusinessException(BusinessException.ErrorCode.ERROR_ADD_ACTION_PLAN);
 		}
 	}
@@ -542,11 +764,41 @@ public class InstallationService {
 	 * @param installationNumber
 	 * @param contactos
 	 */
-	private void modifyActionPlans(String agent, String installationNumber, List<ActionPlan> contactos){
-		LOGGER.debug("Modify Action Plans: {} {}", installationNumber, contactos);
+	private void modifyActionPlans(String agent, String installationNumber, List<ActionPlan> actionplans){
+		LOGGER.debug("Modify Action Plans: {} {}", installationNumber, actionplans);
+		//Auditoria
+		Audit audit=new Audit();
+		audit.setAction("updateInstallation");
+		audit.setApp("Info instalacion");
+		audit.setUser(agent);
+		audit.setDate(new Date());
 		try{
-			//TODO: Insert Action Plan
+			
+			if (actionplans!=null){
+			
+				for (ActionPlan actionplan : actionplans){
+					
+					spIBSActionPlanData.maActplanCallLinUpd(Integer.getInteger(actionplan.getSins()), 
+							Integer.getInteger(actionplan.getPix()), Integer.getInteger(actionplan.getSpc()), 
+							Integer.getInteger(actionplan.getScont()), Integer.getInteger(actionplan.getScix()), 
+							Integer.getInteger("1"), "", "", actionplan.getName(), actionplan.getPhone1().getNumber(), actionplan.getSeq(), 
+							"", "", "", "", "", "", Integer.getInteger(actionplan.getSpc()), 
+							Integer.getInteger(actionplan.getScont()), Integer.getInteger(actionplan.getScix()));
+					
+					audit.setResult("OK");
+					audit.setDetail("Action Plan modificado " +actionplan.getSeq() +" - "+ actionplan.getName());
+					auditService.insert(audit);
+					
+				}
+			}else{
+				throw new BusinessException(BusinessException.ErrorCode.ERROR_UPDATE_ACTION_PLAN);
+			}
+			
+			
 		}catch (Exception e){
+			audit.setResult("FAIL");
+			audit.setDetail(e.getMessage());
+			auditService.insert(audit);
 			throw new BusinessException(BusinessException.ErrorCode.ERROR_UPDATE_ACTION_PLAN);
 		}
 	}

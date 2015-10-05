@@ -85,6 +85,11 @@ public class InstallationData {
     
     /** Email de servicios*/
     private String emailServicios;
+    
+    /**True si los email de monitoring y billing son diferentes*/
+    private boolean emailsAreDiferents=false;
+    
+    private String dealer;
 
     //constructor copia de la clase InstallationData
     /*
@@ -358,6 +363,22 @@ public class InstallationData {
 		this.emailServicios = emailServicios;
 	}
 
+	public boolean isEmailsAreDiferents() {
+		return emailsAreDiferents;
+	}
+
+	public void setEmailsAreDiferents(boolean emailsAreDiferents) {
+		this.emailsAreDiferents = emailsAreDiferents;
+	}
+
+	public String getDealer() {
+		return dealer;
+	}
+
+	public void setDealer(String dealer) {
+		this.dealer = dealer;
+	}
+
 	@Override
 	public String toString() {
 		return "InstallationData [id=" + id + ", panel=" + panel + ", version=" + version + ", installationNumber="
@@ -369,11 +390,9 @@ public class InstallationData {
 				+ language + ", customerPassword=" + customerPassword + ", securitasPassword=" + securitasPassword
 				+ ", coercionPassword=" + coercionPassword + ", actionplans=" + actionplans + ", telefono1=" + telefono1
 				+ ", telefono2=" + telefono2 + ", telefono3=" + telefono3 + ", telefonoServicios=" + telefonoServicios
-				+ ", emailServicios=" + emailServicios + "]";
+				+ ", emailServicios=" + emailServicios + ", emailsAreDiferents=" + emailsAreDiferents + ", dealer="
+				+ dealer + "]";
 	}
 
 	
-	
-    
-    
 }

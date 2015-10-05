@@ -59,22 +59,25 @@ public class Audit {
     private String detail;
 
 
-    //constructor copia de la clase Audit
-    /*
-    public Audit(final org.wso2.ws.dataservice.GetAuditResult getAuditResult) {
-        this.id = getAuditResult.getId().intValue();
-        this.date = getAuditResult.getDate();
-        this.user = getAuditResult.getUser();
-        this.app = getAuditResult.getApp();
-        this.action = getAuditResult.getAction();
-        this.result = getAuditResult.getResult();
-        this.detail = getAuditResult.getDetail();
+  //constructor copia de la clase Audit
+    public Audit(final org.wso2.ws.dataservice.Entry entry) {
+        this.id = entry.getId().intValue();
+        this.date = new Date(entry.getAuditDate().getMillisecond());
+        this.user = entry.getActor();
+        this.app = entry.getApp();
+        this.action = entry.getEvent();
+        this.result = entry.getResult();
+        this.detail = entry.getDetail();
 
     }
-    */
 
 
-    public Date getDate() {
+    public Audit() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public Date getDate() {
         return date;
     }
 

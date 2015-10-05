@@ -1,6 +1,7 @@
 package es.securitasdirect.moduloweb.web.dto.request;
 
 import es.securitasdirect.moduloweb.model.InstallationData;
+import es.securitasdirect.moduloweb.web.dto.support.BaseRequest;
 
 /**
  * 
@@ -11,7 +12,7 @@ import es.securitasdirect.moduloweb.model.InstallationData;
  * 	@param email
  * 	@param installationActive
  */
-public class SearchInstallationRequest {
+public class SearchInstallationRequest extends AgentRequest{
 	/**
 	 * Búsqueda por installationNumber
 	 * */

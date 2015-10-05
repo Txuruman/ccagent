@@ -137,54 +137,55 @@ public class DummyGenerator {
      * @return
      */
     public static List<ActionPlan> getActionPlan() {
-        List<ActionPlan> result = new ArrayList<ActionPlan>();
-        ActionPlan a1 = new ActionPlan();
-        a1.setContactName("JON RUIZ SAGARNA");
-        a1.setPhone1(new Phone(Phone.TYPE.FIJO, "9133344455"));
-        a1.setPhone2(new Phone(Phone.TYPE.MOVIL, "696252525"));
-        a1.setPhone3(new Phone(Phone.TYPE.FIJO, "9133344455"));
-        a1.setSecuence(0);
-        a1.setType("1");
-        result.add(a1);
-
-
-        ActionPlan a2 = new ActionPlan();
-        a2.setContactName("ANA ARREGUI");
-        a2.setPhone1(new Phone(Phone.TYPE.FIJO, "9133344455"));
-        a2.setPhone2(new Phone(Phone.TYPE.MOVIL, "696252525"));
-        a2.setPhone3(new Phone(Phone.TYPE.FIJO, "9133344455"));
-        a2.setSecuence(0);
-        a2.setType("2");
-        result.add(a2);
-        
-        ActionPlan a3 = new ActionPlan();
-        a3.setContactName("GOTZON BARRONDO");
-        a3.setPhone1(new Phone(Phone.TYPE.FIJO, "9133344455"));
-        a3.setPhone2(new Phone(Phone.TYPE.MOVIL, "696252525"));
-        a3.setPhone3(new Phone(Phone.TYPE.FIJO, "9133344455"));
-        a3.setSecuence(0);
-        a3.setType("3");
-        result.add(a3);
-        
-        ActionPlan a4 = new ActionPlan();
-        a4.setContactName("FRANCISCO RUIZ");
-        a4.setPhone1(new Phone(Phone.TYPE.FIJO, "9133344455"));
-        a4.setPhone2(new Phone(Phone.TYPE.MOVIL, "696252525"));
-        a4.setPhone3(new Phone(Phone.TYPE.FIJO, "9133344455"));
-        a4.setSecuence(0);
-        a4.setType("4");
-        result.add(a4);
-        
-        ActionPlan a5 = new ActionPlan();
-        a5.setContactName("JON RUIZ SAGARNA");
-        a5.setPhone1(new Phone(Phone.TYPE.FIJO, "9133344455"));
-        a5.setPhone2(new Phone(Phone.TYPE.MOVIL, "696252525"));
-        a5.setPhone3(new Phone(Phone.TYPE.FIJO, "9133344455"));
-        a5.setSecuence(15);
-        a5.setType("1");
-        result.add(a5);
-        
-        return result;
+//        List<ActionPlan> result = new ArrayList<ActionPlan>();
+//        ActionPlan a1 = new ActionPlan();
+//        a1.setContactName("JON RUIZ SAGARNA");
+//        a1.setPhone1(new Phone(Phone.TYPE.FIJO, "9133344455"));
+//        a1.setPhone2(new Phone(Phone.TYPE.MOVIL, "696252525"));
+//        a1.setPhone3(new Phone(Phone.TYPE.FIJO, "9133344455"));
+//        a1.setSecuence(0);
+//        a1.setType("1");
+//        result.add(a1);
+//
+//
+//        ActionPlan a2 = new ActionPlan();
+//        a2.setContactName("ANA ARREGUI");
+//        a2.setPhone1(new Phone(Phone.TYPE.FIJO, "9133344455"));
+//        a2.setPhone2(new Phone(Phone.TYPE.MOVIL, "696252525"));
+//        a2.setPhone3(new Phone(Phone.TYPE.FIJO, "9133344455"));
+//        a2.setSecuence(0);
+//        a2.setType("2");
+//        result.add(a2);
+//        
+//        ActionPlan a3 = new ActionPlan();
+//        a3.setContactName("GOTZON BARRONDO");
+//        a3.setPhone1(new Phone(Phone.TYPE.FIJO, "9133344455"));
+//        a3.setPhone2(new Phone(Phone.TYPE.MOVIL, "696252525"));
+//        a3.setPhone3(new Phone(Phone.TYPE.FIJO, "9133344455"));
+//        a3.setSecuence(0);
+//        a3.setType("3");
+//        result.add(a3);
+//        
+//        ActionPlan a4 = new ActionPlan();
+//        a4.setContactName("FRANCISCO RUIZ");
+//        a4.setPhone1(new Phone(Phone.TYPE.FIJO, "9133344455"));
+//        a4.setPhone2(new Phone(Phone.TYPE.MOVIL, "696252525"));
+//        a4.setPhone3(new Phone(Phone.TYPE.FIJO, "9133344455"));
+//        a4.setSecuence(0);
+//        a4.setType("4");
+//        result.add(a4);
+//        
+//        ActionPlan a5 = new ActionPlan();
+//        a5.setContactName("JON RUIZ SAGARNA");
+//        a5.setPhone1(new Phone(Phone.TYPE.FIJO, "9133344455"));
+//        a5.setPhone2(new Phone(Phone.TYPE.MOVIL, "696252525"));
+//        a5.setPhone3(new Phone(Phone.TYPE.FIJO, "9133344455"));
+//        a5.setSecuence(15);
+//        a5.setType("1");
+//        result.add(a5);
+//        
+//        return result;
+    	return null;
     }
     
     /**

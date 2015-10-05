@@ -83,7 +83,7 @@
 <!-- 	</div> -->
 <!-- </div> -->
 
-
+<input type="hidden" id="avisoNoMail" ng-model="avisoNoMail" ng-value="'<spring:message code="info.nomonitoringmail"/>'">
 <div class="row" ng-show="seachByInstOrMail">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="margin-top: 5px;">
         <div id="tablaBuscarEmail">	
@@ -93,17 +93,15 @@
 					<div class="tabla-td7 theadTH" title='<spring:message code="infoinstal.address"/>'><spring:message code="infoinstal.address"/></div>
 					<div class="tabla-td2 theadTH" title='<spring:message code="infoinstal.emailMonitoring"/>'><spring:message code="infoinstal.emailMonitoring"/></div>
 					<div class="tabla-td3 theadTH" title='<spring:message code="infoinstal.emailBilling"/>'><spring:message code="infoinstal.emailBilling"/></div>
-					<div class="tabla-td4 theadTH" title='<spring:message code="installation.search.emailservices"/>'><spring:message code="installation.search.emailservices"/></div>
 				</div>
 			</div>
       			<div class="scrollTabla borderTablaBottom" > <!--ng-class="(searchedInstallations==null || searchedInstallations==undefined) ? 'tablaVacia' : null"> -->
 					<table class="tbody">
-			       		<tr ng-repeat="i in searchedInstallations"> 
-			                <td class="tabla-td1 searchedTd">{{i.installationNumber}}</td>
-			                <td class="tabla-td7">{{i.address+", "+i.city}}</td>
-			                <td class="tabla-td2">{{i.emailMonitoring}}</td>
-			                <td class="tabla-td3"> {{ i.emailBilling }} </td>
-			                <td class="tabla-td4">{{ i.emailServices }}</td>
+			       		<tr ng-repeat="i in searchedInstallations" ng-click="setActiveInstallation($index)" ng-class="(searchedInstallationIndex==$index) ? 'currentIns': null"> 
+			                <td class="tabla-td1" ng-class="(searchBy.installationNumber!='' && searchBy.installationNumber!=null && searchBy.installationNumber!=undefined && i.installationNumber==searchBy.installationNumber)?'searchedTd':null">{{i.installationNumber}}</td>
+			                <td class="tabla-td7">{{i.address}}</td>
+			                <td class="tabla-td2" ng-class="(searchBy.email!='' && searchBy.email!=null && searchBy.email!=undefined && i.emailMonitoring==searchBy.email)?'searchedTd':null">{{i.emailMonitoring}}</td>
+			                <td class="tabla-td3" ng-class="(searchBy.email!='' && searchBy.email!=null && searchBy.email!=undefined && i.emailBilling==searchBy.email)?'searchedTd':null"> {{ i.emailBilling }} </td>
 			            </tr>
 					 </table>
   				</div>
@@ -130,14 +128,14 @@
 			</div>
       			<div class="scrollTabla borderTablaBottom" ng-class="(searchedInstallations==null || searchedInstallations==undefined) ? 'tablaVacia' : null">
 					<table class="tbody">
-			       		<tr ng-repeat="i in searchedInstallations"> 
+			       		<tr ng-repeat="i in searchedInstallations" ng-click="setActiveInstallation($index)" ng-class="(searchedInstallationIndex==$index) ? 'currentIns': null"> 
 			                <td class="tabla-td1">{{i.installationNumber}}</td>
-			                <td class="tabla-td7">{{i.address+", "+i.city}}</td>
-			                <td class="tabla-td5" ng-class="(i.panelPhone==searchBy.phone)?'searchedTd':null">{{ i.panelPhone }}</td>
-			                <td class="tabla-td6" ng-class="(i.telefono2==searchBy.phone)?'searchedTd':null">{{ i.telefono2 }}</td>
-			                <td class="tabla-td6" ng-class="(i.telefono3==searchBy.phone)?'searchedTd':null">{{ i.telefono3 }}</td>
-			                <td class="tabla-td6" ng-class="(i.telefonoServicios==searchBy.phone)?'searchedTd':null">{{ i.telefonoServicios }}</td>
-			                <td class="tabla-td6" ng-class="(i.telefono1==searchBy.phone)?'searchedTd':null">{{ i.telefono1 }}</td>
+			                <td class="tabla-td7">{{i.address}}</td>
+			                <td class="tabla-td5" ng-class="(searchBy.phone!='' && searchBy.phone!=null && searchBy.phone!=undefined && i.panelPhone==searchBy.phone)?'searchedTd':null">{{ i.panelPhone }}</td>
+			                <td class="tabla-td6" ng-class="(searchBy.phone!='' && searchBy.phone!=null && searchBy.phone!=undefined && i.phone2==searchBy.phone)?'searchedTd':null">{{ i.phone2 }}</td>
+			                <td class="tabla-td6" ng-class="(searchBy.phone!='' && searchBy.phone!=null && searchBy.phone!=undefined && i.phone3==searchBy.phone)?'searchedTd':null">{{ i.phone3 }}</td>
+			                <td class="tabla-td6" ng-class="(searchBy.phone!='' && searchBy.phone!=null && searchBy.phone!=undefined && i.telefonoServicios==searchBy.phone)?'searchedTd':null">{{ i.telefonoServicios }}</td>
+			                <td class="tabla-td6" ng-class="(searchBy.phone!='' && searchBy.phone!=null && searchBy.phone!=undefined && i.actionplans[0].phone1.number==searchBy.phone)?'searchedTd':null">{{ i.actionplans[0].phone1.number }}</td>
 			            </tr>
 					 </table>
   				</div>

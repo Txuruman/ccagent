@@ -189,7 +189,7 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 	/** FIN Paginación */
 	//Inicialización;
 	
-	$scope.getAudit(111111);
+//	$scope.getAudit(111111);
 	$scope.getInvoice(971120);
 	$scope.getFieldConfig();
 	$scope.tipoFra=""; //Inicializamos filtro de tipo de factura para que muestre todas por defectos

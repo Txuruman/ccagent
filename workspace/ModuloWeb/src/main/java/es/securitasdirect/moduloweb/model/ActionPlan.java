@@ -6,18 +6,18 @@ package es.securitasdirect.moduloweb.model;
 public class ActionPlan {
 
     /**
-     * clave interna del contacto
+     * numero interno de instalacion
      */
-    private String id;
+    private String sins;
 
-    /** Tipo de plan */ /* TODO PASAR A ENUM??? */
+    /** Tipo de plan */
     private String type;
 
     /** Secuencia para ordenación */
-    private Integer secuence;
+    private Integer seq;
 
     /** Datos personales de la persona de contacto. */
-    private String contactName;
+    private String name;
 
     /** Datos de contacto 1 de la persona */
     private Phone phone1;
@@ -27,31 +27,17 @@ public class ActionPlan {
 
     /** Datos de contacto 3 de la persona */
     private Phone phone3;
-    /** Posicion (indice) del contacto */
-    private Integer position;
-
-    //constructor copia de la clase ActionPlan
-    /*
-    public ActionPlan(final org.wso2.ws.dataservice.GetActionPlanResult getPhoneResult) {
-        this.id = getActionPlanResult.getId().intValue();
-        this.type = getActionPlanResult.getType();
-        this.secuence = getActionPlanResult.getSecuence();
-        this.contactName = getActionPlanResult.getContactName();
-        this.phone1 = getActionPlanResult.getPhone1();
-        this.phone2 = getActionPlanResult.getPhone2();
-        this.phone3 = getActionPlanResult.getPhone3();
-
-    }
-    */
-
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+    
+    /** Parametros devueltos por el metodo que obtiene los tipos de los telefonos.
+     *  Los guardamos en el ActionPlan para la modificacion, borrado e inserción.
+     */
+    private String spc;
+    
+    private String scont;
+    
+    private String scix;
+    
+    private String pix;
 
     public String getType() {
         return type;
@@ -61,20 +47,20 @@ public class ActionPlan {
         this.type = type;
     }
 
-    public Integer getSecuence() {
-        return secuence;
+    public Integer getSeq() {
+        return seq;
     }
 
-    public void setSecuence(Integer secuence) {
-        this.secuence = secuence;
+    public void setSeq(Integer seq) {
+        this.seq = seq;
     }
 
-    public String getContactName() {
-        return contactName;
+    public String getName() {
+        return name;
     }
 
-    public void setContactName(String contactName) {
-        this.contactName = contactName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Phone getPhone1() {
@@ -100,18 +86,53 @@ public class ActionPlan {
     public void setPhone3(Phone phone3) {
         this.phone3 = phone3;
     }
-    
-    public Integer getPosition() {
-		return position;
+	
+    public String getSpc() {
+		return spc;
 	}
 
-	public void setPosition(Integer position) {
-		this.position = position;
+	public void setSpc(String spc) {
+		this.spc = spc;
+	}
+
+	public String getScont() {
+		return scont;
+	}
+
+	public void setScont(String scont) {
+		this.scont = scont;
+	}
+
+	public String getScix() {
+		return scix;
+	}
+
+	public void setScix(String scix) {
+		this.scix = scix;
+	}
+
+	public String getPix() {
+		return pix;
+	}
+
+	public void setPix(String pix) {
+		this.pix = pix;
+	}
+
+	public String getSins() {
+		return sins;
+	}
+
+	public void setSins(String sins) {
+		this.sins = sins;
 	}
 
 	@Override
 	public String toString() {
-		return "ActionPlan [id=" + id + ", type=" + type + ", secuence=" + secuence + ", contactName=" + contactName
-				+ ", phone1=" + phone1 + ", phone2=" + phone2 + ", phone3=" + phone3 + ", position=" + position + "]";
+		return "ActionPlan [sins=" + sins + ", type=" + type + ", seq=" + seq + ", name=" + name + ", phone1=" + phone1
+				+ ", phone2=" + phone2 + ", phone3=" + phone3 + ", spc=" + spc + ", scont=" + scont + ", scix=" + scix
+				+ ", pix=" + pix + "]";
 	}
+
+
 }

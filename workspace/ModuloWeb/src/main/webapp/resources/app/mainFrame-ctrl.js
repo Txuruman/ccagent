@@ -18,7 +18,16 @@ app.controller('mainFrameController', function ($timeout, $scope, $http, CommonS
     
     $scope.getDirectAccess();
    
-    $scope.goTo=function(url){
+    $scope.goTo=function(da){
+    	var url=da.url;
+    	for (var i = 0; i < da.params.length; i++) {
+			if(i==0){
+				url+="?";
+			}else{
+				url+="&";
+			}
+			url+=da.params[i].name+"="+da.params[i].value;
+		}
     	$window.location.href=url;
     }
     

@@ -81,7 +81,7 @@ app.controller('MessagesController', function ($scope, $rootScope) {
 
 
 //create a service which defines a method square to return square of a number.
-app.service('CommonService', function ($rootScope, $log) {
+app.service('CommonService', function ($rootScope, $log, $timeout) {
     this.square = function (a) {
         //console.log("Multiplicando");
         return a * a;
@@ -172,21 +172,21 @@ app.service('CommonService', function ($rootScope, $log) {
     };
 
 
-    /** Funcion para processar las respuestas del servidor, eg: processBaseResponse(data,status,headers,config);  */
-    this.processBaseResponse = function (data, status, headers, config) {
-        //console.log("Procesando BaseResponse....");
-        if (data && data.messages) {
-        	/**
-        	 * Modificado para correcto funcionamiento en IE8
-        	 * Original: for (var msg in data.messages) {
-        	 */
-        	for (var msg=0; msg<data.messages.length; msg++){
-                $rootScope.vm.serverMessages.push(data.messages[msg]);
-            }
-        }
-        //TODO Control status ,etc si hay error meter mensajes
-        // TODO if($rootScope.serverMessages == )
-    };
+//    /** Funcion para processar las respuestas del servidor, eg: processBaseResponse(data,status,headers,config);  */
+//    this.processBaseResponse = function (data, status, headers, config) {
+//        //console.log("Procesando BaseResponse....");
+//        if (data && data.messages) {
+//        	/**
+//        	 * Modificado para correcto funcionamiento en IE8
+//        	 * Original: for (var msg in data.messages) {
+//        	 */
+//        	for (var msg=0; msg<data.messages.length; msg++){
+//                $rootScope.vm.serverMessages.push(data.messages[msg]);
+//            }
+//        }
+//        //TODO Control status ,etc si hay error meter mensajes
+//        // TODO if($rootScope.serverMessages == )
+//    };
 
     // Disable weekend selection for calendar
     this.disabledWeekendSelection = function (date, mode) {

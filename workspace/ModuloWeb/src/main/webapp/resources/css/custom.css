@@ -339,8 +339,8 @@ input.actionPlanTablePhone{
 	vertical-align:middle;
 	text-align:center;
 }
-#tablaBuscar .tabla-td1{
-	width:13%;
+#tablaBuscar .tbody .tabla-td1{
+	width:10%;
 }
 #tablaBuscar .tabla-td2{
 	width:13%;
@@ -351,27 +351,52 @@ input.actionPlanTablePhone{
 #tablaBuscar .tabla-td4{
 	width:13%;
 }
-#tablaBuscar .tabla-td5{
-	width:13%;
+#tablaBuscar .tbody .tabla-td5{
+	width:10%;
 }
-#tablaBuscar .tabla-td6{
-	width:13%;
+#tablaBuscar .tbody .tabla-td6{
+	width:10%;
 }
-#tablaBuscar .tabla-td7{
-	width:19%;
+#tablaBuscar .tbody .tabla-td7{
+	width:37%;
 }
+#tablaBuscar .tbody .tabla-td7{
+	font-size:10px;
+}
+
+#tablaBuscar .thead .tabla-td1{
+	width:10%;
+}
+#tablaBuscar .thead .tabla-td5{
+	width:10%;
+    text-align: left;
+    padding-left: 1.5%;
+}
+#tablaBuscar .thead .tabla-td6{
+	width:11%;
+}
+#tablaBuscar .thead .tabla-td7{
+	width:36%;
+}
+
+
 #tablaBuscar .scrollTabla{
 	display: block;
     width: 100%;
-    height: 25px;
+    height: 65px;
     overflow-y: scroll;
 }
 #tablaBuscar .tablaVacia{
 	height: 15px !important;
 }
 
-
-
+#tablaBuscar .tbody tr:hover{
+	background-color:#d6ddf0;
+	cursor:pointer;
+}
+.currentIns{
+	background-color:#d6ddf0 !important;
+}
 #tablaBuscarEmail{
 	display:block;
 	width:100%;
@@ -399,25 +424,32 @@ input.actionPlanTablePhone{
 	width:17%;
 }
 #tablaBuscarEmail .tabla-td2{
-	width:17%;
+	width:22%;
 }
 #tablaBuscarEmail .tabla-td3{
-	width:17%;
+	width:22%;
 }
 #tablaBuscarEmail .tabla-td4{
 	width:17%;
 }
 #tablaBuscarEmail .tabla-td7{
-	width:30%;
+	width:37%;
+}
+#tablaBuscarEmail .tbody .tabla-td7{
+	font-size:10px;
 }
 #tablaBuscarEmail .scrollTabla{
 	display: block;
     width: 100%;
-    height: 25px;
+    height: 65px;
     overflow-y: scroll;
 }
 #tablaBuscarEmail .tablaVacia{
 	height: 15px !important;
+}
+#tablaBuscarEmail .tbody tr:hover{
+	background-color:#d6ddf0;
+	cursor:pointer;
 }
 
 /************INVOICING*******************/

@@ -495,6 +495,24 @@
                     <xs:element name="alias_name" nillable="true" type="xs:string"/>
                 </xs:sequence>
             </xs:complexType>
+            <xs:element name="getInstallationTieneCamara">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="sins" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getTieneCamaras" type="ns0:getTieneCamaras"/>
+            <xs:complexType name="getTieneCamaras">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="getTieneCamara" type="ns0:getTieneCamara"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getTieneCamara">
+                <xs:sequence>
+                    <xs:element name="video" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
             <xs:element name="getInternalNumberByAcn">
                 <xs:complexType>
                     <xs:sequence>
@@ -1097,6 +1115,18 @@
                     <xs:element name="panel_loc" nillable="true" type="xs:string"/>
                 </xs:sequence>
             </xs:complexType>
+            <xs:element name="setCrearComentario">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="user" nillable="true" type="xs:string"/>
+                        <xs:element name="eventName" nillable="true" type="xs:string"/>
+                        <xs:element name="eventAbbr" nillable="true" type="xs:string"/>
+                        <xs:element name="insno" nillable="true" type="xs:string"/>
+                        <xs:element name="comment" nillable="true" type="xs:string"/>
+                        <xs:element name="dealer" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="inet_inst_rbranch_upd">
                 <xs:complexType>
                     <xs:sequence>
@@ -1298,6 +1328,12 @@
     <wsdl:message name="inet_inst_rbranch_updResponse">
         <wsdl:part name="parameters" element="ns0:rbranchupdResults"/>
     </wsdl:message>
+    <wsdl:message name="getInstallationTieneCamaraRequest">
+        <wsdl:part name="parameters" element="ns0:getInstallationTieneCamara"/>
+    </wsdl:message>
+    <wsdl:message name="getInstallationTieneCamaraResponse">
+        <wsdl:part name="parameters" element="ns0:getTieneCamaras"/>
+    </wsdl:message>
     <wsdl:message name="updatePanelLocationRequest">
         <wsdl:part name="parameters" element="ns0:updatePanelLocation"/>
     </wsdl:message>
@@ -1306,6 +1342,9 @@
     </wsdl:message>
     <wsdl:message name="createInstalledComponentsResponse">
         <wsdl:part name="parameters" element="ns0:REQUEST_STATUS"/>
+    </wsdl:message>
+    <wsdl:message name="setCrearComentarioRequest">
+        <wsdl:part name="parameters" element="ns0:setCrearComentario"/>
     </wsdl:message>
     <wsdl:message name="abort_boxcarRequest">
         <wsdl:part name="parameters" element="ns0:abort_boxcar"/>
@@ -1588,6 +1627,12 @@
             <wsdl:output message="ns0:inet_inst_rbranch_updResponse" wsaw:Action="urn:inet_inst_rbranch_updResponse"/>
             <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_inst_rbranch_updDataServiceFault"/>
         </wsdl:operation>
+        <wsdl:operation name="getInstallationTieneCamara">
+            <wsdl:documentation>                 A partir de un código interno de instalación devuelve 'X' si tiene cámara y '' si no la tiene                  &#xd;                                    </wsdl:documentation>
+            <wsdl:input message="ns0:getInstallationTieneCamaraRequest" wsaw:Action="urn:getInstallationTieneCamara"/>
+            <wsdl:output message="ns0:getInstallationTieneCamaraResponse" wsaw:Action="urn:getInstallationTieneCamaraResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getInstallationTieneCamaraDataServiceFault"/>
+        </wsdl:operation>
         <wsdl:operation name="updatePanelLocation">
             <wsdl:documentation>Actualizacion del campo PANEL LOCATION</wsdl:documentation>
             <wsdl:input message="ns0:updatePanelLocationRequest" wsaw:Action="urn:updatePanelLocation"/>
@@ -1597,6 +1642,10 @@
             <wsdl:input message="ns0:createInstalledComponentsRequest" wsaw:Action="urn:createInstalledComponents"/>
             <wsdl:output message="ns0:createInstalledComponentsResponse" wsaw:Action="urn:createInstalledComponentsResponse"/>
             <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:createInstalledComponentsDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="setCrearComentario">
+            <wsdl:documentation>             Graba un Alarm log con los parámetros indicados                       &#xd;                                    </wsdl:documentation>
+            <wsdl:input message="ns0:setCrearComentarioRequest" wsaw:Action="urn:setCrearComentario"/>
         </wsdl:operation>
         <wsdl:operation name="abort_boxcar">
             <wsdl:documentation>Control operation for aborting a boxcarring session</wsdl:documentation>
@@ -1925,6 +1974,18 @@
                 <soap:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
+        <wsdl:operation name="getInstallationTieneCamara">
+            <soap:operation soapAction="urn:getInstallationTieneCamara" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
         <wsdl:operation name="updatePanelLocation">
             <soap:operation soapAction="urn:updatePanelLocation" style="document"/>
             <wsdl:input>
@@ -1942,6 +2003,12 @@
             <wsdl:fault name="DataServiceFault">
                 <soap:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="setCrearComentario">
+            <soap:operation soapAction="urn:setCrearComentario" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="abort_boxcar">
             <soap:operation soapAction="urn:abort_boxcar" style="document"/>
@@ -2504,6 +2571,18 @@
                 <soap12:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
+        <wsdl:operation name="getInstallationTieneCamara">
+            <soap12:operation soapAction="urn:getInstallationTieneCamara" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
         <wsdl:operation name="updatePanelLocation">
             <soap12:operation soapAction="urn:updatePanelLocation" style="document"/>
             <wsdl:input>
@@ -2521,6 +2600,12 @@
             <wsdl:fault name="DataServiceFault">
                 <soap12:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="setCrearComentario">
+            <soap12:operation soapAction="urn:setCrearComentario" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="abort_boxcar">
             <soap12:operation soapAction="urn:abort_boxcar" style="document"/>
@@ -3065,6 +3150,15 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="getInstallationTieneCamara">
+            <http:operation location="getInstallationTieneCamara"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="updatePanelLocation">
             <http:operation location="updatePanelLocation"/>
             <wsdl:input>
@@ -3079,6 +3173,12 @@
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setCrearComentario">
+            <http:operation location="setCrearComentario"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="abort_boxcar">
             <http:operation location="abort_boxcar"/>

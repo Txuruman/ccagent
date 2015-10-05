@@ -58,32 +58,53 @@
 				<form method="post" name="actionPlanForm">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center borderTablaBottom tablaConBoton"  ng-repeat="p in installation.actionplans">
 			            
-			                	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight"><input class="actionPlanTableText" type="text" name="{{'type'+$index}}" ng-model="p.position" ng-readonly="!editingActionPlans" pattern="[0-9]+" ng-class="actionPlanForm.{{'type'+$index}}.$error.pattern ? 'errorColor' : null"/></div>
-			                	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center borderTablaRight"><input class="actionPlanTableText" type="text" name="{{'contactName'+$index}}" ng-model="p.contactName" ng-readonly="!editingActionPlans"/></div>
+			                	<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight"><input class="actionPlanTableText" type="text" name="{{'type'+$index}}" ng-model="p.seq" ng-readonly="!editingActionPlans" pattern="[0-9]+" ng-class="actionPlanForm.{{'type'+$index}}.$error.pattern ? 'errorColor' : null"/></div>
+			                	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center borderTablaRight"><input class="actionPlanTableText" type="text" name="{{'contactName'+$index}}" ng-model="p.name" ng-readonly="!editingActionPlans"/></div>
 			            
 			                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 text-center sinPadding">
 		                		<div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 text-center sinPadding">
 					                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center borderTablaRight">
-					                	<span ng-class="p.phone1.type==='fijo' ? 'glyphicon glyphicon-phone-alt' : 'glyphicon glyphicon-phone'" aria-hidden="true" title="{{(p.phone1.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}" ng-hide="editingActionPlans || p.phone1==null || p.phone1.number==''"></span>
-					                	<select name="phone1Type" ng-show="editingActionPlans" ng-model="p.phone1.type" class="actionPlanTablePhone">
-											<option value="fijo" title="<spring:message code="actionplan.fijo"/>"><spring:message code="actionplan.fijo.first"/></option>
-											<option value="movil" title="<spring:message code="actionplan.movil"/>"><spring:message code="actionplan.movil.first"/></option>
+<!-- 					                	<span ng-class="p.phone1.type==='fijo' ? 'glyphicon glyphicon-phone-alt' : 'glyphicon glyphicon-phone'" aria-hidden="true" title="{{(p.phone1.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}" ng-hide="editingActionPlans || p.phone1==null || p.phone1.number==''"></span> -->
+					                	<select name="phone1Type" ng-model="p.phone1.type" class="actionPlanTablePhone" ng-disabled="!editingActionPlans">
+					                			<option value="BUS" title="<spring:message code="actionplan.fijo"/>">BUS</option>
+					                			<option value="CAS" title="<spring:message code="actionplan.fijo"/>">CAS</option>
+					                			<option value="GSM" title="<spring:message code="actionplan.fijo"/>">GSM</option>
+					                			<option value="MOV" title="<spring:message code="actionplan.fijo"/>">MOV</option>
+					                			<option value="OFI" title="<spring:message code="actionplan.fijo"/>">OFI</option>
+					                			<option value="SMS" title="<spring:message code="actionplan.fijo"/>">SMS</option>
+					                			<option value="VAC" title="<spring:message code="actionplan.fijo"/>">VAC</option>
+<%-- 											<option value="fijo" title="<spring:message code="actionplan.fijo"/>"><spring:message code="actionplan.fijo.first"/></option> --%>
+<%-- 											<option value="movil" title="<spring:message code="actionplan.movil"/>"><spring:message code="actionplan.movil.first"/></option> --%>
 										</select>
 					                	<input class="actionPlanTablePhone" type="text" name="{{'phone1'+$index}}" ng-model="p.phone1.number" ng-readonly="!editingActionPlans" pattern="[0-9]+" ng-class="actionPlanForm.{{'phone1'+$index}}.$error.pattern ? 'errorColor' : null"/>
 					                </div>
 					                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center borderTablaRight">
-						                <span ng-class="p.phone2.type==='fijo' ? 'glyphicon glyphicon-phone-alt' : 'glyphicon glyphicon-phone'" aria-hidden="true" title="{{(p.phone2.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}" ng-hide="editingActionPlans || p.phone2==null || p.phone2.number==''"></span>
-						                <select name="phone2Type" ng-show="editingActionPlans" ng-model="p.phone2.type" class="actionPlanTablePhone">
-											<option value="fijo" title="<spring:message code="actionplan.fijo"/>"><spring:message code="actionplan.fijo.first"/></option>
-											<option value="movil" title="<spring:message code="actionplan.movil"/>"><spring:message code="actionplan.movil.first"/></option>
+<!-- 						                <span ng-class="p.phone2.type==='fijo' ? 'glyphicon glyphicon-phone-alt' : 'glyphicon glyphicon-phone'" aria-hidden="true" title="{{(p.phone2.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}" ng-hide="editingActionPlans || p.phone2==null || p.phone2.number==''"></span> -->
+						                <select name="phone2Type" ng-model="p.phone2.type" class="actionPlanTablePhone" ng-disabled="!editingActionPlans">
+						                		<option value="BUS" title="<spring:message code="actionplan.fijo"/>">BUS</option>
+					                			<option value="CAS" title="<spring:message code="actionplan.fijo"/>">CAS</option>
+					                			<option value="GSM" title="<spring:message code="actionplan.fijo"/>">GSM</option>
+					                			<option value="MOV" title="<spring:message code="actionplan.fijo"/>">MOV</option>
+					                			<option value="OFI" title="<spring:message code="actionplan.fijo"/>">OFI</option>
+					                			<option value="SMS" title="<spring:message code="actionplan.fijo"/>">SMS</option>
+					                			<option value="VAC" title="<spring:message code="actionplan.fijo"/>">VAC</option>
+<%-- 											<option value="fijo" title="<spring:message code="actionplan.fijo"/>"><spring:message code="actionplan.fijo.first"/></option> --%>
+<%-- 											<option value="movil" title="<spring:message code="actionplan.movil"/>"><spring:message code="actionplan.movil.first"/></option> --%>
 										</select>
 						                <input class="actionPlanTablePhone" type="text" name="{{'phone2'+$index}}" ng-model="p.phone2.number" ng-readonly="!editingActionPlans" pattern="[0-9]+" ng-class="actionPlanForm.{{'phone2'+$index}}.$error.pattern ? 'errorColor' : null"/>
 						            </div>
 					                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center borderTablaRight">
-					                	<span ng-class="p.phone3.type==='fijo' ? 'glyphicon glyphicon-phone-alt' : 'glyphicon glyphicon-phone'" aria-hidden="true" title="{{(p.phone3.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}" ng-hide="editingActionPlans || p.phone3==null || p.phone3.number==''"></span>
-					                	<select name="phone3Type" ng-show="editingActionPlans" ng-model="p.phone3.type" class="actionPlanTablePhone">
-											<option value="fijo" title="<spring:message code="actionplan.fijo"/>"><spring:message code="actionplan.fijo.first"/></option>
-											<option value="movil" title="<spring:message code="actionplan.movil"/>"><spring:message code="actionplan.movil.first"/></option>
+<!-- 					                	<span ng-class="p.phone3.type==='fijo' ? 'glyphicon glyphicon-phone-alt' : 'glyphicon glyphicon-phone'" aria-hidden="true" title="{{(p.phone3.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}" ng-hide="editingActionPlans || p.phone3==null || p.phone3.number==''"></span> -->
+					                	<select name="phone3Type" ng-model="p.phone3.type" class="actionPlanTablePhone" ng-disabled="!editingActionPlans">
+					                			<option value="BUS" title="<spring:message code="actionplan.fijo"/>">BUS</option>
+					                			<option value="CAS" title="<spring:message code="actionplan.fijo"/>">CAS</option>
+					                			<option value="GSM" title="<spring:message code="actionplan.fijo"/>">GSM</option>
+					                			<option value="MOV" title="<spring:message code="actionplan.fijo"/>">MOV</option>
+					                			<option value="OFI" title="<spring:message code="actionplan.fijo"/>">OFI</option>
+					                			<option value="SMS" title="<spring:message code="actionplan.fijo"/>">SMS</option>
+					                			<option value="VAC" title="<spring:message code="actionplan.fijo"/>">VAC</option>
+<%-- 											<option value="fijo" title="<spring:message code="actionplan.fijo"/>"><spring:message code="actionplan.fijo.first"/></option> --%>
+<%-- 											<option value="movil" title="<spring:message code="actionplan.movil"/>"><spring:message code="actionplan.movil.first"/></option> --%>
 										</select> 
 										<input class="actionPlanTablePhone" type="text" name="{{'phone3'+$index}}" ng-model="p.phone3.number" ng-readonly="!editingActionPlans" pattern="[0-9]+" ng-class="actionPlanForm.{{'phone3'+$index}}.$error.pattern ? 'errorColor' : null"/>
 					                </div>

@@ -10,7 +10,7 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 		//Si viene instalacion por parametro la buscamos
 		if ($scope.installationParam!=undefined && $scope.installationParam!=null && $scope.installationParam!="") {
 			$scope.getInstallation($scope.installationParam);
-			$scope.getAudit(111111);
+//			$scope.getAudit(111111);
 			$scope.getFieldConfig("INST");
 		}
 		
@@ -73,18 +73,18 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 
 
 	$scope.getInstallation=function(installationId){
-            $http(
-            		{
-                        method: 'GET',
-                        url: 'installation/getInstallation',
-                        params: {installationId: installationId}
-                    }            
-            ).success(function (data, status, headers, config) {
-                $scope.installation = data.installation;
-                $scope.installation.actionplans=filterFilter($scope.installation.actionplans, {'secuence':'0'});
-                $scope.installation.actionplans=$filter('orderBy')($scope.installation.actionplans,'position',false);
-                $scope.searchBy.installationNumber=data.installation.installationNumber;
-                CommonService.processBaseResponse(data,status,headers,config);
+        var installationRequest={
+        		installationNumber:installationId,
+        		agent:$scope.agent
+        }    
+		$http.put('installation/getInstallation',installationRequest)         
+            .success(function (data, status, headers, config) {
+            	CommonService.processBaseResponse(data,status,headers,config);
+            	if(data.installation!=undefined){
+            		$scope.installation = data.installation;
+                    $scope.installation.actionplans=$filter('orderBy')($scope.installation.actionplans,'seq',false);
+                    $scope.searchBy.installationNumber=data.installation.installationNumber;
+            	}
             })
             .error(function (data, status, headers, config) {
                 // called asynchronously if an error occurs
@@ -120,7 +120,8 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 					installationNumber:$scope.searchBy.installationNumber,
 					phone:$scope.searchBy.phone,
 					email:$scope.searchBy.email,
-					installationActive:$scope.installation
+					installationActive:$scope.installation,
+					agent:$scope.agent
 			}
 			$http.put("installation/searchInstallation",searchInstallationRequest)
 			.success(function(data, status, headers, config){
@@ -134,7 +135,8 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 					 */
 					if (!data.noSearched) {
 						$scope.searchedInstallations=data.installationList;
-						$scope.installation=$scope.searchedInstallations[0];
+						//$scope.installation=$scope.searchedInstallations[0];
+						//$scope.searchBy.installationNumber=$scope.installation.installationNumber;
 						if (data.searchBy==1) {
 							$scope.seachByPhone=true;
 							$scope.seachByInstOrMail=false
@@ -152,6 +154,21 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 			});
 		}
 	}
+	/** Seleccionar Instalacion activa al pinchar en la tabla de búsqueda */
+	$scope.setActiveInstallation=function($index){
+		$scope.searchedInstallationIndex=$index;
+		$scope.installation=$scope.searchedInstallations[$index];
+		$scope.installation.actionplans=$filter('orderBy')($scope.installation.actionplans,'seq',false);
+		$scope.searchBy.installationNumber=$scope.installation.installationNumber;
+		//Aviso de no mail internacionalizado
+		var aviso=$("#avisoNoMail").val();
+		if($scope.installation.emailMonitoring==undefined || $scope.installation.emailMonitoring=="" || $scope.installation.emailMonitoring==null){
+			CommonService.processBaseResponse({messages:[{forElement: null, level: "info", value: aviso}]},200,null,null);
+		}
+	}
+	
+	
+	
 	/**FIN Búsqueda de instalación */
 	
 	/**
@@ -228,15 +245,16 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 				//Si llega instalacion refrescada significa que ha habido éxito
 				if(data.installation!=undefined){
 					$scope.installation = data.installation;
-		            $scope.installation.actionplans=filterFilter($scope.installation.actionplans, {'secuence':'0'});
-		            $scope.installation.actionplans=$filter('orderBy')($scope.installation.actionplans,'position',false);
+					$scope.installation.actionplans=$filter('orderBy')($scope.installation.actionplans,'seq',false);
 		            $scope.searchBy.installationNumber=data.installation.installationNumber;
 				}
+				$scope.auditList=data.auditList;
 			})
 			.error(function (data, status, headers, config) {
 				// called asynchronously if an error occurs
 				// or server returns response with an error status.
 				CommonService.processBaseResponse(data,status,headers,config);
+				$scope.auditList=data.auditList;
 			});
 		}
 		
@@ -277,15 +295,16 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 				//Si llega instalacion refrescada significa que ha habido éxito
 				if(data.installation!=undefined){
 					$scope.installation = data.installation;
-		            $scope.installation.actionplans=filterFilter($scope.installation.actionplans, {'secuence':'0'});
-		            $scope.installation.actionplans=$filter('orderBy')($scope.installation.actionplans,'position',false);
+					$scope.installation.actionplans=$filter('orderBy')($scope.installation.actionplans,'seq',false);
 		            $scope.searchBy.installationNumber=data.installation.installationNumber;
 				}
+				$scope.auditList=data.auditList;
 			})
 			.error(function (data, status, headers, config) {
 				// called asynchronously if an error occurs
 				// or server returns response with an error status.
 				CommonService.processBaseResponse(data,status,headers,config);
+				$scope.auditList=data.auditList;
 			});
 		}
 		delete($scope.installationOriginal);
@@ -306,14 +325,17 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 				$scope.installation.actionplans=[];
 			}
     		$scope.installation.actionplans.push({
-    			id:null,
-    			position:null,
-    			secuence:0,
+    			sins:null,
     			type:null,
-    			contactName:null,
+    			seq:null,
+    			name:null,
     			phone1:null,
     			phone2:null,
-    			phone3:null
+    			phone3:null,
+    			spc:null,
+    			scont:null,
+    			scix:null,
+    			pix:null
     		})
     		$timeout(function(){
     			angular.element('input[name=position'+($scope.installation.actionplans.length-1)+']')[0].focus();
@@ -360,18 +382,19 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 				//Si llega instalacion refrescada significa que ha habido éxito
 				if(data.installation!=undefined){
 					$scope.installation = data.installation;
-		            $scope.installation.actionplans=filterFilter($scope.installation.actionplans, {'secuence':'0'});
-		            $scope.installation.actionplans=$filter('orderBy')($scope.installation.actionplans,'position',false);
+					$scope.installation.actionplans=$filter('orderBy')($scope.installation.actionplans,'seq',false);
 		            $scope.searchBy.installationNumber=data.installation.installationNumber;
 				}else{
 					$scope.installation.actionplans=angular.copy($scope.actionPlansOriginal);
 				}
+				$scope.auditList=data.auditList;
 			})
 			.error(function (data, status, headers, config) {
 				// called asynchronously if an error occurs
 				// or server returns response with an error status.
 				CommonService.processBaseResponse(data,status,headers,config);
 				$scope.installation.actionplans=angular.copy($scope.actionPlansOriginal);
+				$scope.auditList=data.auditList;
 			});
 		}else if($scope.editingActionPlans==true){
 			$scope.editingActionPlans=false;
@@ -401,22 +424,21 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 					//Si llega instalacion refrescada significa que ha habido éxito
 					if(data.installation!=undefined){
 						$scope.installation = data.installation;
-			            $scope.installation.actionplans=filterFilter($scope.installation.actionplans, {'secuence':'0'});
-			            $scope.installation.actionplans=$filter('orderBy')($scope.installation.actionplans,'position',false);
+						$scope.installation.actionplans=$filter('orderBy')($scope.installation.actionplans,'seq',false);
 			            $scope.searchBy.installationNumber=data.installation.installationNumber;
 					}
+					$scope.auditList=data.auditList;
 				})
 				.error(function (data, status, headers, config) {
 					// called asynchronously if an error occurs
 					// or server returns response with an error status.
 					CommonService.processBaseResponse(data,status,headers,config);
+					$scope.auditList=data.auditList;
 				});
 			}
 		}
 		
 	}
 	/** FIN Edición Planes de acción */
-	
-	
 	
 });

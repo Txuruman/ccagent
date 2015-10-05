@@ -3,10 +3,12 @@ package es.securitasdirect.moduloweb.web.controller;
 import es.securitasdirect.moduloweb.model.FieldConfig;
 import es.securitasdirect.moduloweb.model.InstallationData;
 import es.securitasdirect.moduloweb.service.AdminService;
+import es.securitasdirect.moduloweb.service.AuditService;
 import es.securitasdirect.moduloweb.service.InstallationService;
 import es.securitasdirect.moduloweb.service.model.SearchInstallationResult;
 import es.securitasdirect.moduloweb.web.dto.request.CodewordChangeRequest;
 import es.securitasdirect.moduloweb.web.dto.request.DeleteActionPlansRequest;
+import es.securitasdirect.moduloweb.web.dto.request.InstallationRequest;
 import es.securitasdirect.moduloweb.web.dto.request.SearchInstallationRequest;
 import es.securitasdirect.moduloweb.web.dto.request.UpdateActionPlansRequest;
 import es.securitasdirect.moduloweb.web.dto.request.UpdateInstallationRequest;
@@ -45,17 +47,23 @@ public class InstallationController extends BaseController {
     protected InstallationService installationService;
     @Inject
     protected AdminService adminService;
-
-    @RequestMapping(value = "getInstallation", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @Inject
+    protected AuditService auditService;
+    
+    @RequestMapping(value = "getInstallation", method = RequestMethod.PUT, consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
     public
     @ResponseBody
-    BaseResponse getInstallation(@RequestParam(value = "installationId", required = true) String installationId) {
-    	LOGGER.debug("Get Installation ID: {}", installationId);
+    BaseResponse getInstallation(@RequestBody InstallationRequest request) {
+    	LOGGER.debug("Get Installation ID: {}", request.getInstallationNumber());
     	InstallationResponse response = new InstallationResponse();
         try{
-	        InstallationData installation = installationService.getInstallation(installationId);
+	        InstallationData installation = installationService.getInstallation(request.getInstallationNumber());
 	        response.setInstallation(installation);
-      	         return response;
+	        installationService.crearComentario(installation, request.getAgent(), "Obteniendo instalación "+request.getInstallationNumber());
+	        if (installation.getEmailMonitoring().isEmpty()) {
+	        	response.info(messageUtil.getProperty("info.nomonitoringmail"));
+			}
+	        return response;
         }catch(Exception exception){
         	return processException(exception);
         }
@@ -91,6 +99,21 @@ public class InstallationController extends BaseController {
 			}else{
 				response.setInstallationList(searchInstallationResult.getInstallationList());
 				response.setSearchBy(searchInstallationResult.getSearchBy());
+				
+				/** Crear Comentario */
+				String event= "Buscando instalacion por ";
+				if(searchInstallationResult.getSearchBy()==0){
+					event+="número de instalación";
+				}else if(searchInstallationResult.getSearchBy()==1){
+					event+="teléfono";
+				}else if(searchInstallationResult.getSearchBy()==2){
+					event+="email";
+				}
+				installationService.crearComentario(searchInstallationResult.getInstallationList().get(0), request.getAgent(), event);
+				
+//				if (searchInstallationResult.getInstallationList().get(0).getEmailMonitoring().isEmpty()) {
+//		        	response.info(messageUtil.getProperty("info.nomonitoringmail"));
+//				}
 			}
 	        return response;
         }catch(Exception exception){
@@ -106,13 +129,17 @@ public class InstallationController extends BaseController {
     	CodewordChangeResponse response = new CodewordChangeResponse();
         try{
         	for (CodewordChangeRequest codewordChangeRequest : request) {
-        		installationService.codewordChange(codewordChangeRequest.getAgent(),codewordChangeRequest.getCodeword(), codewordChangeRequest.getIx(), codewordChangeRequest.getInstallationNumber());
+        		installationService.codewordChange(codewordChangeRequest.getAgent().getAgentIBS(),codewordChangeRequest.getCodeword(), codewordChangeRequest.getIx(), codewordChangeRequest.getInstallationNumber());
 			}
         	//Refrescamos la instalación
         	response.setInstallation(installationService.getInstallation(request.get(0).getInstallationNumber()));
-	        return response;
+        	installationService.crearComentario(response.getInstallation(), request.get(0).getAgent(), "Cambio claves instalación "+request.get(0).getInstallationNumber());
+	        response.setAuditList(auditService.getAudit(request.get(0).getAgent().getAgentIBS(), "Info instalacion", request.get(0).getAgent().getFechaInicioAudit()));
+        	return response;
         }catch(Exception exception){
-        	return processException(exception);
+        	BaseResponse baseResponse=new BaseResponse();
+        	baseResponse.setAuditList(auditService.getAudit(request.get(0).getAgent().getAgentIBS(), "Info instalacion", request.get(0).getAgent().getFechaInicioAudit()));
+        	return processException(baseResponse,exception);
         }
     }
     
@@ -123,11 +150,14 @@ public class InstallationController extends BaseController {
     	LOGGER.debug("Update Installation Request: {}", request);
         InstallationResponse response = new InstallationResponse();
         try{
-	        installationService.updateInstallation(request.getAgent(), request.getInstallation());
+	        installationService.updateInstallation(request.getAgent().getAgentIBS(), request.getInstallation());
 	        response.setInstallation(installationService.getInstallation(request.getInstallation().getInstallationNumber()));
+	        response.setAuditList(auditService.getAudit(request.getAgent().getAgentIBS(), "Info instalacion", request.getAgent().getFechaInicioAudit()));
 	        return response;
         }catch(Exception exception){
-        	return processException(exception);
+        	BaseResponse baseResponse=new BaseResponse();
+        	baseResponse.setAuditList(auditService.getAudit(request.getAgent().getAgentIBS(), "Info instalacion", request.getAgent().getFechaInicioAudit()));
+        	return processException(baseResponse,exception);
         }
     }
     
@@ -141,11 +171,14 @@ public class InstallationController extends BaseController {
     	LOGGER.debug("Delete ActionPlans Request: {}", request);
         InstallationResponse response = new InstallationResponse();
         try{
-	        installationService.deleteActionPlans(request.getAgent(), request.getInstallationNumber(), request.getContactos());
+	        installationService.deleteActionPlans(request.getAgent().getAgentIBS(), request.getContactos());
 	        response.setInstallation(installationService.getInstallation(request.getInstallationNumber()));
+	        response.setAuditList(auditService.getAudit(request.getAgent().getAgentIBS(), "Info instalacion", request.getAgent().getFechaInicioAudit()));
 	        return response;
         }catch(Exception exception){
-        	return processException(exception);
+        	BaseResponse baseResponse=new BaseResponse();
+        	baseResponse.setAuditList(auditService.getAudit(request.getAgent().getAgentIBS(), "Info instalacion", request.getAgent().getFechaInicioAudit()));
+        	return processException(baseResponse,exception);
         }
     }
     
@@ -159,11 +192,14 @@ public class InstallationController extends BaseController {
     	LOGGER.debug("Update ActionPlans Request: {}", request);
         InstallationResponse response = new InstallationResponse();
         try{
-	        installationService.updateActionPlans(request.getAgent(), request.getInstallationNumber(), request.getContactos(), request.getAddedPlan());
+	        installationService.updateActionPlans(request.getAgent().getAgentIBS(), request.getInstallationNumber(), request.getContactos(), request.getAddedPlan());
 	        response.setInstallation(installationService.getInstallation(request.getInstallationNumber()));
+	        response.setAuditList(auditService.getAudit(request.getAgent().getAgentIBS(), "Info instalacion", request.getAgent().getFechaInicioAudit()));
 	        return response;
         }catch(Exception exception){
-        	return processException(exception);
+        	BaseResponse baseResponse=new BaseResponse();
+        	baseResponse.setAuditList(auditService.getAudit(request.getAgent().getAgentIBS(), "Info instalacion", request.getAgent().getFechaInicioAudit()));
+        	return processException(baseResponse,exception);
         }
     }
 }

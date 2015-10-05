@@ -3,13 +3,16 @@ package es.securitasdirect.moduloweb.web.dto.support;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.securitasdirect.moduloweb.model.Audit;
+
 /**
  * Created by Javier Naval on 06/07/2015.
  */
 public class BaseResponse {
 
     private List<Message> messages = new ArrayList<Message>();
-
+    
+    private List<Audit> auditList;
     /**
      * Clase para almacenar los mensajes de respuesta a las peticiones al servidor
      */
@@ -145,12 +148,19 @@ public class BaseResponse {
     public void addMessage(Message msg){
         messages.add(msg);
     }
+    
+   
+    public List<Audit> getAuditList() {
+		return auditList;
+	}
 
+	public void setAuditList(List<Audit> auditList) {
+		this.auditList = auditList;
+	}
 
-    @Override
-    public String toString() {
-        return "BaseResponse{" +
-                "messages=" + messages +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "BaseResponse [messages=" + messages + ", auditList=" + auditList + "]";
+	}
+
 }
