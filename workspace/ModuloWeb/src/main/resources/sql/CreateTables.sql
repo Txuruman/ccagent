@@ -2,9 +2,9 @@
 DROP TABLE "dbo"."audit";
 CREATE TABLE "dbo"."audit"
 (
-date date,
-actor varchar(255),
 id int IDENTITY (1, 1) NOT NULL,
+audit_date datetime,
+actor varchar(255),
 app varchar(255),
 event varchar(255),
 result varchar(255),
