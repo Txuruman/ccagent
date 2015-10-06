@@ -31,9 +31,9 @@ import java.util.List;
 @Controller
 @RequestMapping("/")
 public class MainController extends BaseController {
-	
-//	@Inject
-//    protected HappyService happyService;
+
+    @Inject
+    protected HappyService happyService;
 	
     /**
      * Parámetros post que se reciven en la request al cargar el marco principal
@@ -108,12 +108,12 @@ public class MainController extends BaseController {
 	    }  
     }
     
-//    @RequestMapping(value = "/happy", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
-//    public     @ResponseBody
-//    HappyData getStatus() {
-//        HappyData happyData = happyService.getHappyData();
-//        LOGGER.debug("Returning happy data {}", happyData);
-//        return happyData;
-//    }
+    @RequestMapping(value = "/happy", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public     @ResponseBody
+    HappyData getStatus() {
+        HappyData happyData = happyService.getHappyData();
+        LOGGER.debug("Returning happy data {}", happyData);
+        return happyData;
+    }
 
 }

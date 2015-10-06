@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.wso2.ws.dataservice.CCAGENTADMPortType;
 import org.wso2.ws.dataservice.CCAGENTAUDPortType;
 import org.wso2.ws.dataservice.SPInstallationMonDataPortType;
+import org.wso2.ws.dataservice.SPIBSActionPlanDataPortType;
+import org.wso2.ws.dataservice.SPInstallationBillDataPortType;
+import ws.es.securitasdirect.com.CamServicePortType;
 
 import es.securitasdirect.moduloweb.service.model.HappyData;
 
@@ -31,22 +34,18 @@ public class HappyService {
     private static final Logger LOGGER = LoggerFactory.getLogger(HappyService.class);
 
     private static final String INFOPOINT_SERVICE = "Infopoint";
-    //private static final String FSM_LIGHT = "FSMDataServiceLight";
-    //private static final String AIOTAREAS2_SERVICE = "AioTareas2";
     private static final String INSTALLATIONMONDATA_SERVICE = "spInstallationMonData";
-    //private static final String CCL_SERVICE = "CCLIntegration";
-    private static final String SECURITY = "Security";
 
     private static final String CCAGENTADM_SERVICE = "CCAgentAdm";
     private static final String CCAGENTAUD_SERVICE = "CCAgentAud";
 
+    private static final String IBS_ACTION_PLAN_DATA_SERVICE = "spIBSActionPlanData";
+    private static final String INSTALLATION_BILL_DATA_SERVICE = "spInstallationBillData";
+    private static final String CAM_SERVICE = "CamService";
+
     private static final String OK = "Ok";
     private static final String ERROR = "Error";
 
-    @Resource
-    protected String applicationUser ;
-//    @Autowired
-//    protected SecurityService securityService;
 
     protected Date upTime;
 
@@ -54,18 +53,16 @@ public class HappyService {
     protected CCAGENTADMPortType wsAdmin;
     @Inject
     protected CCAGENTAUDPortType wsAudit;
-//    @Inject
-//    protected InfopointService infopointService;
-    //@Inject
-    //protected InstallationService installationService;
+    @Inject
+    protected InfopointService infopointService;
     @Inject
     protected SPInstallationMonDataPortType spInstallationMonData;
-    //@Inject
-    //protected SPAIOTAREAS2PortType spAioTareas2;
-    //@Inject
-    //protected CCLIntegration cclIntegration;
-    //@Inject
-    //protected FSMDataServiceLightPortType fsmDataServiceLight;
+    @Inject
+    protected SPIBSActionPlanDataPortType spIBSActionPlanData;
+    @Inject
+    protected SPInstallationBillDataPortType spInstallationBillDataPortType;
+    @Inject
+    protected CamServicePortType camServicePortType;
 
     @PostConstruct
     protected void init() {
@@ -76,15 +73,6 @@ public class HappyService {
         HappyData happyData = new HappyData();
         //Up Time
         happyData.setUpSince(upTime);
-
-        //Security
-        try {
-//            securityService.check();
-            happyData.addService(SECURITY, OK);
-        } catch (Throwable e) {
-            happyData.addService(SECURITY,ERROR, e.getMessage());
-        }
-
 
         //Web Services
         try {
@@ -103,33 +91,19 @@ public class HappyService {
             fechaActual.setMillisecond(DatatypeConstants.FIELD_UNDEFINED);
             fechaActual.setTimezone(DatatypeConstants.FIELD_UNDEFINED);
 
-          //  wsAudit.getSelectAuditByParametersOperation("1", "1", fechaActual);
+            wsAudit.selectAuditByParametersOperation("1", "1", fechaActual);
             happyData.addService(CCAGENTAUD_SERVICE,OK);
         } catch (Exception e) {
             happyData.addService(CCAGENTAUD_SERVICE,ERROR, e.getMessage());
         }
-/*
+
         try {
-            fsmDataServiceLight.getMember("1760731");
-            happyData.addService(FSM_LIGHT,OK);
-        } catch (Exception e) {
-            happyData.addService(FSM_LIGHT,ERROR, e.getMessage());
-        }
-*/
-        try {
-           // infopointService.validateSession("check infopoint service");
+            infopointService.validateSession("check infopoint service");
             happyData.addService(INFOPOINT_SERVICE,OK);
         } catch (Exception e) {
             happyData.addService(INFOPOINT_SERVICE,ERROR, e.getMessage());
         }
-/*
-        try {
-            spAioTareas2.getKey1DIY();
-            happyData.addService(AIOTAREAS2_SERVICE, OK);
-        } catch (Exception e) {
-            happyData.addService(AIOTAREAS2_SERVICE,ERROR, e.getMessage());
-        }
-*/
+
         try {
             spInstallationMonData.getPanel(111111);
             happyData.addService(INSTALLATIONMONDATA_SERVICE, OK);
@@ -137,14 +111,26 @@ public class HappyService {
             happyData.addService(INSTALLATIONMONDATA_SERVICE,ERROR, e.getMessage());
         }
 
-/*
         try {
-            cclIntegration.getCCLVersion("M0OOS",applicationUser,"","SPAIN");
-            happyData.addService(CCL_SERVICE, OK);
+            spIBSActionPlanData.inetCallListGetCont(1, 0);
+            happyData.addService(IBS_ACTION_PLAN_DATA_SERVICE, OK);
         } catch (Exception e) {
-            happyData.addService(CCL_SERVICE,ERROR, e.getMessage());
+            happyData.addService(IBS_ACTION_PLAN_DATA_SERVICE,ERROR, e.getMessage());
         }
-*/
+
+        try {
+            spInstallationBillDataPortType.getEmailDataFromInstallation("111111");
+            happyData.addService(INSTALLATION_BILL_DATA_SERVICE, OK);
+        } catch (Exception e) {
+            happyData.addService(INSTALLATION_BILL_DATA_SERVICE,ERROR, e.getMessage());
+        }
+
+        try {
+            camServicePortType.getCameras("ESP", "CCAgent", "111111");
+            happyData.addService(CAM_SERVICE, OK);
+        } catch (Exception e) {
+            happyData.addService(CAM_SERVICE,ERROR, e.getMessage());
+        }
 
         return happyData;
     }
