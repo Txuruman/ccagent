@@ -2,7 +2,7 @@ package es.securitasdirect.moduloweb.web.controller;
 
 import es.securitasdirect.moduloweb.model.Agent;
 import es.securitasdirect.moduloweb.service.InfopointService;
-import es.securitasdirect.moduloweb.service.SecurityService;
+//import es.securitasdirect.moduloweb.service.SecurityService;
 import es.securitasdirect.moduloweb.web.dto.AgentResponse;
 import es.securitasdirect.moduloweb.web.dto.support.BaseResponse;
 import es.securitasdirect.moduloweb.web.controller.params.ExternalParams;
@@ -37,8 +37,8 @@ public class AgentController extends BaseController {
     protected MessageUtil messageUtil;
     @Inject
     protected InfopointService infopointService;
-    @Autowired
-    protected SecurityService securityService;
+    //@Autowired
+    //protected SecurityService securityService;
 
     private Agent agent;
 
@@ -53,7 +53,7 @@ public class AgentController extends BaseController {
         //Se llama varias veces a cargar el agente, si ya está cargado no lo sobreescribimos
         if (!isLogged()) {
             //Validate security, se hace para todas las operaciones
-            securityService.validateAuthenticationRequest(parametersMap.get(ExternalParams.AUTH_SIGNATURE),parametersMap.get(ExternalParams.AUTH_REQUEST_DATE), parametersMap.get(ExternalParams.AUTH_IPADDRESS), parametersMap.get(ExternalParams.AUTH_CONNID));
+            //securityService.validateAuthenticationRequest(parametersMap.get(ExternalParams.AUTH_SIGNATURE),parametersMap.get(ExternalParams.AUTH_REQUEST_DATE), parametersMap.get(ExternalParams.AUTH_IPADDRESS), parametersMap.get(ExternalParams.AUTH_CONNID));
 
             LOGGER.debug("Loading agent from params {}", parametersMap);
             agent = new Agent();
@@ -129,7 +129,7 @@ public class AgentController extends BaseController {
         response.setAgent(agent);
         try {
             //Quitamos la session del agente
-//            infopointService.closeSession(agent);
+            infopointService.closeSession(agent);
             response.info(messageUtil.getProperty("agent.sessionClosed"));
         } catch (Exception e){
             LOGGER.error("Error closing Infopoint session", e);

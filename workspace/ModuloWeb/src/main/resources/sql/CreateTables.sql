@@ -144,7 +144,7 @@ CREATE TABLE "dbo"."invoice_data"
   id int IDENTITY (1, 1) NOT NULL,
   invoice_number int,
 	ext_invoice_no varchar(255),
-	intallation_number int,
+	installation_number int,
 	invoice_type varchar(255),
 	amount numeric(30,2),
 	system_date date,

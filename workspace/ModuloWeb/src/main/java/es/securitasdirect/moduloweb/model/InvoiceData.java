@@ -37,7 +37,7 @@ public class InvoiceData {
 	/**
 	 * Installation Number
 	 */
-	private Integer IntallationNumber;
+	private Integer InstallationNumber;
 	
 	/**
 	 * Tipo de factura Cyle o One Time
@@ -70,7 +70,7 @@ public class InvoiceData {
         this.id = getInvoiceDataResult.getId().intValue();
         this.InvoiceNumber = getInvoiceDataResult.getInvoiceNumber();
         this.ExtInvoiceNo = getInvoiceDataResult.getExtInvoiceNo();
-        this.IntallationNumber = getInvoiceDataResult.getIntallationNumber();
+        this.InstallationNumber = getInvoiceDataResult.getInstallationNumber();
         this.InvoiceType = getInvoiceDataResult.getInvoiceType();
         this.Amount = getInvoiceDataResult.getAmount();
         this.SystemDate = getInvoiceDataResult.getSystemDate();
@@ -103,12 +103,12 @@ public class InvoiceData {
 		ExtInvoiceNo = extInvoiceNo;
 	}
 	
-	public Integer getIntallationNumber() {
-		return IntallationNumber;
+	public Integer getInstallationNumber() {
+		return InstallationNumber;
 	}
 
-	public void setIntallationNumber(Integer intallationNumber) {
-		IntallationNumber = intallationNumber;
+	public void setInstallationNumber(Integer installationNumber) {
+		InstallationNumber = installationNumber;
 	}
 
 	public String getInvoiceType() {
