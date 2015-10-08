@@ -36,7 +36,7 @@ public class MainController extends BaseController {
     protected HappyService happyService;
 	
     /**
-     * Parámetros post que se reciven en la request al cargar el marco principal
+     * Parámetros post que se reciben en la request al cargar el marco principal
      */
     public interface EXTERNAL_PARAMS {
         String INSTALLATION = "bp_out_INSTALACION";
@@ -63,7 +63,7 @@ public class MainController extends BaseController {
      */
     @RequestMapping("marco.html")
     public ModelAndView handleRequest(HttpServletRequest hsr, HttpServletResponse hsr1) throws Exception {
-        ///Redirect to buscartarea.html
+        ///Redirect to mainFrame.jsp
         ModelAndView mv = new ModelAndView("mainFrame");
 
         String key1 = hsr.getParameter(EXTERNAL_PARAMS.KEY1);
@@ -88,7 +88,7 @@ public class MainController extends BaseController {
 
     @RequestMapping("test.html")
     public ModelAndView gotoTest(HttpServletRequest hsr, HttpServletResponse hsr1) throws Exception {
-        ///Redirect to buscartarea.html
+        ///Redirect to test.jsp
         ModelAndView mv = new ModelAndView("test");
         return mv;
     }
