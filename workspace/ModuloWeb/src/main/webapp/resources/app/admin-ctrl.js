@@ -158,10 +158,12 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
 	//Boton editar
 	$scope.editingKeyButton=function(){
 		$scope.editingKey=true;
+		$scope.combinationKeysOriginal= angular.copy($scope.combinationsKeys);
 	}
 	//Boton insertar
 	$scope.insertingKeyButton=function(){
 		$scope.insertingKey=true;
+		$scope.combinationKeysOriginal= angular.copy($scope.combinationsKeys);
 		$scope.currentKey=-1;
 		$scope.currentKeyConfig={
 				tab:"",
@@ -230,6 +232,7 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
         }).error(function(data,status,headers,config){
         	CommonService.processBaseResponse(data,status,headers,config);
         });
+		delete($scope.combinationKeysOriginal);
 	}
 	//Editar combinationKeys
 	$scope.updateCombinationKeys=function(){
@@ -246,6 +249,7 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
         }).error(function(data,status,headers,config){
         	CommonService.processBaseResponse(data,status,headers,config);
         });
+		delete($scope.combinationKeysOriginal);
 	}
 	//Borrar combinationKeys
 	$scope.deleteCombinationKeys=function(){
@@ -263,6 +267,7 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
         }).error(function(data,status,headers,config){
         	CommonService.processBaseResponse(data,status,headers,config);
         });
+		delete($scope.combinationKeysOriginal);
 	}
     /** FIN Gestion de keys */
     
@@ -281,13 +286,95 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
             CommonService.processBaseResponse(data,status,headers,config);
         });
     }
-	
+	//Boton Salvar
+	$scope.saveFieldButton=function(){
+		if($scope.insertingField){
+			$scope.insertFieldConfig();
+		}else if($scope.editingField){
+			$scope.updateFieldConfig();
+		}else if($scope.deletingField){
+			$scope.deleteFieldConfig();
+		}
+	}
+	//Boton editar
+	$scope.editingFieldButton=function(){
+		$scope.editingField=true;
+		$scope.fieldConfigOriginal= angular.copy($scope.ListFieldConfig);
+	}
+	//Boton insertar
+	$scope.insertingFieldButton=function(){
+		$scope.insertingField=true;
+		$scope.fieldConfigOriginal= angular.copy($scope.ListFieldConfig);
+		$scope.currentField=-1;
+		$scope.currentFieldConfig={
+				 id:"",
+				 app:"",
+				 identifier:"",
+				 description:"",
+				 visible:"",
+				 editable:"",
+				 administrable:"",
+				 position:""
+		}
+//		$scope.ListFieldConfig.push($scope.currentFieldConfig);
+	}
+	//Boton cancelar
+	$scope.cancelFieldButton=function(){
+		$scope.insertingField=false;
+		$scope.editingField=false;
+		$scope.deletingField=false;
+		$scope.currentField=-1;
+		$scope.currentFieldConfig={
+				id:"",
+				app:"",
+				identifier:"",
+				description:"",
+				visible:"",
+				editable:"",
+				administrable:"",
+				position:""
+		}
+		$scope.ListFieldConfig= angular.copy($scope.fieldConfigOriginal);
+	}
 	$scope.setCurrentFieldConfig=function($index){
 		//alert($index);
 		$scope.currentFieldConfig=$scope.ListFieldConfig[$index];
 		$scope.currentField=$index;
 	}
-	
+	//Editar FieldConfig
+	$scope.updateFieldConfig=function(){
+		var updateFieldConfigRequest={
+				fieldConfig:$scope.currentFieldConfig
+		}
+		$http.put("admin/updateFieldConfig", updateFieldConfigRequest)
+		.success(function(data,status,headers,config){
+			$scope.ListFieldConfig = data.fieldConfig;
+			$scope.deletingField=false;
+			$scope.currentField=-1;
+            CommonService.processBaseResponse(data,status,headers,config);
+            //$log.debug(data);
+        }).error(function(data,status,headers,config){
+        	CommonService.processBaseResponse(data,status,headers,config);
+        });
+		delete($scope.fieldConfigOriginal);
+	}
+	//Añadir field config
+	$scope.insertFieldConfig=function(){
+		var insertFieldConfigRequest={
+			campo:$scope.currentFieldConfig
+		}
+		$http.post("admin/addFieldConfig", insertFieldConfigRequest)
+		.success(function(data,status,headers,config){
+			$scope.ListFieldConfig = data.fieldConfig;
+			$scope.insertingField=false;
+			$scope.currentField=-1;
+            CommonService.processBaseResponse(data,status,headers,config);
+            //$log.debug(data);
+        }).error(function(data,status,headers,config){
+        	CommonService.processBaseResponse(data,status,headers,config);
+        });
+		delete($scope.fieldConfigOriginal);
+	}
 	/** FIN Gestion de Campos */
     
 

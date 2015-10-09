@@ -65,7 +65,7 @@ public class InfopointService {
         return validarProceso(sessionCode, agent.getAgentIBS(), proceso, agent.getAuth_ipAddress());
     }
 
-    public boolean isAllowedCreateMaintenance( Agent agent) {
+    public boolean isAllowedInfopointSession( Agent agent) {
         if (agent.getInfopointSession()!=null) {
             return validarProceso(agent.getInfopointSession(), agent.getAgentIBS(), processCodeCreateMaintenanceInfopoint, agent.getAuth_ipAddress());
         } else {

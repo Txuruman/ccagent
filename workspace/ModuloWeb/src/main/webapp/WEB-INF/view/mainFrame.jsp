@@ -20,8 +20,13 @@
 
 
 </head>
+<c:if test="${not empty infopointError}">
+	<h1>${infopointError}</h1>
+</c:if>
+<c:if test="${empty infopointError}">
 <!-- <body ng-controller="mainFrameController" class="paddingTop3" ng-init="agent={agentIBS:'${agent}',fechaInicioAudit:'${fechaInicioAudit}',call_id:'${call_id}'}; activeTab='${activeTab}'; installationParam='${installation}'; key1='${key1}'; key2='${key2}'; key3='${key3}'"> -->
-<body ng-controller="mainFrameController" class="paddingTop3" ng-init="agent={idAgent:'', connid:'', agentIBS:'${agent}',fechaInicioAudit:'${fechaInicioAudit}',call_id:'${call_id}', agentUserSD:'', agentCountryJob:'', currentLanguage:'', agentPlace:'', agentGroupSD:'', agentGroupOutService:'', desktopDepartment:'', callingListManagedDesktop:'', auth_requestDate:'', auth_connid:'', auth_ipAddress:'', auth_signature:'', interactionDirection:'', interactionType:'', infopointSession:''}; activeTab='${activeTab}'; installationParam='${installation}'; key1='${key1}'; key2='${key2}'; key3='${key3}'"> <app:messages/>
+<body ng-controller="mainFrameController" class="paddingTop3" ng-init="agent={idAgent:'', connid:'', agentIBS:'${agent}',fechaInicioAudit:'${fechaInicioAudit}',call_id:'${call_id}', agentUserSD:'', agentCountryJob:'', currentLanguage:'', agentPlace:'', agentGroupSD:'', agentGroupOutService:'', desktopDepartment:'', callingListManagedDesktop:'', auth_requestDate:'', auth_connid:'', auth_ipAddress:'', auth_signature:'', interactionDirection:'', interactionType:'', infopointSession:''}; activeTab='${activeTab}'; installationParam='${installation}'; key1='${key1}'; key2='${key2}'; key3='${key3}'; mainInit();">
+	<app:messages/>
 	<div class="row sinMarginRight">
 		<!-- ACCESOS DIRECTOS -->
 		<div
@@ -62,5 +67,6 @@
 	</div>
 
 </body>
+</c:if>
 </html>
 

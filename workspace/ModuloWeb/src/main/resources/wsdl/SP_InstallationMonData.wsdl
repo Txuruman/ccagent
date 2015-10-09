@@ -536,7 +536,7 @@
             <xs:element name="SD_inet_installation_get_information">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="sins" nillable="true" type="xs:int"/>
+                        <xs:element name="sins" nillable="true" type="xs:long"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -548,7 +548,7 @@
             </xs:complexType>
             <xs:complexType name="InstallationData">
                 <xs:sequence>
-                    <xs:element name="s_ins" nillable="true" type="xs:integer"/>
+                    <xs:element name="s_ins" nillable="true" type="xs:string"/>
                     <xs:element name="ins_no" nillable="true" type="xs:string"/>
                     <xs:element name="deal_id" nillable="true" type="xs:string"/>
                     <xs:element name="sub_deal" nillable="true" type="xs:string"/>
@@ -563,7 +563,7 @@
                     <xs:element name="test_int3" nillable="true" type="xs:string"/>
                     <xs:element name="id" nillable="true" type="xs:string"/>
                     <xs:element name="code" nillable="true" type="xs:string"/>
-                    <xs:element name="perm" nillable="true" type="xs:integer"/>
+                    <xs:element name="perm" nillable="true" type="xs:string"/>
                     <xs:element name="tmzonpr" nillable="true" type="xs:string"/>
                     <xs:element name="subzone" nillable="true" type="xs:string"/>
                     <xs:element name="passver" nillable="true" type="xs:string"/>
@@ -625,7 +625,7 @@
                     <xs:element name="ocname" nillable="true" type="xs:string"/>
                     <xs:element name="prtreq" nillable="true" type="xs:string"/>
                     <xs:element name="maintype" nillable="true" type="xs:string"/>
-                    <xs:element name="mainfreq" nillable="true" type="xs:integer"/>
+                    <xs:element name="mainfreq" nillable="true" type="xs:string"/>
                     <xs:element name="mainexpdate" nillable="true" type="xs:string"/>
                     <xs:element name="inst_1" nillable="true" type="xs:string"/>
                     <xs:element name="inst_2" nillable="true" type="xs:string"/>

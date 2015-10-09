@@ -104,7 +104,7 @@ public class AgentController extends BaseController {
             }
 
             //Validamos que el agente tiene permisos de crear mantenimiento
-            if (infopointService.isAllowedCreateMaintenance(agent)) {
+            if (infopointService.isAllowedInfopointSession(agent)) {
                 //El agente tiene permisos
                 response.info(messageUtil.getProperty("agent.sessionCreated"));
             } else {

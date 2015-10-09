@@ -7,6 +7,7 @@ import es.securitasdirect.moduloweb.service.AdminService;
 import es.securitasdirect.moduloweb.web.dto.response.ListCombinationsKeysResponse;import es.securitasdirect.moduloweb.service.AuditService;
 import es.securitasdirect.moduloweb.web.dto.request.DeleteCombinationKeysRequest;
 import es.securitasdirect.moduloweb.web.dto.request.InsertCombinationsKeysRequest;
+import es.securitasdirect.moduloweb.web.dto.request.InsertFieldConfigSRequest;
 import es.securitasdirect.moduloweb.web.dto.request.SearchInstallationRequest;
 import es.securitasdirect.moduloweb.web.dto.request.UpdateCombinationsKeysRequest;
 import es.securitasdirect.moduloweb.web.dto.response.AuditResponse;
@@ -52,33 +53,23 @@ public class AdminController extends BaseController {
         response.setFieldConfig(list);
         return response;
     }
-    /*
-    @RequestMapping(value = "/getTabKeys", method = {RequestMethod.GET}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    
+    @RequestMapping(value = "addFieldConfig", method = {RequestMethod.POST}, consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
     public
     @ResponseBody
-    BaseResponse getTabKeys() {
-        GetTabKeysResponse response = new GetTabKeysResponse();
+    BaseResponse addFieldConfig(@RequestBody InsertFieldConfigSRequest request) {
+        ListFieldConfigResponse response = new ListFieldConfigResponse();
         try{
-	        response.setTabKeys(adminService.getTabKeys());
-	        return response;
-        }catch(Exception exception){
-        	return processException(exception);
+        	adminService.addFieldConfig(request.getCampo());
+        	response.setFieldConfig(adminService.getFieldConfig());
+        	return response;
+        }catch(Exception e){
+        	return processException(e);
         }
+        
+        
     }
     
-    @RequestMapping(value = "/getUsers", method = {RequestMethod.GET}, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public
-    @ResponseBody
-    BaseResponse getUsers() {
-        GetUsersResponse response = new GetUsersResponse();
-        try{
-	        //TODO: response.setUsers(adminService.getUsers());
-	        return response;
-        }catch(Exception exception){
-        	return processException(exception);
-        }
-    }
-*/
     
     /**
      * Gestion de CombinationKeys

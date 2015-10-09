@@ -219,6 +219,11 @@ public class AdminService {
     }
     
     
+    /**
+     * Gestion de campos
+     * Listar todos los campos
+     * @return
+     */
     public List<FieldConfig> getFieldConfig() {
 
         List<FieldConfig> listFieldConfig = new ArrayList<FieldConfig>();
@@ -241,6 +246,11 @@ public class AdminService {
         return listFieldConfig;
     }
     
+    /**
+     * Obtener campos por pestaña
+     * @param app
+     * @return
+     */
     public List<FieldConfig> getFieldConfigByApp(String app) {
 
         List<FieldConfig> listFieldConfig = new ArrayList<FieldConfig>();
@@ -262,6 +272,17 @@ public class AdminService {
 
         return listFieldConfig;
     }
+    
+    public void addFieldConfig(FieldConfig campo){
+    	LOGGER.debug("Calling for insert FieldConfig: {}"+campo);
+    	try {
+    		wsAdmin.insertFieldConfigOperation(campo.getApp(), campo.getIdentifier(), campo.getDescription(),campo.isVisible(), campo.isEditable(), campo.isAdministrable(),campo.getPosition());
+		} catch (Exception e) {
+			throw new BusinessException(BusinessException.ErrorCode.ERROR_INSERT_FIELD);
+		}
+    	
+    }
+    
     
     public List<Users> getUsers() {
 

@@ -9,18 +9,18 @@
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<h3 class="enlinea tituloSeccion margin-right10"><spring:message code="titulo.admin.field"/></h3>
 			<div class="btn-group inline enlinea">
-				<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.edit"/>" ng-hide="editingKey" ng-click="editingKey=true">
+				<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.edit"/>" ng-hide="editingField || insertingField" ng-click="editingFieldButton()">
 				   	<span class="glyphicon glyphicon-pencil colorEdit" aria-hidden="true"></span>
 		        </button>
-		        <button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.add"/>" ng-hide="editingKey" ng-click="editingKey=true">
+		        <button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.add"/>" ng-hide="editingField || insertingField" ng-click="insertingFieldButton()">
 				   	<span class="glyphicon glyphicon-plus colorAdd" aria-hidden="true"></span>
 		        </button>
 	        </div>
 			<div class="btn-group inline enlinea">
-	        	<button type="submit" class="btn btn-default btn-sm" title="<spring:message code="boton.save"/>" ng-show="editingKey" ng-click="adminDAForm.$valid ? editingKey=false : null">
+	        	<button type="submit" class="btn btn-default btn-sm" title="<spring:message code="boton.save"/>" ng-show="editingField || insertingField" ng-click="adminFieldsForm.$valid ? saveFieldButton() : null">
 			    	<span class="glyphicon glyphicon-ok colorSave" aria-hidden="true"></span>
 	        	</button>
-	        	<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.cancel"/>" ng-show="editingKey" ng-click="editingKey=false">
+	        	<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.cancel"/>" ng-show="editingField || insertingField" ng-click="cancelFieldButton()">
 			    	<span class="glyphicon glyphicon-remove colorCancel" aria-hidden="true"></span>
 	        	</button>
 			</div>
@@ -51,9 +51,9 @@
 					
 					<div class="scrollTabla borderTablaBottom">
 						<table class="tbody">
-							<tr ng-repeat="k in ListFieldConfig" ng-click="setCurrentFieldConfig($index)" ng-class="($index===currentField) ? 'currentDA' : ' '">
-								<td class="tablaDA-td1"><input type="text" class="actionPlanTableText" name="{{'tab'+$index}}" ng-model="k.identifier" ng-readonly="!editingKey" ng-required="true"></td>
-								<td class="tablaDA-td1"><input type="text" class="actionPlanTableText" name="{{'tab'+$index}}" ng-model="k.app" ng-readonly="!editingKey" ng-required="true"></td>
+							<tr ng-repeat="k in ListFieldConfig" ng-click="(!editingField && !insertingField) ? setCurrentFieldConfig($index) : null" ng-class="($index===currentField) ? 'currentDA' : ' '">
+								<td class="tablaDA-td1"><input type="text" class="actionPlanTableText" name="{{'tab'+$index}}" ng-model="k.identifier" ng-readonly="true" ng-required="true" ng-disabled="!editingField && !insertingField"></td>
+								<td class="tablaDA-td1"><input type="text" class="actionPlanTableText" name="{{'tab'+$index}}" ng-model="k.app" ng-readonly="true" ng-required="true" ng-disabled="!editingField && !insertingField"></td>
 								<td class="tablaDA-td3">
 									<button type="button" class="btn btn-default btn-sm"  title="<spring:message code="boton.erase"/>" ng-click="">
 				                      	<span class="glyphicon glyphicon-trash colorErase" aria-hidden="true"></span>
@@ -67,26 +67,26 @@
 				<div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
 					<div class="form-group">
 						<label><spring:message code="admin.field.name"/></label>
-						<input type="text" class="form-control input-sm" name="{{'tab'+$index}}" ng-model="currentFieldConfig.identifier" ng-readonly="!editingKey" ng-required="true">
+						<input type="text" class="form-control input-sm" name="{{'tab'+$index}}" ng-model="currentFieldConfig.identifier" ng-readonly="!editingField && !insertingField" ng-required="true">
 					</div>
 				</div>
 				<div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
 					<div class="form-group">
 						<label><spring:message code="admin.field.app"/></label>
-						<input type="text" class="form-control input-sm" name="{{'key1'+$index}}" ng-model="currentFieldConfig.app" ng-readonly="!editingKey" ng-required="true">
+						<input type="text" class="form-control input-sm" name="{{'key1'+$index}}" ng-model="currentFieldConfig.app" ng-readonly="!editingField && !insertingField" ng-required="true">
 					</div>
 				</div>	
 				<div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
 					<div class="form-group">		
 						<label><spring:message code="admin.field.description"/></label>
-						<input type="text" class="form-control input-sm" name="{{'key2'+$index}}" ng-model="currentFieldConfig.description" ng-readonly="!editingKey" ng-required="true">
+						<input type="text" class="form-control input-sm" name="{{'key2'+$index}}" ng-model="currentFieldConfig.description" ng-readonly="!editingField && !insertingField" ng-required="true">
 					</div>
 				</div>	
 				<div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
 					<div class="checkGroup">
-						<label class="checkbox-inline"><input type="checkbox" name="{{'key3'+$index}}" ng-model="currentFieldConfig.visible" ng-readonly="!editingKey">
+						<label class="checkbox-inline"><input type="checkbox" name="{{'key3'+$index}}" ng-model="currentFieldConfig.visible" ng-disabled="!editingField && !insertingField">
 						<spring:message code="admin.field.visible"/></label>
-						<label class="checkbox-inline"><input type="checkbox" name="{{'key3'+$index}}" ng-model="currentFieldConfig.editable" ng-readonly="!editingKey">
+						<label class="checkbox-inline" ng-if="currentFieldConfig.administrable"><input type="checkbox" name="{{'key3'+$index}}" ng-model="currentFieldConfig.editable" ng-disabled="!editingField && !iinsertingField">
 						<spring:message code="admin.field.editable"/></label>
 					</div>
 				</div>	

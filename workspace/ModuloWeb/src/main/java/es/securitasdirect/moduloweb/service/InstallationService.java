@@ -124,8 +124,8 @@ public class InstallationService {
 				//Cogemos el primer elemento de la lista
 				Mainstallationdataresult mainstallationdataresult=mainstallationdataresults.get(0);
 				
-				//TODO: BORRAR
-				List<Billingdataresult> d=spInstallationBillDataPortType.getBillingInformation(mainstallationdataresult.getSIns().intValue());
+//				//TODO: BORRAR
+//				List<Billingdataresult> d=spInstallationBillDataPortType.getBillingInformation(mainstallationdataresult.getSIns().intValue());
 				
 				//Instalation Number
 				installation.setInstallationNumber(mainstallationdataresult.getInsNo());
@@ -452,6 +452,10 @@ public class InstallationService {
 		}
 	}
 	
+	/**
+	 * Actualizar instalacion
+	 * primero buscamos los datos y despues los volvemos a setear con la informacion que viene cambiada de la pantalla
+	 */
 	public void updateInstallation(String agent, InstallationData installationData){
 		//Auditoria
 		Audit audit=new Audit();
@@ -463,9 +467,10 @@ public class InstallationService {
 //			List<Mainstallationdataresult> mainstallationdataresults=spInstallationMonData.getInstallationData(installationData.getInstallationNumber());
 //			Mainstallationdataresult mainstallationdataresult=mainstallationdataresults.get(0);
 			
-			List<org.wso2.ws.dataservice.InstallationData> installationDatas=spInstallationMonData.sdInetInstallationGetInformation(Integer.parseInt(installationData.getSins()));
+			List<org.wso2.ws.dataservice.InstallationData> installationDatas=spInstallationMonData.sdInetInstallationGetInformation(Long.parseLong(installationData.getSins()));
 			if (!installationDatas.isEmpty()) {
-				org.wso2.ws.dataservice.InstallationData installationDataWS=installationDatas.get(0);	
+				org.wso2.ws.dataservice.InstallationData installationDataWS=installationDatas.get(0);
+				LOGGER.debug("InstallationData {}", installationDataWS.toString());
 				
 				/**
 				 * installationData
@@ -497,7 +502,7 @@ public class InstallationService {
 				String state=installationDataWS.getState();
 				String zip=installationDataWS.getZip();
 				String aliasName=installationDataWS.getAliasName();
-				Integer sIns=installationDataWS.getSIns().intValue();
+				Integer sIns=Integer.parseInt(installationDataWS.getSIns());
 				String alaid1=installationDataWS.getAlaid1();
 				String dealId=installationDataWS.getDealId();
 				String lang=installationDataWS.getLang();
