@@ -1,13 +1,6 @@
 package es.securitasdirect.moduloweb.web.dto.response;
 
-import es.securitasdirect.moduloweb.model.InvoiceInfo;
-
-import java.util.List;
-
-import es.securitasdirect.moduloweb.model.Cuote;
-import es.securitasdirect.moduloweb.model.CycleFeeds;
-import es.securitasdirect.moduloweb.model.DummyGenerator;
-import es.securitasdirect.moduloweb.model.InvoiceData;
+import es.securitasdirect.moduloweb.model.InvoiceGlobal;
 import es.securitasdirect.moduloweb.web.dto.support.BaseResponse;
 
 
@@ -15,41 +8,18 @@ import es.securitasdirect.moduloweb.web.dto.support.BaseResponse;
  * Response for the invoice query
  */
 public class InvoiceResponse extends BaseResponse {
-    private InvoiceInfo invoiceInfo;
-    private List<CycleFeeds> cycleFeeds;
-    private List<InvoiceData> invoiceList;
-    private Cuote cuote;
-    
-    public List<CycleFeeds> getCycleFeeds() {
-		return cycleFeeds;
+	private InvoiceGlobal invoiceGlobal=new InvoiceGlobal();
+
+	public InvoiceResponse() {
+		super();
 	}
 
-	public void setCycleFeeds(List<CycleFeeds> cycleFeeds) {
-		this.cycleFeeds = cycleFeeds;
+	public InvoiceGlobal getInvoiceGlobal() {
+		return invoiceGlobal;
 	}
 
-	public InvoiceInfo getInvoiceInfo() {
-        return invoiceInfo;
-    }
-
-    public void setInvoiceInfo(InvoiceInfo invoiceInfo) {
-        this.invoiceInfo = invoiceInfo;
-    }
-
-	public List<InvoiceData> getInvoiceList() {
-		return invoiceList;
-	}
-
-	public void setInvoiceList(List<InvoiceData> invoiceList) {
-		this.invoiceList = invoiceList;
-	}
-
-	public Cuote getCuote() {
-		return cuote;
-	}
-
-	public void setCuote(Cuote cuote) {
-		this.cuote = cuote;
+	public void setInvoiceGlobal(InvoiceGlobal invoiceGlobal) {
+		this.invoiceGlobal = invoiceGlobal;
 	}
     
 	

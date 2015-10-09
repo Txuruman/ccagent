@@ -35,9 +35,11 @@
 	<!-- </div> -->
 	<div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<label><spring:message code="infoinstal.ccc" /></label><input
-				class="form-control input-sm" ng-readonly="!cccEditing" type="text"
-				ng-model="invoiceInfo.ccc" name="ccc" pattern="([A-Z]{2}[0-9]{2}(-)?)?[0-9]{4}(-)?[0-9]{4}(-)?[0-9]{2}(-)?[0-9]{10}"
+			<label><spring:message code="infoinstal.ccc" /></label>
+			<!-- Pattern para Iban y CCC -->
+			<!-- ([A-Z]{2}[0-9]{2}(-)?)?[0-9]{4}(-)?[0-9]{4}(-)?[0-9]{2}(-)?[0-9]{10} -->
+			<input class="form-control input-sm" ng-readonly="!cccEditing" type="text"
+				ng-model="invoiceInfo.ccc" name="ccc" pattern="[A-Z]{2}[0-9]{22}"
 				title="<spring:message code="error.ccc" />">
 		</div>
 		<!-- 							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 editarCCC"> -->

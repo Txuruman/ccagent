@@ -21,7 +21,8 @@ public class InstallationData {
 
     /** Número del cliente. Esto es el número de instalación????  */
     private String installationNumber;
-
+    /** Número interno de la instalacion*/
+    private String sins;
     /** Teléfonos del Panel */
     private String panelPhone;
     private String phone2;
@@ -378,21 +379,30 @@ public class InstallationData {
 	public void setDealer(String dealer) {
 		this.dealer = dealer;
 	}
+	
+	public String getSins() {
+		return sins;
+	}
+
+	public void setSins(String sins) {
+		this.sins = sins;
+	}
 
 	@Override
 	public String toString() {
 		return "InstallationData [id=" + id + ", panel=" + panel + ", version=" + version + ", installationNumber="
-				+ installationNumber + ", panelPhone=" + panelPhone + ", phone2=" + phone2 + ", phone3=" + phone3
-				+ ", servicesPhone=" + servicesPhone + ", customerName=" + customerName + ", emailMonitoring="
-				+ emailMonitoring + ", emailBilling=" + emailBilling + ", emailUpdate=" + emailUpdate
-				+ ", emailServices=" + emailServices + ", camera=" + camera + ", aka=" + aka + ", address=" + address
-				+ ", city=" + city + ", monitoringStatus=" + monitoringStatus + ", subtype=" + subtype + ", language="
-				+ language + ", customerPassword=" + customerPassword + ", securitasPassword=" + securitasPassword
-				+ ", coercionPassword=" + coercionPassword + ", actionplans=" + actionplans + ", telefono1=" + telefono1
-				+ ", telefono2=" + telefono2 + ", telefono3=" + telefono3 + ", telefonoServicios=" + telefonoServicios
-				+ ", emailServicios=" + emailServicios + ", emailsAreDiferents=" + emailsAreDiferents + ", dealer="
-				+ dealer + "]";
+				+ installationNumber + ", sins=" + sins + ", panelPhone=" + panelPhone + ", phone2=" + phone2
+				+ ", phone3=" + phone3 + ", servicesPhone=" + servicesPhone + ", customerName=" + customerName
+				+ ", emailMonitoring=" + emailMonitoring + ", emailBilling=" + emailBilling + ", emailUpdate="
+				+ emailUpdate + ", emailServices=" + emailServices + ", camera=" + camera + ", aka=" + aka
+				+ ", address=" + address + ", city=" + city + ", monitoringStatus=" + monitoringStatus + ", subtype="
+				+ subtype + ", language=" + language + ", customerPassword=" + customerPassword + ", securitasPassword="
+				+ securitasPassword + ", coercionPassword=" + coercionPassword + ", actionplans=" + actionplans
+				+ ", telefono1=" + telefono1 + ", telefono2=" + telefono2 + ", telefono3=" + telefono3
+				+ ", telefonoServicios=" + telefonoServicios + ", emailServicios=" + emailServicios
+				+ ", emailsAreDiferents=" + emailsAreDiferents + ", dealer=" + dealer + "]";
 	}
+
 
 	
 }

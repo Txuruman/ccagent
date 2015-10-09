@@ -390,7 +390,7 @@ input.actionPlanTablePhone{
 	height: 15px !important;
 }
 
-#tablaBuscar .tbody tr:hover{
+#tablaBuscar .tbody tr:hover, #tablaBuscar .tbody td:hover, #tablaBuscar .tbody input:hover{
 	background-color:#d6ddf0;
 	cursor:pointer;
 }

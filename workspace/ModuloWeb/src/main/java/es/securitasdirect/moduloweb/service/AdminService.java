@@ -46,19 +46,69 @@ public class AdminService {
 
     /**
      * Query the active Tab for the keys combination
+     * Obtenemos todas y comprobamos:
+     * Si la hay mas de una que coincide la primera key, comprobamos por la segunda y si tambien hay mas de una comprobamos por la tercera
+     * Si al final de todas las comprobaciones hay mas de una coincidencia se va a la por defecto que es instalacion
      * @param key1
      * @param key2
      * @param key3
      * @return
      */
     public String getActiveTabFromKeys(String key1, String key2, String key3) {
-    	if(key1!=null && !key1.isEmpty() && (key1.equals("AV") || key1.equals("av"))){
-    		return TABS.AVERIAS;
-    	}
-    	else{
+    	List<CombinationsKeys> combinationsKeys1=this.getCombinationsKeys();
+    	List<CombinationsKeys> combinationsKeys2=new ArrayList<CombinationsKeys>();
+    	for (int i = 0; i < combinationsKeys1.size(); i++) {
+    		if(combinationsKeys1.get(i).getKey1().equals(key1)){
+				combinationsKeys2.add(combinationsKeys1.get(i));
+			}
+		}
+       	if(combinationsKeys2.isEmpty()){
     		return TABS.INSTALLATION;
+    	}else if(combinationsKeys2.size()==1){
+    		return combinationsKeys2.get(0).getTab();
+    	}else{
+    		boolean difTab=false;
+    		combinationsKeys1=new ArrayList<CombinationsKeys>();
+    		for (int i = 0; i < combinationsKeys2.size(); i++) {
+    			if(combinationsKeys2.get(i).getKey2().equals(key2)){
+    				combinationsKeys1.add(combinationsKeys2.get(i));
+    				if(i>0 && !combinationsKeys2.get(i).getTab().equals(combinationsKeys2.get(i-1).getTab())){
+    					difTab=true;
+    				}
+    			}
+			}
+    		if(combinationsKeys1.isEmpty()){
+    			if (difTab) {
+    				return TABS.INSTALLATION;
+				}else{
+					return combinationsKeys2.get(0).getTab();
+				}
+        	}else if(combinationsKeys1.size()==1){
+        		return combinationsKeys1.get(0).getTab();
+        	}else{
+        		difTab=false;
+        		combinationsKeys2=new ArrayList<CombinationsKeys>();
+        		for (int i = 0; i < combinationsKeys1.size(); i++) {
+        			if(combinationsKeys1.get(i).getKey3().equals(key3)){
+        				combinationsKeys2.add(combinationsKeys1.get(i));
+        				if(i>0 && !combinationsKeys1.get(i).getTab().equals(combinationsKeys1.get(i-1).getTab())){
+        					difTab=true;
+        				}
+        			}
+    			}
+        		if(combinationsKeys2.size()==1){
+            		return combinationsKeys2.get(0).getTab();
+        		}else if(combinationsKeys2.isEmpty()){
+        			if (difTab) {
+        				return TABS.INSTALLATION;
+    				}else{
+    					return combinationsKeys1.get(0).getTab();
+    				}
+            	}else{
+            		return TABS.INSTALLATION;
+            	}
+        	}
     	}
-        
     }
 
 
@@ -128,8 +178,7 @@ public class AdminService {
             }
 
         } catch (Exception e) {
-            LOGGER.error(e.getMessage(),e);
-            throw new FrameworkException(e);
+        	throw new BusinessException(BusinessException.ErrorCode.ERROR_GET_KEY);
         }
 
         return listCombinationsKeys;
@@ -140,18 +189,35 @@ public class AdminService {
      * @return
      */
     public void insertCombinationsKeys(CombinationsKeys combinationKeys){
-    	wsAdmin.insertCombinationsKeysOperation(combinationKeys.getKey1(), combinationKeys.getKey2(), combinationKeys.getKey3(), combinationKeys.getTab());
-    	//TODO: Salida 
+    	try{
+    		wsAdmin.insertCombinationsKeysOperation(combinationKeys.getKey1(), combinationKeys.getKey2(), combinationKeys.getKey3(), combinationKeys.getTab());
+    	}catch(Exception e){
+    		throw new BusinessException(BusinessException.ErrorCode.ERROR_INSERT_KEY);
+    	}
     }
     /**
      * Update Combination Keys
      * @return
      */
     public void updateCombinationsKeys(CombinationsKeys combinationKeys) {
-    	wsAdmin.updateCombinationsKeysOperation(combinationKeys.getKey1(), combinationKeys.getKey2(), combinationKeys.getKey3(), combinationKeys.getTab(), combinationKeys.getId());
-    	// TODO Auto-generated method stub
-		
+    	try{
+    		wsAdmin.updateCombinationsKeysOperation(combinationKeys.getKey1(), combinationKeys.getKey2(), combinationKeys.getKey3(), combinationKeys.getTab(), combinationKeys.getId());
+    	}catch(Exception e){
+    		throw new BusinessException(BusinessException.ErrorCode.ERROR_UPDATE_KEY);
+    	}
 	}
+    /**
+     * Delete Combination Keys
+     * @param combinationKeys
+     */
+    public void deleteCombinationsKeys(CombinationsKeys combinationKeys){
+    	try{
+    		wsAdmin.deleteCombinationsKeysOperation(combinationKeys.getId());
+    	}catch(Exception e){
+    		throw new BusinessException(BusinessException.ErrorCode.ERROR_DELETE_KEY);
+    	}
+    }
+    
     
     public List<FieldConfig> getFieldConfig() {
 

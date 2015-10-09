@@ -72,8 +72,8 @@ public class MainController extends BaseController {
         String installation = hsr.getParameter(EXTERNAL_PARAMS.INSTALLATION);
         String agent = hsr.getParameter(EXTERNAL_PARAMS.MATRICULA);
         String call_id = hsr.getParameter(EXTERNAL_PARAMS.CALL_ID);
-        
-        mv.addObject("activeTab", adminService.getActiveTabFromKeys(key1, key2, key3));
+        String activeTab=adminService.getActiveTabFromKeys(key1, key2, key3);
+        mv.addObject("activeTab", activeTab);
         mv.addObject("installation", installation);
         mv.addObject("agent", agent);
         mv.addObject("fechaInicioAudit", System.currentTimeMillis());

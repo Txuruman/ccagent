@@ -25,7 +25,7 @@
                 <th class="text-center"><spring:message code="audit.result"/></th>
             </tr>
             <tr ng-repeat="a in auditList | orderBy : 'date'">
-                <td>{{a.date}}</td>
+                <td>{{a.date | date:'dd-MM-yyyy HH:mm:ss'}}</td>
         		<td>{{a.result}}</td>
                 <td>{{a.detail}}</td>
         </table>

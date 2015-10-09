@@ -177,7 +177,7 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
 		$scope.deletingKey=true;
 		//Quitamos el elemento de la lista en angular
 		for (var i = 0; i < $scope.combinationsKeys.length; i++) {
-			if($scope.combinationsKeys.id==$scope.currentKeyConfig.id){
+			if($scope.combinationsKeys[i].id==$scope.currentKeyConfig.id){
 				$scope.combinationsKeys.splice(i,1);
 			}
 		}
@@ -202,9 +202,10 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
 		}
 	}
 	//Boton cancelar
-	$scope.cancelButton=function(){
+	$scope.cancelKeyButton=function(){
 		$scope.insertingKey=false;
 		$scope.editingKey=false;
+		$scope.deletingKey=false;
 		$scope.currentKey=-1;
 		$scope.currentKeyConfig={
 				tab:"",
@@ -212,6 +213,7 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
 				key2:"",
 				key3:""
 		}
+		$scope.combinationsKeys= angular.copy($scope.combinationKeysOriginal);
 	}
 	//Insertar nuevo KeyConfig
 	$scope.insertKeyConfig=function(){
@@ -255,6 +257,7 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
 			//volvemos a obtener las keys
 			$scope.getCombinationsKeys();
 			$scope.deletingKey=false;
+			$scope.currentKey=-1;
             CommonService.processBaseResponse(data,status,headers,config);
             //$log.debug(data);
         }).error(function(data,status,headers,config){

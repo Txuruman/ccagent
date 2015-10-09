@@ -5,6 +5,7 @@ import es.securitasdirect.moduloweb.model.CombinationsKeys;
 import es.securitasdirect.moduloweb.model.FieldConfig;
 import es.securitasdirect.moduloweb.service.AdminService;
 import es.securitasdirect.moduloweb.web.dto.response.ListCombinationsKeysResponse;import es.securitasdirect.moduloweb.service.AuditService;
+import es.securitasdirect.moduloweb.web.dto.request.DeleteCombinationKeysRequest;
 import es.securitasdirect.moduloweb.web.dto.request.InsertCombinationsKeysRequest;
 import es.securitasdirect.moduloweb.web.dto.request.SearchInstallationRequest;
 import es.securitasdirect.moduloweb.web.dto.request.UpdateCombinationsKeysRequest;
@@ -106,9 +107,8 @@ public class AdminController extends BaseController {
         BaseResponse response = new BaseResponse();
         try {
         	adminService.insertCombinationsKeys(request.getCombinationKeys());
-        	response.info(messageUtil.getProperty("createtask.create.success"));
+//        	response.info(messageUtil.getProperty("createtask.create.success"));
         } catch (Exception e) {
-            LOGGER.error("Error creating task.", e);
             response = processException(e);
         }
         return response;
@@ -120,12 +120,23 @@ public class AdminController extends BaseController {
         BaseResponse response = new BaseResponse();
         try {
         	adminService.updateCombinationsKeys(request.getCombinationKeys());
-        	response.info(messageUtil.getProperty("createtask.create.success"));
+//        	response.info(messageUtil.getProperty("createtask.create.success"));
         } catch (Exception e) {
-            LOGGER.error("Error creating task.", e);
             response = processException(e);
         }
         return response;
     }
-
+    @RequestMapping(value = "deleteCombinationsKeys", method = {RequestMethod.PUT}, consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public
+    @ResponseBody
+    BaseResponse deleteCombinationsKeys(@RequestBody DeleteCombinationKeysRequest request) {
+        BaseResponse response = new BaseResponse();
+        try {
+        	adminService.deleteCombinationsKeys(request.getCombinationKeys());
+//        	response.info(messageUtil.getProperty("createtask.create.success"));
+        } catch (Exception e) {
+            response = processException(e);
+        }
+        return response;
+    }
 }

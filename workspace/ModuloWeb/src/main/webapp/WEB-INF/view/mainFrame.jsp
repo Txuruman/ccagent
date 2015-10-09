@@ -11,6 +11,7 @@
 
 <!-- CONTROLADORES ANGULARJS -->
 <script src="${pageContext.request.contextPath}/resources/app/moduloweb-app.js"></script>
+<script src="${pageContext.request.contextPath}/resources/app/commonService.js"></script>
 <script	src="${pageContext.request.contextPath}/resources/app/mainFrame-ctrl.js"></script>
 <script	src="${pageContext.request.contextPath}/resources/app/infoInstal-ctrl.js"></script>
 <script	src="${pageContext.request.contextPath}/resources/app/invoicing-ctrl.js"></script>
@@ -19,7 +20,7 @@
 
 
 </head>
-<body ng-controller="mainFrameController" class="paddingTop3" ng-init="agent={agentIBS:'${agent}',fechaInicioAudit:'${fechaInicioAudit}',call_id:'${call_id}'}; activeTab='${activeTab}'; installationParam='${installation}'; key1='${key1}'; key2='${key2}'; key3='${key3}'">
+<body ng-controller="mainFrameController" class="paddingTop3" ng-init="agent={agentIBS:'${agent}',fechaInicioAudit:'${fechaInicioAudit}',call_id:'${call_id}'}; activeTab='${activeTab}'; installationParam='${installation}'; key1='${key1}'; key2='${key2}'; key3='${key3}'; mainInit();">
  <app:messages/>
 	<div class="row sinMarginRight">
 		<!-- ACCESOS DIRECTOS -->

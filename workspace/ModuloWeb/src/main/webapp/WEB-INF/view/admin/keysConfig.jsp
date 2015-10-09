@@ -9,21 +9,21 @@
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<h3 class="enlinea tituloSeccion margin-right10"><spring:message code="titulo.admin.keys"/></h3>
 			<div class="btn-group inline enlinea">
-				<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.edit"/>" ng-hide="editingKey || insertingKey" ng-click="editingKeyButton()" ng-disabled="currentKey<0 ? true : false">
+				<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.edit"/>" ng-hide="editingKey || insertingKey || deletingKey" ng-click="editingKeyButton()" ng-disabled="currentKey<0 ? true : false">
 				   	<span class="glyphicon glyphicon-pencil colorEdit" aria-hidden="true"></span>
 		        </button>
-		        <button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.add"/>" ng-hide="editingKey || insertingKey" ng-click="insertingKeyButton()">
+		        <button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.add"/>" ng-hide="editingKey || insertingKey || deletingKey" ng-click="insertingKeyButton()">
 				   	<span class="glyphicon glyphicon-plus colorAdd" aria-hidden="true"></span>
 		        </button>
-		        <button type="button" class="btn btn-default btn-sm"  title="<spring:message code="boton.erase"/>" ng-hide="editingKey || insertingKey || currentKey<0" ng-click="deleteKeyButton()">
+		        <button type="button" class="btn btn-default btn-sm"  title="<spring:message code="boton.erase"/>" ng-hide="editingKey || insertingKey || deletingKey || currentKey<0" ng-click="deleteKeyButton()">
                    	<span class="glyphicon glyphicon-trash colorErase" aria-hidden="true"></span>
                  </button>
 	        </div>
 			<div class="btn-group inline enlinea">
-	        	<button type="submit" class="btn btn-default btn-sm" title="<spring:message code="boton.save"/>" ng-show="editingKey || insertingKey" ng-click="adminDAForm.$valid ? saveKeyButton() : null">
+	        	<button type="submit" class="btn btn-default btn-sm" title="<spring:message code="boton.save"/>" ng-show="editingKey || insertingKey || deletingKey" ng-click="adminDAForm.$valid ? saveKeyButton() : null">
 			    	<span class="glyphicon glyphicon-ok colorSave" aria-hidden="true"></span>
 	        	</button>
-	        	<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.cancel"/>" ng-show="editingKey || insertingKey" ng-click="cancelButton()">
+	        	<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.cancel"/>" ng-show="editingKey || insertingKey || deletingKey" ng-click="cancelKeyButton()">
 			    	<span class="glyphicon glyphicon-remove colorCancel" aria-hidden="true"></span>
 	        	</button>
 			</div>
@@ -58,11 +58,11 @@
 <!-- 								<td class="tablaDA-td2"><input type="text" class="actionPlanTableText" name="{{'key1'+$index}}" ng-model="k.key1" ng-readonly="!editingKey" ng-required="true"></td> -->
 <!-- 								<td class="tablaDA-td3"><input type="text" class="actionPlanTableText" name="{{'key2'+$index}}" ng-model="k.key2" ng-readonly="!editingKey" ng-required="true"></td> -->
 <!-- 								<td class="tablaDA-td4"><input type="text" class="actionPlanTableText" name="{{'key3'+$index}}" ng-model="k.key3" ng-readonly="!editingKey" ng-required="true"></td> -->
-								<td class="tablaDA-td3">
-									<button type="button" class="btn btn-default btn-sm"  title="<spring:message code="boton.erase"/>" ng-click="">
-				                      	<span class="glyphicon glyphicon-trash colorErase" aria-hidden="true"></span>
-				                    </button>
-								</td>
+<!-- 								<td class="tablaDA-td3"> -->
+<%-- 									<button type="button" class="btn btn-default btn-sm"  title="<spring:message code="boton.erase"/>" ng-click=""> --%>
+<!-- 				                      	<span class="glyphicon glyphicon-trash colorErase" aria-hidden="true"></span> -->
+<!-- 				                    </button> -->
+<!-- 								</td> -->
 							</tr>
 						</table>
 					</div>

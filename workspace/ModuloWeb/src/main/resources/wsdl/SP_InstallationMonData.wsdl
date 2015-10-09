@@ -533,6 +533,160 @@
                     <xs:element name="sacc" nillable="true" type="xs:integer"/>
                 </xs:sequence>
             </xs:complexType>
+            <xs:element name="SD_inet_installation_get_information">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="sins" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="grpInstallationData" type="ns0:grpInstallationData"/>
+            <xs:complexType name="grpInstallationData">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="InstallationData" type="ns0:InstallationData"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="InstallationData">
+                <xs:sequence>
+                    <xs:element name="s_ins" nillable="true" type="xs:integer"/>
+                    <xs:element name="ins_no" nillable="true" type="xs:string"/>
+                    <xs:element name="deal_id" nillable="true" type="xs:string"/>
+                    <xs:element name="sub_deal" nillable="true" type="xs:string"/>
+                    <xs:element name="alaid1" nillable="true" type="xs:string"/>
+                    <xs:element name="alaid2" nillable="true" type="xs:string"/>
+                    <xs:element name="alaid3" nillable="true" type="xs:string"/>
+                    <xs:element name="panel1" nillable="true" type="xs:string"/>
+                    <xs:element name="panel2" nillable="true" type="xs:string"/>
+                    <xs:element name="panel3" nillable="true" type="xs:string"/>
+                    <xs:element name="test_int1" nillable="true" type="xs:string"/>
+                    <xs:element name="test_int2" nillable="true" type="xs:string"/>
+                    <xs:element name="test_int3" nillable="true" type="xs:string"/>
+                    <xs:element name="id" nillable="true" type="xs:string"/>
+                    <xs:element name="code" nillable="true" type="xs:string"/>
+                    <xs:element name="perm" nillable="true" type="xs:integer"/>
+                    <xs:element name="tmzonpr" nillable="true" type="xs:string"/>
+                    <xs:element name="subzone" nillable="true" type="xs:string"/>
+                    <xs:element name="passver" nillable="true" type="xs:string"/>
+                    <xs:element name="inst_id" nillable="true" type="xs:string"/>
+                    <xs:element name="ins_date" nillable="true" type="xs:string"/>
+                    <xs:element name="mon_stat" nillable="true" type="xs:string"/>
+                    <xs:element name="mon_stat_date" nillable="true" type="xs:string"/>
+                    <xs:element name="sub_tp" nillable="true" type="xs:string"/>
+                    <xs:element name="comment1" nillable="true" type="xs:string"/>
+                    <xs:element name="comment2" nillable="true" type="xs:string"/>
+                    <xs:element name="txtzonref" nillable="true" type="xs:string"/>
+                    <xs:element name="pho_area" nillable="true" type="xs:string"/>
+                    <xs:element name="sub_exptp" nillable="true" type="xs:string"/>
+                    <xs:element name="rep_flg" nillable="true" type="xs:string"/>
+                    <xs:element name="insu_id" nillable="true" type="xs:string"/>
+                    <xs:element name="name" nillable="true" type="xs:string"/>
+                    <xs:element name="fname" nillable="true" type="xs:string"/>
+                    <xs:element name="iname" nillable="true" type="xs:string"/>
+                    <xs:element name="tname" nillable="true" type="xs:string"/>
+                    <xs:element name="street1" nillable="true" type="xs:string"/>
+                    <xs:element name="street1no1" nillable="true" type="xs:string"/>
+                    <xs:element name="street1no2" nillable="true" type="xs:string"/>
+                    <xs:element name="street2" nillable="true" type="xs:string"/>
+                    <xs:element name="city" nillable="true" type="xs:string"/>
+                    <xs:element name="city2" nillable="true" type="xs:string"/>
+                    <xs:element name="state" nillable="true" type="xs:string"/>
+                    <xs:element name="zip" nillable="true" type="xs:string"/>
+                    <xs:element name="alias_name" nillable="true" type="xs:string"/>
+                    <xs:element name="phone1" nillable="true" type="xs:string"/>
+                    <xs:element name="phone2" nillable="true" type="xs:string"/>
+                    <xs:element name="phone3" nillable="true" type="xs:string"/>
+                    <xs:element name="phtxt1" nillable="true" type="xs:string"/>
+                    <xs:element name="phtxt2" nillable="true" type="xs:string"/>
+                    <xs:element name="fax" nillable="true" type="xs:string"/>
+                    <xs:element name="cross_street" nillable="true" type="xs:string"/>
+                    <xs:element name="map_grid" nillable="true" type="xs:string"/>
+                    <xs:element name="mgrp1" nillable="true" type="xs:string"/>
+                    <xs:element name="mgrp2" nillable="true" type="xs:string"/>
+                    <xs:element name="duress" nillable="true" type="xs:string"/>
+                    <xs:element name="telco_loc" nillable="true" type="xs:string"/>
+                    <xs:element name="panel_loc" nillable="true" type="xs:string"/>
+                    <xs:element name="br" nillable="true" type="xs:string"/>
+                    <xs:element name="rbr" nillable="true" type="xs:string"/>
+                    <xs:element name="sbr" nillable="true" type="xs:string"/>
+                    <xs:element name="mbr" nillable="true" type="xs:string"/>
+                    <xs:element name="pbr" nillable="true" type="xs:string"/>
+                    <xs:element name="sreg" nillable="true" type="xs:string"/>
+                    <xs:element name="preg" nillable="true" type="xs:string"/>
+                    <xs:element name="refcid" nillable="true" type="xs:string"/>
+                    <xs:element name="miscno1" nillable="true" type="xs:string"/>
+                    <xs:element name="miscno2" nillable="true" type="xs:string"/>
+                    <xs:element name="ro" nillable="true" type="xs:string"/>
+                    <xs:element name="skill" nillable="true" type="xs:string"/>
+                    <xs:element name="lang" nillable="true" type="xs:string"/>
+                    <xs:element name="dcc1" nillable="true" type="xs:string"/>
+                    <xs:element name="dcc2" nillable="true" type="xs:string"/>
+                    <xs:element name="backupver" nillable="true" type="xs:string"/>
+                    <xs:element name="ocexp" nillable="true" type="xs:string"/>
+                    <xs:element name="ocname" nillable="true" type="xs:string"/>
+                    <xs:element name="prtreq" nillable="true" type="xs:string"/>
+                    <xs:element name="maintype" nillable="true" type="xs:string"/>
+                    <xs:element name="mainfreq" nillable="true" type="xs:integer"/>
+                    <xs:element name="mainexpdate" nillable="true" type="xs:string"/>
+                    <xs:element name="inst_1" nillable="true" type="xs:string"/>
+                    <xs:element name="inst_2" nillable="true" type="xs:string"/>
+                    <xs:element name="sales_1" nillable="true" type="xs:string"/>
+                    <xs:element name="sales_2" nillable="true" type="xs:string"/>
+                    <xs:element name="br_inst" nillable="true" type="xs:string"/>
+                    <xs:element name="br_sale" nillable="true" type="xs:string"/>
+                    <xs:element name="br_serv" nillable="true" type="xs:string"/>
+                    <xs:element name="miscdate1" nillable="true" type="xs:string"/>
+                    <xs:element name="miscdate2" nillable="true" type="xs:string"/>
+                    <xs:element name="miscdate3" nillable="true" type="xs:string"/>
+                    <xs:element name="miscdate4" nillable="true" type="xs:string"/>
+                    <xs:element name="miscdate5" nillable="true" type="xs:string"/>
+                    <xs:element name="miscdate6" nillable="true" type="xs:string"/>
+                    <xs:element name="misc1" nillable="true" type="xs:string"/>
+                    <xs:element name="misc2" nillable="true" type="xs:string"/>
+                    <xs:element name="misc3" nillable="true" type="xs:string"/>
+                    <xs:element name="misc4" nillable="true" type="xs:string"/>
+                    <xs:element name="misc5" nillable="true" type="xs:string"/>
+                    <xs:element name="misc6" nillable="true" type="xs:string"/>
+                    <xs:element name="misc7" nillable="true" type="xs:string"/>
+                    <xs:element name="misc8" nillable="true" type="xs:string"/>
+                    <xs:element name="misc9" nillable="true" type="xs:string"/>
+                    <xs:element name="misc10" nillable="true" type="xs:string"/>
+                    <xs:element name="misc20" nillable="true" type="xs:string"/>
+                    <xs:element name="misc21" nillable="true" type="xs:string"/>
+                    <xs:element name="misc22" nillable="true" type="xs:string"/>
+                    <xs:element name="misc23" nillable="true" type="xs:string"/>
+                    <xs:element name="misc24" nillable="true" type="xs:string"/>
+                    <xs:element name="misc25" nillable="true" type="xs:string"/>
+                    <xs:element name="misc26" nillable="true" type="xs:string"/>
+                    <xs:element name="misc27" nillable="true" type="xs:string"/>
+                    <xs:element name="misc28" nillable="true" type="xs:string"/>
+                    <xs:element name="misc29" nillable="true" type="xs:string"/>
+                    <xs:element name="misc30" nillable="true" type="xs:string"/>
+                    <xs:element name="misc31" nillable="true" type="xs:string"/>
+                    <xs:element name="misc32" nillable="true" type="xs:string"/>
+                    <xs:element name="misc33" nillable="true" type="xs:string"/>
+                    <xs:element name="misc34" nillable="true" type="xs:string"/>
+                    <xs:element name="misc35" nillable="true" type="xs:string"/>
+                    <xs:element name="misc36" nillable="true" type="xs:string"/>
+                    <xs:element name="misc37" nillable="true" type="xs:string"/>
+                    <xs:element name="misc38" nillable="true" type="xs:string"/>
+                    <xs:element name="misc39" nillable="true" type="xs:string"/>
+                    <xs:element name="misc40" nillable="true" type="xs:string"/>
+                    <xs:element name="misc41" nillable="true" type="xs:string"/>
+                    <xs:element name="misc42" nillable="true" type="xs:string"/>
+                    <xs:element name="misc43" nillable="true" type="xs:string"/>
+                    <xs:element name="misc44" nillable="true" type="xs:string"/>
+                    <xs:element name="misc45" nillable="true" type="xs:string"/>
+                    <xs:element name="misc46" nillable="true" type="xs:string"/>
+                    <xs:element name="misc47" nillable="true" type="xs:string"/>
+                    <xs:element name="misc48" nillable="true" type="xs:string"/>
+                    <xs:element name="misc49" nillable="true" type="xs:string"/>
+                    <xs:element name="misc50" nillable="true" type="xs:string"/>
+                    <xs:element name="prot_area" nillable="true" type="xs:string"/>
+                    <xs:element name="e_mail1" nillable="true" type="xs:string"/>
+                    <xs:element name="e_mail2" nillable="true" type="xs:string"/>
+                    <xs:element name="misc80" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
             <xs:element name="updVehicleData">
                 <xs:complexType>
                     <xs:sequence>
@@ -552,6 +706,25 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="getTiposTelefono">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getTiposTelefonoResults" type="ns0:getTiposTelefonoResults"/>
+            <xs:complexType name="getTiposTelefonoResults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="getTiposTelefonoResult" type="ns0:getTiposTelefonoResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getTiposTelefonoResult">
+                <xs:sequence>
+                    <xs:element name="app_col1" nillable="true" type="xs:string"/>
+                    <xs:element name="app_col2" nillable="true" type="xs:string"/>
+                    <xs:element name="app_col3" nillable="true" type="xs:string"/>
+                    <xs:element name="app_col4" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
             <xs:element name="getMember">
                 <xs:complexType>
                     <xs:sequence>
@@ -1385,6 +1558,12 @@
     <wsdl:message name="begin_boxcarRequest">
         <wsdl:part name="parameters" element="ns0:begin_boxcar"/>
     </wsdl:message>
+    <wsdl:message name="SD_inet_installation_get_informationRequest">
+        <wsdl:part name="parameters" element="ns0:SD_inet_installation_get_information"/>
+    </wsdl:message>
+    <wsdl:message name="SD_inet_installation_get_informationResponse">
+        <wsdl:part name="parameters" element="ns0:grpInstallationData"/>
+    </wsdl:message>
     <wsdl:message name="inet_inst_branch_updRequest">
         <wsdl:part name="parameters" element="ns0:inet_inst_branch_upd"/>
     </wsdl:message>
@@ -1465,6 +1644,12 @@
     </wsdl:message>
     <wsdl:message name="inet_get_installation_idsResponse">
         <wsdl:part name="parameters" element="ns0:installationids"/>
+    </wsdl:message>
+    <wsdl:message name="getTiposTelefonoRequest">
+        <wsdl:part name="parameters" element="ns0:getTiposTelefono"/>
+    </wsdl:message>
+    <wsdl:message name="getTiposTelefonoResponse">
+        <wsdl:part name="parameters" element="ns0:getTiposTelefonoResults"/>
     </wsdl:message>
     <wsdl:message name="getTestIntervalRequest">
         <wsdl:part name="parameters" element="ns0:getTestInterval"/>
@@ -1689,6 +1874,12 @@
             <wsdl:documentation>Control operation for beginning a boxcarring session</wsdl:documentation>
             <wsdl:input message="ns0:begin_boxcarRequest" wsaw:Action="urn:begin_boxcar"/>
         </wsdl:operation>
+        <wsdl:operation name="SD_inet_installation_get_information">
+            <wsdl:documentation>Return all parameters for use the operation "inet_installation_upd".&#xd;                                    </wsdl:documentation>
+            <wsdl:input message="ns0:SD_inet_installation_get_informationRequest" wsaw:Action="urn:SD_inet_installation_get_information"/>
+            <wsdl:output message="ns0:SD_inet_installation_get_informationResponse" wsaw:Action="urn:SD_inet_installation_get_informationResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:SD_inet_installation_get_informationDataServiceFault"/>
+        </wsdl:operation>
         <wsdl:operation name="inet_inst_branch_upd">
             <wsdl:documentation/>
             <wsdl:input message="ns0:inet_inst_branch_updRequest" wsaw:Action="urn:inet_inst_branch_upd"/>
@@ -1770,6 +1961,12 @@
             <wsdl:input message="ns0:inet_get_installation_idsRequest" wsaw:Action="urn:inet_get_installation_ids"/>
             <wsdl:output message="ns0:inet_get_installation_idsResponse" wsaw:Action="urn:inet_get_installation_idsResponse"/>
             <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_get_installation_idsDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getTiposTelefono">
+            <wsdl:documentation>               Devuelve los Tipos de Teléfonos                                                                   &#xd;                                    </wsdl:documentation>
+            <wsdl:input message="ns0:getTiposTelefonoRequest" wsaw:Action="urn:getTiposTelefono"/>
+            <wsdl:output message="ns0:getTiposTelefonoResponse" wsaw:Action="urn:getTiposTelefonoResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getTiposTelefonoDataServiceFault"/>
         </wsdl:operation>
         <wsdl:operation name="getTestInterval">
             <wsdl:documentation>Obtencion del campo TEST INTERVAL</wsdl:documentation>
@@ -2088,6 +2285,18 @@
                 <soap:body use="literal"/>
             </wsdl:input>
         </wsdl:operation>
+        <wsdl:operation name="SD_inet_installation_get_information">
+            <soap:operation soapAction="urn:SD_inet_installation_get_information" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
         <wsdl:operation name="inet_inst_branch_upd">
             <soap:operation soapAction="urn:inet_inst_branch_upd" style="document"/>
             <wsdl:input>
@@ -2240,6 +2449,18 @@
         </wsdl:operation>
         <wsdl:operation name="inet_get_installation_ids">
             <soap:operation soapAction="urn:inet_get_installation_ids" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getTiposTelefono">
+            <soap:operation soapAction="urn:getTiposTelefono" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -2685,6 +2906,18 @@
                 <soap12:body use="literal"/>
             </wsdl:input>
         </wsdl:operation>
+        <wsdl:operation name="SD_inet_installation_get_information">
+            <soap12:operation soapAction="urn:SD_inet_installation_get_information" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
         <wsdl:operation name="inet_inst_branch_upd">
             <soap12:operation soapAction="urn:inet_inst_branch_upd" style="document"/>
             <wsdl:input>
@@ -2837,6 +3070,18 @@
         </wsdl:operation>
         <wsdl:operation name="inet_get_installation_ids">
             <soap12:operation soapAction="urn:inet_get_installation_ids" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getTiposTelefono">
+            <soap12:operation soapAction="urn:getTiposTelefono" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -3243,6 +3488,15 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
         </wsdl:operation>
+        <wsdl:operation name="SD_inet_installation_get_information">
+            <http:operation location="SD_inet_installation_get_information"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="inet_inst_branch_upd">
             <http:operation location="inet_inst_branch_upd"/>
             <wsdl:input>
@@ -3359,6 +3613,15 @@
         </wsdl:operation>
         <wsdl:operation name="inet_get_installation_ids">
             <http:operation location="inet_get_installation_ids"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getTiposTelefono">
+            <http:operation location="getTiposTelefono"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>

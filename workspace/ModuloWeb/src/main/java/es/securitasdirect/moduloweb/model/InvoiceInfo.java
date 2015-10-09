@@ -30,7 +30,10 @@ public class InvoiceInfo {
     
     /** Cuenta corriente */
     private String ccc;
-
+    
+    /** Dato necesario para obtener y modificar la CCC*/
+    private String umr;
+    
     //constructor copia de la clase InvoiceInfo
     /*
     public InvoiceInfo(final org.wso2.ws.dataservice.GetInvoiceInfoResult getInvoiceInfoResult) {
@@ -107,6 +110,15 @@ public class InvoiceInfo {
 	public void setCcc(String ccc) {
 		this.ccc = ccc;
 	}
+
+	public String getUmr() {
+		return umr;
+	}
+
+	public void setUmr(String umr) {
+		this.umr = umr;
+	}
     
+	
     
 }

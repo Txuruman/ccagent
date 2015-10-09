@@ -11,12 +11,15 @@ import javax.inject.Singleton;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.wso2.ws.dataservice.Billingdataresult;
 import org.wso2.ws.dataservice.DataServiceFault;
 import org.wso2.ws.dataservice.GetAlarmIdsBasicInfoResult;
+import org.wso2.ws.dataservice.GetCodeWordsResult;
 import org.wso2.ws.dataservice.GetEmail;
 import org.wso2.ws.dataservice.GetInstallation;
 import org.wso2.ws.dataservice.GetMonitoringStatusResult;
 import org.wso2.ws.dataservice.GetTieneCamara;
+import org.wso2.ws.dataservice.GetTiposTelefonoResult;
 import org.wso2.ws.dataservice.Inetaplangetcontactresult;
 import org.wso2.ws.dataservice.Inetcalllistgetcontresult;
 import org.wso2.ws.dataservice.Inetcodewordchangeresult;
@@ -121,6 +124,9 @@ public class InstallationService {
 				//Cogemos el primer elemento de la lista
 				Mainstallationdataresult mainstallationdataresult=mainstallationdataresults.get(0);
 				
+				//TODO: BORRAR
+				List<Billingdataresult> d=spInstallationBillDataPortType.getBillingInformation(mainstallationdataresult.getSIns().intValue());
+				
 				//Instalation Number
 				installation.setInstallationNumber(mainstallationdataresult.getInsNo());
 				//Panel
@@ -147,23 +153,28 @@ public class InstallationService {
 	            installation.setAka(mainstallationdataresult.getAliasName());
 	            //Phone3
 	            installation.setPhone3(mainstallationdataresult.getPhone3());
-	           
+	            //sins
+	            installation.setSins(mainstallationdataresult.getSIns().toString());
 	            /** Claves
 	             * Si no esta vacia la lista
 	             * Comprobar si hay suficientes antes de obtenerlas
 	             */
 	            if (!mainstallationdataresult.getGetCodeWordsResults().getGetCodeWordsResult().isEmpty()){
-	            	 //Customer Password
-	            	if (mainstallationdataresult.getGetCodeWordsResults().getGetCodeWordsResult().size()>=2) {
-	            		installation.setCustomerPassword(mainstallationdataresult.getGetCodeWordsResults().getGetCodeWordsResult().get(1).getCode());
-					}
-	            	//Securitas Password
-	            	if (mainstallationdataresult.getGetCodeWordsResults().getGetCodeWordsResult().size()>=3) {
-	            		installation.setSecuritasPassword(mainstallationdataresult.getGetCodeWordsResults().getGetCodeWordsResult().get(2).getCode());
-					}
-	            	//Coercion Password
-	            	if (mainstallationdataresult.getGetCodeWordsResults().getGetCodeWordsResult().size()>=6) {
-	            		 installation.setCoercionPassword(mainstallationdataresult.getGetCodeWordsResults().getGetCodeWordsResult().get(5).getCode());
+	            	 List<GetCodeWordsResult> results= mainstallationdataresult.getGetCodeWordsResults().getGetCodeWordsResult();
+	            	for (GetCodeWordsResult result : results) {
+						if(result.getIx().intValue()==1){
+							 //Customer Password
+							installation.setCustomerPassword(result.getCode().toString());
+						}else if(result.getIx().intValue()==2){
+							//Securitas Password
+							installation.setSecuritasPassword(result.getCode().toString());
+						}else if(result.getIx().intValue()==5){
+							//Coercion Password
+							String test= result.getCode();
+//							installation.setCoercionPassword(result.getCode().toString());
+							installation.setCoercionPassword(test);
+							System.out.println(installation.getCoercionPassword());
+						}
 					}
 	            }
 	            
@@ -306,6 +317,10 @@ public class InstallationService {
      */
     public SearchInstallationResult searchInstallations(String installationNumber, String phone, String email, InstallationData installationActive){
     	SearchInstallationResult searchInstallationResult=new SearchInstallationResult();
+    	if (installationActive==null) {
+    		installationActive=new InstallationData();
+    		installationActive.setInstallationNumber("");
+		}
     	//Si el campo installationNumber esta relleno y no es la instalación activa --> Se busca por installationNumber
     	if (installationNumber!=null && !installationNumber.isEmpty() && !installationNumber.equals(installationActive.getInstallationNumber())) {
     		List<InstallationData> installationList=new ArrayList<InstallationData>();
@@ -408,7 +423,7 @@ public class InstallationService {
 			/**
 			 * Valores opcionales
 			 */
-			Integer cix= 0;
+			Integer cix= ix;
 			String userId= "";
 			String misc1= "";
 			String misc2= "";
@@ -445,176 +460,187 @@ public class InstallationService {
 		audit.setUser(agent);
 		audit.setDate(new Date());
 		try {
-			List<Mainstallationdataresult> mainstallationdataresults=spInstallationMonData.getInstallationData(installationData.getInstallationNumber());
-			Mainstallationdataresult mainstallationdataresult=mainstallationdataresults.get(0);
-			/**
-			 * installationData
-			 * solo son editables los telefonos y los emails
-			 */
-			String phone3=installationData.getPhone3();
-			String phone2=installationData.getPhone2();
-			String phone1=installationData.getPanelPhone();
-			//TODO: asegurarse de email es cual
-			String email2=installationData.getEmailServices();
-			String email1=installationData.getEmailMonitoring();
+//			List<Mainstallationdataresult> mainstallationdataresults=spInstallationMonData.getInstallationData(installationData.getInstallationNumber());
+//			Mainstallationdataresult mainstallationdataresult=mainstallationdataresults.get(0);
 			
-			/**
-			 * mainstallationdataresult
-			 */
-			String subTp=mainstallationdataresult.getSubTp();
-			String panel1=mainstallationdataresult.getPanel();
-			String insNo=mainstallationdataresult.getInsNo();
-			String monStat=mainstallationdataresult.getMonStat();
-			String name=mainstallationdataresult.getName();
-			String fname=mainstallationdataresult.getFname();
-			String iname=mainstallationdataresult.getIname();
-			String street1No2=mainstallationdataresult.getStreet1No2();
-			String street1No1=mainstallationdataresult.getStreet1No1();
-			String street1=mainstallationdataresult.getStreet1();
-			String street2=mainstallationdataresult.getStreet2();
-			String city=mainstallationdataresult.getCity();
-			String city2=mainstallationdataresult.getCity2();
-			String state=mainstallationdataresult.getState();
-			String zip=mainstallationdataresult.getZip();
-			String aliasName=mainstallationdataresult.getAliasName();
-			Integer sIns=mainstallationdataresult.getSIns().intValue();
-			String alaid1=mainstallationdataresult.getAlaid();
-			String dealId=mainstallationdataresult.getDealId();
-			String lang=mainstallationdataresult.getIdiomaServicio();
-			
-			
-			/**
-			 * Desconocidos
-			 */
-			String repFlg="";
-			String tmzonpr="";
-			String id="";
-			String passver="";
-			String protArea="";
-			String pbr="";
-			String testInt3="0";
-			String skill="";
-			String mgrp2="";
-			String panel2="";
-			String prtreq="";
-			String insuId="";
-			String tname="";
-			String dcc1="";
-			String insDate="";
-			String brSale="";
-			String mapGrid="";
-			String telcoLoc="";
-			String perm="";
-			String txtzonref="";
-			String miscdate3="";
-			String phoArea="";
-			String comment2="";
-			String miscdate1="";
-			String crossStreet="";
-			String userId="";
-			Integer stamp=0;
-			String alaid2="";
-			String phtxt1="";
-			String phtxt2="";
-			String sales2="";
-			String miscdate6="";
-			String inst1="";
-			String monStatDate="";
-			String panelLoc="";
-			String ocname="";
-			String miscno1="";
-			String testInt1="";
-			String maintype="";
-			String instId="";
-			String code="";
-			String miscdate5="";
-			String sales1="";
-			String alaid3="";
-			String comment1="";
-			String miscdate2="";
-			String panel3="";
-			String fax="";
-			String duress="";
-			String backupver="";
-			String testInt2="0";
-			String mainexpdate="";
-			String br="";
-			String subDeal="";
-			String miscdate4="";
-			String dcc2="";
-			String rbr="";
-			String mgrp1="";
-			String mbr="";
-			String ocexp="";
-			String subzone="";
-			String brServ="";
-			String ro="";
-			String subExptp="";
-			String sbr="";
-			String mainfreq="";
-			String preg="";
-			String brInst="";
-			String refcid="";
-			String sreg="";
-			String inst2="";
-			
-			
-			/**
-			 * misc
-			 */
-			String misc45="";
-			String misc28="";
-			String misc5="";
-			String misc48="";
-			String misc27="";
-			String misc3="";
-			String misc44="";
-			String misc49="";
-			String misc1="";
-			String misc29="";
-			String misc39="";
-			String misc20="";
-			String misc6="";
-			String miscno2="";
-			String misc35="";
-			String misc43="";
-			String misc31="";
-			String misc36="";
-			String misc34="";
-			String misc46="";
-			String misc41="";
-			String misc47="";
-			String misc38="";
-			String misc10="";
-			String misc22="";
-			String misc23="";
-			String misc26="";
-			String misc24="";
-			String misc32="";
-			String misc80="";
-			String misc4="";
-			String misc37="";
-			String misc25="";
-			String misc30="";
-			String misc2="";
-			String misc9="";
-			String misc21="";
-			String misc33="";
-			String misc7="";
-			String misc8="";
-			String misc40="";
-			String misc50="";
-			String misc42="";
-			
-			
-			List<Inetinstallationupdresult> inetinstallationupdresult=spInstallationMonData.inetInstallationUpd(sIns, stamp, insNo, dealId, subDeal, alaid1, alaid2, alaid3, panel1, panel2, panel3, testInt1, testInt2, testInt3, id, code, perm, tmzonpr, subzone, passver, instId, insDate, monStat, monStatDate, subTp, comment1, comment2, txtzonref, phoArea, subExptp, repFlg, insuId, name, fname, iname, tname, street1, street1No1, street1No2, street2, city, city2, state, zip, aliasName, phone1, phone2, phone3, phtxt1, phtxt2, fax, crossStreet, mapGrid, mgrp1, mgrp2, duress, telcoLoc, panelLoc, br, rbr, sbr, mbr, pbr, sreg, preg, refcid, miscno1, miscno2, ro, skill, lang, dcc1, dcc2, backupver, ocexp, ocname, prtreq, maintype, mainfreq, mainexpdate, inst1, inst2, sales1, sales2, brInst, brSale, brServ, miscdate1, miscdate2, miscdate3, miscdate4, miscdate5, miscdate6, misc1, misc2, misc3, misc4, misc5, misc6, misc7, misc8, misc9, misc10, misc20, misc21, misc22, misc23, misc24, misc25, misc26, misc27, misc28, misc29, misc30, misc31, misc32, misc33, misc34, misc35, misc36, misc37, misc38, misc39, misc40, misc41, misc42, misc43, misc44, misc45, misc46, misc47, misc48, misc49, misc50, userId, protArea, email1, email2, misc80);
-			LOGGER.debug("Update installation result: {}", inetinstallationupdresult);
-			audit.setResult("OK");
-			audit.setDetail("Instalacion actualizada "+ installationData.getInstallationNumber());
-			auditService.insert(audit);
+			List<org.wso2.ws.dataservice.InstallationData> installationDatas=spInstallationMonData.sdInetInstallationGetInformation(Integer.parseInt(installationData.getSins()));
+			if (!installationDatas.isEmpty()) {
+				org.wso2.ws.dataservice.InstallationData installationDataWS=installationDatas.get(0);	
+				
+				/**
+				 * installationData
+				 * solo son editables los telefonos y los emails
+				 */
+				String phone3=installationData.getPhone3();
+				String phone2=installationData.getPhone2();
+				String phone1=installationData.getPanelPhone();
+				//TODO: asegurarse de email es cual
+				String email2=installationData.getEmailServices();
+				String email1=installationData.getEmailMonitoring();
+				
+				/**
+				 * mainstallationdataresult
+				 */
+				String subTp=installationDataWS.getSubTp();
+				String panel1=installationDataWS.getPanel1();
+				String insNo=installationDataWS.getInsNo();
+				String monStat=installationDataWS.getMonStat();
+				String name=installationDataWS.getName();
+				String fname=installationDataWS.getFname();
+				String iname=installationDataWS.getIname();
+				String street1No2=installationDataWS.getStreet1No2();
+				String street1No1=installationDataWS.getStreet1No1();
+				String street1=installationDataWS.getStreet1();
+				String street2=installationDataWS.getStreet2();
+				String city=installationDataWS.getCity();
+				String city2=installationDataWS.getCity2();
+				String state=installationDataWS.getState();
+				String zip=installationDataWS.getZip();
+				String aliasName=installationDataWS.getAliasName();
+				Integer sIns=installationDataWS.getSIns().intValue();
+				String alaid1=installationDataWS.getAlaid1();
+				String dealId=installationDataWS.getDealId();
+				String lang=installationDataWS.getLang();
+				
+				/**
+				 * Falta
+				 */
+				String userId=agent;
+				Integer stamp=1;
+				
+				/**
+				 * Desconocidos
+				 */
+				String repFlg=installationDataWS.getRepFlg();
+				String tmzonpr=installationDataWS.getTmzonpr();
+				String id=installationDataWS.getId();
+				String passver=installationDataWS.getPassver();
+				String protArea=installationDataWS.getProtArea();
+				String pbr=installationDataWS.getPbr();
+				String testInt3=installationDataWS.getTestInt3();
+				String skill=installationDataWS.getSkill();
+				String mgrp2=installationDataWS.getMgrp2();
+				String panel2=installationDataWS.getPanel2();
+				String prtreq=installationDataWS.getPrtreq();
+				String insuId=installationDataWS.getInsuId();
+				String tname=installationDataWS.getTname();
+				String dcc1=installationDataWS.getDcc1();
+				String insDate=installationDataWS.getInsDate();
+				String brSale=installationDataWS.getBrSale();
+				String mapGrid=installationDataWS.getMapGrid();
+				String telcoLoc=installationDataWS.getTelcoLoc();
+				String perm=installationDataWS.getPerm().toString();
+				String txtzonref=installationDataWS.getTxtzonref();
+				String miscdate3=installationDataWS.getMiscdate3();
+				String phoArea=installationDataWS.getPhoArea();
+				String comment2=installationDataWS.getComment2();
+				String miscdate1=installationDataWS.getMiscdate1();
+				String crossStreet=installationDataWS.getCrossStreet();
+				
+				
+				String alaid2=installationDataWS.getAlaid2();
+				String phtxt1=installationDataWS.getPhtxt1();
+				String phtxt2=installationDataWS.getPhtxt2();
+				String sales2=installationDataWS.getSales2();
+				String miscdate6=installationDataWS.getMiscdate6();
+				String inst1=installationDataWS.getInst1();
+				String monStatDate=installationDataWS.getMonStatDate();
+				String panelLoc=installationDataWS.getPanelLoc();
+				String ocname=installationDataWS.getOcname();
+				String miscno1=installationDataWS.getMiscno1();
+				String testInt1=installationDataWS.getTestInt1();
+				String maintype=installationDataWS.getMaintype();
+				String instId=installationDataWS.getInstId();
+				String code=installationDataWS.getCode();
+				String miscdate5=installationDataWS.getMiscdate5();
+				String sales1=installationDataWS.getSales1();
+				String alaid3=installationDataWS.getAlaid3();
+				String comment1=installationDataWS.getComment1();
+				String miscdate2=installationDataWS.getMiscdate2();
+				String panel3=installationDataWS.getPanel3();
+				String fax=installationDataWS.getFax();
+				String duress=installationDataWS.getDuress();
+				String backupver=installationDataWS.getBackupver();
+				String testInt2=installationDataWS.getTestInt2();
+				String mainexpdate=installationDataWS.getMainexpdate();
+				String br=installationDataWS.getBr();
+				String subDeal=installationDataWS.getSubDeal();
+				String miscdate4=installationDataWS.getMiscdate4();
+				String dcc2=installationDataWS.getDcc2();
+				String rbr=installationDataWS.getRbr();
+				String mgrp1=installationDataWS.getMgrp1();
+				String mbr=installationDataWS.getMbr();
+				String ocexp=installationDataWS.getOcexp();
+				String subzone=installationDataWS.getSubzone();
+				String brServ=installationDataWS.getBrServ();
+				String ro=installationDataWS.getRo();
+				String subExptp=installationDataWS.getSubExptp();
+				String sbr=installationDataWS.getSbr();
+				String mainfreq=installationDataWS.getMainfreq().toString();
+				String preg=installationDataWS.getPreg();
+				String brInst=installationDataWS.getBrInst();
+				String refcid=installationDataWS.getRefcid();
+				String sreg=installationDataWS.getSreg();
+				String inst2=installationDataWS.getInst2();
+				
+				
+				/**
+				 * misc
+				 */
+				String misc45=installationDataWS.getMisc45();
+				String misc28=installationDataWS.getMisc28();
+				String misc5=installationDataWS.getMisc5();
+				String misc48=installationDataWS.getMisc48();
+				String misc27=installationDataWS.getMisc27();
+				String misc3=installationDataWS.getMisc3();
+				String misc44=installationDataWS.getMisc44();
+				String misc49=installationDataWS.getMisc49();
+				String misc1=installationDataWS.getMisc1();
+				String misc29=installationDataWS.getMisc29();
+				String misc39=installationDataWS.getMisc39();
+				String misc20=installationDataWS.getMisc20();
+				String misc6=installationDataWS.getMisc6();
+				String miscno2=installationDataWS.getMisc2();
+				String misc35=installationDataWS.getMisc35();
+				String misc43=installationDataWS.getMisc43();
+				String misc31=installationDataWS.getMisc31();
+				String misc36=installationDataWS.getMisc36();
+				String misc34=installationDataWS.getMisc34();
+				String misc46=installationDataWS.getMisc46();
+				String misc41=installationDataWS.getMisc41();
+				String misc47=installationDataWS.getMisc47();
+				String misc38=installationDataWS.getMisc38();
+				String misc10=installationDataWS.getMisc10();
+				String misc22=installationDataWS.getMisc22();
+				String misc23=installationDataWS.getMisc23();
+				String misc26=installationDataWS.getMisc26();
+				String misc24=installationDataWS.getMisc24();
+				String misc32=installationDataWS.getMisc32();
+				String misc80=installationDataWS.getMisc80();
+				String misc4=installationDataWS.getMisc4();
+				String misc37=installationDataWS.getMisc37();
+				String misc25=installationDataWS.getMisc25();
+				String misc30=installationDataWS.getMisc30();
+				String misc2=installationDataWS.getMisc2();
+				String misc9=installationDataWS.getMisc9();
+				String misc21=installationDataWS.getMisc21();
+				String misc33=installationDataWS.getMisc33();
+				String misc7=installationDataWS.getMisc7();
+				String misc8=installationDataWS.getMisc8();
+				String misc40=installationDataWS.getMisc40();
+				String misc50=installationDataWS.getMisc50();
+				String misc42=installationDataWS.getMisc42();
+				
+				
+				List<Inetinstallationupdresult> inetinstallationupdresult=spInstallationMonData.inetInstallationUpd(sIns, stamp, insNo, dealId, subDeal, alaid1, alaid2, alaid3, panel1, panel2, panel3, testInt1, testInt2, testInt3, id, code, perm, tmzonpr, subzone, passver, instId, insDate, monStat, monStatDate, subTp, comment1, comment2, txtzonref, phoArea, subExptp, repFlg, insuId, name, fname, iname, tname, street1, street1No1, street1No2, street2, city, city2, state, zip, aliasName, phone1, phone2, phone3, phtxt1, phtxt2, fax, crossStreet, mapGrid, mgrp1, mgrp2, duress, telcoLoc, panelLoc, br, rbr, sbr, mbr, pbr, sreg, preg, refcid, miscno1, miscno2, ro, skill, lang, dcc1, dcc2, backupver, ocexp, ocname, prtreq, maintype, mainfreq, mainexpdate, inst1, inst2, sales1, sales2, brInst, brSale, brServ, miscdate1, miscdate2, miscdate3, miscdate4, miscdate5, miscdate6, misc1, misc2, misc3, misc4, misc5, misc6, misc7, misc8, misc9, misc10, misc20, misc21, misc22, misc23, misc24, misc25, misc26, misc27, misc28, misc29, misc30, misc31, misc32, misc33, misc34, misc35, misc36, misc37, misc38, misc39, misc40, misc41, misc42, misc43, misc44, misc45, misc46, misc47, misc48, misc49, misc50, userId, protArea, email1, email2, misc80);
+				LOGGER.debug("Update installation result: {}", inetinstallationupdresult);
+				audit.setResult("OK");
+				audit.setDetail("Instalacion actualizada "+ installationData.getInstallationNumber());
+				auditService.insert(audit);
+			}
 		} catch (Exception e) {
 			audit.setResult("FAIL");
-			audit.setDetail(e.getMessage());
+			audit.setDetail(BusinessException.ErrorCode.ERROR_UPDATE_INSTALLATION.toString());
 			auditService.insert(audit);
 			throw new BusinessException(BusinessException.ErrorCode.ERROR_UPDATE_INSTALLATION);
 		}
@@ -682,13 +708,13 @@ public class InstallationService {
 		try{
 			if (actionplans!=null){
 				for (ActionPlan actionplan : actionplans){
-						
-					spIBSActionPlanData.maActplanCallLinUpd(Integer.parseInt(actionplan.getSins()), 
-							Integer.parseInt(actionplan.getPix()), Integer.parseInt(actionplan.getSpc()), 
-							Integer.parseInt(actionplan.getScont()), Integer.parseInt(actionplan.getScix()), 
-							Integer.parseInt("2"), "", "", actionplan.getName(), actionplan.getPhone1().getNumber(), actionplan.getSeq(), 
-							"", "", "", "", "", "", Integer.parseInt(actionplan.getSpc()), 
-							Integer.parseInt(actionplan.getScont()), Integer.parseInt(actionplan.getScix()));
+					this.wsModifyOrDeletePlan(actionplan, 2);
+//					spIBSActionPlanData.maActplanCallLinUpd(Integer.parseInt(actionplan.getSins()), 
+//							Integer.parseInt(actionplan.getPix()), Integer.parseInt(actionplan.getSpc()), 
+//							Integer.parseInt(actionplan.getScont()), Integer.parseInt(actionplan.getScix()), 
+//							Integer.parseInt("2"), "", "", actionplan.getName(), actionplan.getPhone1().getNumber(), actionplan.getSeq(), 
+//							"", "", "", "", "", "", Integer.parseInt(actionplan.getSpc()), 
+//							Integer.parseInt(actionplan.getScont()), Integer.parseInt(actionplan.getScix()));
 					
 					audit.setResult("OK");
 					audit.setDetail("Action Plan borrado " +actionplan.getSeq() +" - "+ actionplan.getName());
@@ -700,7 +726,7 @@ public class InstallationService {
 
 		}catch (Exception e){
 			audit.setResult("FAIL");
-			audit.setDetail(e.getMessage());
+			audit.setDetail(BusinessException.ErrorCode.ERROR_DELETE_ACTION_PLAN.toString());
 			auditService.insert(audit);
 			throw new BusinessException(BusinessException.ErrorCode.ERROR_DELETE_ACTION_PLAN);
 		}
@@ -737,14 +763,14 @@ public class InstallationService {
 		audit.setDate(new Date());
 		try{
 			if (actionplan!=null){
-				spIBSActionPlanData.maActplanCallLinUpd(Integer.getInteger(actionplan.getSins()), 
-						Integer.getInteger(actionplan.getPix()), Integer.getInteger(actionplan.getSpc()), 
-						Integer.getInteger(actionplan.getScont()), Integer.getInteger(actionplan.getScix()), 
-						Integer.getInteger("1"), "", "", actionplan.getName(), actionplan.getPhone1().getNumber(), actionplan.getSeq(), 
-						"", "", "", "", "", "", Integer.getInteger(actionplan.getSpc()), 
-						Integer.getInteger(actionplan.getScont()), Integer.getInteger(actionplan.getScix()));	
+//				spIBSActionPlanData.maActplanCallLinUpd(Integer.getInteger(actionplan.getSins()), 
+//						Integer.getInteger(actionplan.getPix()), Integer.getInteger(actionplan.getSpc()), 
+//						Integer.getInteger(actionplan.getScont()), Integer.getInteger(actionplan.getScix()), 
+//						Integer.getInteger("1"), "", "", actionplan.getName(), actionplan.getPhone1().getNumber(), actionplan.getSeq(), 
+//						"", "", "", "", "", "", Integer.getInteger(actionplan.getSpc()), 
+//						Integer.getInteger(actionplan.getScont()), Integer.getInteger(actionplan.getScix()));	
 				
-			
+				this.wsModifyOrDeletePlan(actionplan, 1);
 				
 				audit.setResult("OK");
 				audit.setDetail("Action Plan insertado " +actionplan.getSeq() +" - "+ actionplan.getName());
@@ -754,7 +780,7 @@ public class InstallationService {
 			}
 		}catch (Exception e){
 			audit.setResult("FAIL");
-			audit.setDetail(e.getMessage());
+			audit.setDetail(BusinessException.ErrorCode.ERROR_ADD_ACTION_PLAN.toString());
 			auditService.insert(audit);
 			throw new BusinessException(BusinessException.ErrorCode.ERROR_ADD_ACTION_PLAN);
 		}
@@ -777,29 +803,91 @@ public class InstallationService {
 			if (actionplans!=null){
 			
 				for (ActionPlan actionplan : actionplans){
-					
-					spIBSActionPlanData.maActplanCallLinUpd(Integer.getInteger(actionplan.getSins()), 
-							Integer.getInteger(actionplan.getPix()), Integer.getInteger(actionplan.getSpc()), 
-							Integer.getInteger(actionplan.getScont()), Integer.getInteger(actionplan.getScix()), 
-							Integer.getInteger("1"), "", "", actionplan.getName(), actionplan.getPhone1().getNumber(), actionplan.getSeq(), 
-							"", "", "", "", "", "", Integer.getInteger(actionplan.getSpc()), 
-							Integer.getInteger(actionplan.getScont()), Integer.getInteger(actionplan.getScix()));
-					
+					this.wsModifyOrDeletePlan(actionplan, 1);
 					audit.setResult("OK");
 					audit.setDetail("Action Plan modificado " +actionplan.getSeq() +" - "+ actionplan.getName());
 					auditService.insert(audit);
-					
 				}
 			}else{
+				audit.setResult("FAIL");
+				audit.setDetail(BusinessException.ErrorCode.ERROR_UPDATE_ACTION_PLAN.toString());
+				auditService.insert(audit);
 				throw new BusinessException(BusinessException.ErrorCode.ERROR_UPDATE_ACTION_PLAN);
 			}
 			
 			
 		}catch (Exception e){
 			audit.setResult("FAIL");
-			audit.setDetail(e.getMessage());
+			audit.setDetail(BusinessException.ErrorCode.ERROR_UPDATE_ACTION_PLAN.toString());
 			auditService.insert(audit);
 			throw new BusinessException(BusinessException.ErrorCode.ERROR_UPDATE_ACTION_PLAN);
+		}
+	}
+	
+	/** Llamada al ws de modificar(1) o borrar(2) plan*/
+	private void wsModifyOrDeletePlan(ActionPlan actionplan, Integer action){
+		/** Variable que determina la accion: 1 modificar, 2 Borrar*/
+		Integer opc=action; 
+		/**Valores de los telefonos*/
+		String phtyp1="", phone1="";
+		if (actionplan.getPhone1()!=null) {
+			phtyp1=actionplan.getPhone1().getType();
+			phone1=actionplan.getPhone1().getNumber();
+		}
+		String phone2="",phtyp2="";
+		if (actionplan.getPhone2()!=null) {
+			phone2=actionplan.getPhone2().getNumber();
+			phtyp2=actionplan.getPhone2().getType();
+		}
+		String phone3="",phtyp3="";
+		if (actionplan.getPhone2()!=null) {
+			phtyp3=actionplan.getPhone3().getType();
+			phone3=actionplan.getPhone3().getNumber();
+		}
+		/** Otras */
+		String code="";
+		String br="";
+		Integer mustcall=0;
+		Integer osCont=Integer.parseInt(actionplan.getScont());
+		String contTp="";
+		String invest="";
+		String passcidtext="";
+		Integer debug=1;
+		String tmpPlevel="1";
+		String enabled="";
+		String prreq="";
+		String keyh="";
+		String relName="";
+		String highsec="";
+		String email1="";
+		Integer osPc=Integer.parseInt(actionplan.getSpc());
+		Integer exptm=0;
+		String passcid="";
+		String dwnldb="";
+		String allincl="";
+		String ilevel="";
+		Integer ocix=Integer.parseInt(actionplan.getScix());
+		String flgEmailExclude="";
+		String aprof="";
+		String contRel="";
+		String lix="";
+		String multiCiChg="";
+		spIBSActionPlanData.maActplanCallLinUpd2(Integer.parseInt(actionplan.getSins()), Integer.parseInt(actionplan.getPix()), Integer.parseInt(actionplan.getSpc()), Integer.parseInt(actionplan.getScont()), Integer.parseInt(actionplan.getScix()), opc, passcid, passcidtext, actionplan.getName(), phone1, actionplan.getSeq(), tmpPlevel, dwnldb, lix, allincl, prreq, br, osPc, osCont, ocix, exptm, phone2, phone3, ilevel, code, aprof, enabled, highsec, email1, contTp, contRel, relName, keyh, multiCiChg, invest, mustcall, phtyp1, phtyp2, phtyp3, flgEmailExclude, debug);
+	}
+	
+	/**
+	 * Obtener tipos de telefono para rellenar los combos
+	 */
+	public List<GetTiposTelefonoResult> getPhoneTypes(){
+		try {
+			List<GetTiposTelefonoResult> getTiposTelefonoResults = spInstallationMonData.getTiposTelefono();
+			if (!getTiposTelefonoResults.isEmpty()) {
+				return getTiposTelefonoResults;
+			}else{
+				throw new BusinessException(BusinessException.ErrorCode.ERROR_GET_PHONE_TYPES);
+			}
+		} catch (Exception e) {
+			throw new BusinessException(BusinessException.ErrorCode.ERROR_GET_PHONE_TYPES);
 		}
 	}
 }

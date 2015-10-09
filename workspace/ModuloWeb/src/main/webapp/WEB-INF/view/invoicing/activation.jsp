@@ -28,6 +28,6 @@
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		<label><spring:message code="infoinstal.emailBilling" /></label><input
 			class="form-control input-sm" ng-readonly="activationEdit" type="email"
-			ng-model="invoiceInfo.emailBilling" name="emailBilling">
+			ng-model="installation.emailBilling" name="emailBilling">
 	</div>
 </div>

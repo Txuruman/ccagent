@@ -1,27 +1,24 @@
 package es.securitasdirect.moduloweb.web.controller;
 
-import es.securitasdirect.moduloweb.model.Cuote;
-import es.securitasdirect.moduloweb.model.CycleFeeds;
-import es.securitasdirect.moduloweb.model.InvoiceData;
-import es.securitasdirect.moduloweb.model.InvoiceInfo;
-import es.securitasdirect.moduloweb.service.InvoiceService;
-import es.securitasdirect.moduloweb.web.dto.response.InvoiceResponse;
-import es.securitasdirect.moduloweb.web.dto.support.BaseResponse;
+import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.List;
+import es.securitasdirect.moduloweb.model.InvoiceGlobal;
+import es.securitasdirect.moduloweb.service.InvoiceService;
+import es.securitasdirect.moduloweb.web.dto.request.UpdateActionPlansRequest;
+import es.securitasdirect.moduloweb.web.dto.request.UpdateCCCRequest;
+import es.securitasdirect.moduloweb.web.dto.response.InstallationResponse;
+import es.securitasdirect.moduloweb.web.dto.response.InvoiceResponse;
+import es.securitasdirect.moduloweb.web.dto.support.BaseResponse;
 
 /**
  * Controller for the Tab of the Installation
@@ -40,17 +37,12 @@ public class InvoiceController extends BaseController {
     @RequestMapping(value = "getInvoice", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public
     @ResponseBody
-    BaseResponse getInvoice(@RequestParam(value = "installationNumber", required = true) Integer installationNumber) {
+    BaseResponse getInvoice(@RequestParam(value = "sIns", required = true) String sIns) {
     	try{
     		InvoiceResponse response = new InvoiceResponse();
-            InvoiceInfo invoice = invoiceService.getInvoice(installationNumber);
-            List<CycleFeeds> cyclefeeds= invoiceService.getCycleFeeds(11111);
-            List<InvoiceData> invoiceList=invoiceService.getListInvoices(installationNumber);
-            Cuote cuote=invoiceService.getCuotes(installationNumber);
-            response.setInvoiceInfo(invoice);
-            response.setCycleFeeds(cyclefeeds);
-            response.setInvoiceList(invoiceList);
-            response.setCuote(cuote);
+    		InvoiceGlobal invoiceGlobal=invoiceService.getInvoiceGlobal(sIns);
+    		
+    		response.setInvoiceGlobal(invoiceGlobal);
             return response;
     	}catch(Exception exception){
     		return processException(exception);
@@ -64,5 +56,24 @@ public class InvoiceController extends BaseController {
 //        }
         
     }
-
+    /**
+     * Modificar o insertar action plans
+     */
+    @RequestMapping(value = "/updateCCC", method = RequestMethod.PUT, consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public
+    @ResponseBody
+    BaseResponse updateCCC(@RequestBody UpdateCCCRequest request) {
+    	LOGGER.debug("Update ActionPlans Request: {}", request);
+    	InvoiceResponse response = new InvoiceResponse();
+        try{
+        	invoiceService.updateCCC(request.getDebIban(), request.getUmr(), request.getsIns());
+	        response.setInvoiceGlobal(invoiceService.getInvoiceGlobal(request.getsIns()));
+	        return response;
+        }catch(Exception exception){
+        	BaseResponse baseResponse=new BaseResponse();
+        	return processException(baseResponse,exception);
+        }
+    }
+    
+    
 }

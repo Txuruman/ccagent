@@ -175,6 +175,24 @@
                     <xs:sequence/>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="getUmr">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getUmrResults" type="ns0:getUmrResults"/>
+            <xs:complexType name="getUmrResults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="getUmrResult" type="ns0:getUmrResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getUmrResult">
+                <xs:sequence>
+                    <xs:element name="umr" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
             <xs:element name="inet_check_acc_no">
                 <xs:complexType>
                     <xs:sequence>
@@ -319,6 +337,58 @@
             <xs:complexType name="inetblcontractschgresult">
                 <xs:sequence>
                     <xs:element name="return_code" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="inet_bl_sepa_get_query">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="umr" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getSepaResults" type="ns0:getSepaResults"/>
+            <xs:complexType name="getSepaResults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="getSepaResult" type="ns0:getSepaResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getSepaResult">
+                <xs:sequence>
+                    <xs:element name="pay_mean_cd" nillable="true" type="xs:string"/>
+                    <xs:element name="spm" nillable="true" type="xs:string"/>
+                    <xs:element name="sys_date" nillable="true" type="xs:string"/>
+                    <xs:element name="sys_time" nillable="true" type="xs:string"/>
+                    <xs:element name="chg_flg" nillable="true" type="xs:string"/>
+                    <xs:element name="umr" nillable="true" type="xs:string"/>
+                    <xs:element name="umr_org" nillable="true" type="xs:string"/>
+                    <xs:element name="type" nillable="true" type="xs:string"/>
+                    <xs:element name="first" nillable="true" type="xs:string"/>
+                    <xs:element name="signed_date" nillable="true" type="xs:string"/>
+                    <xs:element name="cancelled" nillable="true" type="xs:string"/>
+                    <xs:element name="end_date" nillable="true" type="xs:string"/>
+                    <xs:element name="deb_name" nillable="true" type="xs:string"/>
+                    <xs:element name="deb_addr" nillable="true" type="xs:string"/>
+                    <xs:element name="deb_zip" nillable="true" type="xs:string"/>
+                    <xs:element name="deb_city" nillable="true" type="xs:string"/>
+                    <xs:element name="deb_country" nillable="true" type="xs:string"/>
+                    <xs:element name="deb_iban" nillable="true" type="xs:string"/>
+                    <xs:element name="deb_bic" nillable="true" type="xs:string"/>
+                    <xs:element name="deb_iban_org" nillable="true" type="xs:string"/>
+                    <xs:element name="crd_ident" nillable="true" type="xs:string"/>
+                    <xs:element name="crd_name" nillable="true" type="xs:string"/>
+                    <xs:element name="crd_addr" nillable="true" type="xs:string"/>
+                    <xs:element name="crd_zip" nillable="true" type="xs:string"/>
+                    <xs:element name="crd_city" nillable="true" type="xs:string"/>
+                    <xs:element name="crd_country" nillable="true" type="xs:string"/>
+                    <xs:element name="crd_ident_org" nillable="true" type="xs:string"/>
+                    <xs:element name="crd_name_org" nillable="true" type="xs:string"/>
+                    <xs:element name="frq" nillable="true" type="xs:string"/>
+                    <xs:element name="maxamo" nillable="true" type="xs:string"/>
+                    <xs:element name="tran_type" nillable="true" type="xs:string"/>
+                    <xs:element name="chg_flds" nillable="true" type="xs:string"/>
+                    <xs:element name="misc1" nillable="true" type="xs:string"/>
+                    <xs:element name="misc2" nillable="true" type="xs:string"/>
+                    <xs:element name="misc3" nillable="true" type="xs:string"/>
                 </xs:sequence>
             </xs:complexType>
             <xs:element name="GetInstallationInfo">
@@ -859,17 +929,29 @@
     <wsdl:message name="getContractsByPayMeanNoResponse">
         <wsdl:part name="parameters" element="ns0:getContractsByTaxnoResults"/>
     </wsdl:message>
-    <wsdl:message name="inet_bl_accounts_chgRequest">
-        <wsdl:part name="parameters" element="ns0:inet_bl_accounts_chg"/>
+    <wsdl:message name="inet_bl_sepa_get_queryRequest">
+        <wsdl:part name="parameters" element="ns0:inet_bl_sepa_get_query"/>
     </wsdl:message>
-    <wsdl:message name="inet_bl_accounts_chgResponse">
-        <wsdl:part name="parameters" element="ns0:inetblaccountschgresults"/>
+    <wsdl:message name="inet_bl_sepa_get_queryResponse">
+        <wsdl:part name="parameters" element="ns0:getSepaResults"/>
     </wsdl:message>
     <wsdl:message name="inet_ctr_extstatRequest">
         <wsdl:part name="parameters" element="ns0:inet_ctr_extstat"/>
     </wsdl:message>
     <wsdl:message name="inet_ctr_extstatResponse">
         <wsdl:part name="parameters" element="ns0:inetctrextstatupdresults"/>
+    </wsdl:message>
+    <wsdl:message name="inet_bl_accounts_chgRequest">
+        <wsdl:part name="parameters" element="ns0:inet_bl_accounts_chg"/>
+    </wsdl:message>
+    <wsdl:message name="inet_bl_accounts_chgResponse">
+        <wsdl:part name="parameters" element="ns0:inetblaccountschgresults"/>
+    </wsdl:message>
+    <wsdl:message name="getUmrRequest">
+        <wsdl:part name="parameters" element="ns0:getUmr"/>
+    </wsdl:message>
+    <wsdl:message name="getUmrResponse">
+        <wsdl:part name="parameters" element="ns0:getUmrResults"/>
     </wsdl:message>
     <wsdl:message name="getInstallationDataFromEmailRequest">
         <wsdl:part name="parameters" element="ns0:getInstallationDataFromEmail"/>
@@ -996,17 +1078,29 @@
             <wsdl:output message="ns0:getContractsByPayMeanNoResponse" wsaw:Action="urn:getContractsByPayMeanNoResponse"/>
             <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getContractsByPayMeanNoDataServiceFault"/>
         </wsdl:operation>
-        <wsdl:operation name="inet_bl_accounts_chg">
-            <wsdl:documentation/>
-            <wsdl:input message="ns0:inet_bl_accounts_chgRequest" wsaw:Action="urn:inet_bl_accounts_chg"/>
-            <wsdl:output message="ns0:inet_bl_accounts_chgResponse" wsaw:Action="urn:inet_bl_accounts_chgResponse"/>
-            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_bl_accounts_chgDataServiceFault"/>
+        <wsdl:operation name="inet_bl_sepa_get_query">
+            <wsdl:documentation>                                    &#xd;               Obtiene la información de la Cuenta Corriente                     </wsdl:documentation>
+            <wsdl:input message="ns0:inet_bl_sepa_get_queryRequest" wsaw:Action="urn:inet_bl_sepa_get_query"/>
+            <wsdl:output message="ns0:inet_bl_sepa_get_queryResponse" wsaw:Action="urn:inet_bl_sepa_get_queryResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_bl_sepa_get_queryDataServiceFault"/>
         </wsdl:operation>
         <wsdl:operation name="inet_ctr_extstat">
             <wsdl:documentation/>
             <wsdl:input message="ns0:inet_ctr_extstatRequest" wsaw:Action="urn:inet_ctr_extstat"/>
             <wsdl:output message="ns0:inet_ctr_extstatResponse" wsaw:Action="urn:inet_ctr_extstatResponse"/>
             <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_ctr_extstatDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_accounts_chg">
+            <wsdl:documentation/>
+            <wsdl:input message="ns0:inet_bl_accounts_chgRequest" wsaw:Action="urn:inet_bl_accounts_chg"/>
+            <wsdl:output message="ns0:inet_bl_accounts_chgResponse" wsaw:Action="urn:inet_bl_accounts_chgResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_bl_accounts_chgDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getUmr">
+            <wsdl:documentation>          Obtiene el código Umr a partir del s_ins                        &#xd;                                    </wsdl:documentation>
+            <wsdl:input message="ns0:getUmrRequest" wsaw:Action="urn:getUmr"/>
+            <wsdl:output message="ns0:getUmrResponse" wsaw:Action="urn:getUmrResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getUmrDataServiceFault"/>
         </wsdl:operation>
         <wsdl:operation name="getInstallationDataFromEmail">
             <wsdl:documentation>        Obtiene la lista de Instalaciones de billing y monitoring a través de su email                            &#xd;                                    </wsdl:documentation>
@@ -1205,8 +1299,8 @@
                 <soap:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="inet_bl_accounts_chg">
-            <soap:operation soapAction="urn:inet_bl_accounts_chg" style="document"/>
+        <wsdl:operation name="inet_bl_sepa_get_query">
+            <soap:operation soapAction="urn:inet_bl_sepa_get_query" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -1219,6 +1313,30 @@
         </wsdl:operation>
         <wsdl:operation name="inet_ctr_extstat">
             <soap:operation soapAction="urn:inet_ctr_extstat" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_accounts_chg">
+            <soap:operation soapAction="urn:inet_bl_accounts_chg" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getUmr">
+            <soap:operation soapAction="urn:getUmr" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -1472,8 +1590,8 @@
                 <soap12:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
-        <wsdl:operation name="inet_bl_accounts_chg">
-            <soap12:operation soapAction="urn:inet_bl_accounts_chg" style="document"/>
+        <wsdl:operation name="inet_bl_sepa_get_query">
+            <soap12:operation soapAction="urn:inet_bl_sepa_get_query" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -1486,6 +1604,30 @@
         </wsdl:operation>
         <wsdl:operation name="inet_ctr_extstat">
             <soap12:operation soapAction="urn:inet_ctr_extstat" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_accounts_chg">
+            <soap12:operation soapAction="urn:inet_bl_accounts_chg" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getUmr">
+            <soap12:operation soapAction="urn:getUmr" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
@@ -1709,8 +1851,8 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="inet_bl_accounts_chg">
-            <http:operation location="inet_bl_accounts_chg"/>
+        <wsdl:operation name="inet_bl_sepa_get_query">
+            <http:operation location="inet_bl_sepa_get_query"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
@@ -1720,6 +1862,24 @@
         </wsdl:operation>
         <wsdl:operation name="inet_ctr_extstat">
             <http:operation location="inet_ctr_extstat"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="inet_bl_accounts_chg">
+            <http:operation location="inet_bl_accounts_chg"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUmr">
+            <http:operation location="getUmr"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>

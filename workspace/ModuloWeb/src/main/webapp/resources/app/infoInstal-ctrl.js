@@ -1,30 +1,34 @@
 /**
  * Controlador de la pestaña Información de instalación
  */
-app.controller('InfoInstalacionController', function ($scope, $http, $log, CommonService, $timeout, $filter,filterFilter) {
+app.controller('InfoInstalacionController', function ($scope, $http, $log, CommonService, $rootScope, $timeout, $filter,filterFilter) {
 	
 	/**
 	 * Valores iniciales
 	 */
 	$scope.init=function(){
 		//Si viene instalacion por parametro la buscamos
-		if ($scope.installationParam!=undefined && $scope.installationParam!=null && $scope.installationParam!="") {
-			$scope.getInstallation($scope.installationParam);
+//		if ($scope.installationParam!=undefined && $scope.installationParam!=null && $scope.installationParam!="") {
+//			$scope.getInstallation($scope.installationParam);
 //			$scope.getAudit(111111);
 			$scope.getFieldConfig("INST");
-		}
+//		}
 		
 		$scope.keys={
 				customerPassword:"",
 				securitasPassword:"",
 				coercionPassword:""
 		}
-		//Parametros de búsqueda a 0
-		$scope.searchBy={
-				installationNumber:"",
-				phone:"",
-				email:""
-		}
+//		//Parametros de búsqueda a 0
+//		$scope.searchBy={
+//				installationNumber:"",
+//				phone:"",
+//				email:""
+//		}
+		//Indice de tabla de buscar por defecto a -1
+		$scope.searchedInstallationIndex=-1;
+		//Combo de tipo de telefonos
+		$scope.getPhoneTypes();
 		//Las claves en readonly por defecto
 		$scope.NotEditableKeys=true;
 		//Los botones de editar claves ocultos por defecto
@@ -40,7 +44,6 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 		//Valores para mostrar las tablas de búsqueda
 		$scope.seachByPhone=false;
 		$scope.seachByInstOrMail=false;
-		
 		//TODO: BORRAR, hecho para demo Jesús
 //		$scope.searchBy.email="frherrero@email.com";
 //		$scope.searchInstallation();
@@ -135,18 +138,33 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 					 */
 					if (!data.noSearched) {
 						$scope.searchedInstallations=data.installationList;
+						//Indice de tabla de buscar por defecto a -1
+						$scope.searchedInstallationIndex=-1;
 						//$scope.installation=$scope.searchedInstallations[0];
 						//$scope.searchBy.installationNumber=$scope.installation.installationNumber;
 						if (data.searchBy==1) {
 							$scope.seachByPhone=true;
-							$scope.seachByInstOrMail=false
-						}else if (data.searchBy==0 || data.searchBy==2) {
+							$scope.seachByInstOrMail=false;
+							$scope.searchBy.installationNumber="";
+							$scope.searchBy.email="";
+						}else if (data.searchBy==0){
 							$scope.seachByInstOrMail=true;
 							$scope.seachByPhone=false;
+							$scope.searchBy.phone="";
+							$scope.searchBy.email="";
+							
+						}else if (data.searchBy==2) {
+							$scope.seachByInstOrMail=true;
+							$scope.seachByPhone=false;
+							$scope.searchBy.installationNumber="";
+							$scope.searchBy.phone="";
 						}
 					}
 				}else{
-					$scope.searchBy.installationNumber=$scope.installation.installationNumber;
+					if ($scope.installation.installationNumber!=undefined) {
+						//De momento dejo comentada la linea de abajo, por lo que se queda la última búsqueda
+						//$scope.searchBy.installationNumber=$scope.installation.installationNumber;
+					}
 				}
 				
 			}).error(function(data, status, headers, config){
@@ -160,10 +178,11 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 		$scope.installation=$scope.searchedInstallations[$index];
 		$scope.installation.actionplans=$filter('orderBy')($scope.installation.actionplans,'seq',false);
 		$scope.searchBy.installationNumber=$scope.installation.installationNumber;
+		$rootScope.installation=$scope.installation;
 		//Aviso de no mail internacionalizado
 		var aviso=$("#avisoNoMail").val();
 		if($scope.installation.emailMonitoring==undefined || $scope.installation.emailMonitoring=="" || $scope.installation.emailMonitoring==null){
-			CommonService.processBaseResponse({messages:[{forElement: null, level: "info", value: aviso}]},200,null,null);
+			CommonService.processBaseResponse({messages:[{forElement: null, level: "danger", value: aviso}]},200,null,null);
 		}
 	}
 	
@@ -209,13 +228,13 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 		var llamarServidor=false;
 		/**
 		 * Se manda al servidor las claves cambiadas
-		 * ix: customer(2), coercion(6), securitas(3)
+		 * ix: customer(1), coercion(5), securitas(2)
 		 */
 		if ($scope.installation.customerPassword!=$scope.keys.customerPassword) {
 			codewordChangeRequest.push({
 				installationNumber: $scope.installation.installationNumber,
 				codeword: $scope.keys.customerPassword,
-				ix: 2,
+				ix: 1,
 				agent:$scope.agent
 			});
 			llamarServidor=true;
@@ -224,7 +243,7 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 			codewordChangeRequest.push({
 				installationNumber: $scope.installation.installationNumber,
 				codeword: $scope.keys.securitasPassword,
-				ix: 3,
+				ix: 2,
 				agent:$scope.agent
 			});
 			llamarServidor=true;
@@ -233,7 +252,7 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 			codewordChangeRequest.push({
 				installationNumber: $scope.installation.installationNumber,
 				codeword: $scope.keys.coercionPassword,
-				ix: 6,
+				ix: 5,
 				agent:$scope.agent
 			});
 			llamarServidor=true;
@@ -312,9 +331,9 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 	/** FIN Gestion Información Instalación*/
 	
 	/**
-	 * Edición de Planes de acción
+	 * Gestión de Planes de acción
 	 */
-	//Editar los planes, guardamos una copia del listado original
+	//Editar los planes, guardamos una copia del listado original, sirve para añadir tambien
 	$scope.editActionPlans=function(add){
 		$scope.editingActionPlans=true;
 		//$(".erasing span").toggleClass("colorErase");
@@ -323,22 +342,37 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 		if (add!=undefined && add=="add") {
 			if ($scope.installation.actionplans==null) {
 				$scope.installation.actionplans=[];
+				$scope.installation.actionplans.push({
+	    			sins:null,
+	    			type:null,
+	    			seq:null,
+	    			name:null,
+	    			phone1:null,
+	    			phone2:null,
+	    			phone3:null,
+	    			spc:null,
+	    			scont:null,
+	    			scix:null,
+	    			pix:null
+	    		})
+			}else{
+				$scope.installation.actionplans.push({
+	    			sins:$scope.installation.sins,
+	    			type:0,
+	    			seq:null,
+	    			name:null,
+	    			phone1:null,
+	    			phone2:null,
+	    			phone3:null,
+	    			spc:0,
+	    			scont:0,
+	    			scix:0,
+	    			pix:0
+	    		})
 			}
-    		$scope.installation.actionplans.push({
-    			sins:null,
-    			type:null,
-    			seq:null,
-    			name:null,
-    			phone1:null,
-    			phone2:null,
-    			phone3:null,
-    			spc:null,
-    			scont:null,
-    			scix:null,
-    			pix:null
-    		})
+    		
     		$timeout(function(){
-    			angular.element('input[name=position'+($scope.installation.actionplans.length-1)+']')[0].focus();
+    			angular.element('input[name=seq'+($scope.installation.actionplans.length-1)+']')[0].focus();
     		},0);
 		}
 	}
@@ -388,6 +422,7 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 					$scope.installation.actionplans=angular.copy($scope.actionPlansOriginal);
 				}
 				$scope.auditList=data.auditList;
+				delete($scope.actionPlansOriginal);
 			})
 			.error(function (data, status, headers, config) {
 				// called asynchronously if an error occurs
@@ -395,6 +430,7 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 				CommonService.processBaseResponse(data,status,headers,config);
 				$scope.installation.actionplans=angular.copy($scope.actionPlansOriginal);
 				$scope.auditList=data.auditList;
+				delete($scope.actionPlansOriginal);
 			});
 		}else if($scope.editingActionPlans==true){
 			$scope.editingActionPlans=false;
@@ -426,19 +462,37 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 						$scope.installation = data.installation;
 						$scope.installation.actionplans=$filter('orderBy')($scope.installation.actionplans,'seq',false);
 			            $scope.searchBy.installationNumber=data.installation.installationNumber;
+					}else{
+						$scope.installation.actionplans=angular.copy($scope.actionPlansOriginal);
 					}
 					$scope.auditList=data.auditList;
+					delete($scope.actionPlansOriginal);
 				})
 				.error(function (data, status, headers, config) {
 					// called asynchronously if an error occurs
 					// or server returns response with an error status.
 					CommonService.processBaseResponse(data,status,headers,config);
+					$scope.installation.actionplans=angular.copy($scope.actionPlansOriginal);
 					$scope.auditList=data.auditList;
+					delete($scope.actionPlansOriginal);
 				});
 			}
 		}
 		
 	}
 	/** FIN Edición Planes de acción */
+	/** Obtener tipos de telefono para rellenar los combos */
+	$scope.getPhoneTypes=function(){
+		$http.get("installation/getPhoneTypes")
+		.success(function (data, status, headers, config) {
+			CommonService.processBaseResponse(data,status,headers,config);
+			$scope.phoneTypeList=data.phoneTypeList;
+		})
+		.error(function (data, status, headers, config) {
+			// called asynchronously if an error occurs
+			// or server returns response with an error status.
+			CommonService.processBaseResponse(data,status,headers,config);
+		});
+	}
 	
 });

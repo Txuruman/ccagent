@@ -13,6 +13,7 @@ import es.securitasdirect.moduloweb.web.dto.request.SearchInstallationRequest;
 import es.securitasdirect.moduloweb.web.dto.request.UpdateActionPlansRequest;
 import es.securitasdirect.moduloweb.web.dto.request.UpdateInstallationRequest;
 import es.securitasdirect.moduloweb.web.dto.response.CodewordChangeResponse;
+import es.securitasdirect.moduloweb.web.dto.response.GetPhoneTypesResponse;
 import es.securitasdirect.moduloweb.web.dto.response.InstallationResponse;
 import es.securitasdirect.moduloweb.web.dto.response.ListFieldConfigResponse;
 import es.securitasdirect.moduloweb.web.dto.response.SearchInstallationResponse;
@@ -28,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.wso2.ws.dataservice.GetTiposTelefonoResult;
 
 import javax.inject.Inject;
 
@@ -200,6 +202,24 @@ public class InstallationController extends BaseController {
         	BaseResponse baseResponse=new BaseResponse();
         	baseResponse.setAuditList(auditService.getAudit(request.getAgent().getAgentIBS(), "Info instalacion", request.getAgent().getFechaInicioAudit()));
         	return processException(baseResponse,exception);
+        }
+    }
+    
+    /**
+     * Obtener tipos de telefonos
+     */
+    @RequestMapping(value = "getPhoneTypes", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public
+    @ResponseBody
+    BaseResponse getPhoneTypes() {
+    	LOGGER.debug("Get Field Config By App");
+    	GetPhoneTypesResponse response = new GetPhoneTypesResponse();
+        try{
+	        List<GetTiposTelefonoResult> phoneTypeList=	installationService.getPhoneTypes();
+	        response.setPhoneTypeList(phoneTypeList);
+	        return response;
+        }catch(Exception exception){
+        	return processException(exception);
         }
     }
 }

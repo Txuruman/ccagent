@@ -1,4 +1,3 @@
-
 <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns0="http://ws.wso2.org/dataservice" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://ws.wso2.org/dataservice">
     <wsdl:documentation/>
     <wsdl:types>
@@ -391,6 +390,26 @@
                         <xs:element name="os_pc" nillable="true" type="xs:int"/>
                         <xs:element name="os_cont" nillable="true" type="xs:int"/>
                         <xs:element name="ocix" nillable="true" type="xs:int"/>
+                        <xs:element name="exptm" nillable="true" type="xs:int"/>
+                        <xs:element name="phone2" nillable="true" type="xs:string"/>
+                        <xs:element name="phone3" nillable="true" type="xs:string"/>
+                        <xs:element name="ilevel" nillable="true" type="xs:string"/>
+                        <xs:element name="code" nillable="true" type="xs:string"/>
+                        <xs:element name="aprof" nillable="true" type="xs:string"/>
+                        <xs:element name="enabled" nillable="true" type="xs:string"/>
+                        <xs:element name="highsec" nillable="true" type="xs:string"/>
+                        <xs:element name="email1" nillable="true" type="xs:string"/>
+                        <xs:element name="cont_tp" nillable="true" type="xs:string"/>
+                        <xs:element name="cont_rel" nillable="true" type="xs:string"/>
+                        <xs:element name="rel_name" nillable="true" type="xs:string"/>
+                        <xs:element name="keyh" nillable="true" type="xs:string"/>
+                        <xs:element name="multi_ci_chg" nillable="true" type="xs:string"/>
+                        <xs:element name="invest" nillable="true" type="xs:string"/>
+                        <xs:element name="mustcall" nillable="true" type="xs:int"/>
+                        <xs:element name="phtyp1" nillable="true" type="xs:string"/>
+                        <xs:element name="phtyp2" nillable="true" type="xs:string"/>
+                        <xs:element name="phtyp3" nillable="true" type="xs:string"/>
+                        <xs:element name="flg_email_exclude" nillable="true" type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -534,6 +553,53 @@
                     <xs:sequence/>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="ma_actplan_call_lin_upd2">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                        <xs:element name="pix" nillable="true" type="xs:int"/>
+                        <xs:element name="s_pc" nillable="true" type="xs:int"/>
+                        <xs:element name="s_cont" nillable="true" type="xs:int"/>
+                        <xs:element name="cix" nillable="true" type="xs:int"/>
+                        <xs:element name="opc" nillable="true" type="xs:int"/>
+                        <xs:element name="passcid" nillable="true" type="xs:string"/>
+                        <xs:element name="passcidtext" nillable="true" type="xs:string"/>
+                        <xs:element name="name" nillable="true" type="xs:string"/>
+                        <xs:element name="phone1" nillable="true" type="xs:string"/>
+                        <xs:element name="seq" nillable="true" type="xs:int"/>
+                        <xs:element name="tmp_plevel" nillable="true" type="xs:string"/>
+                        <xs:element name="dwnldb" nillable="true" type="xs:string"/>
+                        <xs:element name="lix" nillable="true" type="xs:string"/>
+                        <xs:element name="allincl" nillable="true" type="xs:string"/>
+                        <xs:element name="prreq" nillable="true" type="xs:string"/>
+                        <xs:element name="br" nillable="true" type="xs:string"/>
+                        <xs:element name="os_pc" nillable="true" type="xs:int"/>
+                        <xs:element name="os_cont" nillable="true" type="xs:int"/>
+                        <xs:element name="ocix" nillable="true" type="xs:int"/>
+                        <xs:element name="exptm" nillable="true" type="xs:int"/>
+                        <xs:element name="phone2" nillable="true" type="xs:string"/>
+                        <xs:element name="phone3" nillable="true" type="xs:string"/>
+                        <xs:element name="ilevel" nillable="true" type="xs:string"/>
+                        <xs:element name="code" nillable="true" type="xs:string"/>
+                        <xs:element name="aprof" nillable="true" type="xs:string"/>
+                        <xs:element name="enabled" nillable="true" type="xs:string"/>
+                        <xs:element name="highsec" nillable="true" type="xs:string"/>
+                        <xs:element name="email1" nillable="true" type="xs:string"/>
+                        <xs:element name="cont_tp" nillable="true" type="xs:string"/>
+                        <xs:element name="cont_rel" nillable="true" type="xs:string"/>
+                        <xs:element name="rel_name" nillable="true" type="xs:string"/>
+                        <xs:element name="keyh" nillable="true" type="xs:string"/>
+                        <xs:element name="multi_ci_chg" nillable="true" type="xs:string"/>
+                        <xs:element name="invest" nillable="true" type="xs:string"/>
+                        <xs:element name="mustcall" nillable="true" type="xs:int"/>
+                        <xs:element name="phtyp1" nillable="true" type="xs:string"/>
+                        <xs:element name="phtyp2" nillable="true" type="xs:string"/>
+                        <xs:element name="phtyp3" nillable="true" type="xs:string"/>
+                        <xs:element name="flg_email_exclude" nillable="true" type="xs:string"/>
+                        <xs:element name="debug" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="inet_aplan_get_contact">
                 <xs:complexType>
                     <xs:sequence>
@@ -659,6 +725,9 @@
     <wsdl:message name="begin_boxcarRequest">
         <wsdl:part name="parameters" element="ns0:begin_boxcar"/>
     </wsdl:message>
+    <wsdl:message name="ma_actplan_call_lin_upd2Request">
+        <wsdl:part name="parameters" element="ns0:ma_actplan_call_lin_upd2"/>
+    </wsdl:message>
     <wsdl:message name="ma_actplan_call_lin_updRequest">
         <wsdl:part name="parameters" element="ns0:ma_actplan_call_lin_upd"/>
     </wsdl:message>
@@ -772,6 +841,10 @@
         <wsdl:operation name="begin_boxcar">
             <wsdl:documentation>Control operation for beginning a boxcarring session</wsdl:documentation>
             <wsdl:input message="ns0:begin_boxcarRequest" wsaw:Action="urn:begin_boxcar"/>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_call_lin_upd2">
+            <wsdl:documentation>                Actualiza el plan activo con los valores pasados como parametro                    &#xd;                                    </wsdl:documentation>
+            <wsdl:input message="ns0:ma_actplan_call_lin_upd2Request" wsaw:Action="urn:ma_actplan_call_lin_upd2"/>
         </wsdl:operation>
         <wsdl:operation name="ma_actplan_call_lin_upd">
             <wsdl:documentation/>
@@ -916,6 +989,12 @@
         </wsdl:operation>
         <wsdl:operation name="begin_boxcar">
             <soap:operation soapAction="urn:begin_boxcar" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_call_lin_upd2">
+            <soap:operation soapAction="urn:ma_actplan_call_lin_upd2" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -1145,6 +1224,12 @@
                 <soap12:body use="literal"/>
             </wsdl:input>
         </wsdl:operation>
+        <wsdl:operation name="ma_actplan_call_lin_upd2">
+            <soap12:operation soapAction="urn:ma_actplan_call_lin_upd2" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
         <wsdl:operation name="ma_actplan_call_lin_upd">
             <soap12:operation soapAction="urn:ma_actplan_call_lin_upd" style="document"/>
             <wsdl:input>
@@ -1354,6 +1439,12 @@
         </wsdl:operation>
         <wsdl:operation name="begin_boxcar">
             <http:operation location="begin_boxcar"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="ma_actplan_call_lin_upd2">
+            <http:operation location="ma_actplan_call_lin_upd2"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>

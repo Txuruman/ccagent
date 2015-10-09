@@ -62,7 +62,7 @@ public class Audit {
   //constructor copia de la clase Audit
     public Audit(final org.wso2.ws.dataservice.Entry entry) {
         this.id = entry.getId().intValue();
-        this.date = new Date(entry.getAuditDate().getMillisecond());
+        this.date = new Date(entry.getAuditDate().toGregorianCalendar().getTimeInMillis());
         this.user = entry.getActor();
         this.app = entry.getApp();
         this.action = entry.getEvent();

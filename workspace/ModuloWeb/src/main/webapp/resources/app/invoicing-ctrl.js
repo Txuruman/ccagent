@@ -1,7 +1,7 @@
 /**
  * Controlador de la pestaña Facturación
  */
-app.controller('invoicingController', function ($scope, $http, $log, CommonService, $modal,filterFilter) {
+app.controller('invoicingController', function ($scope, $http, $log, CommonService, $modal,filterFilter, $rootScope) {
 
 	//Query FieldConfig
 	$scope.getFieldConfig=function(){
@@ -40,46 +40,17 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 		};
 	
 	//Método para obtener los datos de la factura
-	$scope.getInvoice=function(installationNumber){ //¿¿ installation ID ???
+	$scope.getInvoice=function(sins){ //¿¿ installation ID ???
 		//$log.debug("Query invoice for ", installationNumber);
 		$http(
 				{
 					method: 'GET',
 					url: 'invoice/getInvoice',
-					params: {installationNumber: installationNumber}
+					params: {sIns: $scope.installation.sins}
 				}
 			).success(function (data, status, headers, config) {
 					CommonService.processBaseResponse(data,status,headers,config);
-					//Datos de información de facturación de la instalación	
-					if (data.invoiceInfo!=undefined) {
-						$scope.invoiceInfo = data.invoiceInfo;
-						$scope.activationCheckValue=$scope.invoiceInfo.invoiceSend; //valor inicial check lo guardamos para el cancelar
-						$scope.activationEmailBillingValue=$scope.invoiceInfo.emailBilling; //valor inicial emailBilling lo guardamos para el cancelar
-						$scope.invoiceInfo.debtAmount=$scope.invoiceInfo.debtAmount+" €";	
-						if ($scope.invoiceInfo.discount==true) {
-							$scope.invoiceInfo.discount="Si";
-						}else{
-							$scope.invoiceInfo.discount="No";
-						}
-					}
-					//Datos de facturas cycleFeeds asociadas a la instalación
-					if (data.cycleFeeds!=undefined) {
-						$scope.cycleFeeds= data.cycleFeeds;
-					}
-					//Cuotas asociadas a la instalación
-					if (data.cuote!=undefined) {
-						$scope.cuote=data.cuote;
-					}
-					//Listado de Facturas
-					if (data.invoiceList!=undefined) {
-						$scope.invoiceList=data.invoiceList;
-						//Para la paginación;
-						$scope.paginar("");
-					}
-				
-					//$log.debug("invoiceInfo queried ", data.invoiceInfo);
-					//$log.debug("cycleFeeds queried ", data.cycleFeeds);
-					//$log.debug("invoiceList queried ", data.invoiceList);
+					$scope.setTabInformation(data);
 				})
 				.error(function (data, status, headers, config) {
 					CommonService.processBaseResponse(data,status,headers,config);
@@ -142,6 +113,18 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 	}
 	$scope.cccSave=function(){
 		$scope.cccEditing=false;
+		var updateCCCRequest={
+				debIban:$scope.invoiceInfo.ccc,
+				umr:$scope.invoiceInfo.umr,
+				sIns:$scope.installation.sins
+		};
+		$http.put("invoice/updateCCC",updateCCCRequest)
+		.success(function (data, status, headers, config) {
+			CommonService.processBaseResponse(data,status,headers,config);
+			$scope.setTabInformation(data);
+		}).error(function (data, status, headers, config) {
+			CommonService.processBaseResponse(data,status,headers,config);
+		});
 		delete($scope.cccTemp);
 	}
 	$scope.cccCancel=function(){
@@ -187,15 +170,50 @@ app.controller('invoicingController', function ($scope, $http, $log, CommonServi
 //		alert($scope.paginas[0]);
 	}
 	/** FIN Paginación */
+	
+	/** Funcion para setear la informacion de la pestaña */
+	$scope.setTabInformation=function(data){
+		//Datos de información de facturación de la instalación	
+		if (data.invoiceGlobal.invoiceInfo!=undefined) {
+			$scope.invoiceInfo = data.invoiceGlobal.invoiceInfo;
+			$scope.activationCheckValue=$scope.invoiceInfo.invoiceSend; //valor inicial check lo guardamos para el cancelar
+			$scope.activationEmailBillingValue=$scope.invoiceInfo.emailBilling; //valor inicial emailBilling lo guardamos para el cancelar
+			$scope.invoiceInfo.debtAmount=$scope.invoiceInfo.debtAmount+" €";	
+			if ($scope.invoiceInfo.discount==true) {
+				$scope.invoiceInfo.discount="Si";
+			}else{
+				$scope.invoiceInfo.discount="No";
+			}
+		}
+		//Datos de facturas cycleFeeds asociadas a la instalación
+		if (data.invoiceGlobal.cycleFeeds!=undefined) {
+			$scope.cycleFeeds= data.invoiceGlobal.cycleFeeds;
+		}
+		//Cuotas asociadas a la instalación
+		if (data.invoiceGlobal.cuote!=undefined) {
+			$scope.invoiceGlobal.cuote=data.invoiceGlobal.cuote;
+		}
+		//Listado de Facturas
+		if (data.invoiceGlobal.invoiceList!=undefined) {
+			$scope.invoiceList=data.invoiceGlobal.invoiceList;
+			//Para la paginación;
+			$scope.paginar("");
+		}
+	
+		//$log.debug("invoiceInfo queried ", data.invoiceInfo);
+		//$log.debug("cycleFeeds queried ", data.cycleFeeds);
+		//$log.debug("invoiceList queried ", data.invoiceList);
+	}
 	//Inicialización;
 	
 //	$scope.getAudit(111111);
-	$scope.getInvoice(971120);
+//	$scope.getInvoice(971120);
 	$scope.getFieldConfig();
 	$scope.tipoFra=""; //Inicializamos filtro de tipo de factura para que muestre todas por defectos
 	$scope.activationEdit=true; //No estamos editando la activación cuando es true
 	//Editar CCC
 	$scope.cccEditing=false;
+	
 });
 
 //Controlador para gestionar el modal de detalle facturas

@@ -21,6 +21,7 @@
 			    	<span class="glyphicon glyphicon-remove colorCancel" aria-hidden="true"></span>
            		</button>
 			</div>
+			<span ng-if="installation.emailMonitoring!=undefined && installation.emailMonitoring==''" ng-show="installation.emailMonitoring!=undefined && installation.emailMonitoring==''" class="error enlinea margin-left5"><spring:message code="info.nomonitoringmail"/></span>
 		</div>
 		
 	</div>
@@ -58,7 +59,7 @@
 				<label ng-if="f.identifier == 'servicesPhone'">
 					<spring:message code="infoinstal.servicesphone"/>
 				</label>
-				<label ng-if="f.identifier == 'emailMonitoring'">
+				<label ng-if="f.identifier == 'emailMonitoring'" ng-class="(installation.emailMonitoring!=undefined && installation.emailMonitoring=='')?'error':null">
 					<spring:message code="infoinstal.emailMonitoring"/>
 				</label>
 				<label ng-if="f.identifier == 'emailServices'">
