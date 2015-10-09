@@ -327,7 +327,7 @@ public class DummyGenerator {
     	invoice.setInvoiceNumber(79824792);
     	invoice.setExtInvoiceNo("13FR00026697");
     	invoice.setAmount(-49.54);
-    	invoice.setIntallationNumber(installationNumber);
+    	invoice.setInstallationNumber(installationNumber);
     	invoice.setInvoiceType(InvoiceData.TYPE.ONE);
     	
     	try{
@@ -343,7 +343,7 @@ public class DummyGenerator {
     	invoice2.setInvoiceNumber(75421398);
     	invoice2.setExtInvoiceNo("13FR00026696");
     	invoice2.setAmount(-49.54);
-    	invoice2.setIntallationNumber(installationNumber);
+    	invoice2.setInstallationNumber(installationNumber);
     	invoice2.setInvoiceType(InvoiceData.TYPE.ONE);
     	
     	try{
@@ -359,7 +359,7 @@ public class DummyGenerator {
     	invoice3.setInvoiceNumber(75652154);
     	invoice3.setExtInvoiceNo("13FR00026652");
     	invoice3.setAmount(-48.15);
-    	invoice3.setIntallationNumber(installationNumber);
+    	invoice3.setInstallationNumber(installationNumber);
     	invoice3.setInvoiceType(InvoiceData.TYPE.CYCLE);
     	
     	try{
@@ -375,7 +375,7 @@ public class DummyGenerator {
     	invoice4.setInvoiceNumber(75654321);
     	invoice4.setExtInvoiceNo("1302C0420864");
     	invoice4.setAmount(49.54);
-    	invoice4.setIntallationNumber(installationNumber);
+    	invoice4.setInstallationNumber(installationNumber);
     	invoice4.setInvoiceType(InvoiceData.TYPE.CYCLE);
     	
     	try{
@@ -391,7 +391,7 @@ public class DummyGenerator {
     	invoice5.setInvoiceNumber(75646545);
     	invoice5.setExtInvoiceNo("1301C0420464");
     	invoice5.setAmount(49.54);
-    	invoice5.setIntallationNumber(installationNumber);
+    	invoice5.setInstallationNumber(installationNumber);
     	invoice5.setInvoiceType(InvoiceData.TYPE.CYCLE);
     	
     	try{
@@ -407,7 +407,7 @@ public class DummyGenerator {
     	invoice6.setInvoiceNumber(76545645);
     	invoice6.setExtInvoiceNo("1212C6544844");
     	invoice6.setAmount(48.15);
-    	invoice6.setIntallationNumber(installationNumber);
+    	invoice6.setInstallationNumber(installationNumber);
     	invoice6.setInvoiceType(InvoiceData.TYPE.ONE);
     	
     	try{

@@ -4,6 +4,9 @@ CREATE TABLE "dbo"."audit"
 (
 id int IDENTITY (1, 1) NOT NULL,
 audit_date datetime,
+installation_number int,
+conn_id varchar(255),
+interaction_id varchar(255),
 actor varchar(255),
 app varchar(255),
 event varchar(255),
@@ -11,7 +14,6 @@ result varchar(255),
 detail varchar(255),
 CONSTRAINT audit_PK PRIMARY KEY (id)
 );
-
 
 
 -- CCAGENT_ADM
@@ -144,7 +146,7 @@ CREATE TABLE "dbo"."invoice_data"
   id int IDENTITY (1, 1) NOT NULL,
   invoice_number int,
 	ext_invoice_no varchar(255),
-	intallation_number int,
+	installation_number int,
 	invoice_type varchar(255),
 	amount numeric(30,2),
 	system_date date,
