@@ -30,10 +30,10 @@ public class DummyGenerator {
         da.setUrl("http://www.google.es");
         da.setPosition(0);
         List<DirectAccessParams> mapa1=new ArrayList<DirectAccessParams>();
-        mapa1.add(new DirectAccessParams("param1", "hola"));
-        mapa1.add(new DirectAccessParams("param2", "hola2"));
-        mapa1.add(new DirectAccessParams("param3", "hola3"));
-        mapa1.add(new DirectAccessParams("param4", "hola4"));
+        mapa1.add(new DirectAccessParams("param1", "hola", 1));
+        mapa1.add(new DirectAccessParams("param2", "hola2", 1));
+        mapa1.add(new DirectAccessParams("param3", "hola3", 1));
+        mapa1.add(new DirectAccessParams("param4", "hola4", 1));
         da.setParams(mapa1);
         l.add(da);
 
@@ -44,9 +44,9 @@ public class DummyGenerator {
         da.setUrl("http://www.google.es");
         da.setPosition(1);
         List<DirectAccessParams> mapa2=new ArrayList<DirectAccessParams>();
-        mapa2.add(new DirectAccessParams("param1", "hola"));
-        mapa2.add(new DirectAccessParams("param3", "hola3"));
-        mapa2.add(new DirectAccessParams("param4", "hola4"));
+        mapa2.add(new DirectAccessParams("param1", "hola", 2));
+        mapa2.add(new DirectAccessParams("param3", "hola3", 2));
+        mapa2.add(new DirectAccessParams("param4", "hola4", 2));
         da.setParams(mapa2);
         l.add(da);
 
@@ -56,8 +56,8 @@ public class DummyGenerator {
         da.setUrl("http://www.google.es");
         da.setPosition(2);
         List<DirectAccessParams> mapa3=new ArrayList<DirectAccessParams>();
-        mapa3.add(new DirectAccessParams("param2", "hola2"));
-        mapa3.add(new DirectAccessParams("param4", "hola4"));
+        mapa3.add(new DirectAccessParams("param2", "hola2", 3));
+        mapa3.add(new DirectAccessParams("param4", "hola4", 3));
         da.setParams(mapa3);
         l.add(da);
  
@@ -68,9 +68,9 @@ public class DummyGenerator {
         da.setUrl("http://www.google.es");
         da.setPosition(4);
         List<DirectAccessParams> mapa4=new ArrayList<DirectAccessParams>();
-        mapa4.add(new DirectAccessParams("param1", "hola"));
-        mapa4.add(new DirectAccessParams("param2", "hola2"));
-        mapa4.add(new DirectAccessParams("param4", "hola4"));
+        mapa4.add(new DirectAccessParams("param1", "hola", 4));
+        mapa4.add(new DirectAccessParams("param2", "hola2", 4));
+        mapa4.add(new DirectAccessParams("param4", "hola4", 4));
         da.setParams(mapa4);
         l.add(da);
  
