@@ -1,18 +1,11 @@
 package es.securitasdirect.moduloweb.web.controller;
 
-import es.securitasdirect.moduloweb.model.Audit;
 import es.securitasdirect.moduloweb.model.CombinationsKeys;
 import es.securitasdirect.moduloweb.model.FieldConfig;
 import es.securitasdirect.moduloweb.service.AdminService;
-import es.securitasdirect.moduloweb.web.dto.response.ListCombinationsKeysResponse;import es.securitasdirect.moduloweb.service.AuditService;
-import es.securitasdirect.moduloweb.web.dto.request.DeleteCombinationKeysRequest;
-import es.securitasdirect.moduloweb.web.dto.request.InsertCombinationsKeysRequest;
-import es.securitasdirect.moduloweb.web.dto.request.InsertFieldConfigSRequest;
-import es.securitasdirect.moduloweb.web.dto.request.SearchInstallationRequest;
-import es.securitasdirect.moduloweb.web.dto.request.UpdateCombinationsKeysRequest;
-import es.securitasdirect.moduloweb.web.dto.response.AuditResponse;
+import es.securitasdirect.moduloweb.web.dto.request.*;
+import es.securitasdirect.moduloweb.web.dto.response.ListCombinationsKeysResponse;
 import es.securitasdirect.moduloweb.web.dto.response.ListFieldConfigResponse;
-import es.securitasdirect.moduloweb.web.dto.response.SimpleResponse;
 import es.securitasdirect.moduloweb.web.dto.support.BaseResponse;
 
 import org.slf4j.Logger;
@@ -22,12 +15,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.inject.Inject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,6 +34,45 @@ public class AdminController extends BaseController {
     @Inject
     protected AdminService adminService;
 
+    @RequestMapping(value = "insertDirectAccess", method = {RequestMethod.POST}, consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public
+    @ResponseBody
+    BaseResponse insertDirectAccess(@RequestBody InsertDirectAccessRequest request) {
+        BaseResponse response = new BaseResponse();
+        try {
+            adminService.insertDirectAccess(request.getDirectAccess());
+//        	response.info(messageUtil.getProperty("createtask.create.success"));
+        } catch (Exception e) {
+            response = processException(e);
+        }
+        return response;
+    }
+    @RequestMapping(value = "updateDirectAccess", method = {RequestMethod.PUT}, consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public
+    @ResponseBody
+    BaseResponse updateDirectAccess(@RequestBody UpdateDirectAccessRequest request) {
+        BaseResponse response = new BaseResponse();
+        try {
+            adminService.updateDirectAccess(request.getDirectAccess());
+//        	response.info(messageUtil.getProperty("createtask.create.success"));
+        } catch (Exception e) {
+            response = processException(e);
+        }
+        return response;
+    }
+    @RequestMapping(value = "deleteDirectAccess", method = {RequestMethod.PUT}, consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public
+    @ResponseBody
+    BaseResponse deleteDirectAccess(@RequestBody DeleteDirectAccessRequest request) {
+        BaseResponse response = new BaseResponse();
+        try {
+            adminService.deleteDirectAccess(request.getDirectAccess());
+//        	response.info(messageUtil.getProperty("createtask.create.success"));
+        } catch (Exception e) {
+            response = processException(e);
+        }
+        return response;
+    }
 
     @RequestMapping(value = "getFieldConfig", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public
@@ -68,6 +98,33 @@ public class AdminController extends BaseController {
         }
         
         
+    }
+
+    @RequestMapping(value = "updateFieldConfig", method = {RequestMethod.PUT}, consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public
+    @ResponseBody
+    BaseResponse updateFieldConfig(@RequestBody UpdateFieldConfigRequest request) {
+        BaseResponse response = new BaseResponse();
+        try {
+            adminService.updateFieldConfig(request.getFieldConfig());
+//        	response.info(messageUtil.getProperty("createtask.create.success"));
+        } catch (Exception e) {
+            response = processException(e);
+        }
+        return response;
+    }
+    @RequestMapping(value = "deleteFieldConfig", method = {RequestMethod.PUT}, consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public
+    @ResponseBody
+    BaseResponse deleteFieldConfig(@RequestBody DeleteFieldConfigRequest request) {
+        BaseResponse response = new BaseResponse();
+        try {
+            adminService.deleteFieldConfig(request.getFieldConfig());
+//        	response.info(messageUtil.getProperty("createtask.create.success"));
+        } catch (Exception e) {
+            response = processException(e);
+        }
+        return response;
     }
     
     
