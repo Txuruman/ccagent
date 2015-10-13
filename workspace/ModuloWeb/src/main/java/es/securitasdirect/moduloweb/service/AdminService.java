@@ -148,6 +148,71 @@ public class AdminService {
 
         return listDirectAccess;
     }
+
+    /**
+     * Insert Direct Access
+     * @return
+     */
+    public void insertDirectAccess(DirectAccess directAccess){
+        try{
+            wsAdmin.insertDirectAccessOperation(directAccess.getName(), directAccess.getDescription(), directAccess.getUrl(), directAccess.getPosition());
+        }catch(Exception e){
+            throw new BusinessException(BusinessException.ErrorCode.ERROR_INSERT_DIRECT_ACCESS);
+        }
+
+        try{
+            // INSERTAMOS LA LISTA DE PARAMETROS DEL ACCESO DIRECTO
+            List<DirectAccessParams> listDirectAccessParams = directAccess.getParams();
+            for (DirectAccessParams directAccessParams : listDirectAccessParams) {
+                wsAdmin.insertDirectAccessParamsOperation(directAccessParams.getName(), directAccessParams.getValue(), directAccessParams.getDirectAccess());
+            }
+        }catch(Exception e){
+            throw new BusinessException(BusinessException.ErrorCode.ERROR_INSERT_DIRECT_ACCESS_PARAMS);
+        }
+    }
+    /**
+     * Update Direct Access
+     * @return
+     */
+    public void updateDirectAccess(DirectAccess directAccess) {
+        try{
+            wsAdmin.updateDirectAccessOperation(directAccess.getName(), directAccess.getDescription(), directAccess.getUrl(), directAccess.getPosition(), directAccess.getId());
+        }catch(Exception e){
+            throw new BusinessException(BusinessException.ErrorCode.ERROR_UPDATE_DIRECT_ACCESS);
+        }
+
+        try{
+            // ACTUALIZAMOS LA LISTA DE PARAMETROS DEL ACCESO DIRECTO
+            List<DirectAccessParams> listDirectAccessParams = directAccess.getParams();
+            for (DirectAccessParams directAccessParams : listDirectAccessParams) {
+                wsAdmin.updateDirectAccessParamsOperation(directAccessParams.getName(), directAccessParams.getValue(), directAccessParams.getDirectAccess(), directAccessParams.getId());
+            }
+        }catch(Exception e){
+            throw new BusinessException(BusinessException.ErrorCode.ERROR_UPDATE_DIRECT_ACCESS_PARAMS);
+        }
+    }
+    /**
+     * Delete DirectAccess
+     * @param directAccess
+     */
+    public void deleteDirectAccess(DirectAccess directAccess){
+        try{
+            wsAdmin.deleteDirectAccessOperation(directAccess.getId());
+        }catch(Exception e){
+            throw new BusinessException(BusinessException.ErrorCode.ERROR_DELETE_DIRECT_ACCESS);
+        }
+
+
+        try{
+            // BORRAMOS LA LISTA DE PARAMETROS DEL ACCESO DIRECTO
+            List<DirectAccessParams> listDirectAccessParams = directAccess.getParams();
+            for (DirectAccessParams directAccessParams : listDirectAccessParams) {
+                wsAdmin.deleteDirectAccessParamsOperation(directAccessParams.getId());
+            }
+        }catch(Exception e){
+            throw new BusinessException(BusinessException.ErrorCode.ERROR_DELETE_DIRECT_ACCESS_PARAMS);
+        }
+    }
     
     public List<TabKeys> getTabKeys(){
     	List<TabKeys> tabKeys= DummyGenerator.getTabKeys();
@@ -281,6 +346,31 @@ public class AdminService {
 			throw new BusinessException(BusinessException.ErrorCode.ERROR_INSERT_FIELD);
 		}
     	
+    }
+
+    /**
+     * Update Field Config
+     * @return
+     */
+    public void updateFieldConfig(FieldConfig fieldConfig) {
+        try{
+            wsAdmin.updateFieldConfigOperation(fieldConfig.getApp(), fieldConfig.getIdentifier(), fieldConfig.getDescription(),
+                    fieldConfig.isVisible(), fieldConfig.isEditable(), fieldConfig.isAdministrable(),
+                    fieldConfig.getPosition(), fieldConfig.getId());
+        }catch(Exception e){
+            throw new BusinessException(BusinessException.ErrorCode.ERROR_UPDATE_FIELD);
+        }
+    }
+    /**
+     * Delete Field Config
+     * @param fieldConfig
+     */
+    public void deleteFieldConfig(FieldConfig fieldConfig){
+        try{
+            wsAdmin.deleteFieldConfigOperation(fieldConfig.getId());
+        }catch(Exception e){
+            throw new BusinessException(BusinessException.ErrorCode.ERROR_DELETE_FIELD);
+        }
     }
     
     
