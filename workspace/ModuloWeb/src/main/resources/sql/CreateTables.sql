@@ -69,6 +69,25 @@ tab varchar(255),
 CONSTRAINT combinations_keys_PK PRIMARY KEY (id)
 )
 
+
+
+
+
+
+--------------------TABLAS NO USADAS-----------------------------------------------------------------------------------
+/*
+-- CCAGENT_ADM
+DROP TABLE "dbo"."users";
+CREATE TABLE "dbo"."users"
+(
+  id int IDENTITY (1, 1) NOT NULL,
+  user_id varchar(255),
+  name varchar(255),
+  is_admin bit,
+  CONSTRAINT users_PK PRIMARY KEY (id)
+)
+
+
 -- CCAGENT_ADM
 DROP TABLE "dbo"."action_plan";
 CREATE TABLE "dbo"."action_plan"
@@ -85,7 +104,7 @@ CONSTRAINT action_plan_PK PRIMARY KEY (id)
 
 
 -- CCAGENT_ADM
---DROP TABLE "dbo"."cuote";
+DROP TABLE "dbo"."cuote";
 CREATE TABLE "dbo"."cuote"
 (
 id int IDENTITY (1, 1) NOT NULL,
@@ -198,18 +217,9 @@ CREATE TABLE "dbo"."phone"
 	CONSTRAINT phone_PK PRIMARY KEY (id)
 )
 
+*/
+--------------------TABLAS NO USADAS-----------------------------------------------------------------------------------
 
-
--- CCAGENT_ADM
-DROP TABLE "dbo"."users";
-CREATE TABLE "dbo"."users"
-(
-  id int IDENTITY (1, 1) NOT NULL,
-  user_id varchar(255),
-  name varchar(255),
-  is_admin bit,
-  CONSTRAINT users_PK PRIMARY KEY (id)
-)
 
 
 
