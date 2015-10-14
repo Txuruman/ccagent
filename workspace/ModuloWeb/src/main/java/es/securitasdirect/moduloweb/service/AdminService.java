@@ -213,6 +213,23 @@ public class AdminService {
             throw new BusinessException(BusinessException.ErrorCode.ERROR_DELETE_DIRECT_ACCESS_PARAMS);
         }
     }
+
+    /**
+     * Delete DirectAccess
+     * @param directAccess
+     */
+    public void deleteDirectAccessParams(DirectAccess directAccess){
+
+        try{
+            // BORRAMOS LA LISTA DE PARAMETROS DEL ACCESO DIRECTO
+            List<DirectAccessParams> listDirectAccessParams = directAccess.getParams();
+            for (DirectAccessParams directAccessParams : listDirectAccessParams) {
+                wsAdmin.deleteDirectAccessParamsOperation(directAccessParams.getId());
+            }
+        }catch(Exception e){
+            throw new BusinessException(BusinessException.ErrorCode.ERROR_DELETE_DIRECT_ACCESS_PARAMS);
+        }
+    }
     
     public List<TabKeys> getTabKeys(){
     	List<TabKeys> tabKeys= DummyGenerator.getTabKeys();
