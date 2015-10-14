@@ -301,6 +301,30 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
 		$scope.editingField=true;
 		$scope.fieldConfigOriginal= angular.copy($scope.ListFieldConfig);
 	}
+    //Boton borrar
+    $scope.deleteFieldButton=function(){
+        $scope.fieldConfigOriginal= angular.copy($scope.ListFieldConfig);
+        $scope.deletingField=true;
+        //Quitamos el elemento de la lista en angular
+        for (var i = 0; i < $scope.ListFieldConfig.length; i++) {
+            if($scope.ListFieldConfig[i].id==$scope.currentFieldConfig.id){
+                $scope.ListFieldConfig.splice(i,1);
+            }
+        }
+        //Metemos el elemento borrado en una variable temporal
+        $scope.fieldDeleted=angular.copy($scope.currentFieldConfig);
+        //Ponemos el currentField con valores vacios
+        $scope.currentFieldConfig={
+            id:"",
+            app:"",
+            identifier:"",
+            description:"",
+            visible:"",
+            editable:"",
+            administrable:"",
+            position:""
+        }
+    }
 	//Boton insertar
 	$scope.insertingFieldButton=function(){
 		$scope.insertingField=true;
@@ -348,9 +372,10 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
 		}
 		$http.put("admin/updateFieldConfig", updateFieldConfigRequest)
 		.success(function(data,status,headers,config){
-			$scope.ListFieldConfig = data.fieldConfig;
-			$scope.deletingField=false;
-			$scope.currentField=-1;
+            //volvemos a obtener los field
+            $scope.getFieldConfig();
+            $scope.editingField=false;
+            CommonService.processBaseResponse(data,status,headers,config);
             CommonService.processBaseResponse(data,status,headers,config);
             //$log.debug(data);
         }).error(function(data,status,headers,config){
@@ -375,6 +400,24 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
         });
 		delete($scope.fieldConfigOriginal);
 	}
+    //Borrar fieldConfig
+    $scope.deleteFieldConfig=function(){
+        var deleteFieldConfigRequest={
+            fieldConfig:$scope.fieldDeleted
+        }
+        $http.put("admin/deleteFieldConfig", deleteFieldConfigRequest)
+            .success(function(data,status,headers,config){
+                //volvemos a obtener las keys
+                $scope.getFieldConfig();
+                $scope.deletingField=false;
+                $scope.currentField=-1;
+                CommonService.processBaseResponse(data,status,headers,config);
+                //$log.debug(data);
+            }).error(function(data,status,headers,config){
+                CommonService.processBaseResponse(data,status,headers,config);
+            });
+        delete($scope.fieldConfigOriginal);
+    }
 	/** FIN Gestion de Campos */
     
 
@@ -398,4 +441,6 @@ app.controller('adminController', function ($timeout, $scope, $http, CommonServi
     $scope.DAErased=[];
     //Key activo -1 para que no sea ninguno de inicio
     $scope.currentKey=-1;
+    //Field activo -1 para que no sea ninguno de inicio
+    $scope.currentField=-1;
 });
