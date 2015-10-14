@@ -9,18 +9,21 @@
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<h3 class="enlinea tituloSeccion margin-right10"><spring:message code="titulo.admin.field"/></h3>
 			<div class="btn-group inline enlinea">
-				<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.edit"/>" ng-hide="editingField || insertingField" ng-click="editingFieldButton()">
+				<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.edit"/>" ng-hide="editingField || insertingField || deletingField" ng-click="editingFieldButton()" ng-disabled="currentField<0 ? true : false">
 				   	<span class="glyphicon glyphicon-pencil colorEdit" aria-hidden="true"></span>
 		        </button>
-		        <button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.add"/>" ng-hide="editingField || insertingField" ng-click="insertingFieldButton()">
+		        <button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.add"/>" ng-hide="editingField || insertingField || deletingField" ng-click="insertingFieldButton()">
 				   	<span class="glyphicon glyphicon-plus colorAdd" aria-hidden="true"></span>
 		        </button>
+                <button type="button" class="btn btn-default btn-sm"  title="<spring:message code="boton.erase"/>" ng-hide="editingField || insertingField || deletingField || currentField<0" ng-click="deleteFieldButton()">
+                    <span class="glyphicon glyphicon-trash colorErase" aria-hidden="true"></span>
+                </button>
 	        </div>
 			<div class="btn-group inline enlinea">
-	        	<button type="submit" class="btn btn-default btn-sm" title="<spring:message code="boton.save"/>" ng-show="editingField || insertingField" ng-click="adminFieldsForm.$valid ? saveFieldButton() : null">
+	        	<button type="submit" class="btn btn-default btn-sm" title="<spring:message code="boton.save"/>" ng-show="editingField || insertingField || deletingField" ng-click="adminDAForm.$valid ? saveFieldButton() : null">
 			    	<span class="glyphicon glyphicon-ok colorSave" aria-hidden="true"></span>
 	        	</button>
-	        	<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.cancel"/>" ng-show="editingField || insertingField" ng-click="cancelFieldButton()">
+	        	<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.cancel"/>" ng-show="editingField || insertingField || deletingField" ng-click="cancelFieldButton()">
 			    	<span class="glyphicon glyphicon-remove colorCancel" aria-hidden="true"></span>
 	        	</button>
 			</div>
@@ -52,13 +55,13 @@
 					<div class="scrollTabla borderTablaBottom">
 						<table class="tbody">
 							<tr ng-repeat="k in ListFieldConfig" ng-click="(!editingField && !insertingField) ? setCurrentFieldConfig($index) : null" ng-class="($index===currentField) ? 'currentDA' : ' '">
-								<td class="tablaDA-td1"><input type="text" class="actionPlanTableText" name="{{'tab'+$index}}" ng-model="k.identifier" ng-readonly="true" ng-required="true" ng-disabled="!editingField && !insertingField"></td>
-								<td class="tablaDA-td1"><input type="text" class="actionPlanTableText" name="{{'tab'+$index}}" ng-model="k.app" ng-readonly="true" ng-required="true" ng-disabled="!editingField && !insertingField"></td>
-								<td class="tablaDA-td3">
-									<button type="button" class="btn btn-default btn-sm"  title="<spring:message code="boton.erase"/>" ng-click="">
-				                      	<span class="glyphicon glyphicon-trash colorErase" aria-hidden="true"></span>
-				                    </button>
-								</td>
+								<td class="tablaDA-td1"><input type="text" class="actionPlanTableText" name="{{'tab'+$index}}" ng-model="k.identifier" ng-readonly="true"></td>
+								<td class="tablaDA-td1"><input type="text" class="actionPlanTableText" name="{{'tab'+$index}}" ng-model="k.app" ng-readonly="true"></td>
+                                <!-- <td class="tablaDA-td3">
+                                    <!-- <button type="button" class="btn btn-default btn-sm"  title="<spring:message code="boton.erase"/>" ng-click=""> -->
+                                    <!--  	<span class="glyphicon glyphicon-trash colorErase" aria-hidden="true"></span> -->
+                                    <!-- </button>    -->
+                                <!--</td>  -->
 							</tr>
 						</table>
 					</div>
