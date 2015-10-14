@@ -74,6 +74,20 @@ public class AdminController extends BaseController {
         return response;
     }
 
+    @RequestMapping(value = "deleteDirectAccessParams", method = {RequestMethod.PUT}, consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public
+    @ResponseBody
+    BaseResponse deleteDirectAccessParams(@RequestBody DeleteDirectAccessRequest request) {
+        BaseResponse response = new BaseResponse();
+        try {
+            adminService.deleteDirectAccessParams(request.getDirectAccess());
+//        	response.info(messageUtil.getProperty("createtask.create.success"));
+        } catch (Exception e) {
+            response = processException(e);
+        }
+        return response;
+    }
+
     @RequestMapping(value = "getFieldConfig", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public
     @ResponseBody
