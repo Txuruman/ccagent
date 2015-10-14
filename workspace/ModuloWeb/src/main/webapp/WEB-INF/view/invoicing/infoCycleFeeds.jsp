@@ -32,7 +32,7 @@
 		            
 		                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight">{{item.FromDate | date:'dd/MM/yyyy'}}</div>
 		                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center borderTablaRight">{{item.ToDate | date:'dd/MM/yyyy'}}</div>
-		                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight">{{item.Fee}}</div>
+		                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight">{{item.Fee | number:2 }}</div>
 <!-- 		                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center borderTablaRight">{{item.RevTp}}</div> -->
 		                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center borderTablaRight">{{item.Description}}</div>
 		                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-center">{{item.Count}}</div>

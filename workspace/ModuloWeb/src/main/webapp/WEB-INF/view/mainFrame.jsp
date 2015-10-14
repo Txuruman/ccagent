@@ -20,10 +20,10 @@
 
 
 </head>
-<c:if test="${not empty infopointError}">
-	<h1>${infopointError}</h1>
-</c:if>
-<c:if test="${empty infopointError}">
+<%-- <c:if test="${not empty infopointError}"> --%>
+<%-- 	<h1>${infopointError}</h1> --%>
+<%-- </c:if> --%>
+<%-- <c:if test="${empty infopointError}"> --%>
 <!-- <body ng-controller="mainFrameController" class="paddingTop3" ng-init="agent={agentIBS:'${agent}',fechaInicioAudit:'${fechaInicioAudit}',call_id:'${call_id}'}; activeTab='${activeTab}'; installationParam='${installation}'; key1='${key1}'; key2='${key2}'; key3='${key3}'"> -->
 <body ng-controller="mainFrameController" class="paddingTop3" ng-init="agent={idAgent:'', connid:'', agentIBS:'${agent}',fechaInicioAudit:'${fechaInicioAudit}',call_id:'${call_id}', agentUserSD:'', agentCountryJob:'', currentLanguage:'', agentPlace:'', agentGroupSD:'', agentGroupOutService:'', desktopDepartment:'', callingListManagedDesktop:'', auth_requestDate:'', auth_connid:'', auth_ipAddress:'', auth_signature:'', interactionDirection:'', interactionType:'', infopointSession:''}; activeTab='${activeTab}'; installationParam='${installation}'; key1='${key1}'; key2='${key2}'; key3='${key3}'; mainInit();">
 	<app:messages/>
@@ -33,7 +33,7 @@
 			class="col-lg-1 col-md-1 col-sm-1 col-xs-1 btn-group-vertical vertical-text-group"
 			role="group" aria-label="">
 			<button type="button" class="vertical-text btn btn-default"
-				ng-repeat="index in directAccess" title="{{index.description}}" ng-click="goTo(index)">
+				ng-repeat="index in directAccess" title="{{index.description}}" id="da{{$index}}" ng-click="goTo(index, $index)">
 				<a>{{index.name}}</a>
 			</button>
  			
@@ -67,6 +67,6 @@
 	</div>
 
 </body>
-</c:if>
+<%-- </c:if> --%>
 </html>
 

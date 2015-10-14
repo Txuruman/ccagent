@@ -131,7 +131,7 @@ public class InstallationController extends BaseController {
     	CodewordChangeResponse response = new CodewordChangeResponse();
         try{
         	for (CodewordChangeRequest codewordChangeRequest : request) {
-        		installationService.codewordChange(codewordChangeRequest.getAgent().getAgentIBS(),codewordChangeRequest.getCodeword(), codewordChangeRequest.getIx(), codewordChangeRequest.getInstallationNumber());
+        		installationService.codewordChange(codewordChangeRequest.getAgent().getAgentIBS(),codewordChangeRequest.getCodeword(), codewordChangeRequest.getIx(), codewordChangeRequest.getInstallationNumber(), codewordChangeRequest.getSins());
 			}
         	//Refrescamos la instalación
         	response.setInstallation(installationService.getInstallation(request.get(0).getInstallationNumber()));

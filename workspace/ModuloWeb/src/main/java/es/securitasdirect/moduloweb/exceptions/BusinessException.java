@@ -37,7 +37,12 @@ public class BusinessException extends RuntimeException {
 		ERROR_DELETE_KEY,
 		ERROR_GET_KEY,
 		ERROR_UPDATE_CCC,
-		ERROR_INSERT_FIELD
+		ERROR_INSERT_FIELD,
+		ERROR_GET_INVOICE_LIST,
+		ERROR_GET_INVOICE_DETAIL,
+		ERROR_UPDATE_DATA,
+		ERROR_GET_EMAILBILLING,
+		ERROR_GET_ACTIVATION
     };
 	
 	private ErrorCode errorCode = null;

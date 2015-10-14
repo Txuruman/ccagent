@@ -62,6 +62,32 @@
                     <xs:element name="Ok" nillable="true" type="xs:integer"/>
                 </xs:sequence>
             </xs:complexType>
+            <xs:element name="getInvoices">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_acc" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getInvoiceResults" type="ns0:getInvoiceResults"/>
+            <xs:complexType name="getInvoiceResults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="getInvoiceResult" type="ns0:getInvoiceResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getInvoiceResult">
+                <xs:sequence>
+                    <xs:element name="invoice" nillable="true" type="xs:string"/>
+                    <xs:element name="EXtInvoiceNo" nillable="true" type="xs:string"/>
+                    <xs:element name="amount" nillable="true" type="xs:string"/>
+                    <xs:element name="sys_date" nillable="true" type="xs:string"/>
+                    <xs:element name="tran_date" nillable="true" type="xs:string"/>
+                    <xs:element name="due_date" nillable="true" type="xs:string"/>
+                    <xs:element name="bal_amount" nillable="true" type="xs:string"/>
+                    <xs:element name="cyc_flg" nillable="true" type="xs:string"/>
+                    <xs:element name="ot_flg" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
             <xs:element name="end_boxcar">
                 <xs:complexType>
                     <xs:sequence/>
@@ -114,6 +140,28 @@
                     <xs:element name="Email" nillable="true" type="xs:string"/>
                 </xs:sequence>
             </xs:complexType>
+            <xs:element name="getInvoicesDetail">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_inv" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getInvoicesDetailResults" type="ns0:getInvoicesDetailResults"/>
+            <xs:complexType name="getInvoicesDetailResults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="getInvoicesDetailResult" type="ns0:getInvoicesDetailResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getInvoicesDetailResult">
+                <xs:sequence>
+                    <xs:element name="descripcion" nillable="true" type="xs:string"/>
+                    <xs:element name="desde" nillable="true" type="xs:string"/>
+                    <xs:element name="hasta" nillable="true" type="xs:string"/>
+                    <xs:element name="tax" nillable="true" type="xs:string"/>
+                    <xs:element name="amount" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
             <xs:element name="inet_bl_sepa_chg">
                 <xs:complexType>
                     <xs:sequence>
@@ -145,6 +193,14 @@
                         <xs:element name="misc1" nillable="true" type="xs:string"/>
                         <xs:element name="misc2" nillable="true" type="xs:string"/>
                         <xs:element name="misc3" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="setEnvioAutomatico">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ins_no" nillable="true" type="xs:string"/>
+                        <xs:element name="flag" nillable="true" type="xs:int"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -191,6 +247,27 @@
             <xs:complexType name="getUmrResult">
                 <xs:sequence>
                     <xs:element name="umr" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="getCyclefees">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getCycleFeesResults" type="ns0:getCycleFeesResults"/>
+            <xs:complexType name="getCycleFeesResults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="getCycleFeesResult" type="ns0:getCycleFeesResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getCycleFeesResult">
+                <xs:sequence>
+                    <xs:element name="desde" nillable="true" type="xs:string"/>
+                    <xs:element name="hasta" nillable="true" type="xs:string"/>
+                    <xs:element name="fee" nillable="true" type="xs:string"/>
+                    <xs:element name="fee_ix" nillable="true" type="xs:string"/>
                 </xs:sequence>
             </xs:complexType>
             <xs:element name="inet_check_acc_no">
@@ -566,6 +643,32 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="getEnvioAutomatico">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_ins" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getFlagsResults" type="ns0:getFlagsResults"/>
+            <xs:complexType name="getFlagsResults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="getFlagsResult" type="ns0:getFlagsResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getFlagsResult">
+                <xs:sequence>
+                    <xs:element name="miscflgs" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="setEmailDataFromInstallation">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="instalacion" nillable="true" type="xs:string"/>
+                        <xs:element name="mail" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="pro_bl_contracts_add">
                 <xs:complexType>
                     <xs:sequence>
@@ -616,6 +719,25 @@
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
+            <xs:element name="getEvolucionCuotas">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="s_acc" nillable="true" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getEvolucionCuotasResults" type="ns0:getEvolucionCuotasResults"/>
+            <xs:complexType name="getEvolucionCuotasResults">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="getEvolucionCuotasResult" type="ns0:getEvolucionCuotasResult"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="getEvolucionCuotasResult">
+                <xs:sequence>
+                    <xs:element name="amount" nillable="true" type="xs:string"/>
+                    <xs:element name="tran_date" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
             <xs:element name="inet_bl_sepa_link">
                 <xs:complexType>
                     <xs:sequence>
@@ -914,8 +1036,20 @@
     <wsdl:message name="inet_cycle_fees_get_opResponse">
         <wsdl:part name="parameters" element="ns0:inetCycleFeesGetResults"/>
     </wsdl:message>
+    <wsdl:message name="getInvoicesRequest">
+        <wsdl:part name="parameters" element="ns0:getInvoices"/>
+    </wsdl:message>
+    <wsdl:message name="getInvoicesResponse">
+        <wsdl:part name="parameters" element="ns0:getInvoiceResults"/>
+    </wsdl:message>
     <wsdl:message name="begin_boxcarRequest">
         <wsdl:part name="parameters" element="ns0:begin_boxcar"/>
+    </wsdl:message>
+    <wsdl:message name="getEnvioAutomaticoRequest">
+        <wsdl:part name="parameters" element="ns0:getEnvioAutomatico"/>
+    </wsdl:message>
+    <wsdl:message name="getEnvioAutomaticoResponse">
+        <wsdl:part name="parameters" element="ns0:getFlagsResults"/>
     </wsdl:message>
     <wsdl:message name="end_boxcarRequest">
         <wsdl:part name="parameters" element="ns0:end_boxcar"/>
@@ -959,6 +1093,12 @@
     <wsdl:message name="getInstallationDataFromEmailResponse">
         <wsdl:part name="parameters" element="ns0:getInstallations"/>
     </wsdl:message>
+    <wsdl:message name="getInvoicesDetailRequest">
+        <wsdl:part name="parameters" element="ns0:getInvoicesDetail"/>
+    </wsdl:message>
+    <wsdl:message name="getInvoicesDetailResponse">
+        <wsdl:part name="parameters" element="ns0:getInvoicesDetailResults"/>
+    </wsdl:message>
     <wsdl:message name="getInternalPaymentCodeRequest">
         <wsdl:part name="parameters" element="ns0:getInternalPaymentCode"/>
     </wsdl:message>
@@ -971,11 +1111,26 @@
     <wsdl:message name="inet_cycle_fee_upd_opResponse">
         <wsdl:part name="parameters" element="ns0:REQUEST_STATUS"/>
     </wsdl:message>
+    <wsdl:message name="getEvolucionCuotasRequest">
+        <wsdl:part name="parameters" element="ns0:getEvolucionCuotas"/>
+    </wsdl:message>
+    <wsdl:message name="getEvolucionCuotasResponse">
+        <wsdl:part name="parameters" element="ns0:getEvolucionCuotasResults"/>
+    </wsdl:message>
+    <wsdl:message name="getCyclefeesRequest">
+        <wsdl:part name="parameters" element="ns0:getCyclefees"/>
+    </wsdl:message>
+    <wsdl:message name="getCyclefeesResponse">
+        <wsdl:part name="parameters" element="ns0:getCycleFeesResults"/>
+    </wsdl:message>
     <wsdl:message name="inet_cycle_fee_newRequest">
         <wsdl:part name="parameters" element="ns0:inet_cycle_fee_new"/>
     </wsdl:message>
     <wsdl:message name="inet_cycle_fee_newResponse">
         <wsdl:part name="parameters" element="ns0:REQUEST_STATUS"/>
+    </wsdl:message>
+    <wsdl:message name="setEmailDataFromInstallationRequest">
+        <wsdl:part name="parameters" element="ns0:setEmailDataFromInstallation"/>
     </wsdl:message>
     <wsdl:message name="ctr_status_getRequest">
         <wsdl:part name="parameters" element="ns0:ctr_status_get"/>
@@ -988,6 +1143,9 @@
     </wsdl:message>
     <wsdl:message name="inet_get_all_installation_idsResponse">
         <wsdl:part name="parameters" element="ns0:inet_get_all_installation_ids_results"/>
+    </wsdl:message>
+    <wsdl:message name="setEnvioAutomaticoRequest">
+        <wsdl:part name="parameters" element="ns0:setEnvioAutomatico"/>
     </wsdl:message>
     <wsdl:message name="inet_bl_sepa_chgRequest">
         <wsdl:part name="parameters" element="ns0:inet_bl_sepa_chg"/>
@@ -1062,9 +1220,21 @@
             <wsdl:output message="ns0:inet_cycle_fees_get_opResponse" wsaw:Action="urn:inet_cycle_fees_get_opResponse"/>
             <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_cycle_fees_get_opDataServiceFault"/>
         </wsdl:operation>
+        <wsdl:operation name="getInvoices">
+            <wsdl:documentation>           Saca las facturas                         &#xd;                                    </wsdl:documentation>
+            <wsdl:input message="ns0:getInvoicesRequest" wsaw:Action="urn:getInvoices"/>
+            <wsdl:output message="ns0:getInvoicesResponse" wsaw:Action="urn:getInvoicesResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getInvoicesDataServiceFault"/>
+        </wsdl:operation>
         <wsdl:operation name="begin_boxcar">
             <wsdl:documentation>Control operation for beginning a boxcarring session</wsdl:documentation>
             <wsdl:input message="ns0:begin_boxcarRequest" wsaw:Action="urn:begin_boxcar"/>
+        </wsdl:operation>
+        <wsdl:operation name="getEnvioAutomatico">
+            <wsdl:documentation>          Indica si se envían automáticamente las facturas al correo                            &#xd;                                    </wsdl:documentation>
+            <wsdl:input message="ns0:getEnvioAutomaticoRequest" wsaw:Action="urn:getEnvioAutomatico"/>
+            <wsdl:output message="ns0:getEnvioAutomaticoResponse" wsaw:Action="urn:getEnvioAutomaticoResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getEnvioAutomaticoDataServiceFault"/>
         </wsdl:operation>
         <wsdl:operation name="end_boxcar">
             <wsdl:documentation>Control operation for ending a boxcarring session</wsdl:documentation>
@@ -1108,6 +1278,12 @@
             <wsdl:output message="ns0:getInstallationDataFromEmailResponse" wsaw:Action="urn:getInstallationDataFromEmailResponse"/>
             <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getInstallationDataFromEmailDataServiceFault"/>
         </wsdl:operation>
+        <wsdl:operation name="getInvoicesDetail">
+            <wsdl:documentation>                                    &#xd;         Devuelve el detalle de la factura pasada como parametro                           </wsdl:documentation>
+            <wsdl:input message="ns0:getInvoicesDetailRequest" wsaw:Action="urn:getInvoicesDetail"/>
+            <wsdl:output message="ns0:getInvoicesDetailResponse" wsaw:Action="urn:getInvoicesDetailResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getInvoicesDetailDataServiceFault"/>
+        </wsdl:operation>
         <wsdl:operation name="getInternalPaymentCode">
             <wsdl:documentation/>
             <wsdl:input message="ns0:getInternalPaymentCodeRequest" wsaw:Action="urn:getInternalPaymentCode"/>
@@ -1120,11 +1296,27 @@
             <wsdl:output message="ns0:inet_cycle_fee_upd_opResponse" wsaw:Action="urn:inet_cycle_fee_upd_opResponse"/>
             <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_cycle_fee_upd_opDataServiceFault"/>
         </wsdl:operation>
+        <wsdl:operation name="getEvolucionCuotas">
+            <wsdl:documentation>                                    &#xd;       Lista la cuota del mes anterior,Enero de este año y Enero del mes Anterior                             </wsdl:documentation>
+            <wsdl:input message="ns0:getEvolucionCuotasRequest" wsaw:Action="urn:getEvolucionCuotas"/>
+            <wsdl:output message="ns0:getEvolucionCuotasResponse" wsaw:Action="urn:getEvolucionCuotasResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getEvolucionCuotasDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="getCyclefees">
+            <wsdl:documentation>           Obtiene los Cycle fees dada una instalación                         &#xd;                                    </wsdl:documentation>
+            <wsdl:input message="ns0:getCyclefeesRequest" wsaw:Action="urn:getCyclefees"/>
+            <wsdl:output message="ns0:getCyclefeesResponse" wsaw:Action="urn:getCyclefeesResponse"/>
+            <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:getCyclefeesDataServiceFault"/>
+        </wsdl:operation>
         <wsdl:operation name="inet_cycle_fee_new">
             <wsdl:documentation/>
             <wsdl:input message="ns0:inet_cycle_fee_newRequest" wsaw:Action="urn:inet_cycle_fee_new"/>
             <wsdl:output message="ns0:inet_cycle_fee_newResponse" wsaw:Action="urn:inet_cycle_fee_newResponse"/>
             <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_cycle_fee_newDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="setEmailDataFromInstallation">
+            <wsdl:documentation>                                    &#xd;            Actualiza el mail de Billing de la instalación                        </wsdl:documentation>
+            <wsdl:input message="ns0:setEmailDataFromInstallationRequest" wsaw:Action="urn:setEmailDataFromInstallation"/>
         </wsdl:operation>
         <wsdl:operation name="ctr_status_get">
             <wsdl:documentation/>
@@ -1137,6 +1329,10 @@
             <wsdl:input message="ns0:inet_get_all_installation_idsRequest" wsaw:Action="urn:inet_get_all_installation_ids"/>
             <wsdl:output message="ns0:inet_get_all_installation_idsResponse" wsaw:Action="urn:inet_get_all_installation_idsResponse"/>
             <wsdl:fault message="ns0:DataServiceFault" name="DataServiceFault" wsaw:Action="urn:inet_get_all_installation_idsDataServiceFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="setEnvioAutomatico">
+            <wsdl:documentation>Indica si se realizara el envio automatico de facturas                        &#xd;                                    </wsdl:documentation>
+            <wsdl:input message="ns0:setEnvioAutomaticoRequest" wsaw:Action="urn:setEnvioAutomatico"/>
         </wsdl:operation>
         <wsdl:operation name="inet_bl_sepa_chg">
             <wsdl:documentation/>
@@ -1269,11 +1465,35 @@
                 <soap:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
+        <wsdl:operation name="getInvoices">
+            <soap:operation soapAction="urn:getInvoices" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
         <wsdl:operation name="begin_boxcar">
             <soap:operation soapAction="urn:begin_boxcar" style="document"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getEnvioAutomatico">
+            <soap:operation soapAction="urn:getEnvioAutomatico" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="end_boxcar">
             <soap:operation soapAction="urn:end_boxcar" style="document"/>
@@ -1359,6 +1579,18 @@
                 <soap:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
+        <wsdl:operation name="getInvoicesDetail">
+            <soap:operation soapAction="urn:getInvoicesDetail" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
         <wsdl:operation name="getInternalPaymentCode">
             <soap:operation soapAction="urn:getInternalPaymentCode" style="document"/>
             <wsdl:input>
@@ -1383,6 +1615,30 @@
                 <soap:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
+        <wsdl:operation name="getEvolucionCuotas">
+            <soap:operation soapAction="urn:getEvolucionCuotas" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getCyclefees">
+            <soap:operation soapAction="urn:getCyclefees" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
         <wsdl:operation name="inet_cycle_fee_new">
             <soap:operation soapAction="urn:inet_cycle_fee_new" style="document"/>
             <wsdl:input>
@@ -1394,6 +1650,12 @@
             <wsdl:fault name="DataServiceFault">
                 <soap:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="setEmailDataFromInstallation">
+            <soap:operation soapAction="urn:setEmailDataFromInstallation" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="ctr_status_get">
             <soap:operation soapAction="urn:ctr_status_get" style="document"/>
@@ -1418,6 +1680,12 @@
             <wsdl:fault name="DataServiceFault">
                 <soap:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="setEnvioAutomatico">
+            <soap:operation soapAction="urn:setEnvioAutomatico" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="inet_bl_sepa_chg">
             <soap:operation soapAction="urn:inet_bl_sepa_chg" style="document"/>
@@ -1560,11 +1828,35 @@
                 <soap12:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
+        <wsdl:operation name="getInvoices">
+            <soap12:operation soapAction="urn:getInvoices" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
         <wsdl:operation name="begin_boxcar">
             <soap12:operation soapAction="urn:begin_boxcar" style="document"/>
             <wsdl:input>
                 <soap12:body use="literal"/>
             </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getEnvioAutomatico">
+            <soap12:operation soapAction="urn:getEnvioAutomatico" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
         </wsdl:operation>
         <wsdl:operation name="end_boxcar">
             <soap12:operation soapAction="urn:end_boxcar" style="document"/>
@@ -1650,6 +1942,18 @@
                 <soap12:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
+        <wsdl:operation name="getInvoicesDetail">
+            <soap12:operation soapAction="urn:getInvoicesDetail" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
         <wsdl:operation name="getInternalPaymentCode">
             <soap12:operation soapAction="urn:getInternalPaymentCode" style="document"/>
             <wsdl:input>
@@ -1674,6 +1978,30 @@
                 <soap12:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
         </wsdl:operation>
+        <wsdl:operation name="getEvolucionCuotas">
+            <soap12:operation soapAction="urn:getEvolucionCuotas" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getCyclefees">
+            <soap12:operation soapAction="urn:getCyclefees" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="DataServiceFault">
+                <soap12:fault use="literal" name="DataServiceFault"/>
+            </wsdl:fault>
+        </wsdl:operation>
         <wsdl:operation name="inet_cycle_fee_new">
             <soap12:operation soapAction="urn:inet_cycle_fee_new" style="document"/>
             <wsdl:input>
@@ -1685,6 +2013,12 @@
             <wsdl:fault name="DataServiceFault">
                 <soap12:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="setEmailDataFromInstallation">
+            <soap12:operation soapAction="urn:setEmailDataFromInstallation" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="ctr_status_get">
             <soap12:operation soapAction="urn:ctr_status_get" style="document"/>
@@ -1709,6 +2043,12 @@
             <wsdl:fault name="DataServiceFault">
                 <soap12:fault use="literal" name="DataServiceFault"/>
             </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="setEnvioAutomatico">
+            <soap12:operation soapAction="urn:setEnvioAutomatico" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="inet_bl_sepa_chg">
             <soap12:operation soapAction="urn:inet_bl_sepa_chg" style="document"/>
@@ -1827,11 +2167,29 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="getInvoices">
+            <http:operation location="getInvoices"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="begin_boxcar">
             <http:operation location="begin_boxcar"/>
             <wsdl:input>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getEnvioAutomatico">
+            <http:operation location="getEnvioAutomatico"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="end_boxcar">
             <http:operation location="end_boxcar"/>
@@ -1896,6 +2254,15 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="getInvoicesDetail">
+            <http:operation location="getInvoicesDetail"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="getInternalPaymentCode">
             <http:operation location="getInternalPaymentCode"/>
             <wsdl:input>
@@ -1914,6 +2281,24 @@
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
         </wsdl:operation>
+        <wsdl:operation name="getEvolucionCuotas">
+            <http:operation location="getEvolucionCuotas"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getCyclefees">
+            <http:operation location="getCyclefees"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
         <wsdl:operation name="inet_cycle_fee_new">
             <http:operation location="inet_cycle_fee_new"/>
             <wsdl:input>
@@ -1922,6 +2307,12 @@
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setEmailDataFromInstallation">
+            <http:operation location="setEmailDataFromInstallation"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="ctr_status_get">
             <http:operation location="ctr_status_get"/>
@@ -1940,6 +2331,12 @@
             <wsdl:output>
                 <mime:content type="text/xml" part="parameters"/>
             </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setEnvioAutomatico">
+            <http:operation location="setEnvioAutomatico"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="parameters"/>
+            </wsdl:input>
         </wsdl:operation>
         <wsdl:operation name="inet_bl_sepa_chg">
             <http:operation location="inet_bl_sepa_chg"/>

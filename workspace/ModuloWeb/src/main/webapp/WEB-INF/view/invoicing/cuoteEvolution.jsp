@@ -6,7 +6,7 @@
 
 <div class="row">
 	<div class="col-md-12 col-sm-12 col-xs-12">
-		<h3 class="tituloSeccion">Evolución de Cuotas</h3>
+		<h3 class="tituloSeccion"><spring:message code="titulo.coutas"/></h3>
 	</div>
 </div>
 <div class="row">
@@ -15,16 +15,16 @@
 	</div>
 </div>
 <div class="form-inline">
-	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-		<label><spring:message code="cuoteevol.lastyear" /> </label> <input
-			class="form-control input-sm" type="text" readonly="true" ng-model="cuote.eneroPasado1">
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" ng-hide="cuote.cuotaEneroPasado==null">
+		<label>{{cuote.fechaEneroPasado}} </label> <input
+			class="form-control input-sm" type="text" readonly="true" ng-model="cuote.cuotaEneroPasado | number:2">
 	</div>
-	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-		<label><spring:message code="cuoteevol.currentyear" /> </label> <input
-			class="form-control input-sm" type="text" readonly="true" ng-model="cuote.eneroActual">
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"  ng-hide="cuote.cuotaEneroActual==null">
+		<label>{{cuote.fechaEneroActual}} </label> <input
+			class="form-control input-sm" type="text" readonly="true" ng-model="cuote.cuotaEneroActual | number:2">
 	</div>
-	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-		<label class="block"><spring:message code="cuoteevol.month" /></label> <input
-			class="form-control input-sm" type="text" readonly="true" ng-model="cuote.mesActual">
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"  ng-hide="cuote.coutaMesActual==null">
+		<label class="block">{{cuote.fechaActual}} </label> <input
+			class="form-control input-sm" type="text" readonly="true" ng-model="cuote.coutaMesActual | number:2">
 	</div>
 </div>

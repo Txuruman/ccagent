@@ -9,12 +9,12 @@
 		<h3 class="tituloSeccion">Listado de Facturas</h3>
 	</div>
 	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-		<label class="radio-inline"><input type="radio" name="tipoFra" ng-model="tipoFra" value="Cycle Feeds" ng-change="paginar(tipoFra)"><spring:message code="invoices.search.cycle"/></label>
-		<label class="radio-inline"><input type="radio" name="tipoFra" ng-model="tipoFra" value="One Time" ng-change="paginar(tipoFra)"><spring:message code="invoices.search.onetime"/></label>
-		<label class="radio-inline"><input type="radio" name="tipoFra" ng-model="tipoFra" value=" " ng-change="paginar(tipoFra)"><spring:message code="invoices.search.all"/></label> 
-		<label class="radio-inline separaRadios"><input type="radio" name="periodo"><spring:message code="invoices.search.month6"/></label>
-		<label class="radio-inline"><input type="radio" name="periodo"><spring:message code="invoices.search.month12"/></label>
-		<label class="radio-inline"><input type="radio" name="periodo"><spring:message code="invoices.search.month18"/></label> 
+		<label class="radio-inline"><input type="radio" name="tipoFra" ng-model="tipoFra" value="0" ng-change="paginar(tipoFra, filtroMes)"><spring:message code="invoices.search.cycle"/></label>
+		<label class="radio-inline"><input type="radio" name="tipoFra" ng-model="tipoFra" value="1" ng-change="paginar(tipoFra, filtroMes)"><spring:message code="invoices.search.onetime"/></label>
+		<label class="radio-inline"><input type="radio" name="tipoFra" ng-model="tipoFra" value=" " ng-change="paginar(tipoFra, filtroMes)"><spring:message code="invoices.search.all"/></label> 
+		<label class="radio-inline separaRadios"><input type="radio" name="periodo" ng-model="filtroMes" value="6" ng-change="paginar(tipoFra, filtroMes)"><spring:message code="invoices.search.month6"/></label>
+		<label class="radio-inline"><input type="radio" name="periodo" ng-model="filtroMes" value="12" ng-change="paginar(tipoFra, filtroMes)"><spring:message code="invoices.search.month12"/></label>
+		<label class="radio-inline"><input type="radio" name="periodo" ng-model="filtroMes" value="18" ng-change="paginar(tipoFra, filtroMes)"><spring:message code="invoices.search.month18"/></label> 
 	</div>
 </div>
 <div class="row">
@@ -42,14 +42,14 @@
             <tr ng-repeat="item in paginaActual | filter:{invoiceType:tipoFra}">
                 <td>{{item.invoiceNumber}}</td>
                 <td>{{item.extInvoiceNo}}</td>
-                <td>{{item.amount}}</td>
+                <td>{{item.amount | number:2}}</td>
                 <td>{{item.systemDate | date:'dd/MM/yyyy'}}</td>
                 <td>{{item.transactionDate | date:'dd/MM/yyyy'}}</td>
                 <td>{{item.dueDate | date:'dd/MM/yyyy'}}</td>
-                <td>91.352</td>
+                <td>{{item.balance | number:2}}</td>
                 <td>
                 <div class="btn-group inline">
-	        		<button type="button" class="btn btn-default btn-sm" ng-click="openInvoiceDetailModal(item.invoiceNumber)" title="Ver detalle">
+	        		<button type="button" class="btn btn-default btn-sm" ng-click="openInvoiceDetailModal(item)" title="Ver detalle">
                         <span class="glyphicon glyphicon-search colorSearch" aria-hidden="true"></span>
                     </button>
 	        		<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.file"/>">

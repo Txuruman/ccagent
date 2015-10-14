@@ -12,7 +12,7 @@ public class CycleFeeds {
     /**
      * clave autonumerica para la tabla
      */
-    private Integer id;
+    private String id;
 	/**
 	 * Número de instalación (si el Cycle Fee no está asociado )
 	 */
@@ -21,17 +21,17 @@ public class CycleFeeds {
 	/**
 	 * Fecha de inicio del Cycle Fee
 	 */
-	public Date FromDate;
+	public String FromDate;
 	
 	/**
 	 * Fecha de fin del Cycle Fee
 	 */
-	public Date ToDate;
+	public String ToDate;
 	
 	/**
 	 * Cuota
 	 */
-	public double Fee;
+	public String Fee;
 	
 	/**
 	 * Pte SD
@@ -46,7 +46,7 @@ public class CycleFeeds {
 	/**
 	 * Cantidad de items.
 	 */
-	public int Count;
+	public String Count;
 
 
     //constructor copia de la clase CycleFeeds
@@ -64,11 +64,11 @@ public class CycleFeeds {
     */
 
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -78,22 +78,22 @@ public class CycleFeeds {
 	public void setInsNo(String insNo) {
 		this.insNo = insNo;
 	}
-	public Date getFromDate() {
+	public String getFromDate() {
 		return FromDate;
 	}
-	public void setFromDate(Date fromDate) {
+	public void setFromDate(String fromDate) {
 		FromDate = fromDate;
 	}
-	public Date getToDate() {
+	public String getToDate() {
 		return ToDate;
 	}
-	public void setToDate(Date toDate) {
+	public void setToDate(String toDate) {
 		ToDate = toDate;
 	}
-	public double getFee() {
+	public String getFee() {
 		return Fee;
 	}
-	public void setFee(double fee) {
+	public void setFee(String fee) {
 		Fee = fee;
 	}
 	public String getRevTp() {
@@ -108,10 +108,10 @@ public class CycleFeeds {
 	public void setDescription(String description) {
 		Description = description;
 	}
-	public int getCount() {
+	public String getCount() {
 		return Count;
 	}
-	public void setCount(int count) {
+	public void setCount(String count) {
 		Count = count;
 	}
 	

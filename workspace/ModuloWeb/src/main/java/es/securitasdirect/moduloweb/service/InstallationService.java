@@ -399,7 +399,7 @@ public class InstallationService {
 	 * @param ix
 	 * @param installationNumber
 	 */
-	public void codewordChange(String agent, String codeword, Integer ix, String installationNumber){
+	public void codewordChange(String agent, String codeword, Integer ix, String installationNumber, String sins){
 		//Auditoria
 		Audit audit=new Audit();
 		audit.setAction("codewordChange");
@@ -413,12 +413,12 @@ public class InstallationService {
 		 * in: country, sins, instalationNumber
 		 * out: resultcheckInstallationNumber
 		 */
-		List<ResultcheckInstallationNumber> resultcheckInstallationNumber;
+//		List<ResultcheckInstallationNumber> resultcheckInstallationNumber;
 		try {
-			//TODO: mirar parametros de entrada
-			resultcheckInstallationNumber = spInstallationMonData.checkInstallationNumber("ES", 0, installationNumber);
-			LOGGER.debug("WS checkInstallationNumber {}", resultcheckInstallationNumber);
-			Integer sIns= resultcheckInstallationNumber.get(0).getSins().intValue();
+			//TODO: Comprobar funcionamiento y despues borrar
+//			resultcheckInstallationNumber = spInstallationMonData.checkInstallationNumber("ES", 0, installationNumber);
+//			LOGGER.debug("WS checkInstallationNumber {}", resultcheckInstallationNumber);
+			Integer sIns= Integer.parseInt(sins);//resultcheckInstallationNumber.get(0).getSins().intValue();
 			
 			/**
 			 * Valores opcionales
@@ -442,12 +442,14 @@ public class InstallationService {
 			auditService.insert(audit);
 			if (Integer.parseInt(inetcodewordchangeresult.get(0).getReturnCode())!=0) {
 				audit.setResult("FAIL");
-				audit.setDetail(inetcodewordchangeresult.toString());
+				audit.setDetail(BusinessException.ErrorCode.ERROR_UPDATE_CODEWORD.toString());
 				auditService.insert(audit);
 				throw new BusinessException(BusinessException.ErrorCode.ERROR_UPDATE_CODEWORD);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			audit.setResult("FAIL");
+			audit.setDetail(BusinessException.ErrorCode.ERROR_UPDATE_CODEWORD.toString());
+			auditService.insert(audit);
 			throw new BusinessException(BusinessException.ErrorCode.ERROR_UPDATE_CODEWORD);
 		}
 	}
@@ -510,8 +512,8 @@ public class InstallationService {
 				/**
 				 * Falta
 				 */
-				String userId=agent;
-				Integer stamp=1;
+				String userId="";
+				Integer stamp=0;
 				
 				/**
 				 * Desconocidos
@@ -887,6 +889,12 @@ public class InstallationService {
 		try {
 			List<GetTiposTelefonoResult> getTiposTelefonoResults = spInstallationMonData.getTiposTelefono();
 			if (!getTiposTelefonoResults.isEmpty()) {
+				for (int i = 0; i < getTiposTelefonoResults.size(); i++) {
+					getTiposTelefonoResults.get(i).setAppCol1(getTiposTelefonoResults.get(i).getAppCol1().trim());
+					getTiposTelefonoResults.get(i).setAppCol2(getTiposTelefonoResults.get(i).getAppCol2().trim());
+					getTiposTelefonoResults.get(i).setAppCol3(getTiposTelefonoResults.get(i).getAppCol3().trim());
+					getTiposTelefonoResults.get(i).setAppCol4(getTiposTelefonoResults.get(i).getAppCol4().trim());
+				}
 				return getTiposTelefonoResults;
 			}else{
 				throw new BusinessException(BusinessException.ErrorCode.ERROR_GET_PHONE_TYPES);

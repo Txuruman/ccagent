@@ -6,7 +6,7 @@
 
 <div class="row">
 	<div class="col-md-12 col-sm-12 col-xs-12">
-		<h3 class="tituloSeccion">Visor de Cambios</h3>
+		<h3 class="tituloSeccion"><spring:message code="titulo.visor"/></h3>
 	</div>
 </div>
 <div class="row">
@@ -21,15 +21,13 @@
         <table class="table table-bordered">
             <tr class="cabecillas">
                 <th class="text-center"><spring:message code="audit.date"/></th>
-               	<th class="text-center"><spring:message code="audit.detail"/></th>
-                <th class="text-center"><spring:message code="audit.result"/></th>
+               	<th class="text-center"><spring:message code="audit.result"/></th>
+                <th class="text-center"><spring:message code="audit.detail"/></th>
             </tr>
-            <!--             <tr ng-repeat="a in audit | orderBy : 'date'"> -->
-<!-- 			<tr> -->
-<!--                 <td>31/07/2015 12:00</td> -->
-<!--         		<td>OK</td> -->
-<!--                 <td>Actualizado teléfono contacto 1 plan 15#2 "615104012"</td> -->
-<!--             </tr> -->
+            <tr ng-repeat="a in auditList | orderBy : 'date'">
+                <td>{{a.date | date:'dd-MM-yyyy HH:mm:ss'}}</td>
+        		<td>{{a.result}}</td>
+                <td>{{a.detail}}</td>
         </table>
     </div>
 </div>

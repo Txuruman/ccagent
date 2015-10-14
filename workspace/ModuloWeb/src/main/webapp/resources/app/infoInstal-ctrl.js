@@ -28,7 +28,7 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 		//Indice de tabla de buscar por defecto a -1
 		$scope.searchedInstallationIndex=-1;
 		//Combo de tipo de telefonos
-		$scope.getPhoneTypes();
+//		$scope.getPhoneTypes();
 		//Las claves en readonly por defecto
 		$scope.NotEditableKeys=true;
 		//Los botones de editar claves ocultos por defecto
@@ -86,6 +86,17 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
             	if(data.installation!=undefined){
             		$scope.installation = data.installation;
                     $scope.installation.actionplans=$filter('orderBy')($scope.installation.actionplans,'seq',false);
+                    for (var i = 0; i <  $scope.installation.actionplans.length; i++) {
+                    	if($scope.installation.actionplans[i].phone1.type.trim()==""){
+                    		$scope.installation.actionplans[i].phone1.type=" "; 
+                    	 }
+                    	if($scope.installation.actionplans[i].phone2.type.trim()==""){
+                    		$scope.installation.actionplans[i].phone2.type=" "; 
+                    	 }
+                    	if($scope.installation.actionplans[i].phone3.type.trim()==""){
+                    		$scope.installation.actionplans[i].phone3.type=" "; 
+                    	 }
+					}
                     $scope.searchBy.installationNumber=data.installation.installationNumber;
             	}
             })
@@ -177,6 +188,17 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 		$scope.searchedInstallationIndex=$index;
 		$scope.installation=$scope.searchedInstallations[$index];
 		$scope.installation.actionplans=$filter('orderBy')($scope.installation.actionplans,'seq',false);
+        for (var i = 0; i <  $scope.installation.actionplans.length; i++) {
+        	if($scope.installation.actionplans[i].phone1.type.trim()==""){
+        		$scope.installation.actionplans[i].phone1.type=" "; 
+        	 }
+        	if($scope.installation.actionplans[i].phone2.type.trim()==""){
+        		$scope.installation.actionplans[i].phone2.type=" "; 
+        	 }
+        	if($scope.installation.actionplans[i].phone3.type.trim()==""){
+        		$scope.installation.actionplans[i].phone3.type=" "; 
+        	 }
+		}
 		$scope.searchBy.installationNumber=$scope.installation.installationNumber;
 		$rootScope.installation=$scope.installation;
 		//Aviso de no mail internacionalizado
@@ -251,6 +273,7 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 		if ($scope.installation.coercionPassword!=$scope.keys.coercionPassword) {
 			codewordChangeRequest.push({
 				installationNumber: $scope.installation.installationNumber,
+				sins: $scope.installation.sins,
 				codeword: $scope.keys.coercionPassword,
 				ix: 5,
 				agent:$scope.agent
@@ -265,6 +288,17 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 				if(data.installation!=undefined){
 					$scope.installation = data.installation;
 					$scope.installation.actionplans=$filter('orderBy')($scope.installation.actionplans,'seq',false);
+			        for (var i = 0; i <  $scope.installation.actionplans.length; i++) {
+                    	if($scope.installation.actionplans[i].phone1.type.trim()==""){
+                    		$scope.installation.actionplans[i].phone1.type=" "; 
+                    	 }
+                    	if($scope.installation.actionplans[i].phone2.type.trim()==""){
+                    		$scope.installation.actionplans[i].phone2.type=" "; 
+                    	 }
+                    	if($scope.installation.actionplans[i].phone3.type.trim()==""){
+                    		$scope.installation.actionplans[i].phone3.type=" "; 
+                    	 }
+					}
 		            $scope.searchBy.installationNumber=data.installation.installationNumber;
 				}
 				$scope.auditList=data.auditList;
@@ -315,6 +349,17 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 				if(data.installation!=undefined){
 					$scope.installation = data.installation;
 					$scope.installation.actionplans=$filter('orderBy')($scope.installation.actionplans,'seq',false);
+			        for (var i = 0; i <  $scope.installation.actionplans.length; i++) {
+                    	if($scope.installation.actionplans[i].phone1.type.trim()==""){
+                    		$scope.installation.actionplans[i].phone1.type=" "; 
+                    	 }
+                    	if($scope.installation.actionplans[i].phone2.type.trim()==""){
+                    		$scope.installation.actionplans[i].phone2.type=" "; 
+                    	 }
+                    	if($scope.installation.actionplans[i].phone3.type.trim()==""){
+                    		$scope.installation.actionplans[i].phone3.type=" "; 
+                    	 }
+					}
 		            $scope.searchBy.installationNumber=data.installation.installationNumber;
 				}
 				$scope.auditList=data.auditList;
@@ -417,6 +462,17 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 				if(data.installation!=undefined){
 					$scope.installation = data.installation;
 					$scope.installation.actionplans=$filter('orderBy')($scope.installation.actionplans,'seq',false);
+			        for (var i = 0; i <  $scope.installation.actionplans.length; i++) {
+                    	if($scope.installation.actionplans[i].phone1.type.trim()==""){
+                    		$scope.installation.actionplans[i].phone1.type=" "; 
+                    	 }
+                    	if($scope.installation.actionplans[i].phone2.type.trim()==""){
+                    		$scope.installation.actionplans[i].phone2.type=" "; 
+                    	 }
+                    	if($scope.installation.actionplans[i].phone3.type.trim()==""){
+                    		$scope.installation.actionplans[i].phone3.type=" "; 
+                    	 }
+					}
 		            $scope.searchBy.installationNumber=data.installation.installationNumber;
 				}else{
 					$scope.installation.actionplans=angular.copy($scope.actionPlansOriginal);
@@ -461,6 +517,17 @@ app.controller('InfoInstalacionController', function ($scope, $http, $log, Commo
 					if(data.installation!=undefined){
 						$scope.installation = data.installation;
 						$scope.installation.actionplans=$filter('orderBy')($scope.installation.actionplans,'seq',false);
+				        for (var i = 0; i <  $scope.installation.actionplans.length; i++) {
+	                    	if($scope.installation.actionplans[i].phone1.type.trim()==""){
+	                    		$scope.installation.actionplans[i].phone1.type=" "; 
+	                    	 }
+	                    	if($scope.installation.actionplans[i].phone2.type.trim()==""){
+	                    		$scope.installation.actionplans[i].phone2.type=" "; 
+	                    	 }
+	                    	if($scope.installation.actionplans[i].phone3.type.trim()==""){
+	                    		$scope.installation.actionplans[i].phone3.type=" "; 
+	                    	 }
+						}
 			            $scope.searchBy.installationNumber=data.installation.installationNumber;
 					}else{
 						$scope.installation.actionplans=angular.copy($scope.actionPlansOriginal);

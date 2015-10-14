@@ -14,6 +14,10 @@ public class CodewordChangeRequest extends AgentRequest{
 	 * */
 	private String installationNumber;
 	/**
+	 * Numero interno de la instalacion
+	 */
+	private String sins;
+	/**
 	 * Valor de la clave
 	 */
 	private String codeword;
@@ -55,9 +59,18 @@ public class CodewordChangeRequest extends AgentRequest{
 		this.ix = ix;
 	}
 
+	public String getSins() {
+		return sins;
+	}
+
+	public void setSins(String sins) {
+		this.sins = sins;
+	}
+
 	@Override
 	public String toString() {
-		return "CodewordChangeRequest [installationNumber=" + installationNumber + ", codeword=" + codeword + ", ix="
-				+ ix + "]";
+		return "CodewordChangeRequest [installationNumber=" + installationNumber + ", sins=" + sins + ", codeword="
+				+ codeword + ", ix=" + ix + "]";
 	}
+
 }

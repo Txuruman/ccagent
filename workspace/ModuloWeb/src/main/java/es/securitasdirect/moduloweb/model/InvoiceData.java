@@ -27,7 +27,7 @@ public class InvoiceData {
 	/**
 	 * Nº de la factura
 	 */
-	private Integer InvoiceNumber;
+	private String InvoiceNumber;
 	
 	/**
 	 * Nº externo asociado a la factura
@@ -37,33 +37,37 @@ public class InvoiceData {
 	/**
 	 * Installation Number
 	 */
-	private Integer InstallationNumber;
+	private String sins;
 	
 	/**
-	 * Tipo de factura Cyle o One Time
+	 * Tipo de factura Cyle 0 o One Time 1
 	 */
-	private String InvoiceType;
+	private Integer InvoiceType;
 	
 	/**
 	 * Cantidad total de la factura
 	 */
-	private Double Amount;
+	private String Amount;
 	
 	/**
 	 * Fecha de generación de la factura
 	 */
-	private Date	SystemDate;
+	private String	SystemDate;
 	
 	/**
 	 * Fecha de pago
 	 */
-	private Date TransactionDate;
+	private String TransactionDate;
 	
 	/**
 	 * Fecha límite de pago
 	 */
-	private Date DueDate;
-
+	private String DueDate;
+	
+	/**
+	 * balance de la factura
+	 */
+	private String balance;
     //constructor copia de la clase InvoiceData
     /*
     public InvoiceData(final org.wso2.ws.dataservice.GetInvoiceDataResult getInvoiceDataResult) {
@@ -87,11 +91,11 @@ public class InvoiceData {
         this.id = id;
     }
 
-	public Integer getInvoiceNumber() {
+	public String getInvoiceNumber() {
 		return InvoiceNumber;
 	}
 
-	public void setInvoiceNumber(Integer invoiceNumber) {
+	public void setInvoiceNumber(String invoiceNumber) {
 		InvoiceNumber = invoiceNumber;
 	}
 
@@ -103,53 +107,60 @@ public class InvoiceData {
 		ExtInvoiceNo = extInvoiceNo;
 	}
 	
-	public Integer getInstallationNumber() {
-		return InstallationNumber;
+	public String getSins() {
+		return sins;
 	}
 
-	public void setInstallationNumber(Integer installationNumber) {
-		InstallationNumber = installationNumber;
+	public void setSins(String sins) {
+		this.sins = sins;
 	}
 
-	public String getInvoiceType() {
+	public Integer getInvoiceType() {
 		return InvoiceType;
 	}
 
-	public void setInvoiceType(String invoiceType) {
+	public void setInvoiceType(Integer invoiceType) {
 		InvoiceType = invoiceType;
 	}
 
-	public Double getAmount() {
+	public String getAmount() {
 		return Amount;
 	}
 
-	public void setAmount(Double amount) {
+	public void setAmount(String amount) {
 		Amount = amount;
 	}
 
-	public Date getSystemDate() {
+	public String getSystemDate() {
 		return SystemDate;
 	}
 
-	public void setSystemDate(Date systemDate) {
+	public void setSystemDate(String systemDate) {
 		SystemDate = systemDate;
 	}
 
-	public Date getTransactionDate() {
+	public String getTransactionDate() {
 		return TransactionDate;
 	}
 
-	public void setTransactionDate(Date transactionDate) {
+	public void setTransactionDate(String transactionDate) {
 		TransactionDate = transactionDate;
 	}
 
-	public Date getDueDate() {
+	public String getDueDate() {
 		return DueDate;
 	}
 
-	public void setDueDate(Date dueDate) {
+	public void setDueDate(String dueDate) {
 		DueDate = dueDate;
 	}
-	
+
+	public String getBalance() {
+		return balance;
+	}
+
+	public void setBalance(String balance) {
+		this.balance = balance;
+	}
 	
 }

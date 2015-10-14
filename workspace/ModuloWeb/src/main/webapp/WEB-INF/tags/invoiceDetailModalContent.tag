@@ -13,19 +13,19 @@
 			<div class="col-md-4 col-sm-4 col-xs-4">
 				<div class="form-group">
 					<label><spring:message code="invoices.InvoiceNumber"/></label>
-					<p class="form-control">{{item.InvoiceNumber}}</p>	
+					<p class="form-control">{{item.invoiceNumber}}</p>	
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-4 col-xs-4">	
 				<div class="form-group">
 					<label><spring:message code="invoices.creationdate"/></label>
-					<p class="form-control">{{item.creationdate}}</p>					
+					<p class="form-control">{{item.transactionDate}}</p>					
 				</div>
 			</div>
 			<div class="col-md-4 col-sm-4 col-xs-4">	
 				<div class="form-group">
 					<label><spring:message code="invoices.Amount"/></label>
-					<p class="form-control">{{item.Amount}}</p>					
+					<p class="form-control">{{item.amount | number:2}}</p>					
 				</div>
 			</div>
 		</div>
@@ -41,9 +41,9 @@
 
             		<tr ng-repeat="i in item.details">
                 		<td >{{i.description}}</td>
-                		<td>{{i.period}}</td>
-                		<td>{{i.tax}}</td>
-                		<td>{{i.Amount}}</td>
+                		<td>{{i.desde + " - " + i.hasta}}</td>
+                		<td>{{i.tax | number:2}}</td>
+                		<td>{{i.amount | number:2}}</td>
            			</tr>
         		</table>
     		</div>

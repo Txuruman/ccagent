@@ -37,12 +37,25 @@ app.controller('mainFrameController', function ($timeout, $scope, $http, $rootSc
 		$http.put('installation/getInstallation',installationRequest)         
             .success(function (data, status, headers, config) {
             	CommonService.processBaseResponse(data,status,headers,config);
+            	$scope.getPhoneTypes();
             	if(data.installation!=undefined){
             		$scope.installation = data.installation;
                     $scope.installation.actionplans=$filter('orderBy')($scope.installation.actionplans,'seq',false);
+                    for (var i = 0; i <  $scope.installation.actionplans.length; i++) {
+                    	if($scope.installation.actionplans[i].phone1.type.trim()==""){
+                    		$scope.installation.actionplans[i].phone1.type=" "; 
+                    	 }
+                    	if($scope.installation.actionplans[i].phone2.type.trim()==""){
+                    		$scope.installation.actionplans[i].phone2.type=" "; 
+                    	 }
+                    	if($scope.installation.actionplans[i].phone3.type.trim()==""){
+                    		$scope.installation.actionplans[i].phone3.type=" "; 
+                    	 }
+					}
                     $scope.searchBy.installationNumber=data.installation.installationNumber;
                     $rootScope.installation=$scope.installation;
             	}
+            	
             })
             .error(function (data, status, headers, config) {
                 // called asynchronously if an error occurs
@@ -78,14 +91,14 @@ app.controller('mainFrameController', function ($timeout, $scope, $http, $rootSc
 						$scope.cycleFeeds= data.invoiceGlobal.cycleFeeds;
 					}
 					//Cuotas asociadas a la instalación
-					if (data.cuote!=undefined) {
-						$scope.invoiceGlobal.cuote=data.invoiceGlobal.cuote;
+					if (data.invoiceGlobal.cuote!=undefined) {
+						$scope.cuote=data.invoiceGlobal.cuote;
 					}
 					//Listado de Facturas
 					if (data.invoiceGlobal.invoiceList!=undefined) {
 						$scope.invoiceList=data.invoiceGlobal.invoiceList;
-						//Para la paginación;
-						$scope.paginar("");
+//						//Para la paginación;
+//						$scope.paginar("");
 					}
 				
 					//$log.debug("invoiceInfo queried ", data.invoiceInfo);
@@ -98,7 +111,7 @@ app.controller('mainFrameController', function ($timeout, $scope, $http, $rootSc
 	};
     
     /** Redirigir al pulsar accesos directos */
-    $scope.goTo=function(da){
+    $scope.goTo=function(da, $index){
     	var url=da.url;
     	for (var i = 0; i < da.params.length; i++) {
 			if(i==0){
@@ -108,6 +121,7 @@ app.controller('mainFrameController', function ($timeout, $scope, $http, $rootSc
 			}
 			url+=da.params[i].name+"="+da.params[i].value;
 		}
+    	$("#da"+$index).blur();
     	window.open(url, "nuevo", "directories=no, location=no, menubar=no, scrollbars=yes, statusbar=no, tittlebar=no, width=800, height=600, resizable=yes");
 //    	$window.location.href=url;
     }
@@ -127,4 +141,23 @@ app.controller('mainFrameController', function ($timeout, $scope, $http, $rootSc
 			CommonService.logDebug("Instalacion Main Frame cambiada, {}",$scope.installation);
 		}
 	});
+    /** FIN Edición Planes de acción */
+	/** Obtener tipos de telefono para rellenar los combos */
+	$scope.getPhoneTypes=function(){
+		$http.get("installation/getPhoneTypes")
+		.success(function (data, status, headers, config) {
+			CommonService.processBaseResponse(data,status,headers,config);
+			$scope.phoneTypeList=data.phoneTypeList;
+			$scope.phoneTypeList.push({
+				appCol1: " ",
+				appCol2: "",
+				appCol3: "",
+				appCol4: ""});
+		})
+		.error(function (data, status, headers, config) {
+			// called asynchronously if an error occurs
+			// or server returns response with an error status.
+			CommonService.processBaseResponse(data,status,headers,config);
+		});
+	}
 });

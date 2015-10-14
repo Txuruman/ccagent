@@ -9,11 +9,11 @@ public class InvoiceItem {
     /**
      * clave autonumerica para la tabla
      */
-    private Integer id;
+    private String id;
 	/**
 	 * Nº de la factura a la que está asociado el concepto
 	 */
-	private Integer InvoiceNumber;
+	private String InvoiceNumber;
 	
 	/**
 	 * Concepto
@@ -23,17 +23,17 @@ public class InvoiceItem {
 	/**
 	 * Periodo del servicio prestado
 	 */
-	private Integer Period;
-	
+	private String desde;
+	private String hasta;
 	/**
 	 * Cantidad del concepto sin IVA
 	 */
-	private Double Amount;
+	private String Amount;
 	
 	/**
 	 * Impuestos aplicados al concepto
 	 */
-	private Double Tax;
+	private String Tax;
 
     //constructor copia de la clase InvoiceItem
     /*
@@ -49,19 +49,19 @@ public class InvoiceItem {
     */
 
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-	public Integer getInvoiceNumber() {
+	public String getInvoiceNumber() {
 		return InvoiceNumber;
 	}
 
-	public void setInvoiceNumber(Integer invoiceNumber) {
+	public void setInvoiceNumber(String invoiceNumber) {
 		InvoiceNumber = invoiceNumber;
 	}
 
@@ -73,27 +73,35 @@ public class InvoiceItem {
 		Description = description;
 	}
 
-	public Integer getPeriod() {
-		return Period;
+	public String getDesde() {
+		return desde;
 	}
 
-	public void setPeriod(Integer period) {
-		Period = period;
+	public void setDesde(String desde) {
+		this.desde = desde;
 	}
 
-	public Double getAmount() {
+	public String getHasta() {
+		return hasta;
+	}
+
+	public void setHasta(String hasta) {
+		this.hasta = hasta;
+	}
+
+	public String getAmount() {
 		return Amount;
 	}
 
-	public void setAmount(Double amount) {
+	public void setAmount(String amount) {
 		Amount = amount;
 	}
 
-	public Double getTax() {
+	public String getTax() {
 		return Tax;
 	}
 
-	public void setTax(Double tax) {
+	public void setTax(String tax) {
 		Tax = tax;
 	}
 	

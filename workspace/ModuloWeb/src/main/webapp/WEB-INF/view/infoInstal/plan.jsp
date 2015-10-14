@@ -66,7 +66,7 @@
 					                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center borderTablaRight">
 <!-- 					                	<span ng-class="p.phone1.type==='fijo' ? 'glyphicon glyphicon-phone-alt' : 'glyphicon glyphicon-phone'" aria-hidden="true" title="{{(p.phone1.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}" ng-hide="editingActionPlans || p.phone1==null || p.phone1.number==''"></span> -->
 					                	<select name="phone1Type" ng-model="p.phone1.type" class="actionPlanTablePhone" ng-disabled="!editingActionPlans">
-					                			<option ng-repeat="tipo in phoneTypeList" ng-value="(tipo.appCol1!=undefined && tipo.appCol1!=null) ? tipo.appCol1.trim() : ''" title="{{tipo.appCol2}}">{{(tipo.appCol1!=undefined && tipo.appCol1!=null) ? tipo.appCol1.trim() : ''}}</option>
+					                			<option ng-repeat="tipo in phoneTypeList" ng-value="'{{tipo.appCol1}}'" title="{{tipo.appCol2}}">{{tipo.appCol1}}</option>
 <%-- 											<option value="fijo" title="<spring:message code="actionplan.fijo"/>"><spring:message code="actionplan.fijo.first"/></option> --%>
 <%-- 											<option value="movil" title="<spring:message code="actionplan.movil"/>"><spring:message code="actionplan.movil.first"/></option> --%>
 										</select>
@@ -75,7 +75,7 @@
 					                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center borderTablaRight">
 <!-- 						                <span ng-class="p.phone2.type==='fijo' ? 'glyphicon glyphicon-phone-alt' : 'glyphicon glyphicon-phone'" aria-hidden="true" title="{{(p.phone2.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}" ng-hide="editingActionPlans || p.phone2==null || p.phone2.number==''"></span> -->
 						                <select name="phone2Type" ng-model="p.phone2.type" class="actionPlanTablePhone" ng-disabled="!editingActionPlans">
-						                		<option ng-repeat="tipo in phoneTypeList" ng-value="(tipo.appCol1!=undefined && tipo.appCol1!=null) ? tipo.appCol1.trim() : ''" title="{{tipo.appCol2}}">{{(tipo.appCol1!=undefined && tipo.appCol1!=null) ? tipo.appCol1.trim() : ''}}</option>
+						                		<option ng-repeat="tipo2 in phoneTypeList" ng-value="'{{tipo2.appCol1}}'" title="{{tipo2.appCol2}}">{{tipo2.appCol1}}</option>
 <%-- 											<option value="fijo" title="<spring:message code="actionplan.fijo"/>"><spring:message code="actionplan.fijo.first"/></option> --%>
 <%-- 											<option value="movil" title="<spring:message code="actionplan.movil"/>"><spring:message code="actionplan.movil.first"/></option> --%>
 										</select>
@@ -84,7 +84,7 @@
 					                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center borderTablaRight">
 <!-- 					                	<span ng-class="p.phone3.type==='fijo' ? 'glyphicon glyphicon-phone-alt' : 'glyphicon glyphicon-phone'" aria-hidden="true" title="{{(p.phone3.type==='fijo' ? 'Teléfono fijo' : 'Teléfono movil')}}" ng-hide="editingActionPlans || p.phone3==null || p.phone3.number==''"></span> -->
 					                	<select name="phone3Type" ng-model="p.phone3.type" class="actionPlanTablePhone" ng-disabled="!editingActionPlans">
-					                			<option ng-repeat="tipo in phoneTypeList" ng-value="(tipo.appCol1!=undefined && tipo.appCol1!=null) ? tipo.appCol1.trim() : ''" title="{{tipo.appCol2}}">{{(tipo.appCol1!=undefined && tipo.appCol1!=null) ? tipo.appCol1.trim() : ''}}</option>
+					                			<option ng-repeat="tipo3 in phoneTypeList" ng-value="'{{tipo3.appCol1}}'" title="{{tipo3.appCol2}}">{{tipo3.appCol1}}</option>
 <%-- 											<option value="fijo" title="<spring:message code="actionplan.fijo"/>"><spring:message code="actionplan.fijo.first"/></option> --%>
 <%-- 											<option value="movil" title="<spring:message code="actionplan.movil"/>"><spring:message code="actionplan.movil.first"/></option> --%>
 										</select> 

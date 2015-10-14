@@ -4,6 +4,7 @@
 <%@ taglib prefix="app" tagdir="/WEB-INF/tags"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
+<form name="activationAnDEmailBillinForm">
 <div class="row contenedorCheck">
 	<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
 		 <div class="checkbox disabled">
@@ -12,15 +13,17 @@
 	</div>
 	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
 		<div class="paddingTop3">
-			<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.edit"/>" ng-click="activationEdit=false" ng-show="activationEdit">
+			<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.edit"/>" ng-click="editingActivationAndEmailBilling()" ng-show="activationEdit">
 				<span class="glyphicon glyphicon-pencil colorEdit" aria-hidden="true"></span>
 			</button>
-			<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.save"/>" ng-click="" ng-hide="activationEdit">
-				<span class="glyphicon glyphicon-ok colorSave" aria-hidden="true"></span>
-			</button>
-			<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.cancel"/>" ng-click="activationEdit=true; invoiceInfo.invoiceSend=activationCheckValue; invoiceInfo.emailBilling=activationEmailBillingValue;" ng-hide="activationEdit">
-				<span class="glyphicon glyphicon-remove colorCancel" aria-hidden="true"></span>
-			</button>
+			<div class="btn-group inline enlinea">
+				<button type="submit" class="btn btn-default btn-sm" title="<spring:message code="boton.save"/>" ng-click="(activationAnDEmailBillinForm.$valid) ? botonSalvarActivationAndEmailBilling() :  verErrores=true" ng-hide="activationEdit">
+					<span class="glyphicon glyphicon-ok colorSave" aria-hidden="true"></span>
+				</button>
+				<button type="button" class="btn btn-default btn-sm" title="<spring:message code="boton.cancel"/>" ng-click="botonCancelarActivationAndEmailBilling()" ng-hide="activationEdit">
+					<span class="glyphicon glyphicon-remove colorCancel" aria-hidden="true"></span>
+				</button>
+			</div>
 		</div>
 	</div>
 </div>
@@ -29,5 +32,7 @@
 		<label><spring:message code="infoinstal.emailBilling" /></label><input
 			class="form-control input-sm" ng-readonly="activationEdit" type="email"
 			ng-model="installation.emailBilling" name="emailBilling">
+			<span class="error" ng-show="activationAnDEmailBillinForm.$error.email && verErrores==true"><spring:message code="error.email"/> </span>
 	</div>
 </div>
+</form>
